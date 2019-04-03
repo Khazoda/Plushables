@@ -17,6 +17,9 @@ public class ModelRegistryHandler {
     public static void registerModels(ModelRegistryEvent event) {
 
         registerBlockModel(ModBlocks.penguin_baby);
+        registerBlockModel(ModBlocks.red_panda);
+        registerBlockModel(ModBlocks.tacocat);
+        registerBlockModel(ModBlocks.tacosaur);
 
     }
 

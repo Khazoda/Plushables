@@ -3,6 +3,9 @@ package com.khazoda.plush.util;
 import com.khazoda.plush.common.ModBlocks;
 import com.khazoda.plush.common.ModItems;
 import com.khazoda.plush.common.block.Block_PenguinBaby;
+import com.khazoda.plush.common.block.Block_RedPanda;
+import com.khazoda.plush.common.block.Block_Tacocat;
+import com.khazoda.plush.common.block.Block_Tacosaur;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
@@ -17,7 +20,10 @@ public class RegistryHandler {
     @SubscribeEvent
     public static void registerBlocks(RegistryEvent.Register<Block> event) {
         final Block[] blocks = {
-                new Block_PenguinBaby()
+                new Block_PenguinBaby(),
+                new Block_RedPanda(),
+                new Block_Tacocat(),
+                new Block_Tacosaur()
         };
 
         for (Block block : blocks) { //Sets Creative Tab for all blocks
@@ -31,7 +37,10 @@ public class RegistryHandler {
     @SubscribeEvent
     public static void registerItems(RegistryEvent.Register<Item> event) {
         final Item[] items = {
-                new ItemBlock(ModBlocks.penguin_baby).setRegistryName(ModBlocks.penguin_baby.getRegistryName())
+                new ItemBlock(ModBlocks.penguin_baby).setRegistryName(ModBlocks.penguin_baby.getRegistryName()),
+                new ItemBlock(ModBlocks.red_panda).setRegistryName(ModBlocks.red_panda.getRegistryName()),
+                new ItemBlock(ModBlocks.tacocat).setRegistryName(ModBlocks.tacocat.getRegistryName()),
+                new ItemBlock(ModBlocks.tacosaur).setRegistryName(ModBlocks.tacosaur.getRegistryName())
 
         };
 
