@@ -1,0 +1,44 @@
+"display": {
+  "thirdperson_righthand": {
+      "rotation":  [ 0, 142, 0 ],
+      "translation":  [ 0, 3.4782, 0 ],
+      "scale":  [ 0.5, 0.5, 0.5 ]
+  },
+  "thirdperson_lefthand": {
+      "rotation":  [ 0, 142, 0 ],
+      "translation":  [ 0, 3.4782, 0 ],
+      "scale":  [ 0.5, 0.5, 0.5 ]
+  },
+  "firstperson_righthand": {
+      "rotation":  [ 0, 180, 0 ],
+      "translation":  [ -9, 2, 0 ],
+      "scale":  [ 0.6, 0.6, 0.6 ]
+  },
+  "firstperson_lefthand": {
+      "rotation":  [ -20, 160, 0 ],
+      "translation":  [ 2, 1.5, 0 ],
+      "scale":  [ 0.2, 0.2, 0.2 ]
+  },
+  "gui": {
+      "rotation":  [ 0, 160, 0 ],
+      "scale":  [ 0.8, 0.8, 0.8 ]
+  },
+  "ground": {
+      "translation":  [ 0, 5, 0 ],
+      "scale":  [ 0.4, 0.4, 0.4 ]
+  }
+}
+
+"facing=north,is_glowing=true": {},
+      "facing=south,is_glowing=true": {"y": 180},
+      "facing=west,is_glowing=true": {"y": 270},
+      "facing=east,is_glowing=true": {"y": 90},
+      "facing=up,is_glowing=true": {"x": -90},
+      "facing=down,is_glowing=true": {"x": 90},
+
+      "facing=north,is_glowing=false": {},
+      "facing=south,is_glowing=false": {"y": 180},
+      "facing=west,is_glowing=false": {"y": 270},
+      "facing=east,is_glowing=false": {"y": 90},
+      "facing=up,is_glowing=false": {"x": -90},
+      "facing=down,is_glowing=false": {"x": 90}

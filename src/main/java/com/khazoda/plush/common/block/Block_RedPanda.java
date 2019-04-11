@@ -6,8 +6,8 @@ import net.minecraft.block.material.Material;
 
 public class Block_RedPanda extends ParentBlock {
 
-    public Block_RedPanda() {
-        setRegistryName("red_panda");
-        setUnlocalizedName(modID + ".red_panda");
+    public Block_RedPanda(String name, Material material) {
+        super(name,material);
+
     }
 }

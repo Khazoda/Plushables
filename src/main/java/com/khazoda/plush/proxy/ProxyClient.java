@@ -21,7 +21,6 @@ public class ProxyClient extends ProxyCommon {
     @Override
     public void preInit(FMLPreInitializationEvent e) {
         super.preInit(e);
-
         OBJLoader.INSTANCE.addDomain(MODID);
     }
 

@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " s ",
+    "ehe",
+    "d d"
+  ],
+  "key": {
+    "e": {
+      "item": "minecraft:emerald"
+    },
+    "h": {
+      "item": "plush:heartofgold"
+    },
+    "d": {
+      "item": "minecraft:diamond"
+    },
+    "s": {
+      "item": "minecraft:leather_helmet"
+    }
+  },
+  "result": {
+    "item": "plush:june"
+  }
+}

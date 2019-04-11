@@ -15,7 +15,7 @@ public class Plushables {
 
     public static final String MODID = "plush";
     public static final String MODNAME = "Plushables";
-    public static final String MODVERSION = "indev 0.1";
+    public static final String MODVERSION = "indev 0.12";
 
     @SidedProxy(clientSide = "com.khazoda.plush.proxy.ProxyClient", serverSide = "com.khazoda.plush.proxy.ProxyServer")
     public static ProxyCommon proxy;
@@ -28,6 +28,9 @@ public class Plushables {
     public void preInit(FMLPreInitializationEvent event) {
         logger = event.getModLog();
         proxy.preInit(event);
+
+        ModItems.init();
+        ModBlocks.init();
 
     }
 

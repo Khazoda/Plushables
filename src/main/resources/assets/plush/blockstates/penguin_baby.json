@@ -3,16 +3,22 @@
   "defaults": {
     "model": "plush:penguin_baby"
   },
-  "variants": {
-    "normal": [{}],
-    "inventory": [{}],
-    "facing": {
-      "north": {},
-      "south": {"y": 180},
-      "west": {"y": 270},
-      "east": {"y": 90},
-      "up": {"x": -90},
-      "down": {"x": 90}
+    "variants": {
+      "normal": [{}],
+      "inventory": [{}],
+      "facing": {
+        "north": {},
+        "east": {"y": 90},
+        "south": {"y": 180},
+        "west": {"y": 270}
+      },
+      "is_glowing": {
+        "true": {"model": "plush:penguin_baby_noot"},
+        "false": {"model": "plush:penguin_baby"}
+      },
+      "inverted": {
+        "true": {},
+        "false": {}
+      }
     }
-  }
 }

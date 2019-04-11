@@ -1,0 +1,32 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "rgo",
+    "yhy",
+    "yyy"
+  ],
+  "key": {
+    "r": {
+      "item": "minecraft:stained_hardened_clay",
+      "data": 14
+    },
+    "g": {
+      "item": "minecraft:stained_hardened_clay",
+      "data": 13
+    },
+    "h": {
+      "item": "plush:heartofgold"
+    },
+    "o": {
+      "item": "minecraft:stained_hardened_clay",
+      "data": 1
+    },
+    "y": {
+      "item": "minecraft:stained_hardened_clay",
+      "data": 4
+    }
+  },
+  "result": {
+    "item": "plush:tacocat"
+  }
+}

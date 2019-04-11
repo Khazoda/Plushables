@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " g ",
+    "gpg",
+    " g "
+  ],
+  "key": {
+    "g": {
+      "item": "minecraft:gold_nugget"
+    },
+    "p": {
+      "item": "minecraft:red_flower",
+      "data": 0
+    }
+  },
+  "result": {
+    "item": "plush:heartofgold"
+  }
+}

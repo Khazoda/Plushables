@@ -1,7 +1,7 @@
 {
   "forge_marker": 1,
   "defaults": {
-    "model": "plush:tacocat"
+    "model": "plush:bigtater/bigtater"
   },
   "variants": {
     "normal": [{}],
@@ -11,6 +11,10 @@
       "east": {"y": 90},
       "south": {"y": 180},
       "west": {"y": 270}
+    },
+    "is_angry":{
+      "true": {"model": "plush:bigtater/bigtater_grr"},
+      "false": {"model": "plush:bigtater/bigtater"}
     }
   }
 }

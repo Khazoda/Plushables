@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " b ",
+    "ghg",
+    "o o"
+  ],
+  "key": {
+    "b": {
+      "item": "minecraft:stained_hardened_clay",
+      "data": 15
+    },
+    "g": {
+      "item": "minecraft:stained_hardened_clay",
+      "data": 7
+    },
+    "h": {
+      "item": "plush:heartofgold"
+    },
+    "o": {
+      "item": "minecraft:stained_hardened_clay",
+      "data": 1
+    }
+  },
+  "result": {
+    "item": "plush:penguin_baby"
+  }
+}
