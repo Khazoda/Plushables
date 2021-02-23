@@ -1,0 +1,21 @@
+{
+  "recycler_active": {
+    "category": "block",
+    "subtitle": "plushables.subtitle.recycler_on",
+    "sounds": [ "plushables:recycler_on" ]
+  },
+  "recycler_inactive": {
+    "category": "block",
+    "subtitle": "plushables.subtitle.recycler_off",
+    "sounds": [ "plushables:recycler_off" ]
+  },
+  "epic_music": {
+    "category": "record",
+    "sounds": [
+      {
+        "name": "mymod:music/epic_music",
+        "stream": true
+      }
+    ]
+  }
+}
