@@ -9,6 +9,11 @@
     "subtitle": "plushables.subtitle.recycler_off",
     "sounds": [ "plushables:recycler_off" ]
   },
+  "froglin_living": {
+    "category": "block",
+    "subtitle": "plushables.subtitle.froglin_living",
+    "sounds": [ "plushables:froglin_living" ]
+  },
   "epic_music": {
     "category": "record",
     "sounds": [

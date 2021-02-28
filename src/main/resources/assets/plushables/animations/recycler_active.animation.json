@@ -1,0 +1,46 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"animation.recycler_active.spin": {
+			"loop": true,
+			"animation_length": 11.852,
+			"bones": {
+				"1": {
+					"rotation": {
+						"vector": [0, "query.anim_time * 1000", 0]
+					}
+				},
+				"2": {
+					"rotation": {
+						"vector": [0, "query.anim_time * 1000", 0]
+					}
+				},
+				"3": {
+					"rotation": {
+						"vector": [0, "query.anim_time * 1000", 0]
+					}
+				},
+				"4": {
+					"rotation": {
+						"vector": [0, "query.anim_time * 1000", 0]
+					}
+				},
+				"5": {
+					"rotation": {
+						"vector": [0, "query.anim_time * 1000", 0]
+					}
+				},
+				"6": {
+					"rotation": {
+						"vector": [0, "query.anim_time * 1000", 0]
+					}
+				},
+				"eyes": {
+					"position": {
+						"vector": [0, "math.abs(math.sin(query.anim_time * 375)* 0.2) ", 0]
+					}
+				}
+			}
+		}
+	}
+}

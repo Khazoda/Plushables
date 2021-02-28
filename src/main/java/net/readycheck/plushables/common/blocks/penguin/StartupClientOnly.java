@@ -1,6 +1,5 @@
-package net.readycheck.plushables.common.blocks.recycler;
+package net.readycheck.plushables.common.blocks.penguin;
 
-import com.sun.media.jfxmedia.logging.Logger;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.RenderTypeLookup;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -20,6 +19,6 @@ public class StartupClientOnly
    */
 //  @SubscribeEvent
 //  public static void onClientSetupEvent(FMLClientSetupEvent event) {
-//    RenderTypeLookup.setRenderLayer(StartupCommon.recycler, RenderType.getSolid());
+//    RenderTypeLookup.setRenderLayer(StartupCommon.penguin, RenderType.getSolid());
 //  }
 }

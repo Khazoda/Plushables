@@ -28,31 +28,31 @@ import javax.annotation.Nullable;
  */
 public class StartupCommon
 {
-  public static Recycler recycler;  // this holds the unique instance of your block
-  public static BlockItem itemRecycler;  // this holds the unique instance of the ItemBlock corresponding to your block
-
-  @SubscribeEvent
-  public static void onBlocksRegistration(final RegistryEvent.Register<Block> blockRegisterEvent) {
-    recycler = (Recycler) (new Recycler().setRegistryName("plushables", "recycler"));
-    blockRegisterEvent.getRegistry().register(recycler);
-  }
-
-  @SubscribeEvent
-  public static void onItemsRegistration(final RegistryEvent.Register<Item> itemRegisterEvent) {
-    // We need to create a BlockItem so the player can carry this block in their hand and it can appear in the inventory
-
-    Item.Properties itemRecyclerProperties = new Item.Properties()
-                                                   .maxStackSize(64)
-                                                   .group(Plushables.PlushablesGroup);  // which inventory tab?
-    itemRecycler = new BlockItem(recycler, itemRecyclerProperties);
-    itemRecycler.setRegistryName(recycler.getRegistryName());
-    itemRegisterEvent.getRegistry().register(itemRecycler);
-  }
-
-
-
-  @SubscribeEvent
-  public static void onCommonSetupEvent(FMLCommonSetupEvent event) {
-    // not actually required for this example....
-  }
+//  public static Recycler recycler;  // this holds the unique instance of your block
+//  public static BlockItem itemRecycler;  // this holds the unique instance of the ItemBlock corresponding to your block
+//
+//  @SubscribeEvent
+//  public static void onBlocksRegistration(final RegistryEvent.Register<Block> blockRegisterEvent) {
+//    recycler = (Recycler) (new Recycler().setRegistryName("plushables", "recycler"));
+//    blockRegisterEvent.getRegistry().register(recycler);
+//  }
+//
+//  @SubscribeEvent
+//  public static void onItemsRegistration(final RegistryEvent.Register<Item> itemRegisterEvent) {
+//    // We need to create a BlockItem so the player can carry this block in their hand and it can appear in the inventory
+//
+//    Item.Properties itemRecyclerProperties = new Item.Properties()
+//                                                   .maxStackSize(64)
+//                                                   .group(Plushables.PlushablesGroup);  // which inventory tab?
+//    itemRecycler = new BlockItem(recycler, itemRecyclerProperties);
+//    itemRecycler.setRegistryName(recycler.getRegistryName());
+//    itemRegisterEvent.getRegistry().register(itemRecycler);
+//  }
+//
+//
+//
+//  @SubscribeEvent
+//  public static void onCommonSetupEvent(FMLCommonSetupEvent event) {
+//    // not actually required for this example....
+//  }
 }

@@ -2,7 +2,10 @@
   "item.plushables.heart_of_gold": "Heart of Gold",
   "block.plushables.big_tato": "Big Tater",
   "block.plushables.recycler": "Plush Recycler",
+  "block.plushables.penguin": "Penguin",
 
+  "itemGroup.plushables": "Plushables",
+  "itemGroup.plushies": "Plushies",
 
-  "itemGroup.plushables": "Plushables"
+  "item.plushables.froglin_spawn_egg": "Froglin Spawn Egg"
 }

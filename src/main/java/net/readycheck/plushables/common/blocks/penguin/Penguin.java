@@ -1,27 +1,33 @@
-package net.readycheck.plushables.common.blocks.recycler;
+package net.readycheck.plushables.common.blocks.penguin;
 
-import net.minecraft.block.*;
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockRenderType;
+import net.minecraft.block.BlockState;
+import net.minecraft.block.HorizontalBlock;
 import net.minecraft.block.material.Material;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.item.ItemEntity;
+import net.minecraft.client.util.ITooltipFlag;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.BlockItemUseContext;
 import net.minecraft.item.ItemStack;
 import net.minecraft.state.BooleanProperty;
 import net.minecraft.state.DirectionProperty;
 import net.minecraft.state.StateContainer;
-import net.minecraft.tileentity.TileEntity;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.BlockRayTraceResult;
 import net.minecraft.util.math.shapes.ISelectionContext;
 import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.util.math.shapes.VoxelShapes;
 import net.minecraft.util.math.vector.Vector3d;
+import net.minecraft.util.text.ITextComponent;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 import net.readycheck.plushables.common.Plushables;
+import net.readycheck.plushables.tools.SetBlockStateFlag;
 
 import javax.annotation.Nullable;
+import java.util.List;
 
 /**
  * User: The Grey Ghost
@@ -37,31 +43,22 @@ import javax.annotation.Nullable;
  */
 
 /**
- * Recycler
+ * Recyclinger
  */
-public class Recycler extends Block {
-    public Recycler() {
-        super(Properties.create(Material.ROCK).notSolid());  // look at Block.Properties for further options
+public class Penguin extends Block {
+    public Penguin() {
+        super(Properties.create(Material.WOOL).notSolid());  // look at Block.Properties for further options
         // typically useful: hardnessAndResistance(), harvestLevel(), harvestTool()
         BlockState defaultBlockState = this.stateContainer.getBaseState().with(FACING, Direction.SOUTH).with(ACTIVE, false);
         this.setDefaultState(defaultBlockState);
+
+
     }
 
     private static final BooleanProperty ACTIVE = BooleanProperty.create("active");
     private static final DirectionProperty FACING = HorizontalBlock.HORIZONTAL_FACING;
     // Direction.NORTH, Direction.EAST, Direction.SOUTH, Direction.WEST
 
-//  Tile Entity Code
-    @Override
-    public boolean hasTileEntity(BlockState state) {
-        return true;
-    }
-
-    @Nullable
-    @Override
-    public TileEntity createTileEntity(BlockState state, IBlockReader world) {
-        return new RecyclerTileEntity();
-    }
 
     @Override
     protected void fillStateContainer(StateContainer.Builder<Block, BlockState> builder) {
@@ -95,8 +92,8 @@ public class Recycler extends Block {
         // you can also use direction.getHorizontalIndex() if you want, instead of a map.
     }
 
-    private static final Vector3d RECYCLER_MIN_CORNER = new Vector3d(1.0, 0.0, 1.0);
-    private static final Vector3d RECYCLER_MAX_CORNER = new Vector3d(15.0, 12.0, 15.0);
+    private static final Vector3d RECYCLER_MIN_CORNER = new Vector3d(2.0, 0.0, 4.0);
+    private static final Vector3d RECYCLER_MAX_CORNER = new Vector3d(14.0, 15.0, 12.0);
     private static final VoxelShape RECYCLER_SHAPE = Block.makeCuboidShape(RECYCLER_MIN_CORNER.getX(), RECYCLER_MIN_CORNER.getY(), RECYCLER_MIN_CORNER.getZ(),
             RECYCLER_MAX_CORNER.getX(), RECYCLER_MAX_CORNER.getY(), RECYCLER_MAX_CORNER.getZ());
     // Setting up sounds for the Recycler
@@ -107,55 +104,23 @@ public class Recycler extends Block {
     SoundEvent recycler_inactive_sound = new SoundEvent(recycler_inactive);
 
     // ---- Turn the Recycler on and off by right clicking it
-//    @Override
-//    public ActionResultType onBlockActivated(BlockState state, World worldIn, BlockPos pos,
-//                                             PlayerEntity player, Hand handIn, BlockRayTraceResult blockRayTraceResult) {
-//        boolean currentlyActive = state.get(ACTIVE);
-//        boolean newActiveState = !currentlyActive;
-//
-//        final int FLAGS = SetBlockStateFlag.get(SetBlockStateFlag.BLOCK_UPDATE, SetBlockStateFlag.SEND_TO_CLIENTS);
-//        worldIn.setBlockState(pos, state.with(ACTIVE, newActiveState), FLAGS);
-////    Plays sound based on whether it's turning on or off
-//        if (newActiveState == true) {
-//            worldIn.playSound(null, pos.getX(), pos.getY(), pos.getZ(), recycler_active_sound, SoundCategory.BLOCKS, 10, 1);
-//        } else {
-//            worldIn.playSound(null, pos.getX(), pos.getY(), pos.getZ(), recycler_inactive_sound, SoundCategory.BLOCKS, 10, 1);
-//        }
-////        Helper function for ActionResultType = Success that doesn't trigger two hand swings
-//        return ActionResultType.func_233537_a_(worldIn.isRemote);
-//    }
-
-//    RECYCLER LOGIC =============================================
-
     @Override
-    public void onEntityCollision(BlockState state, World worldIn, BlockPos pos, Entity entityIn) {
+    public ActionResultType onBlockActivated(BlockState state, World worldIn, BlockPos pos,
+                                             PlayerEntity player, Hand handIn, BlockRayTraceResult blockRayTraceResult) {
+        boolean currentlyActive = state.get(ACTIVE);
+        boolean newActiveState = !currentlyActive;
 
-
-        if (!worldIn.isRemote) {
-//            If the entity colliding is an item
-            if (entityIn.getType() == EntityType.ITEM) {
-                ItemEntity iEntity = (ItemEntity) entityIn;
-                ItemStack itemStack = iEntity.getItem().copy();
-//                If the item colliding is from the Plushables group
-                if(itemStack.getItem().getGroup() == Plushables.PlushieGroup) {
-//                    GRIND UP THE PLUSHIE >:)
-                    entityIn.remove();
-                }
-            }
-        }
-
-//            int i = this.getRedstoneStrength(state);
-//            if (i == 0) {
-//                this.updateState(worldIn, pos, state, i);
-//            }
-
+        final int FLAGS = SetBlockStateFlag.get(SetBlockStateFlag.BLOCK_UPDATE, SetBlockStateFlag.SEND_TO_CLIENTS);
+        worldIn.setBlockState(pos, state.with(ACTIVE, newActiveState), FLAGS);
+//    Plays sound based on whether it's turning on or off
+//      Helper function for ActionResultType = Success that doesn't trigger two hand swings
+        return ActionResultType.func_233537_a_(worldIn.isRemote);
     }
 
-
-    // ENTITYBLOCK_ANIMATED because this block/tile entity is being animated by GeckoLib
+    // render using a BakedModel (mbe01_block_simple.json --> mbe01_block_simple_model.json)
+    // not strictly required because the default (super method) is MODEL.
     @Override
     public BlockRenderType getRenderType(BlockState blockState) {
-//        return BlockRenderType.ENTITYBLOCK_ANIMATED;
         return BlockRenderType.MODEL;
     }
 }
