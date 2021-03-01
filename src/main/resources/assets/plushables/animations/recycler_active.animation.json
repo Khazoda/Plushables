@@ -39,6 +39,55 @@
 					"position": {
 						"vector": [0, "math.abs(math.sin(query.anim_time * 375)* 0.2) ", 0]
 					}
+				},
+				"stem": {
+					"rotation": {
+						"vector": [0, "query.anim_time * 1000", 0]
+					}
+				},
+				"left_eye": {
+					"rotation": {
+						"vector": [0, 0, "math.cos(query.anim_time * 200) * 10"]
+					}
+				},
+				"right_eye": {
+					"rotation": {
+						"vector": [0, 0, "-math.cos(query.anim_time * 200) * 10"]
+					}
+				}
+			}
+		},
+		"animation.recycler_active.turn_on": {
+			"loop": "hold_on_last_frame",
+			"animation_length": 0.6,
+			"bones": {
+				"lever": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"0.6": {
+							"vector": [132.5, 0, 0],
+							"easing": "easeInQuad"
+						}
+					}
+				}
+			}
+		},
+		"animation.recycler_active.turn_off": {
+			"loop": "hold_on_last_frame",
+			"animation_length": 0.6,
+			"bones": {
+				"lever": {
+					"rotation": {
+						"0.0": {
+							"vector": [132.5, 0, 0]
+						},
+						"0.6": {
+							"vector": [0, 0, 0],
+							"easing": "easeInQuad"
+						}
+					}
 				}
 			}
 		}

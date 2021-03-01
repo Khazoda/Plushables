@@ -1,6 +1,7 @@
 package net.readycheck.plushables.common;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityClassification;
 import net.minecraft.entity.EntityType;
@@ -23,6 +24,7 @@ import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
+import net.readycheck.plushables.common.blocks.penguin.Penguin;
 import net.readycheck.plushables.common.blocks.recycler.Recycler;
 import net.readycheck.plushables.common.blocks.recycler.RecyclerTileEntity;
 import net.readycheck.plushables.common.blocks.recycler.RecyclerTileRenderer;
@@ -58,14 +60,13 @@ public class Registration {
     public static final RegistryObject<Recycler> RECYCLER = BLOCKS.register("recycler", Recycler::new);
     public static final RegistryObject<Item> RECYCLER_ITEM = ITEMS.register("recycler",
             () -> new BlockItem(RECYCLER.get(), new Item.Properties().group(Plushables.PlushablesGroup)));
+    public static final RegistryObject<TileEntityType<RecyclerTileEntity>> RECYCLER_TILE = TILES.register("recycler", () -> TileEntityType.Builder.create(RecyclerTileEntity::new, RECYCLER.get()).build(null));
 
     //    Penguin
-    public static final RegistryObject<Recycler> PENGUIN = BLOCKS.register("penguin", Recycler::new);
+    public static final RegistryObject<Penguin> PENGUIN = BLOCKS.register("penguin", Penguin::new);
     public static final RegistryObject<Item> PENGUIN_ITEM = ITEMS.register("penguin",
             () -> new BlockItem(PENGUIN.get(), new Item.Properties().group(Plushables.PlushieGroup)));
     //
-//      TILE ENTITIES
-    public static final RegistryObject<TileEntityType<RecyclerTileEntity>> RECYCLER_TILE = TILES.register("recycler", () -> TileEntityType.Builder.create(RecyclerTileEntity::new, RECYCLER.get()).build(null));
 
     //    ENTITIES
     //    Froglin
