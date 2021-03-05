@@ -1,7 +1,9 @@
 package net.readycheck.plushables.common;
 
+import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityClassification;
 import net.minecraft.entity.EntityType;
@@ -24,6 +26,7 @@ import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
+import net.readycheck.plushables.common.blocks.lukepeculier.Lukepeculier;
 import net.readycheck.plushables.common.blocks.penguin.Penguin;
 import net.readycheck.plushables.common.blocks.recycler.Recycler;
 import net.readycheck.plushables.common.blocks.recycler.RecyclerTileEntity;
@@ -56,17 +59,23 @@ public class Registration {
     }
 
     //  BLOCKS
+    private static final AbstractBlock.Properties plushieProperties = AbstractBlock.Properties.create(Material.WOOL).hardnessAndResistance(0.5f).harvestLevel(1).notSolid();
     //  Recycler
     public static final RegistryObject<Recycler> RECYCLER = BLOCKS.register("recycler", Recycler::new);
     public static final RegistryObject<Item> RECYCLER_ITEM = ITEMS.register("recycler",
             () -> new BlockItem(RECYCLER.get(), new Item.Properties().group(Plushables.PlushablesGroup)));
     public static final RegistryObject<TileEntityType<RecyclerTileEntity>> RECYCLER_TILE = TILES.register("recycler", () -> TileEntityType.Builder.create(RecyclerTileEntity::new, RECYCLER.get()).build(null));
 
+    //    PLUSHIES
     //    Penguin
-    public static final RegistryObject<Penguin> PENGUIN = BLOCKS.register("penguin", Penguin::new);
+    public static final RegistryObject<Penguin> PENGUIN = BLOCKS.register("penguin", () -> new Penguin(plushieProperties));
     public static final RegistryObject<Item> PENGUIN_ITEM = ITEMS.register("penguin",
             () -> new BlockItem(PENGUIN.get(), new Item.Properties().group(Plushables.PlushieGroup)));
-    //
+    //    Lukepeculier
+    public static final RegistryObject<Lukepeculier> LUKEPECULIER = BLOCKS.register("lukepeculier", () -> new Lukepeculier(plushieProperties));
+    public static final RegistryObject<Item> LUKEPECULIER_ITEM = ITEMS.register("lukepeculier",
+            () -> new BlockItem(LUKEPECULIER.get(), new Item.Properties().group(Plushables.PlushieGroup)));
+
 
     //    ENTITIES
     //    Froglin

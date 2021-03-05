@@ -94,12 +94,20 @@ public class RecyclerTileEntity extends TileEntity implements IAnimatable, ITick
         return this.isActive;
     }
 
+
+
+    public void updateBlock(){
+        this.blockState = world.getBlockState(pos);
+        world.notifyBlockUpdate(pos, blockState, blockState, 2);
+
+    }
+
     @Override
     public void tick() {
         if (world.isRemote) {
             return;
         }
-        this.blockState = world.getBlockState(pos);
+        updateBlock();
         this.isActive = blockState.get(Recycler.ACTIVE);
         this.isSwitchingOn = blockState.get(Recycler.SWITCHING_ON);
         markDirty();

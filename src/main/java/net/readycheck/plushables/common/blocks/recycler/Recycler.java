@@ -2,6 +2,7 @@ package net.readycheck.plushables.common.blocks.recycler;
 
 import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
+import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.item.ItemEntity;
@@ -138,6 +139,8 @@ public class Recycler extends Block {
             worldIn.playSound(null, pos.getX(), pos.getY(), pos.getZ(), recycler_inactive_sound, SoundCategory.BLOCKS, 10, 1);
         }
         worldIn.setBlockState(pos, state.with(SWITCHING_ON, isSwitchingOn).with(ACTIVE, newActiveState), FLAGS);
+//        TODO Debug message
+        Minecraft.getInstance().player.sendChatMessage(worldIn.getBlockState(new BlockPos(pos.getX(),pos.getY(),pos.getZ())).get(SWITCHING_ON).toString());
         if(worldIn.getTileEntity(new BlockPos(pos.getX(), pos.getY(), pos.getZ())) instanceof IAnimationListener) {
             ((IAnimationListener) worldIn.getTileEntity(new BlockPos(pos.getX(), pos.getY(), pos.getZ()))).startAnimation(isSwitchingOn);
         }

@@ -24,6 +24,8 @@ import net.minecraft.util.text.ITextComponent;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 import net.readycheck.plushables.common.Plushables;
+import net.readycheck.plushables.common.interfaces.AbstractPlushie;
+import net.readycheck.plushables.common.interfaces.IPlushie;
 import net.readycheck.plushables.tools.SetBlockStateFlag;
 
 import javax.annotation.Nullable;
@@ -45,18 +47,15 @@ import java.util.List;
 /**
  * Recyclinger
  */
-public class Penguin extends Block {
-    public Penguin() {
-        super(Properties.create(Material.WOOL).notSolid());  // look at Block.Properties for further options
-        // typically useful: hardnessAndResistance(), harvestLevel(), harvestTool()
-        BlockState defaultBlockState = this.stateContainer.getBaseState().with(FACING, Direction.SOUTH).with(ACTIVE, false);
-        this.setDefaultState(defaultBlockState);
-
-
-    }
-
+public class Penguin extends AbstractPlushie implements IPlushie {
     private static final BooleanProperty ACTIVE = BooleanProperty.create("active");
     private static final DirectionProperty FACING = HorizontalBlock.HORIZONTAL_FACING;
+
+    public Penguin(Properties properties) {
+        super(properties);
+        BlockState defaultBlockState = this.stateContainer.getBaseState().with(FACING, Direction.SOUTH).with(ACTIVE, false);
+        this.setDefaultState(defaultBlockState);
+    }
     // Direction.NORTH, Direction.EAST, Direction.SOUTH, Direction.WEST
 
 
