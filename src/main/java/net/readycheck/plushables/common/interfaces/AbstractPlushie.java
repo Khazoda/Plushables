@@ -49,17 +49,16 @@ public class AbstractPlushie extends Block {
     }
 
 
-    private static final Vector3d MIN_CORNER = new Vector3d(2.0, 0.0, 4.0);
-    private static final Vector3d MAX_CORNER = new Vector3d(14.0, 15.0, 12.0);
-    private static final VoxelShape RECYCLER_SHAPE = Block.makeCuboidShape(
+    private static final Vector3d MIN_CORNER = new Vector3d(0.0, 0.0, 0.0);
+    private static final Vector3d MAX_CORNER = new Vector3d(16.0, 16.0, 16.0);
+    private static final VoxelShape VOXEL_SHAPE = Block.makeCuboidShape(
             MIN_CORNER.getX(), MIN_CORNER.getY(), MIN_CORNER.getZ(),
             MAX_CORNER.getX(), MAX_CORNER.getY(), MAX_CORNER.getZ()
     );
 
     @Override
     public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {
-        VoxelShape voxelShape = RECYCLER_SHAPE;
-        return voxelShape != null ? voxelShape : VoxelShapes.fullCube();
+        return VOXEL_SHAPE != null ? VOXEL_SHAPE : VoxelShapes.fullCube();
     }
 
     @Override

@@ -14,11 +14,11 @@
     "subtitle": "plushables.subtitle.froglin_living",
     "sounds": [ "plushables:froglin_living" ]
   },
-  "epic_music": {
+  "wocky_slush": {
     "category": "record",
     "sounds": [
       {
-        "name": "mymod:music/epic_music",
+        "name": "plushables:music/wockyslush",
         "stream": true
       }
     ]
