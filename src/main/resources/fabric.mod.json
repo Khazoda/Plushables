@@ -1,17 +1,17 @@
 {
   "schemaVersion": 1,
   "id": "plushables",
-  "version": "${version}",
+  "version": "0.0.1a",
   "name": "Plushables",
-  "description": "This is an example description! Tell everyone what your mod is about!",
+  "description": "Craft cute and helpful plushies for your home",
   "authors": [
     "Khazoda"
   ],
   "contact": {
     "homepage": "https://seacroak.com",
-    "sources": "https://github.com/FabricMC/fabric-example-mod"
+    "sources": "https://github.com/Khazoda/Plushables"
   },
-  "license": "CC0-1.0",
+  "license": "MIT",
   "icon": "assets/plushables/mod_icon.png",
   "environment": "*",
   "entrypoints": {
