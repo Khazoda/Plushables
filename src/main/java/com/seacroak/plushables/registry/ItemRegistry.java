@@ -18,6 +18,9 @@ public class ItemRegistry {
 
 	public static final BlockItem BUILDER = RegistryUtils.registerItem("builder",
 			new BlockItem(BlockRegistry.BUILDER_BLOCK, new Item.Settings().group(plushablesItemGroup)));
+
+	public static final BlockItem PENGUIN = RegistryUtils.registerItem("penguin",
+			new BlockItem(BlockRegistry.PENGUIN_BLOCK, new Item.Settings().group(plushablesItemGroup)));
 	// public static final JackInTheBoxItem JACK_IN_THE_BOX =
 	// RegistryUtils.registerItem("jackintheboxitem",
 	// new JackInTheBoxItem(new Item.Settings().group(geckolibItemGroup)));

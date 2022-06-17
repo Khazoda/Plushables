@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.jetbrains.annotations.Nullable;
 
+import com.seacroak.plushables.gui.BuilderScreenHandler;
 import com.seacroak.plushables.registry.TileRegistry;
 
 import net.minecraft.block.AbstractBlock;
@@ -11,6 +12,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockEntityProvider;
 import net.minecraft.block.BlockRenderType;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.CraftingTableBlock;
 import net.minecraft.block.FacingBlock;
 import net.minecraft.block.Material;
 import net.minecraft.block.ShapeContext;
@@ -36,27 +38,10 @@ import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 
-public class BuilderBlock extends FacingBlock implements BlockEntityProvider {
-	private static final Text GUI_TITLE = Text.translatable("container.crafting");
+public class PenguinBlock extends FacingBlock implements BlockEntityProvider {
 
-	public BuilderBlock() {
+	public PenguinBlock() {
 		super(AbstractBlock.Settings.of(Material.STONE).nonOpaque());
-	}
-
-	@Override
-	public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand,
-			BlockHitResult hit) {
-		if (world.isClient) {
-			return ActionResult.SUCCESS;
-		}
-		player.openHandledScreen(state.createScreenHandlerFactory(world, pos));
-		return ActionResult.CONSUME;
-	}
-
-	@Override
-	public NamedScreenHandlerFactory createScreenHandlerFactory(BlockState state, World world, BlockPos pos) {
-		return new SimpleNamedScreenHandlerFactory((syncId, inventory, player) -> new CraftingScreenHandler(syncId,
-				inventory, ScreenHandlerContext.create(world, pos)), GUI_TITLE);
 	}
 
 	@Override
@@ -67,7 +52,7 @@ public class BuilderBlock extends FacingBlock implements BlockEntityProvider {
 	@Nullable
 	@Override
 	public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
-		return TileRegistry.BUILDER_TILE.instantiate(pos, state);
+		return TileRegistry.PENGUIN_TILE.instantiate(pos, state);
 	}
 
 	@Override
@@ -77,16 +62,19 @@ public class BuilderBlock extends FacingBlock implements BlockEntityProvider {
 
 	public VoxelShape getShape() {
 		VoxelShape shape = VoxelShapes.empty();
-		shape = VoxelShapes.union(shape,
-				VoxelShapes.cuboid(0.0625, -8.673617379884035e-19, 0.0625, 0.1875, 0.625, 0.1875));
-		shape = VoxelShapes.union(shape,
-				VoxelShapes.cuboid(0.0625, -8.673617379884035e-19, 0.8125, 0.1875, 0.625, 0.9375));
-		shape = VoxelShapes.union(shape,
-				VoxelShapes.cuboid(0.8125, -8.673617379884035e-19, 0.8125, 0.9375, 0.625, 0.9375));
-		shape = VoxelShapes.union(shape,
-				VoxelShapes.cuboid(0.8125, -8.673617379884035e-19, 0.0625, 0.9375, 0.625, 0.1875));
-		shape = VoxelShapes.union(shape, VoxelShapes.cuboid(0.0625, 0.625, 0.0625, 0.9375, 0.75, 0.9375));
-		shape = VoxelShapes.union(shape, VoxelShapes.cuboid(0.078125, 0.3125, 0.078125, 0.921875, 0.4375, 0.921875));
+		shape = VoxelShapes.union(shape, VoxelShapes.cuboid(0.125, 0, 0.3125, 0.875, 0.875, 0.6875));
+		shape = VoxelShapes.union(shape, VoxelShapes.cuboid(0.6875, 0, 0.1875, 0.875, 0.0625, 0.3125));
+		shape = VoxelShapes.union(shape, VoxelShapes.cuboid(0.125, 0, 0.1875, 0.3125, 0.0625, 0.3125));
+		shape = VoxelShapes.union(shape, VoxelShapes.cuboid(0.6875, 0.625, 0.25, 0.9375, 0.875, 0.3125));
+		shape = VoxelShapes.union(shape, VoxelShapes.cuboid(0.0625, 0.625, 0.25, 0.3125, 0.875, 0.3125));
+		shape = VoxelShapes.union(shape, VoxelShapes.cuboid(0.375, 0.625, 0.25, 0.625, 0.75, 0.3125));
+		shape = VoxelShapes.union(shape, VoxelShapes.cuboid(0.25, 0.875, 0.375, 0.75, 0.9375, 0.625));
+		shape = VoxelShapes.union(shape, VoxelShapes.cuboid(0.125, 0.875, 0.25, 0.1875, 0.9375, 0.5));
+		shape = VoxelShapes.union(shape, VoxelShapes.cuboid(0.8125, 0.875, 0.25, 0.875, 0.9375, 0.5));
+		shape = VoxelShapes.union(shape, VoxelShapes.cuboid(0.1875, 0.0625, 0.6875, 0.8125, 0.8125, 0.75));
+		shape = VoxelShapes.union(shape, VoxelShapes.cuboid(0.1875, 0.125, 0.75, 0.8125, 0.5, 0.8125));
+		shape = VoxelShapes.union(shape, VoxelShapes.cuboid(0.1875, 0.5625, 0.75, 0.8125, 0.8125, 0.8125));
+		shape = VoxelShapes.union(shape, VoxelShapes.cuboid(0.375, 0.125, 0.8125, 0.625, 0.25, 0.875));
 
 		return shape;
 	}

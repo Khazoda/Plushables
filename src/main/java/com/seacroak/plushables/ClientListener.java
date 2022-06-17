@@ -6,6 +6,7 @@
 package com.seacroak.plushables;
 
 import com.seacroak.plushables.client.renderer.tile.BuilderTileRenderer;
+import com.seacroak.plushables.client.renderer.tile.PenguinTileRenderer;
 import com.seacroak.plushables.registry.TileRegistry;
 
 import net.fabricmc.api.ClientModInitializer;
@@ -45,6 +46,8 @@ public class ClientListener implements ClientModInitializer {
 			// RenderLayer.getTranslucent());
 			BlockEntityRendererRegistry.register(TileRegistry.BUILDER_TILE,
 					(BlockEntityRendererFactory.Context rendererDispatcherIn) -> new BuilderTileRenderer());
+			BlockEntityRendererRegistry.register(TileRegistry.PENGUIN_TILE,
+					(BlockEntityRendererFactory.Context rendererDispatcherIn) -> new PenguinTileRenderer());
 		}
 	}
 
