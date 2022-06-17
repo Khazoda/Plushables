@@ -4,9 +4,7 @@
   "version": "0.0.1a",
   "name": "Plushables",
   "description": "Craft cute and helpful plushies for your home",
-  "authors": [
-    "Khazoda"
-  ],
+  "authors": ["Khazoda"],
   "contact": {
     "homepage": "https://seacroak.com",
     "sources": "https://github.com/Khazoda/Plushables"
@@ -15,13 +13,10 @@
   "icon": "assets/plushables/mod_icon.png",
   "environment": "*",
   "entrypoints": {
-    "main": [
-      "com.seacroak.plushables.PlushablesMod"
-    ]
+    "main": ["com.seacroak.plushables.PlushablesMod"],
+    "client": ["com.seacroak.plushables.ClientListener"]
   },
-  "mixins": [
-    "plushables.mixins.json"
-  ],
+  "mixins": ["plushables.mixins.json"],
   "depends": {
     "fabricloader": ">=0.14.6",
     "fabric": "*",
