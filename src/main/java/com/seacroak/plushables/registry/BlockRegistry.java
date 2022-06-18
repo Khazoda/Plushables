@@ -1,6 +1,7 @@
 package com.seacroak.plushables.registry;
 
 import com.seacroak.plushables.block.BuilderBlock;
+import com.seacroak.plushables.block.FoxBlock;
 import com.seacroak.plushables.block.PenguinBlock;
 
 public class BlockRegistry {
@@ -12,5 +13,6 @@ public class BlockRegistry {
 
 	public static final BuilderBlock BUILDER_BLOCK = RegistryUtils.register("builder_block", new BuilderBlock());
 	public static final PenguinBlock PENGUIN_BLOCK = RegistryUtils.register("penguin_block", new PenguinBlock());
+	public static final FoxBlock FOX_BLOCK = RegistryUtils.register("fox_block", new FoxBlock());
 
 }
