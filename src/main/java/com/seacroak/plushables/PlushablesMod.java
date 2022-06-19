@@ -22,6 +22,8 @@ public class PlushablesMod implements ModInitializer {
 			.appendItems(stacks -> {
 				stacks.add(new ItemStack(MainRegistry.FOX_PLUSHABLE));
 				stacks.add(new ItemStack(MainRegistry.PENGUIN_PLUSHABLE));
+				stacks.add(new ItemStack(MainRegistry.FROGLIN_PLUSHABLE));
+
 			}).build();
 
 	@Override
