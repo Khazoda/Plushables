@@ -6,22 +6,14 @@
 package com.seacroak.plushables;
 
 import com.seacroak.plushables.client.renderer.tile.BuilderTileRenderer;
-import com.seacroak.plushables.client.renderer.tile.PenguinTileRenderer;
 import com.seacroak.plushables.registry.TileRegistry;
 
 import net.fabricmc.api.ClientModInitializer;
-
 import net.fabricmc.fabric.api.client.rendering.v1.BlockEntityRendererRegistry;
-
-import net.fabricmc.fabric.impl.blockrenderlayer.BlockRenderLayerMapImpl;
 import net.fabricmc.loader.api.FabricLoader;
-import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.block.entity.BlockEntityRendererFactory;
 
-import software.bernie.geckolib3.renderers.geo.GeoArmorRenderer;
-import software.bernie.geckolib3.renderers.geo.GeoItemRenderer;
-
-public class ClientListener implements ClientModInitializer {
+public class ClientRegistry implements ClientModInitializer {
 
 	@SuppressWarnings({ "unchecked" })
 	@Override
@@ -46,8 +38,7 @@ public class ClientListener implements ClientModInitializer {
 			// RenderLayer.getTranslucent());
 			BlockEntityRendererRegistry.register(TileRegistry.BUILDER_TILE,
 					(BlockEntityRendererFactory.Context rendererDispatcherIn) -> new BuilderTileRenderer());
-			BlockEntityRendererRegistry.register(TileRegistry.PENGUIN_TILE,
-					(BlockEntityRendererFactory.Context rendererDispatcherIn) -> new PenguinTileRenderer());
+
 		}
 	}
 

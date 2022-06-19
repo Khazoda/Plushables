@@ -59,12 +59,13 @@ public class RegistryUtils {
 		return block;
 	}
 
-	public static <I extends Item> I registerItem(I item, Identifier name) {
-		if (FabricLoader.getInstance().isDevelopmentEnvironment()) {
-			return Registry.register(Registry.ITEM, name, item);
-		}
-		return null;
-	}
+	// public static <I extends Item> I registerItem(String string, BlockItem
+	// blockItem) {
+	// if (FabricLoader.getInstance().isDevelopmentEnvironment()) {
+	// return Registry.register(Registry.ITEM, blockItem, string);
+	// }
+	// return null;
+	// }
 
 	public static <I extends Item> I registerItem(String name, I item) {
 		if (FabricLoader.getInstance().isDevelopmentEnvironment()) {

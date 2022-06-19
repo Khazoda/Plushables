@@ -1,7 +1,11 @@
 package com.seacroak.plushables;
 
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
 import net.fabricmc.loader.api.FabricLoader;
+import net.minecraft.item.ItemGroup;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.Identifier;
 import software.bernie.geckolib3.GeckoLib;
 
 import com.seacroak.plushables.registry.*;
@@ -12,13 +16,22 @@ public class PlushablesMod implements ModInitializer {
 
 	boolean isDevelopmentEnvironment = FabricLoader.getInstance().isDevelopmentEnvironment();
 
+	public static final ItemGroup PLUSHABLES_GROUP = FabricItemGroupBuilder.create(
+			new Identifier(PlushablesMod.ModID, "plushables"))
+			.icon(() -> new ItemStack(MainRegistry.FOX_PLUSHABLE))
+			.appendItems(stacks -> {
+				stacks.add(new ItemStack(MainRegistry.FOX_PLUSHABLE));
+				stacks.add(new ItemStack(MainRegistry.PENGUIN_PLUSHABLE));
+			}).build();
+
 	@Override
 	public void onInitialize() {
 		GeckoLib.initialize();
+		new MainRegistry();
+		new TileRegistry();
+
 		if (isDevelopmentEnvironment && !PlushablesMod.DISABLE_IN_DEV) {
-			new ItemRegistry();
-			new TileRegistry();
-			new BlockRegistry();
+			// Code to be run in dev environment only
 			// new SoundRegistry();
 		}
 	}

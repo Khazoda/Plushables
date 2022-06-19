@@ -1,39 +1,20 @@
 package com.seacroak.plushables.block;
 
-import java.util.List;
 import java.util.Random;
 
-import org.jetbrains.annotations.Nullable;
-
-import com.seacroak.plushables.gui.BuilderScreenHandler;
-import com.seacroak.plushables.registry.TileRegistry;
-
-import net.minecraft.block.AbstractBlock;
+import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockEntityProvider;
 import net.minecraft.block.BlockRenderType;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.CraftingTableBlock;
-import net.minecraft.block.FacingBlock;
+import net.minecraft.block.HorizontalFacingBlock;
 import net.minecraft.block.Material;
 import net.minecraft.block.ShapeContext;
-import net.minecraft.block.entity.BlockEntity;
-import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemPlacementContext;
-import net.minecraft.item.ItemStack;
-import net.minecraft.particle.ParticleType;
 import net.minecraft.particle.ParticleTypes;
-import net.minecraft.screen.CraftingScreenHandler;
-import net.minecraft.screen.NamedScreenHandlerFactory;
-import net.minecraft.screen.ScreenHandlerContext;
-import net.minecraft.screen.SimpleNamedScreenHandlerFactory;
+import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.state.StateManager;
-import net.minecraft.text.Text;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.Formatting;
-import net.minecraft.util.Hand;
-import net.minecraft.util.hit.BlockHitResult;
+import net.minecraft.state.property.Properties;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.shape.VoxelShape;
@@ -41,13 +22,13 @@ import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 
-public class FoxBlock extends FacingBlock {
+public class FoxBlock extends HorizontalFacingBlock {
 	Random rand;
 
 	public FoxBlock() {
-		super(AbstractBlock.Settings.of(Material.STONE).nonOpaque());
+		super(FabricBlockSettings.of(Material.WOOL).sounds(BlockSoundGroup.WOOL).strength(0.7f).nonOpaque());
+		setDefaultState(this.stateManager.getDefaultState().with(Properties.HORIZONTAL_FACING, Direction.NORTH));
 		rand = new Random();
-
 	}
 
 	@Override
@@ -56,25 +37,21 @@ public class FoxBlock extends FacingBlock {
 	}
 
 	static final VoxelShape blockShape = getShape();
+	static final VoxelShape[] blockShapes = { blockShape, rotateShape(Direction.NORTH, Direction.EAST, blockShape),
+			rotateShape(Direction.NORTH, Direction.SOUTH, blockShape),
+			rotateShape(Direction.NORTH, Direction.WEST, blockShape) };
 
 	static public VoxelShape getShape() {
 		VoxelShape shape = VoxelShapes.empty();
-		shape = VoxelShapes.union(shape,
-				VoxelShapes.cuboid(0.1875, 0, 0.1875, 0.5, 0.3125, 0.5));
-		shape = VoxelShapes.union(shape,
-				VoxelShapes.cuboid(0.1875, 0.3125, 0.25, 0.3125, 0.375, 0.3125));
-		shape = VoxelShapes.union(shape,
-				VoxelShapes.cuboid(0.375, 0.3125, 0.25, 0.5, 0.375, 0.3125));
-		shape = VoxelShapes.union(shape,
-				VoxelShapes.cuboid(0.25, 0.125, 0.125, 0.4375, 0.1875, 0.1875));
-		shape = VoxelShapes.union(shape,
-				VoxelShapes.cuboid(0.125, 0, 0.125, 0.25, 0.0625, 0.25));
-		shape = VoxelShapes.union(shape,
-				VoxelShapes.cuboid(0.4375, 0, 0.125, 0.5625, 0.0625, 0.25));
-		shape = VoxelShapes.union(shape,
-				VoxelShapes.cuboid(0.125, 0, 0.4375, 0.25, 0.0625, 0.5625));
-		shape = VoxelShapes.union(shape,
-				VoxelShapes.cuboid(0.4375, 0, 0.4375, 0.5625, 0.0625, 0.5625));
+		shape = VoxelShapes.union(shape, VoxelShapes.cuboid(0.125, 0, 0.1875, 0.1875, 0.0625, 0.3125));
+		shape = VoxelShapes.union(shape, VoxelShapes.cuboid(0.1875, 0, 0.1875, 0.5, 0.3125, 0.5));
+		shape = VoxelShapes.union(shape, VoxelShapes.cuboid(0.1875, 0.3125, 0.25, 0.3125, 0.375, 0.3125));
+		shape = VoxelShapes.union(shape, VoxelShapes.cuboid(0.375, 0.3125, 0.25, 0.5, 0.375, 0.3125));
+		shape = VoxelShapes.union(shape, VoxelShapes.cuboid(0.25, 0.125, 0.125, 0.4375, 0.1875, 0.1875));
+		shape = VoxelShapes.union(shape, VoxelShapes.cuboid(0.28125, -0.03125, 0.3125, 0.40625, 0.09375, 0.5625));
+		shape = VoxelShapes.union(shape, VoxelShapes.cuboid(0.5, 0, 0.1875, 0.5625, 0.0625, 0.3125));
+		shape = VoxelShapes.union(shape, VoxelShapes.cuboid(0.125, 0, 0.4375, 0.1875, 0.0625, 0.5625));
+		shape = VoxelShapes.union(shape, VoxelShapes.cuboid(0.5, 0, 0.4375, 0.5625, 0.0625, 0.5625));
 
 		return shape;
 	}
@@ -99,8 +76,8 @@ public class FoxBlock extends FacingBlock {
 
 	@Override
 	public BlockState getPlacementState(ItemPlacementContext context) {
-		return this.getDefaultState().with(FACING,
-				context.getPlayerLookDirection().getOpposite());
+		return this.getDefaultState().with(Properties.HORIZONTAL_FACING, context.getPlayerFacing().getOpposite());
+
 	}
 
 	// @Override
@@ -116,20 +93,17 @@ public class FoxBlock extends FacingBlock {
 
 		switch (direction) {
 			case NORTH: {
-				return blockShape;
-			}
-			case SOUTH: {
-				return rotateShape(Direction.NORTH, Direction.SOUTH, blockShape);
-				// return blockShape;
-			}
-			case WEST: {
-				return rotateShape(Direction.NORTH, Direction.WEST, blockShape);
-				// return blockShape;
-
+				return blockShapes[0];
 			}
 			case EAST: {
-				return rotateShape(Direction.NORTH, Direction.EAST, blockShape);
-				// return blockShape;
+				return blockShapes[1];
+			}
+			case SOUTH: {
+				return blockShapes[2];
+
+			}
+			case WEST: {
+				return blockShapes[3];
 
 			}
 			default:
