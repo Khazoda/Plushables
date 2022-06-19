@@ -5,14 +5,7 @@ import com.seacroak.plushables.block.BuilderBlock;
 import com.seacroak.plushables.block.FoxBlock;
 import com.seacroak.plushables.block.PenguinBlock;
 
-import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
-import net.minecraft.item.BlockItem;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemGroup;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.Identifier;
-import net.minecraft.util.registry.Registry;
 
 public class MainRegistry {
 	// public static final HabitatBlock HABITAT_BLOCK =

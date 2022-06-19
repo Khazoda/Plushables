@@ -1,12 +1,6 @@
 package com.seacroak.plushables.block;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Random;
-
-import org.jetbrains.annotations.Nullable;
-
-import com.seacroak.plushables.registry.TileRegistry;
 
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.Block;
@@ -49,20 +43,20 @@ public class PenguinBlock extends HorizontalFacingBlock {
 
 	public static VoxelShape getShape() {
 		VoxelShape shape = VoxelShapes.empty();
-		shape = VoxelShapes.union(shape, VoxelShapes.cuboid(0.125, 0, 0.3125, 0.875, 0.875, 0.6875));
-		shape = VoxelShapes.union(shape, VoxelShapes.cuboid(0.6875, 0, 0.1875, 0.875, 0.0625, 0.3125));
-		shape = VoxelShapes.union(shape, VoxelShapes.cuboid(0.125, 0, 0.1875, 0.3125, 0.0625, 0.3125));
-		shape = VoxelShapes.union(shape, VoxelShapes.cuboid(0.6875, 0.625, 0.25, 0.9375, 0.875, 0.3125));
-		shape = VoxelShapes.union(shape, VoxelShapes.cuboid(0.0625, 0.625, 0.25, 0.3125, 0.875, 0.3125));
-		shape = VoxelShapes.union(shape, VoxelShapes.cuboid(0.375, 0.625, 0.25, 0.625, 0.75, 0.3125));
-		shape = VoxelShapes.union(shape, VoxelShapes.cuboid(0.25, 0.875, 0.375, 0.75, 0.9375, 0.625));
-		shape = VoxelShapes.union(shape, VoxelShapes.cuboid(0.125, 0.875, 0.25, 0.1875, 0.9375, 0.5));
-		shape = VoxelShapes.union(shape, VoxelShapes.cuboid(0.8125, 0.875, 0.25, 0.875, 0.9375, 0.5));
-		shape = VoxelShapes.union(shape, VoxelShapes.cuboid(0.1875, 0.0625, 0.6875, 0.8125, 0.8125, 0.75));
-		shape = VoxelShapes.union(shape, VoxelShapes.cuboid(0.1875, 0.125, 0.75, 0.8125, 0.5, 0.8125));
-		shape = VoxelShapes.union(shape, VoxelShapes.cuboid(0.1875, 0.5625, 0.75, 0.8125, 0.8125, 0.8125));
-		shape = VoxelShapes.union(shape, VoxelShapes.cuboid(0.375, 0.125, 0.8125, 0.625, 0.25, 0.875));
-		shape = VoxelShapes.union(shape, VoxelShapes.cuboid(0.3125, 0.9375, 0.375, 0.6875, 1, 0.625));
+		shape = VoxelShapes.union(shape, VoxelShapes.cuboid(0.125, 0, 0.25, 0.875, 0.875, 0.625));
+		shape = VoxelShapes.union(shape, VoxelShapes.cuboid(0.6875, 0, 0.125, 0.875, 0.0625, 0.25));
+		shape = VoxelShapes.union(shape, VoxelShapes.cuboid(0.125, 0, 0.125, 0.3125, 0.0625, 0.25));
+		shape = VoxelShapes.union(shape, VoxelShapes.cuboid(0.6875, 0.625, 0.1875, 0.9375, 0.875, 0.25));
+		shape = VoxelShapes.union(shape, VoxelShapes.cuboid(0.0625, 0.625, 0.1875, 0.3125, 0.875, 0.25));
+		shape = VoxelShapes.union(shape, VoxelShapes.cuboid(0.375, 0.625, 0.1875, 0.625, 0.75, 0.25));
+		shape = VoxelShapes.union(shape, VoxelShapes.cuboid(0.25, 0.875, 0.3125, 0.75, 0.9375, 0.5625));
+		shape = VoxelShapes.union(shape, VoxelShapes.cuboid(0.125, 0.875, 0.1875, 0.1875, 0.9375, 0.4375));
+		shape = VoxelShapes.union(shape, VoxelShapes.cuboid(0.8125, 0.875, 0.1875, 0.875, 0.9375, 0.4375));
+		shape = VoxelShapes.union(shape, VoxelShapes.cuboid(0.1875, 0.0625, 0.625, 0.8125, 0.8125, 0.6875));
+		shape = VoxelShapes.union(shape, VoxelShapes.cuboid(0.1875, 0.125, 0.6875, 0.8125, 0.5, 0.75));
+		shape = VoxelShapes.union(shape, VoxelShapes.cuboid(0.1875, 0.5625, 0.6875, 0.8125, 0.8125, 0.75));
+		shape = VoxelShapes.union(shape, VoxelShapes.cuboid(0.375, 0.125, 0.75, 0.625, 0.25, 0.8125));
+		shape = VoxelShapes.union(shape, VoxelShapes.cuboid(0.3125, 0.9375, 0.3125, 0.6875, 1, 0.5625));
 
 		return shape;
 	}
