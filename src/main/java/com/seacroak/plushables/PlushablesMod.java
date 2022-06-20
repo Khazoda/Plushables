@@ -34,6 +34,7 @@ public class PlushablesMod implements ModInitializer {
 		GeckoLib.initialize();
 		new MainRegistry();
 		new TileRegistry();
+		new SoundRegistry();
 		new RecipeRegistry().registerRecipes();
 
 		if (isDevelopmentEnvironment && !PlushablesMod.DISABLE_IN_DEV) {
