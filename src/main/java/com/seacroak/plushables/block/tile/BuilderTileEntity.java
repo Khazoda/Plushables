@@ -41,6 +41,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.random.LocalRandom;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.world.World;
+import software.bernie.geckolib3.core.AnimationState;
 import software.bernie.geckolib3.core.IAnimatable;
 import software.bernie.geckolib3.core.PlayState;
 import software.bernie.geckolib3.core.builder.AnimationBuilder;
@@ -59,11 +60,11 @@ public class BuilderTileEntity extends BlockEntity
 	protected final PropertyDelegate propertyDelegate;
 	private int progress = 0;
 	private int maxProgress = 63;
-	private static BUILDER_STATE current_state;
+	private static ANIMATION_STATE current_state;
 
 	public BuilderTileEntity(BlockPos pos, BlockState state) {
 		super(TileRegistry.BUILDER_TILE, pos, state);
-		current_state = BUILDER_STATE.STOPPED;
+		current_state = ANIMATION_STATE.PLAY;
 		rand = new LocalRandom(100);
 		this.propertyDelegate = new PropertyDelegate() {
 			public int get(int index) {
@@ -131,6 +132,7 @@ public class BuilderTileEntity extends BlockEntity
 				craftItem(entity);
 			}
 		} else {
+
 			entity.resetProgress();
 		}
 	}
@@ -166,14 +168,7 @@ public class BuilderTileEntity extends BlockEntity
 			entity.removeStack(1, 1);
 			entity.setStack(2, new ItemStack(match.get().getOutput().getItem(),
 					entity.getStack(2).getCount() + 1));
-
-			try {
-				if (heartController.getCurrentAnimation() != null) {
-					current_state = BUILDER_STATE.PLAYING;
-				}
-			} catch (Exception e) {
-				System.out.println("Exception from plushables: Dirt builder on world load o_o");
-			}
+			current_state = ANIMATION_STATE.HOP;
 
 			if (!world.isClient()) {
 				// System.out.println(rand.nextBetween(0, 20));
@@ -216,11 +211,8 @@ public class BuilderTileEntity extends BlockEntity
 	private final AnimationFactory factory = new AnimationFactory(this);
 	static AnimationController<?> heartController;
 
-	static enum BUILDER_STATE {
-		STARTING,
-		PLAYING,
-		STOPPING,
-		STOPPED
+	static enum ANIMATION_STATE {
+		PLAY, HOP, STOP
 	}
 
 	private <E extends BlockEntity & IAnimatable> PlayState builderIdlePredicate(AnimationEvent<E> event) {
@@ -233,28 +225,27 @@ public class BuilderTileEntity extends BlockEntity
 		heartController = event.getController();
 		PlayState nextPlayState = PlayState.CONTINUE;
 		switch (current_state) {
-			case STOPPED:
+
+			case STOP:
 				heartController
-						.setAnimation(new AnimationBuilder().addAnimation("animation.builder.heart_deactivate", false));
-				nextPlayState = PlayState.CONTINUE;
-				break;
-			case STARTING:
-				heartController
-						.setAnimation(new AnimationBuilder().addAnimation("animation.builder.heart_activate", false));
-				nextPlayState = PlayState.CONTINUE;
+						.setAnimation(new AnimationBuilder().clearAnimations());
+				nextPlayState = PlayState.STOP;
 
 				break;
-			case PLAYING:
+			case PLAY:
 				heartController
 						.setAnimation(new AnimationBuilder().addAnimation("animation.builder.heart_idle", false));
 				nextPlayState = PlayState.CONTINUE;
 
 				break;
-			case STOPPING:
+			case HOP:
 				heartController
-						.setAnimation(new AnimationBuilder().addAnimation("animation.builder.deactivate", false));
-				nextPlayState = PlayState.STOP;
-
+						.setAnimation(new AnimationBuilder().addAnimation("animation.builder.heart_hop", false));
+				nextPlayState = PlayState.CONTINUE;
+				if (heartController.getAnimationState() != null
+						&& heartController.getAnimationState() == AnimationState.Stopped) {
+					current_state = ANIMATION_STATE.PLAY;
+				}
 				break;
 			default:
 				nextPlayState = PlayState.CONTINUE;

@@ -18,6 +18,11 @@
           "position": {
             "vector": [0, "math.sin((query.anim_time+0.5)* 75) * 0.2", 0]
           }
+        },
+        "heart": {
+          "scale": {
+            "vector": [4, 4, 4]
+          }
         }
       }
     },
@@ -49,72 +54,50 @@
         }
       }
     },
-    "animation.builder.heart_activate": {
-      "loop": "hold_on_last_frame",
-      "animation_length": 1.04,
+    "animation.builder.heart_hop": {
+      "animation_length": 3.68,
       "bones": {
         "heart": {
           "rotation": {
             "0.0": {
-              "vector": [92.5, 0, 0]
+              "vector": [0, 0, 0]
             },
             "1.04": {
+              "vector": [0, 360, 0],
+              "easing": "easeOutCirc"
+            },
+            "2.68": {
               "vector": [0, 0, 0],
-              "easing": "easeInQuint"
+              "easing": "easeInQuart"
+            },
+            "3.0": {
+              "vector": [0, -45, 0],
+              "easing": "easeOutQuart"
+            },
+            "3.4": {
+              "vector": [0, 45, 0],
+              "easing": "linear"
+            },
+            "3.68": {
+              "vector": [0, 0, 0],
+              "easing": "easeInQuart"
             }
           },
           "position": {
             "0.0": {
-              "vector": [0, -5.675, 0]
+              "vector": [0, 0, 0]
             },
             "1.04": {
-              "vector": [0, -0.67, 0],
-              "easing": "easeInQuart"
-            }
-          },
-          "scale": {
-            "0.0": {
-              "vector": [1, 1, 1]
+              "vector": [0, 1.5, 0],
+              "easing": "easeOutExpo"
             },
-            "1.04": {
-              "vector": [4, 4, 4],
-              "easing": "easeInCirc"
-            }
-          }
-        }
-      }
-    },
-    "animation.builder.heart_deactivate": {
-      "loop": "hold_on_last_frame",
-      "animation_length": 1.12,
-      "bones": {
-        "heart": {
-          "rotation": {
-            "0.0": {
+            "2.68": {
               "vector": [0, 0, 0],
-              "easing": "easeInQuint"
-            },
-            "1.08": {
-              "vector": [92.5, 0, 0]
-            }
-          },
-          "position": {
-            "0.0": {
-              "vector": [0, -0.67, 0],
               "easing": "easeInQuart"
-            },
-            "1.08": {
-              "vector": [0, -5.675, 0]
             }
           },
           "scale": {
-            "0.0": {
-              "vector": [4, 4, 4],
-              "easing": "easeInCirc"
-            },
-            "1.08": {
-              "vector": [1, 1, 1]
-            }
+            "vector": [4, 4, 4]
           }
         }
       }
