@@ -150,8 +150,8 @@
     },
     "gui": {
       "rotation": [19, -147, 0],
-      "translation": [-4.75, 7.25, 0],
-      "scale": [1.4, 1.4, 1.4]
+      "translation": [-5.25, 8.5, 0],
+      "scale": [1.6, 1.6, 1.6]
     },
     "fixed": {
       "translation": [5, 11.25, 4.5],
