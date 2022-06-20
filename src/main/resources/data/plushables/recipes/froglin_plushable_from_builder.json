@@ -1,0 +1,15 @@
+{
+  "type": "plushables:builder",
+  "ingredients": [
+    {
+      "item": "minecraft:stick"
+    },
+    {
+      "item": "minecraft:flint"
+    }
+  ],
+  "output": {
+    "item": "plushables:froglin_plushable",
+    "count": 1
+  }
+}

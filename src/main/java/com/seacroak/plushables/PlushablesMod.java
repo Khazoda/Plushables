@@ -6,8 +6,10 @@ import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.registry.Registry;
 import software.bernie.geckolib3.GeckoLib;
 
+import com.seacroak.plushables.recipe.BuilderRecipe;
 import com.seacroak.plushables.registry.*;
 
 public class PlushablesMod implements ModInitializer {
@@ -20,6 +22,7 @@ public class PlushablesMod implements ModInitializer {
 			new Identifier(PlushablesMod.ModID, "plushables"))
 			.icon(() -> new ItemStack(MainRegistry.FOX_PLUSHABLE))
 			.appendItems(stacks -> {
+				stacks.add(new ItemStack(MainRegistry.BUILDER_BLOCK));
 				stacks.add(new ItemStack(MainRegistry.FOX_PLUSHABLE));
 				stacks.add(new ItemStack(MainRegistry.PENGUIN_PLUSHABLE));
 				stacks.add(new ItemStack(MainRegistry.FROGLIN_PLUSHABLE));
@@ -31,6 +34,7 @@ public class PlushablesMod implements ModInitializer {
 		GeckoLib.initialize();
 		new MainRegistry();
 		new TileRegistry();
+		new RecipeRegistry().registerRecipes();
 
 		if (isDevelopmentEnvironment && !PlushablesMod.DISABLE_IN_DEV) {
 			// Code to be run in dev environment only
