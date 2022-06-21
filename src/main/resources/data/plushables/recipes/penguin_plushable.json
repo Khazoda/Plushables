@@ -2,17 +2,17 @@
   "type": "plushables:builder",
   "ingredients": [
     {
-      "item": "minecraft:stick"
+      "item": "minecraft:packed_ice"
     },
     {
-      "item": "minecraft:flint"
+      "item": "minecraft:gray_wool"
     },
     {
       "item": "plushables:heart_of_gold"
     }
   ],
   "output": {
-    "item": "plushables:froglin_plushable",
+    "item": "plushables:penguin_plushable",
     "count": 1
   }
 }

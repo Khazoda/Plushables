@@ -1,20 +1,25 @@
 package com.seacroak.plushables;
 
+import com.seacroak.plushables.registry.MainRegistry;
+import com.seacroak.plushables.registry.RecipeRegistry;
+import com.seacroak.plushables.registry.SoundRegistry;
+import com.seacroak.plushables.registry.TileRegistry;
+
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.registry.Registry;
 import software.bernie.geckolib3.GeckoLib;
-
-import com.seacroak.plushables.recipe.BuilderRecipe;
-import com.seacroak.plushables.registry.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class PlushablesMod implements ModInitializer {
 	public static boolean DISABLE_IN_DEV = false;
+
 	public static final String ModID = "plushables";
+	public static final Logger LOGGER = LoggerFactory.getLogger(ModID);
 
 	boolean isDevelopmentEnvironment = FabricLoader.getInstance().isDevelopmentEnvironment();
 
@@ -37,12 +42,13 @@ public class PlushablesMod implements ModInitializer {
 		new TileRegistry();
 		new SoundRegistry();
 		new RecipeRegistry().registerRecipes();
-
+		LOGGER.info("Plushables has loaded");
 		if (isDevelopmentEnvironment && !PlushablesMod.DISABLE_IN_DEV) {
 			// Code to be run in dev environment only
 			// new SoundRegistry();
 		}
 	}
+
 }
 
 // public class PlushablesMod implements ModInitializer {
