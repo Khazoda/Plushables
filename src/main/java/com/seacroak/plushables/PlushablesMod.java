@@ -22,6 +22,7 @@ public class PlushablesMod implements ModInitializer {
 			new Identifier(PlushablesMod.ModID, "plushables"))
 			.icon(() -> new ItemStack(MainRegistry.FOX_PLUSHABLE))
 			.appendItems(stacks -> {
+				stacks.add(new ItemStack(MainRegistry.HEART_OF_GOLD));
 				stacks.add(new ItemStack(MainRegistry.BUILDER_BLOCK));
 				stacks.add(new ItemStack(MainRegistry.FOX_PLUSHABLE));
 				stacks.add(new ItemStack(MainRegistry.PENGUIN_PLUSHABLE));

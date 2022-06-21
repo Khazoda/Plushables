@@ -210,17 +210,29 @@ public class BuilderTileEntity extends BlockEntity
 		return PlayState.CONTINUE;
 	}
 
-	private <E extends BlockEntity & IAnimatable> PlayState heartPredicate(AnimationEvent<E> event) {
+	private <E extends BlockEntity & IAnimatable> PlayState cubePredicateSpin(AnimationEvent<E> event) {
 		AnimationController<?> controller = event.getController();
 		controller.transitionLengthTicks = 0;
 
+		controller.setAnimation(new AnimationBuilder().addAnimation("animation.builder.cube_spin"));
+		// controller.markNeedsReload();
+		// .addAnimation("Botarium.anim.idle", true));
+
+		return PlayState.CONTINUE;
+	}
+
+	private <E extends BlockEntity & IAnimatable> PlayState cubePredicateHop(AnimationEvent<E> event) {
+		AnimationController<?> controller = event.getController();
+		// controller.transitionLengthTicks = 0;
+
 		if (shouldHop) {
-			controller.setAnimation(new AnimationBuilder().addAnimation("animation.builder.heart_hop"));
+			controller.setAnimation(new AnimationBuilder().addAnimation("animation.builder.edgecubes_jump"));
 			if (controller.getAnimationState() == AnimationState.Stopped) {
 				shouldHop = false;
 			}
 			// .addAnimation("fertilizer.animation.idle", true));
 		} else {
+			// controller.setAnimation(new AnimationBuilder());
 			controller.markNeedsReload();
 			// .addAnimation("Botarium.anim.idle", true));
 		}
@@ -233,9 +245,11 @@ public class BuilderTileEntity extends BlockEntity
 				new AnimationController<BuilderTileEntity>(this, "controller", 0, this::builderIdlePredicate));
 
 		data.addAnimationController(
-				new AnimationController<BuilderTileEntity>(this, "heart_controller", 0,
-						this::heartPredicate));
-
+				new AnimationController<BuilderTileEntity>(this, "cube_spin_controller", 0,
+						this::cubePredicateSpin));
+		data.addAnimationController(
+				new AnimationController<BuilderTileEntity>(this, "cube__hop_controller", 0,
+						this::cubePredicateHop));
 	}
 
 	@Override

@@ -11,13 +11,20 @@ import net.minecraft.util.registry.Registry;
 
 public class RegistryHelper {
 
+    // General use Identifier() maker function
+    private static Identifier newID(String name) {
+        return new Identifier(PlushablesMod.ModID, name);
+    }
+
+    // Block Registry Helper Functions
+    // *******************************
     // 1. Registration Entrypoint: creates Identifier from ModID & block name
-    public static <B extends Block> B register(String name, B block, FabricItemSettings itemSettings) {
-        return register(new Identifier(PlushablesMod.ModID, name), block, itemSettings);
+    public static <B extends Block> B registerBlock(String name, B block, FabricItemSettings itemSettings) {
+        return registerBlock(newID(name), block, itemSettings);
     }
 
     // 2. Takes identifier and registers block and block items
-    public static <B extends Block> B register(Identifier name, B block, FabricItemSettings itemSettings) {
+    public static <B extends Block> B registerBlock(Identifier name, B block, FabricItemSettings itemSettings) {
         BlockItem item = new BlockItem(block, (itemSettings));
         item.appendBlocks(Item.BLOCK_ITEMS, item);
 
@@ -25,4 +32,10 @@ public class RegistryHelper {
         Registry.register(Registry.ITEM, name, item);
         return block;
     }
+
+    // Item Registry Helper Functions
+    // ******************************
+    public static Item registerItem(String name, Item item) {
+        return Registry.register(Registry.ITEM, newID(name), item);
+    };
 }
