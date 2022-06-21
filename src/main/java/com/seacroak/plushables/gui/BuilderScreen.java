@@ -15,7 +15,11 @@ public class BuilderScreen extends HandledScreen<BuilderScreenHandler> {
             "textures/gui/builder_gui.png");
 
     public BuilderScreen(BuilderScreenHandler handler, PlayerInventory inventory, Text title) {
+
         super(handler, inventory, title);
+        this.playerInventoryTitleY = this.backgroundHeight - 92;
+        this.playerInventoryTitleX = this.backgroundWidth - 58;
+
     }
 
     @Override
@@ -40,7 +44,7 @@ public class BuilderScreen extends HandledScreen<BuilderScreenHandler> {
 
         if (handler.isCrafting()) {
             int progress = handler.getScaledProgress();
-            this.drawTexture(matrices, x + 99, y + 38, 176, 57, progress, 24);
+            this.drawTexture(matrices, x + 72, y + 45, 176, 64, progress, 9);
         }
     }
 

@@ -18,11 +18,13 @@ import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityTicker;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.inventory.Inventory;
 import net.minecraft.screen.NamedScreenHandlerFactory;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
+import net.minecraft.util.ItemScatterer;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
@@ -34,7 +36,8 @@ import net.minecraft.world.World;
 public class BuilderBlock extends BlockWithEntity {
 
 	public BuilderBlock() {
-		super(FabricBlockSettings.of(Material.WOOD).sounds(BlockSoundGroup.WOOD).strength(0.7f).nonOpaque());
+		super(AbstractBlock.Settings.of(Material.WOOD).strength(2.5f).sounds(BlockSoundGroup.WOOD).requiresTool());
+
 		setDefaultState(this.stateManager.getDefaultState());
 	}
 
@@ -71,11 +74,32 @@ public class BuilderBlock extends BlockWithEntity {
 	}
 
 	@Override
-	public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
-		return getShape();
+	public void onBreak(World world, BlockPos pos, BlockState state, PlayerEntity player) {
+
+		super.onBreak(world, pos, state, player);
 	}
 
-	public VoxelShape getShape() {
+	@Override
+	public void onStateReplaced(BlockState state, World world, BlockPos pos, BlockState newState, boolean moved) {
+		if (state.isOf(newState.getBlock())) {
+			return;
+		}
+		BlockEntity blockEntity = world.getBlockEntity(pos);
+		if (blockEntity instanceof Inventory) {
+			ItemScatterer.spawn(world, pos, (Inventory) ((Object) blockEntity));
+			world.updateComparators(pos, this);
+		}
+		super.onStateReplaced(state, world, pos, newState, moved);
+	}
+
+	@Override
+	public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
+		return blockShape;
+	}
+
+	static final VoxelShape blockShape = getShape();
+
+	static public VoxelShape getShape() {
 		VoxelShape shape = VoxelShapes.empty();
 		shape = VoxelShapes.union(shape,
 				VoxelShapes.cuboid(0.0625, -8.673617379884035e-19, 0.0625, 0.1875, 0.625, 0.1875));

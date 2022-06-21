@@ -56,6 +56,7 @@ public class BuilderTileEntity extends BlockEntity
 	private int maxProgress = 63;
 
 	public BuilderTileEntity(BlockPos pos, BlockState state) {
+
 		super(TileRegistry.BUILDER_TILE, pos, state);
 		shouldHop = false;
 		rand = new LocalRandom(100);
