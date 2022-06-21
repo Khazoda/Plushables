@@ -19,22 +19,26 @@ public class BuilderScreenHandler extends ScreenHandler {
     private final PropertyDelegate propertyDelegate;
 
     public BuilderScreenHandler(int syncId, PlayerInventory playerInventory) {
-        this(syncId, playerInventory, new SimpleInventory(3), new ArrayPropertyDelegate(2));
+        this(syncId, playerInventory, new SimpleInventory(4), new ArrayPropertyDelegate(2));
     }
 
     public BuilderScreenHandler(int syncId, PlayerInventory playerInventory,
             Inventory inventory, PropertyDelegate delegate) {
         super(ScreenRegistry.BUILDER_SCREEN_HANDLER, syncId);
-        checkSize(inventory, 3);
+        checkSize(inventory, 4);
         this.inventory = inventory;
         this.world = playerInventory.player.world;
         inventory.onOpen(playerInventory.player);
         this.propertyDelegate = delegate;
 
-        // Our Slots
+        // Input Slots
         this.addSlot(new Slot(inventory, 0, 80, 31));
         this.addSlot(new Slot(inventory, 1, 80, 53));
+        // Output Slot
         this.addSlot(new Slot(inventory, 2, 123, 42));
+
+        // Heart of Gold Slot
+        this.addSlot(new Slot(inventory, 3, 43, 40));
 
         addPlayerInventory(playerInventory);
         addPlayerHotbar(playerInventory);

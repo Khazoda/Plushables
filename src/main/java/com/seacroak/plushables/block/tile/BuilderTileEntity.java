@@ -50,7 +50,7 @@ public class BuilderTileEntity extends BlockEntity
 	private static boolean shouldHop;
 
 	// Recipe / Inventory Code
-	private final DefaultedList<ItemStack> inventory = DefaultedList.ofSize(3, ItemStack.EMPTY);
+	private final DefaultedList<ItemStack> inventory = DefaultedList.ofSize(4, ItemStack.EMPTY);
 	protected final PropertyDelegate propertyDelegate;
 	private int progress = 0;
 	private int maxProgress = 63;
@@ -159,6 +159,7 @@ public class BuilderTileEntity extends BlockEntity
 		if (match.isPresent()) {
 			entity.removeStack(0, 1);
 			entity.removeStack(1, 1);
+			entity.removeStack(3, 1);
 			entity.setStack(2, new ItemStack(match.get().getOutput().getItem(),
 					entity.getStack(2).getCount() + 1));
 
