@@ -1,17 +1,16 @@
 package com.seacroak.plushables.block.tile;
 
+import java.util.Optional;
+
+import javax.annotation.Nullable;
+
+import com.seacroak.plushables.gui.BuilderInventory;
+import com.seacroak.plushables.gui.BuilderScreenHandler;
 import com.seacroak.plushables.recipe.BuilderRecipe;
 import com.seacroak.plushables.registry.MainRegistry;
 import com.seacroak.plushables.registry.SoundRegistry;
 import com.seacroak.plushables.registry.TileRegistry;
 
-import java.util.List;
-import java.util.Optional;
-
-import javax.annotation.Nullable;
-
-import com.seacroak.plushables.gui.BuilderScreenHandler;
-import com.seacroak.plushables.gui.BuilderInventory;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.EntityType;
@@ -23,17 +22,11 @@ import net.minecraft.inventory.Inventories;
 import net.minecraft.inventory.SimpleInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
-import net.minecraft.particle.ParticleTypes;
-import net.minecraft.recipe.CraftingRecipe;
-import net.minecraft.recipe.RecipeManager;
-import net.minecraft.recipe.RecipeType;
-import net.minecraft.recipe.SmeltingRecipe;
 import net.minecraft.screen.NamedScreenHandlerFactory;
 import net.minecraft.screen.PropertyDelegate;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
-import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.text.Text;
 import net.minecraft.util.collection.DefaultedList;
@@ -54,17 +47,17 @@ public class BuilderTileEntity extends BlockEntity
 		implements IAnimatable, NamedScreenHandlerFactory, BuilderInventory {
 
 	static Random rand;
+	private static boolean shouldHop;
 
 	// Recipe / Inventory Code
 	private final DefaultedList<ItemStack> inventory = DefaultedList.ofSize(3, ItemStack.EMPTY);
 	protected final PropertyDelegate propertyDelegate;
 	private int progress = 0;
 	private int maxProgress = 63;
-	private static ANIMATION_STATE current_state;
 
 	public BuilderTileEntity(BlockPos pos, BlockState state) {
 		super(TileRegistry.BUILDER_TILE, pos, state);
-		current_state = ANIMATION_STATE.PLAY;
+		shouldHop = false;
 		rand = new LocalRandom(100);
 		this.propertyDelegate = new PropertyDelegate() {
 			public int get(int index) {
@@ -168,8 +161,8 @@ public class BuilderTileEntity extends BlockEntity
 			entity.removeStack(1, 1);
 			entity.setStack(2, new ItemStack(match.get().getOutput().getItem(),
 					entity.getStack(2).getCount() + 1));
-			current_state = ANIMATION_STATE.HOP;
 
+			shouldHop = true;
 			if (!world.isClient()) {
 				// System.out.println(rand.nextBetween(0, 20));
 				// One in 20 chance to spawn an Allay
@@ -209,11 +202,6 @@ public class BuilderTileEntity extends BlockEntity
 
 	// Animation Code
 	private final AnimationFactory factory = new AnimationFactory(this);
-	static AnimationController<?> heartController;
-
-	static enum ANIMATION_STATE {
-		PLAY, HOP, STOP
-	}
 
 	private <E extends BlockEntity & IAnimatable> PlayState builderIdlePredicate(AnimationEvent<E> event) {
 		AnimationController<?> controller = event.getController();
@@ -222,38 +210,20 @@ public class BuilderTileEntity extends BlockEntity
 	}
 
 	private <E extends BlockEntity & IAnimatable> PlayState heartPredicate(AnimationEvent<E> event) {
-		heartController = event.getController();
-		PlayState nextPlayState = PlayState.CONTINUE;
-		switch (current_state) {
+		AnimationController<?> controller = event.getController();
+		controller.transitionLengthTicks = 0;
 
-			case STOP:
-				heartController
-						.setAnimation(new AnimationBuilder().clearAnimations());
-				nextPlayState = PlayState.STOP;
-
-				break;
-			case PLAY:
-				heartController
-						.setAnimation(new AnimationBuilder().addAnimation("animation.builder.heart_idle", false));
-				nextPlayState = PlayState.CONTINUE;
-
-				break;
-			case HOP:
-				heartController
-						.setAnimation(new AnimationBuilder().addAnimation("animation.builder.heart_hop", false));
-				nextPlayState = PlayState.CONTINUE;
-				if (heartController.getAnimationState() != null
-						&& heartController.getAnimationState() == AnimationState.Stopped) {
-					current_state = ANIMATION_STATE.PLAY;
-				}
-				break;
-			default:
-				nextPlayState = PlayState.CONTINUE;
-				break;
-
+		if (shouldHop) {
+			controller.setAnimation(new AnimationBuilder().addAnimation("animation.builder.heart_hop"));
+			if (controller.getAnimationState() == AnimationState.Stopped) {
+				shouldHop = false;
+			}
+			// .addAnimation("fertilizer.animation.idle", true));
+		} else {
+			controller.markNeedsReload();
+			// .addAnimation("Botarium.anim.idle", true));
 		}
-		return nextPlayState;
-
+		return PlayState.CONTINUE;
 	}
 
 	@Override
