@@ -13,16 +13,16 @@ public class BuilderModel extends AnimatedGeoModel<BuilderTileEntity> {
 
 	@Override
 	public Identifier getAnimationResource(BuilderTileEntity animatable) {
-		return new Identifier(PlushablesMod.ModID, "animations/builder.animation.json");
+		return new Identifier(PlushablesMod.MOD_ID, "animations/builder.animation.json");
 	}
 
 	@Override
 	public Identifier getModelResource(BuilderTileEntity animateable) {
-		return new Identifier(PlushablesMod.ModID, "geo/builder.geo.json");
+		return new Identifier(PlushablesMod.MOD_ID, "geo/builder.geo.json");
 	}
 
 	@Override
 	public Identifier getTextureResource(BuilderTileEntity entity) {
-		return new Identifier(PlushablesMod.ModID, "textures/block/builder.png");
+		return new Identifier(PlushablesMod.MOD_ID, "textures/block/builder.png");
 	}
 }

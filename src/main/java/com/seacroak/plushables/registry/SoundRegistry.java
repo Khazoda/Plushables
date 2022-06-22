@@ -1,14 +1,19 @@
 package com.seacroak.plushables.registry;
 
-import com.seacroak.plushables.PlushablesMod;
+import com.seacroak.plushables.util.GenericUtils;
 
 import net.minecraft.sound.SoundEvent;
-import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
-public class SoundRegistry {
-	public static SoundEvent BUILDER_DING = Registry.register(Registry.SOUND_EVENT, "builder_ding",
-			new SoundEvent(new Identifier(PlushablesMod.ModID, "builder_ding")));
-	public static SoundEvent PLUSHABLE_POP = Registry.register(Registry.SOUND_EVENT, "plushable_pop",
-			new SoundEvent(new Identifier(PlushablesMod.ModID, "plushable_pop")));
+public final class SoundRegistry {
+	public static final SoundEvent BUILDER_DING = register("builder_ding");
+	public static final SoundEvent PLUSHABLE_POP = register("plushable_pop");
+
+	public static void init() {
+	}
+
+	private static SoundEvent register(String name) {
+		return Registry.register(Registry.SOUND_EVENT, name, new SoundEvent(GenericUtils.ID(name)));
+	}
+
 }
