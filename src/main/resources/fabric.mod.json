@@ -14,18 +14,15 @@
   "environment": "*",
   "entrypoints": {
     "main": ["com.seacroak.plushables.PlushablesMod"],
-    "client": ["com.seacroak.plushables.ClientRegistry"],
-    "rei": [
-      "com.seacroak.plushables.rei.PlushablesServerPlugin",
-      "com.seacroak.plushables.rei.PlushablesClientPlugin"
-    ]
+    "client": ["com.seacroak.plushables.ClientRegistry"]
   },
   "mixins": ["plushables.mixins.json"],
   "depends": {
     "fabricloader": ">=0.14.6",
     "fabric": "*",
     "minecraft": "~1.19",
-    "java": ">=17"
+    "java": ">=17",
+    "geckolib3": ">=3.1.2"
   },
   "suggests": {
     "another-mod": "*"
