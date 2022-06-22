@@ -1,0 +1,59 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"animation.builder.idle": {
+			"loop": true,
+			"bones": {
+				"colour_3": {
+					"position": {
+						"vector": [0, "math.abs(math.cos((query.anim_time+1)* 75) * 0.4)", 0]
+					}
+				},
+				"colour_1": {
+					"position": {
+						"vector": [0, "math.abs(math.cos(query.anim_time * 75) * 0.4)", 0]
+					}
+				},
+				"colour_2": {
+					"position": {
+						"vector": [0, "math.abs(math.cos((query.anim_time+0.5)* 75) * 0.4)", 0]
+					}
+				}
+			}
+		},
+		"animation.builder.cube_spin": {
+			"loop": true,
+			"bones": {
+				"cube": {
+					"rotation": {
+						"vector": ["math.sin(query.anim_time * 15) * 300", "math.cos(query.anim_time * 15) * 300", "math.sin(query.anim_time * 15) * 300"]
+					},
+					"scale": {
+						"vector": ["2 + math.abs(math.sin(query.anim_time * 2))", "2 + math.abs(math.sin(query.anim_time * 2))", "2 + math.abs(math.sin(query.anim_time * 2))"]
+					}
+				}
+			}
+		},
+		"animation.builder.edgecubes_jump": {
+			"animation_length": 1.04,
+			"bones": {
+				"edgecubes": {
+					"scale": {
+						"0.0": {
+							"vector": [1, 1, 1]
+						},
+						"0.52": {
+							"vector": [1, 1.5, 1],
+							"easing": "easeOutExpo"
+						},
+						"1.0": {
+							"vector": [1, 1, 1],
+							"easing": "easeInElastic",
+							"easingArgs": [1]
+						}
+					}
+				}
+			}
+		}
+	}
+}

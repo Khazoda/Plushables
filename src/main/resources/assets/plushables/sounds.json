@@ -1,0 +1,8 @@
+{
+  "builder_ding": {
+    "sounds": ["plushables:builder_ding"]
+  },
+  "plushable_pop": {
+    "sounds": ["plushables:plop"]
+  }
+}
