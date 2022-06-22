@@ -14,7 +14,11 @@
   "environment": "*",
   "entrypoints": {
     "main": ["com.seacroak.plushables.PlushablesMod"],
-    "client": ["com.seacroak.plushables.ClientRegistry"]
+    "client": ["com.seacroak.plushables.ClientRegistry"],
+    "rei": [
+      "com.seacroak.plushables.rei.PlushablesServerPlugin",
+      "com.seacroak.plushables.rei.PlushablesClientPlugin"
+    ]
   },
   "mixins": ["plushables.mixins.json"],
   "depends": {
