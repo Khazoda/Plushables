@@ -3,14 +3,9 @@ package com.seacroak.plushables.registry;
 import com.seacroak.plushables.PlushablesMod;
 import com.seacroak.plushables.block.tile.BuilderTileEntity;
 import com.seacroak.plushables.block.tile.CluckyTileEntity;
-import com.seacroak.plushables.client.renderer.tile.BuilderTileRenderer;
 
-import net.fabricmc.api.EnvType;
-import net.fabricmc.api.Environment;
-import net.fabricmc.fabric.api.client.rendering.v1.BlockEntityRendererRegistry;
 import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
 import net.minecraft.block.entity.BlockEntityType;
-import net.minecraft.client.render.block.entity.BlockEntityRendererFactory;
 import net.minecraft.util.registry.Registry;
 
 // public class TileRegistry {
