@@ -48,6 +48,10 @@ public class BuilderRecipe implements Recipe<SimpleInventory> {
         return true;
     }
 
+    public DefaultedList<Ingredient> getRecipeItems() {
+        return this.recipeItems;
+    }
+
     @Override
     public ItemStack getOutput() {
         return output.copy();
@@ -102,15 +106,15 @@ public class BuilderRecipe implements Recipe<SimpleInventory> {
             for (int i = 0; i < inputs.size(); i++) {
                 inputs.set(i, Ingredient.fromPacket(buf));
             }
-
             ItemStack output = buf.readItemStack();
             return new BuilderRecipe(id, output, inputs);
         }
 
         @Override
         public void write(PacketByteBuf buf, BuilderRecipe recipe) {
-            buf.writeInt(recipe.getIngredients().size());
-            for (Ingredient ing : recipe.getIngredients()) {
+
+            buf.writeInt(recipe.getRecipeItems().size());
+            for (Ingredient ing : recipe.getRecipeItems()) {
                 ing.write(buf);
             }
             buf.writeItemStack(recipe.getOutput());

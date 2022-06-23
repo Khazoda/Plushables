@@ -11,7 +11,7 @@ import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 
 public class BuilderScreen extends HandledScreen<BuilderScreenHandler> {
-    private static final Identifier TEXTURE = new Identifier(PlushablesMod.ModID,
+    private static final Identifier TEXTURE = new Identifier(PlushablesMod.MOD_ID,
             "textures/gui/builder_gui.png");
 
     public BuilderScreen(BuilderScreenHandler handler, PlayerInventory inventory, Text title) {

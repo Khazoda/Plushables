@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "id": "plushables",
-  "version": "0.0.1a",
+  "version": "0.1.0",
   "name": "Plushables",
   "description": "Craft cute and helpful plushies for your home",
   "authors": ["Khazoda"],
@@ -14,7 +14,7 @@
   "environment": "*",
   "entrypoints": {
     "main": ["com.seacroak.plushables.PlushablesMod"],
-    "client": ["com.seacroak.plushables.ClientRegistry"]
+    "client": ["com.seacroak.plushables.PlushablesModClient"]
   },
   "mixins": ["plushables.mixins.json"],
   "depends": {

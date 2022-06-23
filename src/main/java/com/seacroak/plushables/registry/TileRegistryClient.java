@@ -2,8 +2,8 @@ package com.seacroak.plushables.registry;
 
 import com.seacroak.plushables.PlushablesMod;
 import com.seacroak.plushables.block.tile.BuilderTileEntity;
-import com.seacroak.plushables.block.tile.CluckyTileEntity;
 import com.seacroak.plushables.client.renderer.tile.BuilderTileRenderer;
+import com.seacroak.plushables.client.renderer.tile.CluckyTileRenderer;
 
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -27,14 +27,13 @@ import net.minecraft.util.registry.Registry;
 
 // }
 
-public final class TileRegistry {
-	public static final BlockEntityType<BuilderTileEntity> BUILDER_TILE = Registry.register(
-			Registry.BLOCK_ENTITY_TYPE, PlushablesMod.MOD_ID + ":builder_tile",
-			FabricBlockEntityTypeBuilder.create(BuilderTileEntity::new,
-					MainRegistry.BUILDER_BLOCK).build(null));
-
-	public static final BlockEntityType<CluckyTileEntity> CLUCKY_TILE = Registry.register(
-			Registry.BLOCK_ENTITY_TYPE, PlushablesMod.MOD_ID + ":clucky_tile",
-			FabricBlockEntityTypeBuilder.create(CluckyTileEntity::new,
-					MainRegistry.CLUCKY_BLOCK).build(null));
+public final class TileRegistryClient {
+	@SuppressWarnings("unchecked")
+	@Environment(EnvType.CLIENT)
+	public static void initClient() {
+		BlockEntityRendererRegistry.register(TileRegistry.BUILDER_TILE,
+				(BlockEntityRendererFactory.Context rendererDispatcherIn) -> new BuilderTileRenderer());
+		BlockEntityRendererRegistry.register(TileRegistry.CLUCKY_TILE,
+				(BlockEntityRendererFactory.Context rendererDispatcherIn) -> new CluckyTileRenderer());
+	}
 }
