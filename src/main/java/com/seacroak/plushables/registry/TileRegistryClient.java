@@ -3,6 +3,7 @@ package com.seacroak.plushables.registry;
 import com.seacroak.plushables.PlushablesMod;
 import com.seacroak.plushables.block.tile.BuilderTileEntity;
 import com.seacroak.plushables.client.renderer.tile.BuilderTileRenderer;
+import com.seacroak.plushables.client.renderer.tile.CluckyTileRenderer;
 
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -32,5 +33,7 @@ public final class TileRegistryClient {
 	public static void initClient() {
 		BlockEntityRendererRegistry.register(TileRegistry.BUILDER_TILE,
 				(BlockEntityRendererFactory.Context rendererDispatcherIn) -> new BuilderTileRenderer());
+		BlockEntityRendererRegistry.register(TileRegistry.CLUCKY_TILE,
+				(BlockEntityRendererFactory.Context rendererDispatcherIn) -> new CluckyTileRenderer());
 	}
 }
