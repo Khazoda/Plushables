@@ -22,7 +22,7 @@
 <a href="https://www.curseforge.com/minecraft/mc-mods/geckolib/files" target="_blank"><img src="https://github.com/Khazoda/Plushables/raw/1.19-FABRIC/web_assets/button_geckolib.png"></a>
 </p>
 <div style="min-width:100%; display:block;">
-<img src="https://github.com/Khazoda/Plushables/raw/1.19-FABRIC/web_assets/warning.png" alt="Plushables Warning" />
-<img src="https://github.com/Khazoda/Plushables/raw/1.19-FABRIC/web_assets/description.png" alt="Plushables Description" />
+<img src="https://github.com/Khazoda/Plushables/raw/Latest-Stable/web_assets/warning.png" alt="Plushables Warning" />
+<img src="https://github.com/Khazoda/Plushables/raw/Latest-Stable/web_assets/description.png" alt="Plushables Description" />
 </div>
 </div>
