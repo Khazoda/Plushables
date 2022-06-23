@@ -4,6 +4,7 @@ import java.util.Random;
 
 import org.jetbrains.annotations.Nullable;
 
+import com.seacroak.plushables.block.tile.CluckyTileEntity;
 import com.seacroak.plushables.registry.SoundRegistry;
 import com.seacroak.plushables.registry.TileRegistry;
 import com.seacroak.plushables.util.VoxelShapeUtils;
@@ -42,6 +43,8 @@ import net.minecraft.world.World;
 
 public class CluckyBlock extends BlockWithEntity {
 	public static Random rand;
+	public BlockEntity blockEntityReference;
+
 	// HorizontalFacingBlock Code
 	public static final DirectionProperty FACING = Properties.HORIZONTAL_FACING;
 
@@ -60,6 +63,7 @@ public class CluckyBlock extends BlockWithEntity {
 		super(FabricBlockSettings.of(Material.WOOL).sounds(BlockSoundGroup.WOOL).strength(0.7f).nonOpaque());
 		setDefaultState(this.stateManager.getDefaultState().with(Properties.HORIZONTAL_FACING, Direction.NORTH));
 		rand = new Random();
+		blockEntityReference = null;
 	}
 
 	// Shift Right Click pickup code
@@ -89,6 +93,13 @@ public class CluckyBlock extends BlockWithEntity {
 					world.addParticle(ParticleTypes.GLOW, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5,
 							rand.nextFloat(-0.05f, 0.05f), rand.nextFloat(-0.05f, 0.05f),
 							rand.nextFloat(-0.05f, 0.05f));
+				}
+			} else {
+				BlockEntity blockEntity = world.getBlockEntity(pos);
+				if (blockEntity instanceof CluckyTileEntity) {
+					CluckyTileEntity cluckyEntity = (CluckyTileEntity) blockEntity;
+					cluckyEntity.setShouldLook(true);
+					return ActionResult.SUCCESS;
 				}
 			}
 
@@ -126,10 +137,9 @@ public class CluckyBlock extends BlockWithEntity {
 
 	static public VoxelShape getShape() {
 		VoxelShape shape = VoxelShapes.empty();
-		shape = VoxelShapes.union(shape, VoxelShapes.cuboid(0.375, 0.078125, 0.375, 0.625, 0.265625, 0.6875));
-		shape = VoxelShapes.union(shape, VoxelShapes.cuboid(0.4375, 0.203125, 0.3125, 0.5625, 0.390625, 0.4375));
-		shape = VoxelShapes.union(shape, VoxelShapes.cuboid(0.4375, 0.265625, 0.25, 0.5625, 0.328125, 0.3125));
-		shape = VoxelShapes.union(shape, VoxelShapes.cuboid(0.25, 0.015625, 0.3125, 0.75, 0.078125, 0.75));
+		shape = VoxelShapes.union(shape,
+				VoxelShapes.cuboid(0.375, 0.0703125, 0.375, 0.625, 0.2578125, 0.6875));
+		shape = VoxelShapes.union(shape, VoxelShapes.cuboid(0.25, 0.0078125, 0.3125, 0.75, 0.0703125, 0.75));
 
 		return shape;
 	}

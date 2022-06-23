@@ -17,11 +17,15 @@ import software.bernie.geckolib3.core.manager.AnimationFactory;
 public class CluckyTileEntity extends BlockEntity
 		implements IAnimatable {
 
-	private static boolean shouldLook;
+	public boolean shouldLook;
 
 	public CluckyTileEntity(BlockPos pos, BlockState state) {
 		super(TileRegistry.CLUCKY_TILE, pos, state);
 		shouldLook = false;
+	}
+
+	public void setShouldLook(boolean val) {
+		this.shouldLook = val;
 	}
 
 	// Animation Code

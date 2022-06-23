@@ -32,7 +32,6 @@ public class BuilderBlock extends BlockWithEntity {
 
 	public BuilderBlock() {
 		super(AbstractBlock.Settings.of(Material.WOOD).strength(2.5f).sounds(BlockSoundGroup.WOOD).requiresTool());
-
 		setDefaultState(this.stateManager.getDefaultState());
 	}
 
