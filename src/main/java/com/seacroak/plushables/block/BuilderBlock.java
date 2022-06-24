@@ -51,7 +51,7 @@ public class BuilderBlock extends BlockWithEntity {
 
 	@Override
 	public BlockRenderType getRenderType(BlockState state) {
-		return BlockRenderType.INVISIBLE;
+		return BlockRenderType.ENTITYBLOCK_ANIMATED;
 	}
 
 	@Nullable

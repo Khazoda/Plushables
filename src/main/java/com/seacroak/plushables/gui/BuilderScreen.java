@@ -38,9 +38,9 @@ public class BuilderScreen extends HandledScreen<BuilderScreenHandler> {
         int y = (height - backgroundHeight) / 2;
         drawTexture(matrices, x, y, 0, 0, backgroundWidth, backgroundHeight);
 
-        if (handler.isLightningStorm()) {
-            this.drawTexture(matrices, x + 29, y + 29, 176, 0, 44, 44);
-        }
+        // if (handler.isLightningStorm()) {
+        // this.drawTexture(matrices, x + 29, y + 29, 176, 0, 44, 44);
+        // }
 
         if (handler.isCrafting()) {
             int progress = handler.getScaledProgress();

@@ -1,7 +1,6 @@
 package com.seacroak.plushables.block;
 
 import java.util.Random;
-
 import org.jetbrains.annotations.Nullable;
 
 import com.seacroak.plushables.block.tile.CluckyTileEntity;
@@ -36,13 +35,16 @@ import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
+import net.minecraft.util.math.random.LocalRandom;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
+import software.bernie.geckolib3.core.AnimationState;
 
 public class CluckyBlock extends BlockWithEntity {
-	public static Random rand;
+	static java.util.Random rand;
+	static net.minecraft.util.math.random.Random randMoan;
 	public BlockEntity blockEntityReference;
 
 	// HorizontalFacingBlock Code
@@ -63,6 +65,8 @@ public class CluckyBlock extends BlockWithEntity {
 		super(FabricBlockSettings.of(Material.WOOL).sounds(BlockSoundGroup.WOOL).strength(0.7f).nonOpaque());
 		setDefaultState(this.stateManager.getDefaultState().with(Properties.HORIZONTAL_FACING, Direction.NORTH));
 		rand = new Random();
+		randMoan = new LocalRandom(100);
+
 		blockEntityReference = null;
 	}
 
@@ -94,11 +98,24 @@ public class CluckyBlock extends BlockWithEntity {
 							rand.nextFloat(-0.05f, 0.05f), rand.nextFloat(-0.05f, 0.05f),
 							rand.nextFloat(-0.05f, 0.05f));
 				}
+				// Right click interaction
 			} else {
 				BlockEntity blockEntity = world.getBlockEntity(pos);
 				if (blockEntity instanceof CluckyTileEntity) {
 					CluckyTileEntity cluckyEntity = (CluckyTileEntity) blockEntity;
 					cluckyEntity.setShouldLook(true);
+					// One in 20 chance to make a sus cluck
+					if (cluckyEntity.getShouldLook()
+							&& cluckyEntity.lookController.getAnimationState() == AnimationState.Stopped) {
+						if (randMoan.nextBetween(0, 10) == 5) {
+							world.playSound(player, pos, SoundRegistry.CLUCKY_MOAN, SoundCategory.BLOCKS, 0.5f, 1f);
+						} else {
+							System.out.println((float) randMoan.nextFloat());
+							world.playSound(player, pos, SoundRegistry.CLUCKY_CLUCK, SoundCategory.BLOCKS, 0.5f,
+									(float) 0.7f + randMoan.nextFloat() / 2);
+						}
+					}
+
 					return ActionResult.SUCCESS;
 				}
 			}
@@ -109,7 +126,7 @@ public class CluckyBlock extends BlockWithEntity {
 
 	@Override
 	public BlockRenderType getRenderType(BlockState state) {
-		return BlockRenderType.INVISIBLE;
+		return BlockRenderType.ENTITYBLOCK_ANIMATED;
 	}
 
 	@Nullable

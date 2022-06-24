@@ -4,5 +4,11 @@
   },
   "plushable_pop": {
     "sounds": ["plushables:plop"]
+  },
+  "clucky_cluck": {
+    "sounds": ["plushables:nadia_cluck"]
+  },
+  "clucky_moan": {
+    "sounds": ["plushables:simon_cluck"]
   }
 }

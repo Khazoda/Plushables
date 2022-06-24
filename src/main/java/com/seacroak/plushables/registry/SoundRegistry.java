@@ -8,6 +8,8 @@ import net.minecraft.util.registry.Registry;
 public final class SoundRegistry {
 	public static final SoundEvent BUILDER_DING = register("builder_ding");
 	public static final SoundEvent PLUSHABLE_POP = register("plushable_pop");
+	public static final SoundEvent CLUCKY_CLUCK = register("clucky_cluck");
+	public static final SoundEvent CLUCKY_MOAN = register("clucky_moan");
 
 	public static void init() {
 	}

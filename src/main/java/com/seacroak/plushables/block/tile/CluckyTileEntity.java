@@ -18,14 +18,20 @@ public class CluckyTileEntity extends BlockEntity
 		implements IAnimatable {
 
 	public boolean shouldLook;
+	public AnimationController<?> lookController;
 
 	public CluckyTileEntity(BlockPos pos, BlockState state) {
 		super(TileRegistry.CLUCKY_TILE, pos, state);
 		shouldLook = false;
+		lookController = null;
 	}
 
 	public void setShouldLook(boolean val) {
 		this.shouldLook = val;
+	}
+
+	public boolean getShouldLook() {
+		return this.shouldLook;
 	}
 
 	// Animation Code
@@ -51,18 +57,18 @@ public class CluckyTileEntity extends BlockEntity
 	// }
 
 	private <E extends BlockEntity & IAnimatable> PlayState cluckyLookPredicate(AnimationEvent<E> event) {
-		AnimationController<?> controller = event.getController();
+		lookController = event.getController();
 		// controller.transitionLengthTicks = 0;
 
 		if (shouldLook) {
-			controller.setAnimation(new AnimationBuilder().addAnimation("animation.chicken.look"));
-			if (controller.getAnimationState() == AnimationState.Stopped) {
+			lookController.setAnimation(new AnimationBuilder().addAnimation("animation.chicken.look"));
+			if (lookController.getAnimationState() == AnimationState.Stopped) {
 				shouldLook = false;
 			}
 			// .addAnimation("fertilizer.animation.idle", true));
 		} else {
-			// controller.setAnimation(new AnimationBuilder());
-			controller.markNeedsReload();
+			// lookController.setAnimation(new AnimationBuilder());
+			lookController.markNeedsReload();
 			// .addAnimation("Botarium.anim.idle", true));
 		}
 		return PlayState.CONTINUE;
