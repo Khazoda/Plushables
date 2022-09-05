@@ -2,9 +2,7 @@ package com.seacroak.plushables.gui;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.seacroak.plushables.PlushablesMod;
-
 import net.minecraft.client.gui.screen.ingame.HandledScreen;
-import net.minecraft.client.render.GameRenderer;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.text.Text;
@@ -15,11 +13,11 @@ public class BuilderScreen extends HandledScreen<BuilderScreenHandler> {
             "textures/gui/builder_gui.png");
 
     public BuilderScreen(BuilderScreenHandler handler, PlayerInventory inventory, Text title) {
-
         super(handler, inventory, title);
-        this.playerInventoryTitleY = this.backgroundHeight - 92;
-        this.playerInventoryTitleX = this.backgroundWidth - 58;
+        this.backgroundHeight = 168;
 
+        this.playerInventoryTitleY = this.backgroundHeight - 93;
+        this.playerInventoryTitleX = this.backgroundWidth - 58;
     }
 
     @Override
@@ -31,12 +29,8 @@ public class BuilderScreen extends HandledScreen<BuilderScreenHandler> {
 
     @Override
     protected void drawBackground(MatrixStack matrices, float delta, int mouseX, int mouseY) {
-        RenderSystem.setShader(GameRenderer::getPositionTexShader);
-        RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
         RenderSystem.setShaderTexture(0, TEXTURE);
-        int x = (width - backgroundWidth) / 2;
-        int y = (height - backgroundHeight) / 2;
-        drawTexture(matrices, x, y, 0, 0, backgroundWidth, backgroundHeight);
+        drawTexture(matrices, this.x, this.y, 0, 0, backgroundWidth, backgroundHeight);
 
         // if (handler.isLightningStorm()) {
         // this.drawTexture(matrices, x + 29, y + 29, 176, 0, 44, 44);
