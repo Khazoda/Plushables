@@ -32,13 +32,13 @@ public class BuilderScreenHandler extends ScreenHandler {
         this.propertyDelegate = delegate;
 
         // Input Slots
-        this.addSlot(new Slot(inventory, 0, 55, 23));
-        this.addSlot(new Slot(inventory, 1, 55, 59));
+        this.addSlot(new Slot(inventory, 0, 55, 20));
+        this.addSlot(new Slot(inventory, 1, 55, 58));
         // Output Slot
-        this.addSlot(new Slot(inventory, 2, 98, 41));
+        this.addSlot(new Slot(inventory, 2, 98, 39));
 
         // Heart of Gold Slot
-        this.addSlot(new Slot(inventory, 3, 55, 41));
+        this.addSlot(new Slot(inventory, 3, 55, 39));
 
         addPlayerInventory(playerInventory);
         addPlayerHotbar(playerInventory);

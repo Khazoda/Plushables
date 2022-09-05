@@ -91,7 +91,7 @@ public class BuilderTileEntity extends BlockEntity
 
 	@Override
 	public Text getDisplayName() {
-		return Text.literal("Builder");
+		return this.getCachedState().getBlock().getName();
 	}
 
 	@Nullable

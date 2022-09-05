@@ -9,7 +9,7 @@ import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 
 public class BuilderScreen extends HandledScreen<BuilderScreenHandler> {
-    private static final Identifier TEXTURE = new Identifier(PlushablesMod.MOD_ID,
+    public static final Identifier TEXTURE = new Identifier(PlushablesMod.MOD_ID,
             "textures/gui/builder_gui.png");
 
     public BuilderScreen(BuilderScreenHandler handler, PlayerInventory inventory, Text title) {
@@ -38,7 +38,7 @@ public class BuilderScreen extends HandledScreen<BuilderScreenHandler> {
 
         if (handler.isCrafting()) {
             int progress = handler.getScaledProgress();
-            this.drawTexture(matrices, x + 72, y + 45, 176, 64, progress, 9);
+            this.drawTexture(matrices, x + 72, y + 43, 176, 64, progress, 9);
         }
     }
 
@@ -47,5 +47,13 @@ public class BuilderScreen extends HandledScreen<BuilderScreenHandler> {
         renderBackground(matrices);
         super.render(matrices, mouseX, mouseY, delta);
         drawMouseoverTooltip(matrices, mouseX, mouseY);
+    }
+
+    public int rootX() {
+        return this.x;
+    }
+
+    public int rootY() {
+        return this.y;
     }
 }
