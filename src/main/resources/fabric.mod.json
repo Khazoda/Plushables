@@ -14,7 +14,9 @@
   "environment": "*",
   "entrypoints": {
     "main": ["com.seacroak.plushables.PlushablesMod"],
-    "client": ["com.seacroak.plushables.PlushablesModClient"]
+    "client": ["com.seacroak.plushables.PlushablesModClient"],
+    "rei_client": ["com.seacroak.plushables.rei.PlushablesREIClientPlugin"],
+    "rei_common": ["com.seacroak.plushables.rei.PlushablesREICommonPlugin"]
   },
   "mixins": ["plushables.mixins.json"],
   "depends": {

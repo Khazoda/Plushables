@@ -12,7 +12,7 @@ import net.minecraft.util.registry.Registry;
 public class RegistryHelper {
 
     // General use Identifier() maker function
-    private static Identifier newID(String name) {
+    public static Identifier newID(String name) {
         return new Identifier(PlushablesMod.MOD_ID, name);
     }
 
