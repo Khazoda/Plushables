@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "id": "plushables",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "name": "Plushables",
   "description": "Craft cute and helpful plushies for your home",
   "authors": ["Khazoda"],
