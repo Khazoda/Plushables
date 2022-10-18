@@ -11,6 +11,7 @@ import com.seacroak.plushables.registry.MainRegistry;
 import com.seacroak.plushables.registry.SoundRegistry;
 import com.seacroak.plushables.registry.TileRegistry;
 
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.EntityType;
@@ -22,6 +23,9 @@ import net.minecraft.inventory.Inventories;
 import net.minecraft.inventory.SimpleInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
+import net.minecraft.network.Packet;
+import net.minecraft.network.listener.ClientPlayPacketListener;
+import net.minecraft.network.packet.s2c.play.BlockEntityUpdateS2CPacket;
 import net.minecraft.screen.NamedScreenHandlerFactory;
 import net.minecraft.screen.PropertyDelegate;
 import net.minecraft.screen.ScreenHandler;
@@ -165,6 +169,8 @@ public class BuilderTileEntity extends BlockEntity
 					entity.getStack(2).getCount() + 1));
 
 			if (!world.isClient()) {
+				// ! TODO implement networked solution for syncing hop animation across clients
+				// ! (currently works in SP but not MP as code is only ran on server)
 				shouldHop = true;
 				// System.out.println(rand.nextBetween(0, 20));
 				// One in 20 chance to spawn an Allay
