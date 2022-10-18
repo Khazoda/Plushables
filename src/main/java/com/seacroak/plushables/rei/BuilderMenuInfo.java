@@ -14,8 +14,8 @@ public record BuilderMenuInfo(BuilderDisplay display)
     public Iterable<SlotAccessor> getInputSlots(MenuInfoContext<BuilderScreenHandler, ?, BuilderDisplay> context) {
         return List.of(
                 SlotAccessor.fromSlot(context.getMenu().getSlot(0)),
-                SlotAccessor.fromSlot(context.getMenu().getSlot(1)),
-                SlotAccessor.fromSlot(context.getMenu().getSlot(3)));
+                SlotAccessor.fromSlot(context.getMenu().getSlot(2)),
+                SlotAccessor.fromSlot(context.getMenu().getSlot(1)));
     }
 
     @Override
