@@ -164,8 +164,8 @@ public class BuilderTileEntity extends BlockEntity
 			entity.setStack(2, new ItemStack(match.get().getOutput().getItem(),
 					entity.getStack(2).getCount() + 1));
 
-			shouldHop = true;
 			if (!world.isClient()) {
+				shouldHop = true;
 				// System.out.println(rand.nextBetween(0, 20));
 				// One in 20 chance to spawn an Allay
 				if (rand.nextBetween(0, 20) == 13) {
