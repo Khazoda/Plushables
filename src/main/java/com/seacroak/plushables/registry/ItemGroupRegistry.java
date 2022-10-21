@@ -14,10 +14,11 @@ public class ItemGroupRegistry {
                 .appendItems(stacks -> {
                     stacks.add(new ItemStack(MainRegistry.HEART_OF_GOLD));
                     stacks.add(new ItemStack(MainRegistry.BUILDER_BLOCK));
-                    stacks.add(new ItemStack(MainRegistry.CLUCKY_BLOCK));
-                    stacks.add(new ItemStack(MainRegistry.FOX_PLUSHABLE));
                     stacks.add(new ItemStack(MainRegistry.PENGUIN_PLUSHABLE));
+                    stacks.add(new ItemStack(MainRegistry.FOX_PLUSHABLE));
                     stacks.add(new ItemStack(MainRegistry.FROGLIN_PLUSHABLE));
+                    stacks.add(new ItemStack(MainRegistry.CLUCKY_BLOCK));
+                    stacks.add(new ItemStack(MainRegistry.PIG_PLUSHABLE));
                 }).build();
     }
 

@@ -28,15 +28,20 @@ public class BuilderCategory implements DisplayCategory<BuilderDisplay> {
         widgets.add(Widgets.createRecipeBase(bounds));
         widgets.add(Widgets.createTexturedWidget(BuilderScreen.TEXTURE, textureX, textureY, 52, 17, 63, 60));
 
-        widgets.add(Widgets.createSlot(new Point(textureX + 3, textureY + 3)).entries(display.inputs().get(0)).disableBackground());
-        widgets.add(Widgets.createSlot(new Point(textureX + 3, textureY + 41)).entries(display.inputs().get(1)).disableBackground());
-        widgets.add(Widgets.createSlot(new Point(textureX + 3, textureY + 22)).entries(display.inputs().get(2)).disableBackground());
+        widgets.add(Widgets.createSlot(new Point(textureX + 3, textureY + 3)).entries(display.inputs().get(0))
+                .disableBackground());
+        widgets.add(Widgets.createSlot(new Point(textureX + 3, textureY + 41)).entries(display.inputs().get(1))
+                .disableBackground());
+        widgets.add(Widgets.createSlot(new Point(textureX + 3, textureY + 22)).entries(display.inputs().get(2))
+                .disableBackground());
 
-        widgets.add(Widgets.createSlot(new Point(textureX + 46, textureY + 22)).entries(display.output().get(0)).disableBackground());
+        widgets.add(Widgets.createSlot(new Point(textureX + 46, textureY + 22)).entries(display.output().get(0))
+                .disableBackground());
 
         widgets.add(Widgets.createDrawableWidget((helper, matrices, mouseX, mouseY, delta) -> {
             RenderSystem.setShaderTexture(0, BuilderScreen.TEXTURE);
-            helper.drawTexture(matrices, textureX + 20, textureY + 26, 176, 64, (int) ((System.currentTimeMillis() / 150d) % 24d), 9);
+            helper.drawTexture(matrices, textureX + 20, textureY + 26, 176, 64,
+                    (int) ((System.currentTimeMillis() / 150d) % 24d), 9);
         }));
 
         return widgets;
