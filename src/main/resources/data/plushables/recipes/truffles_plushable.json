@@ -2,7 +2,7 @@
   "type": "plushables:builder",
   "ingredients": [
     {
-      "item": "minecraft:pork"
+      "item": "minecraft:brown_mushroom"
     },
     {
       "item": "minecraft:pink_wool"
