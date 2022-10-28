@@ -18,6 +18,7 @@ public final class PlushablesModClient implements ClientModInitializer {
 		TileRegistryClient.initClient();
 
 		BlockRenderLayerMap.INSTANCE.putBlock(MainRegistry.PIG_PLUSHABLE, RenderLayer.getCutout());
+		BlockRenderLayerMap.INSTANCE.putBlock(MainRegistry.TRUFFLES_PLUSHABLE, RenderLayer.getCutout());
 
 	}
 

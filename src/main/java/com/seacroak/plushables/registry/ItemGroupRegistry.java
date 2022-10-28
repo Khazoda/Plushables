@@ -19,6 +19,8 @@ public class ItemGroupRegistry {
                     stacks.add(new ItemStack(MainRegistry.FROGLIN_PLUSHABLE));
                     stacks.add(new ItemStack(MainRegistry.CLUCKY_BLOCK));
                     stacks.add(new ItemStack(MainRegistry.PIG_PLUSHABLE));
+                    stacks.add(new ItemStack(MainRegistry.TRUFFLES_PLUSHABLE));
+
                 }).build();
     }
 

@@ -7,6 +7,7 @@ import com.seacroak.plushables.block.FoxBlock;
 import com.seacroak.plushables.block.FroglinBlock;
 import com.seacroak.plushables.block.PenguinBlock;
 import com.seacroak.plushables.block.PigBlock;
+import com.seacroak.plushables.block.TrufflesBlock;
 
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.minecraft.block.Block;
@@ -32,6 +33,8 @@ public final class MainRegistry {
 			plushableItemSettings);
 	public static final FoxBlock FOX_PLUSHABLE = register("fox_plushable", new FoxBlock(), plushableItemSettings);
 	public static final PigBlock PIG_PLUSHABLE = register("pig_plushable", new PigBlock(), plushableItemSettings);
+	public static final TrufflesBlock TRUFFLES_PLUSHABLE = register("truffles_plushable", new TrufflesBlock(),
+			plushableItemSettings);
 
 	// Items
 	public static final Item HEART_OF_GOLD = register("heart_of_gold");
