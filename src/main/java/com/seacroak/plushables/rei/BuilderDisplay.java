@@ -17,7 +17,7 @@ public record BuilderDisplay(List<EntryIngredient> inputs, List<EntryIngredient>
     public BuilderDisplay(BuilderRecipe recipe) {
         this(
                 recipe.getRecipeItems().stream().map(EntryIngredients::ofIngredient).toList(),
-                List.of(EntryIngredients.of(recipe.getOutput()))
+                List.of(EntryIngredients.of(recipe.getOutput(null)))
         );
     }
 
@@ -42,9 +42,9 @@ public record BuilderDisplay(List<EntryIngredient> inputs, List<EntryIngredient>
         @Override
         public NbtCompound save(NbtCompound tag, BuilderDisplay display) {
             var inputList = new NbtList();
-            display.inputs.forEach(entryStacks -> inputList.add(entryStacks.save()));
+            display.inputs.forEach(entryStacks -> inputList.add(entryStacks.saveIngredient()));
             tag.put("Inputs", inputList);
-            tag.put("Output", display.output.get(0).save());
+            tag.put("Output", display.output.get(0).saveIngredient());
             return tag;
         }
 

@@ -1,20 +1,11 @@
 package com.seacroak.plushables.block;
 
-import java.util.Random;
-import org.jetbrains.annotations.Nullable;
-
 import com.seacroak.plushables.block.tile.CluckyTileEntity;
 import com.seacroak.plushables.registry.SoundRegistry;
 import com.seacroak.plushables.registry.TileRegistry;
 import com.seacroak.plushables.util.VoxelShapeUtils;
-
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockRenderType;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.BlockWithEntity;
-import net.minecraft.block.Material;
-import net.minecraft.block.ShapeContext;
+import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemPlacementContext;
@@ -26,11 +17,7 @@ import net.minecraft.sound.SoundEvents;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.DirectionProperty;
 import net.minecraft.state.property.Properties;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.BlockMirror;
-import net.minecraft.util.BlockRotation;
-import net.minecraft.util.Hand;
-import net.minecraft.util.ItemScatterer;
+import net.minecraft.util.*;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
@@ -40,7 +27,10 @@ import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
-import software.bernie.geckolib3.core.AnimationState;
+import org.jetbrains.annotations.Nullable;
+import software.bernie.geckolib.core.animation.AnimationController;
+
+import java.util.Random;
 
 public class CluckyBlock extends BlockWithEntity {
 	static java.util.Random rand;
@@ -62,7 +52,7 @@ public class CluckyBlock extends BlockWithEntity {
 	//
 
 	public CluckyBlock() {
-		super(FabricBlockSettings.of(Material.WOOL).sounds(BlockSoundGroup.WOOL).strength(0.7f).nonOpaque());
+		super(FabricBlockSettings.create().sounds(BlockSoundGroup.WOOL).strength(0.7f).nonOpaque());
 		setDefaultState(this.stateManager.getDefaultState().with(Properties.HORIZONTAL_FACING, Direction.NORTH));
 		rand = new Random();
 		randMoan = new LocalRandom(100);
@@ -106,7 +96,7 @@ public class CluckyBlock extends BlockWithEntity {
 					cluckyEntity.setShouldLook(true);
 					// One in 20 chance to make a sus cluck
 					if (cluckyEntity.getShouldLook()
-							&& cluckyEntity.lookController.getAnimationState() == AnimationState.Stopped) {
+							&& cluckyEntity.lookController.getAnimationState() == AnimationController.State.STOPPED) {
 						if (randMoan.nextBetween(0, 10) == 5) {
 							world.playSound(player, pos, SoundRegistry.CLUCKY_MOAN, SoundCategory.BLOCKS, 0.5f, 1f);
 						} else {
@@ -137,7 +127,7 @@ public class CluckyBlock extends BlockWithEntity {
 
 	@Override
 	public BlockState getPlacementState(ItemPlacementContext context) {
-		return this.getDefaultState().with(Properties.HORIZONTAL_FACING, context.getPlayerFacing().getOpposite());
+		return this.getDefaultState().with(Properties.HORIZONTAL_FACING, context.getHorizontalPlayerFacing().getOpposite());
 
 	}
 

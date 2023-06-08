@@ -38,9 +38,8 @@ public class BuilderCategory implements DisplayCategory<BuilderDisplay> {
         widgets.add(Widgets.createSlot(new Point(textureX + 46, textureY + 22)).entries(display.output().get(0))
                 .disableBackground());
 
-        widgets.add(Widgets.createDrawableWidget((helper, matrices, mouseX, mouseY, delta) -> {
-            RenderSystem.setShaderTexture(0, BuilderScreen.TEXTURE);
-            helper.drawTexture(matrices, textureX + 20, textureY + 26, 176, 64,
+        widgets.add(Widgets.createDrawableWidget((context, mouseX, mouseY, delta) -> {
+            context.drawTexture(BuilderScreen.TEXTURE, textureX + 20, textureY + 26, 176, 64,
                     (int) ((System.currentTimeMillis() / 150d) % 24d), 9);
         }));
 

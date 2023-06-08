@@ -1,9 +1,8 @@
 package com.seacroak.plushables.gui;
 
-import com.mojang.blaze3d.systems.RenderSystem;
 import com.seacroak.plushables.PlushablesMod;
+import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.screen.ingame.HandledScreen;
-import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
@@ -28,9 +27,8 @@ public class BuilderScreen extends HandledScreen<BuilderScreenHandler> {
     }
 
     @Override
-    protected void drawBackground(MatrixStack matrices, float delta, int mouseX, int mouseY) {
-        RenderSystem.setShaderTexture(0, TEXTURE);
-        drawTexture(matrices, this.x, this.y, 0, 0, backgroundWidth, backgroundHeight);
+    protected void drawBackground(DrawContext context, float delta, int mouseX, int mouseY) {
+        context.drawTexture(TEXTURE, this.x, this.y, 0, 0, backgroundWidth, backgroundHeight);
 
         // if (handler.isLightningStorm()) {
         // this.drawTexture(matrices, x + 29, y + 29, 176, 0, 44, 44);
@@ -38,15 +36,15 @@ public class BuilderScreen extends HandledScreen<BuilderScreenHandler> {
 
         if (handler.isCrafting()) {
             int progress = handler.getScaledProgress();
-            this.drawTexture(matrices, x + 72, y + 43, 176, 64, progress, 9);
+            context.drawTexture(TEXTURE, x + 72, y + 43, 176, 64, progress, 9);
         }
     }
 
     @Override
-    public void render(MatrixStack matrices, int mouseX, int mouseY, float delta) {
-        renderBackground(matrices);
-        super.render(matrices, mouseX, mouseY, delta);
-        drawMouseoverTooltip(matrices, mouseX, mouseY);
+    public void render(DrawContext context, int mouseX, int mouseY, float delta) {
+        renderBackground(context);
+        super.render(context, mouseX, mouseY, delta);
+        drawMouseoverTooltip(context, mouseX, mouseY);
     }
 
     public int rootX() {

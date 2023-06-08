@@ -2,14 +2,14 @@ package com.seacroak.plushables.client.model.tile;
 
 import com.seacroak.plushables.block.tile.CluckyTileEntity;
 import com.seacroak.plushables.util.GenericUtils;
-
+import net.minecraft.client.render.RenderLayer;
 import net.minecraft.util.Identifier;
-import software.bernie.geckolib3.model.AnimatedGeoModel;
+import software.bernie.geckolib.model.GeoModel;
 
 /**
  * @author VoutVouniern Copyright (c) 03.06.2022 Developed by VoutVouniern
  */
-public class CluckyModel extends AnimatedGeoModel<CluckyTileEntity> {
+public class CluckyModel extends GeoModel<CluckyTileEntity> {
 
 	@Override
 	public Identifier getAnimationResource(CluckyTileEntity animatable) {
@@ -24,5 +24,10 @@ public class CluckyModel extends AnimatedGeoModel<CluckyTileEntity> {
 	@Override
 	public Identifier getTextureResource(CluckyTileEntity entity) {
 		return GenericUtils.ID("textures/block/clucky_texture.png");
+	}
+
+	@Override
+	public RenderLayer getRenderType(CluckyTileEntity animatable, Identifier texture) {
+		return RenderLayer.getEntityCutout(getTextureResource(animatable));
 	}
 }
