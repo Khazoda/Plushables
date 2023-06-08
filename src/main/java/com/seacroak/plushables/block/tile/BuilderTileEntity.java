@@ -2,8 +2,6 @@ package com.seacroak.plushables.block.tile;
 
 import java.util.Optional;
 
-import javax.annotation.Nullable;
-
 import com.seacroak.plushables.gui.BuilderInventory;
 import com.seacroak.plushables.gui.BuilderScreenHandler;
 import com.seacroak.plushables.recipe.BuilderRecipe;
@@ -34,6 +32,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.random.LocalRandom;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.world.World;
+import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib.animatable.GeoBlockEntity;
 import software.bernie.geckolib.core.animatable.GeoAnimatable;
 import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
