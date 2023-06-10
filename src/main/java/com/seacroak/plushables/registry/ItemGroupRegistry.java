@@ -1,26 +1,24 @@
 package com.seacroak.plushables.registry;
 
-import com.seacroak.plushables.util.GenericUtils;
-
-import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
+import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
+import net.minecraft.text.Text;
 
 public class ItemGroupRegistry {
     public static ItemGroup createItemGroup() {
-        return FabricItemGroupBuilder.create(
-                GenericUtils.ID("plushables"))
+        return FabricItemGroup.builder()
                 .icon(() -> new ItemStack(MainRegistry.HEART_OF_GOLD))
-                .appendItems(stacks -> {
-                    stacks.add(new ItemStack(MainRegistry.HEART_OF_GOLD));
-                    stacks.add(new ItemStack(MainRegistry.BUILDER_BLOCK));
-                    stacks.add(new ItemStack(MainRegistry.PENGUIN_PLUSHABLE));
-                    stacks.add(new ItemStack(MainRegistry.FOX_PLUSHABLE));
-                    stacks.add(new ItemStack(MainRegistry.FROGLIN_PLUSHABLE));
-                    stacks.add(new ItemStack(MainRegistry.CLUCKY_BLOCK));
-                    stacks.add(new ItemStack(MainRegistry.PIG_PLUSHABLE));
-                    stacks.add(new ItemStack(MainRegistry.TRUFFLES_PLUSHABLE));
-
+                .displayName(Text.translatable("itemGroup.plushables.plushables"))
+                .entries((displayContext, entries) -> {
+                    entries.add(new ItemStack(MainRegistry.HEART_OF_GOLD));
+                    entries.add(new ItemStack(MainRegistry.BUILDER_BLOCK));
+                    entries.add(new ItemStack(MainRegistry.PENGUIN_PLUSHABLE));
+                    entries.add(new ItemStack(MainRegistry.FOX_PLUSHABLE));
+                    entries.add(new ItemStack(MainRegistry.FROGLIN_PLUSHABLE));
+                    entries.add(new ItemStack(MainRegistry.CLUCKY_BLOCK));
+                    entries.add(new ItemStack(MainRegistry.PIG_PLUSHABLE));
+                    entries.add(new ItemStack(MainRegistry.TRUFFLES_PLUSHABLE));
                 }).build();
     }
 

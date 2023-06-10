@@ -1,14 +1,6 @@
 package com.seacroak.plushables.registry;
 
-import com.seacroak.plushables.PlushablesMod;
-import com.seacroak.plushables.block.BuilderBlock;
-import com.seacroak.plushables.block.CluckyBlock;
-import com.seacroak.plushables.block.FoxBlock;
-import com.seacroak.plushables.block.FroglinBlock;
-import com.seacroak.plushables.block.PenguinBlock;
-import com.seacroak.plushables.block.PigBlock;
-import com.seacroak.plushables.block.TrufflesBlock;
-
+import com.seacroak.plushables.block.*;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.minecraft.block.Block;
 import net.minecraft.entity.EquipmentSlot;
@@ -16,10 +8,8 @@ import net.minecraft.item.Item;
 
 public final class MainRegistry {
 	// Item Settings
-	static final FabricItemSettings defaultItemSettings = new FabricItemSettings().maxCount(8)
-			.group(PlushablesMod.PLUSHABLES_GROUP);
-	static final FabricItemSettings plushableItemSettings = new FabricItemSettings().maxCount(8)
-			.group(PlushablesMod.PLUSHABLES_GROUP).equipmentSlot(stack -> EquipmentSlot.HEAD);
+	static final FabricItemSettings defaultItemSettings = new FabricItemSettings().maxCount(8);
+	static final FabricItemSettings plushableItemSettings = new FabricItemSettings().maxCount(8).equipmentSlot(stack -> EquipmentSlot.HEAD);
 
 	// Complex Plushables
 	public static final BuilderBlock BUILDER_BLOCK = register("builder_block", new BuilderBlock());

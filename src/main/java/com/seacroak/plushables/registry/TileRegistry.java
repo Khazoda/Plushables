@@ -6,7 +6,8 @@ import com.seacroak.plushables.block.tile.CluckyTileEntity;
 
 import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
 import net.minecraft.block.entity.BlockEntityType;
-import net.minecraft.util.registry.Registry;
+import net.minecraft.registry.Registries;
+import net.minecraft.registry.Registry;
 
 // public class TileRegistry {
 // 	// public static final BlockEntityType<HabitatTileEntity> HABITAT_TILE =
@@ -24,12 +25,12 @@ import net.minecraft.util.registry.Registry;
 
 public final class TileRegistry {
 	public static final BlockEntityType<BuilderTileEntity> BUILDER_TILE = Registry.register(
-			Registry.BLOCK_ENTITY_TYPE, PlushablesMod.MOD_ID + ":builder_tile",
+			Registries.BLOCK_ENTITY_TYPE, PlushablesMod.MOD_ID + ":builder_tile",
 			FabricBlockEntityTypeBuilder.create(BuilderTileEntity::new,
 					MainRegistry.BUILDER_BLOCK).build(null));
 
 	public static final BlockEntityType<CluckyTileEntity> CLUCKY_TILE = Registry.register(
-			Registry.BLOCK_ENTITY_TYPE, PlushablesMod.MOD_ID + ":clucky_tile",
+			Registries.BLOCK_ENTITY_TYPE, PlushablesMod.MOD_ID + ":clucky_tile",
 			FabricBlockEntityTypeBuilder.create(CluckyTileEntity::new,
 					MainRegistry.CLUCKY_BLOCK).build(null));
 }

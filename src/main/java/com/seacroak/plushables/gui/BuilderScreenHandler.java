@@ -27,7 +27,7 @@ public class BuilderScreenHandler extends ScreenHandler {
         super(ScreenRegistry.BUILDER_SCREEN_HANDLER, syncId);
         checkSize(inventory, 4);
         this.inventory = inventory;
-        this.world = playerInventory.player.world;
+        this.world = playerInventory.player.getWorld();
         inventory.onOpen(playerInventory.player);
         this.propertyDelegate = delegate;
 
@@ -69,7 +69,7 @@ public class BuilderScreenHandler extends ScreenHandler {
     }
 
     @Override
-    public ItemStack transferSlot(PlayerEntity player, int invSlot) {
+    public ItemStack quickMove(PlayerEntity player, int invSlot) {
         ItemStack newStack = ItemStack.EMPTY;
         Slot slot = this.slots.get(invSlot);
         if (slot != null && slot.hasStack()) {

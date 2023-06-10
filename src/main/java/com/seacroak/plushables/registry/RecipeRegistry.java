@@ -5,7 +5,8 @@ import com.seacroak.plushables.util.GenericUtils;
 
 import net.minecraft.recipe.RecipeSerializer;
 import net.minecraft.recipe.RecipeType;
-import net.minecraft.util.registry.Registry;
+import net.minecraft.registry.Registries;
+import net.minecraft.registry.Registry;
 
 public final class RecipeRegistry {
 
@@ -15,11 +16,11 @@ public final class RecipeRegistry {
     }
 
     private static void register(String name, RecipeSerializer<?> serializer) {
-        Registry.register(Registry.RECIPE_SERIALIZER, GenericUtils.ID(name), serializer);
+        Registry.register(Registries.RECIPE_SERIALIZER, GenericUtils.ID(name), serializer);
     }
 
     private static void register(String name, RecipeType<?> type) {
-        Registry.register(Registry.RECIPE_TYPE, GenericUtils.ID(name), type);
+        Registry.register(Registries.RECIPE_TYPE, GenericUtils.ID(name), type);
     }
 
 }
