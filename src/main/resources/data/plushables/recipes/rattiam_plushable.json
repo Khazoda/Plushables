@@ -1,0 +1,18 @@
+{
+  "type": "plushables:builder",
+  "ingredients": [
+    {
+      "item": "minecraft:spider_eye"
+    },
+    {
+      "item": "minecraft:gray_wool"
+    },
+    {
+      "item": "plushables:heart_of_gold"
+    }
+  ],
+  "output": {
+    "item": "plushables:rattiam_plushable",
+    "count": 1
+  }
+}

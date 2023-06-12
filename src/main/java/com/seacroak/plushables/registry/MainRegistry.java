@@ -27,8 +27,11 @@ public final class MainRegistry {
 			plushableItemSettings);
   public static final DjungelskogBlock DJUNGELSKOG_PLUSHABLE = register("djungelskog_plushable", new DjungelskogBlock(),
     plushableItemSettings);
+  public static final RattiamBlock RATTIAM_PLUSHABLE = register("rattiam_plushable", new RattiamBlock(),
+    plushableItemSettings);
 
-	// Items
+
+  // Items
 	public static final Item HEART_OF_GOLD = register("heart_of_gold");
 
 	public static void init() {

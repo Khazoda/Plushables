@@ -1,11 +1,9 @@
 package com.seacroak.plushables.block;
 
 import com.seacroak.plushables.registry.SoundRegistry;
+import com.seacroak.plushables.util.VoxelShapeUtils;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockRenderType;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.HorizontalFacingBlock;
+import net.minecraft.block.*;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.item.ItemStack;
@@ -22,32 +20,21 @@ import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
+import net.minecraft.util.shape.VoxelShape;
+import net.minecraft.util.shape.VoxelShapes;
+import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 
 import java.util.Random;
 
-public class SimplePlushable extends HorizontalFacingBlock {
+public abstract class SimplePlushable extends HorizontalFacingBlock {
   public static Random rand;
 
+  //  Constructor
   public SimplePlushable() {
     super(FabricBlockSettings.create().sounds(BlockSoundGroup.WOOL).strength(0.7f).nonOpaque());
     setDefaultState(this.stateManager.getDefaultState().with(Properties.HORIZONTAL_FACING, Direction.NORTH));
     rand = new Random();
-  }
-
-  @Override
-  public BlockRenderType getRenderType(BlockState state) {
-    return BlockRenderType.MODEL;
-  }
-
-  @Override
-  public BlockState getPlacementState(ItemPlacementContext context) {
-    return this.getDefaultState().with(Properties.HORIZONTAL_FACING, context.getHorizontalPlayerFacing().getOpposite());
-
-  }
-
-  protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
-    builder.add(FACING);
   }
 
   // Shift Right Click pickup code
@@ -63,6 +50,7 @@ public class SimplePlushable extends HorizontalFacingBlock {
         return ActionResult.CONSUME;
       }
     }
+    // Clientside code
     if (world.isClient) {
       if (player.isSneaking()) {
         world.playSound(player, pos, SoundRegistry.PLUSHABLE_POP, SoundCategory.BLOCKS, 0.5f, 1f);
@@ -91,4 +79,62 @@ public class SimplePlushable extends HorizontalFacingBlock {
     world.addParticle(ParticleTypes.FIREWORK, true, pos.getX(), pos.getY(), pos.getZ(), 0.1, 0.1, 0.1);
     super.onBreak(world, pos, state, player);
   }
+
+
+  // VoxelShape
+  //  Default Shape
+  public VoxelShape getShape() {
+      VoxelShape shape = VoxelShapes.empty();
+      shape = VoxelShapes.union(shape, VoxelShapes.cuboid(0, 0, 0, 0.8, 0.8, 0.8));
+      return shape;
+  }
+
+  final VoxelShape blockShape = getShape();
+  final VoxelShape[] blockShapes = {blockShape,
+    VoxelShapeUtils.rotateShape(Direction.NORTH, Direction.EAST, blockShape),
+    VoxelShapeUtils.rotateShape(Direction.NORTH, Direction.SOUTH, blockShape),
+    VoxelShapeUtils.rotateShape(Direction.NORTH, Direction.WEST, blockShape)};
+
+  @Override
+  public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
+    Direction direction = (Direction) state.get(FACING);
+
+    switch (direction) {
+      case NORTH: {
+        return blockShapes[0];
+      }
+      case EAST: {
+        return blockShapes[1];
+      }
+      case SOUTH: {
+        return blockShapes[2];
+
+      }
+      case WEST: {
+        return blockShapes[3];
+
+      }
+      default:
+        return blockShape;
+    }
+  }
+
+  // Render Type
+  @Override
+  public BlockRenderType getRenderType(BlockState state) {
+    return BlockRenderType.MODEL;
+  }
+
+  // Initial state upon placing
+  @Override
+  public BlockState getPlacementState(ItemPlacementContext context) {
+    return this.getDefaultState().with(Properties.HORIZONTAL_FACING, context.getHorizontalPlayerFacing().getOpposite());
+
+  }
+
+  // Append initial properties
+  protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
+    builder.add(FACING);
+  }
+
 }
