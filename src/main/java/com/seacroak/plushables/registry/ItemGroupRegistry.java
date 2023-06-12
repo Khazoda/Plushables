@@ -12,6 +12,7 @@ public class ItemGroupRegistry {
       .displayName(Text.translatable("itemGroup.plushables.plushables"))
       .entries((displayContext, entries) -> {
         entries.add(new ItemStack(MainRegistry.HEART_OF_GOLD));
+        entries.add(new ItemStack(MainRegistry.POWERED_HEART));
         entries.add(new ItemStack(MainRegistry.BUILDER_BLOCK));
         entries.add(new ItemStack(MainRegistry.PENGUIN_PLUSHABLE));
         entries.add(new ItemStack(MainRegistry.FOX_PLUSHABLE));
@@ -20,6 +21,9 @@ public class ItemGroupRegistry {
         entries.add(new ItemStack(MainRegistry.PIG_PLUSHABLE));
         entries.add(new ItemStack(MainRegistry.TRUFFLES_PLUSHABLE));
         entries.add(new ItemStack(MainRegistry.DJUNGELSKOG_PLUSHABLE));
+        entries.add(new ItemStack(MainRegistry.RATTIAM_PLUSHABLE));
+        entries.add(new ItemStack(MainRegistry.TRICERATOPS_PLUSHABLE));
+        entries.add(new ItemStack(MainRegistry.UNICORN_PLUSHABLE));
 
       }).build();
   }

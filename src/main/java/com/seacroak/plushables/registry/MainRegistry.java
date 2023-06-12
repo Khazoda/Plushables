@@ -29,10 +29,14 @@ public final class MainRegistry {
     plushableItemSettings);
   public static final RattiamBlock RATTIAM_PLUSHABLE = register("rattiam_plushable", new RattiamBlock(),
     plushableItemSettings);
-
+  public static final TriceratopsBlock TRICERATOPS_PLUSHABLE = register("triceratops_plushable", new TriceratopsBlock(),
+    plushableItemSettings);
+  public static final UnicornBlock UNICORN_PLUSHABLE = register("unicorn_plushable", new UnicornBlock(),
+    plushableItemSettings);
 
   // Items
 	public static final Item HEART_OF_GOLD = register("heart_of_gold");
+  public static final Item POWERED_HEART = register("powered_heart");
 
 	public static void init() {
 	}

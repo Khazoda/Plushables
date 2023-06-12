@@ -1,0 +1,18 @@
+{
+  "type": "plushables:builder",
+  "ingredients": [
+    {
+      "item": "minecraft:cherry_leaves"
+    },
+    {
+      "item": "minecraft:green_wool"
+    },
+    {
+      "item": "plushables:heart_of_gold"
+    }
+  ],
+  "output": {
+    "item": "plushables:triceratops_plushable",
+    "count": 1
+  }
+}

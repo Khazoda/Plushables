@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [" X ", "X#X", " X "],
+  "key": {
+    "#": {
+      "item": "plushables:heart_of_gold"
+    },
+    "X": {
+      "item": "minecraft:redstone"
+    }
+  },
+  "result": {
+    "item": "plushables:powered_heart",
+    "count": 1
+  }
+}
