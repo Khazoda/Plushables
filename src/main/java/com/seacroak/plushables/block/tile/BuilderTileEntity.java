@@ -2,8 +2,6 @@ package com.seacroak.plushables.block.tile;
 
 import java.util.Optional;
 
-import javax.annotation.Nullable;
-
 import com.seacroak.plushables.gui.BuilderInventory;
 import com.seacroak.plushables.gui.BuilderScreenHandler;
 import com.seacroak.plushables.recipe.BuilderRecipe;
@@ -34,17 +32,19 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.random.LocalRandom;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.world.World;
-import software.bernie.geckolib3.core.AnimationState;
-import software.bernie.geckolib3.core.IAnimatable;
-import software.bernie.geckolib3.core.PlayState;
-import software.bernie.geckolib3.core.builder.AnimationBuilder;
-import software.bernie.geckolib3.core.controller.AnimationController;
-import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
-import software.bernie.geckolib3.core.manager.AnimationData;
-import software.bernie.geckolib3.core.manager.AnimationFactory;
+import org.jetbrains.annotations.Nullable;
+import software.bernie.geckolib.animatable.GeoBlockEntity;
+import software.bernie.geckolib.core.animatable.GeoAnimatable;
+import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
+import software.bernie.geckolib.core.animation.AnimatableManager;
+import software.bernie.geckolib.core.animation.AnimationController;
+import software.bernie.geckolib.core.animation.AnimationState;
+import software.bernie.geckolib.core.animation.RawAnimation;
+import software.bernie.geckolib.core.object.PlayState;
+import software.bernie.geckolib.util.GeckoLibUtil;
 
 public class BuilderTileEntity extends BlockEntity
-		implements IAnimatable, NamedScreenHandlerFactory, BuilderInventory {
+		implements GeoBlockEntity, NamedScreenHandlerFactory, BuilderInventory {
 
 	static Random rand;
 	private static boolean shouldHop;
@@ -91,7 +91,7 @@ public class BuilderTileEntity extends BlockEntity
 
 	@Override
 	public Text getDisplayName() {
-		return Text.literal("Builder");
+		return this.getCachedState().getBlock().getName();
 	}
 
 	@Nullable
@@ -144,7 +144,7 @@ public class BuilderTileEntity extends BlockEntity
 
 		return match.isPresent()
 				&& canInsertAmountIntoOutputSlot(inventory)
-				&& canInsertItemIntoOutputSlot(inventory, match.get().getOutput());
+				&& canInsertItemIntoOutputSlot(inventory, match.get().getOutput(entity.world.getRegistryManager()));
 	}
 
 	private static void craftItem(BuilderTileEntity entity) {
@@ -161,20 +161,22 @@ public class BuilderTileEntity extends BlockEntity
 			entity.removeStack(0, 1);
 			entity.removeStack(1, 1);
 			entity.removeStack(3, 1);
-			entity.setStack(2, new ItemStack(match.get().getOutput().getItem(),
+			entity.setStack(2, new ItemStack(match.get().getOutput(entity.world.getRegistryManager()).getItem(),
 					entity.getStack(2).getCount() + 1));
 
-			shouldHop = true;
 			if (!world.isClient()) {
+				// ! TODO implement networked solution for syncing hop animation across clients
+				// ! (currently works in SP but not MP as code is only ran on server)
+				shouldHop = true;
 				// System.out.println(rand.nextBetween(0, 20));
 				// One in 20 chance to spawn an Allay
 				if (rand.nextBetween(0, 20) == 13) {
 					EntityType.FIREWORK_ROCKET
-							.spawn((ServerWorld) world, null, null, null, entity.pos.add(0, 0.5, 0),
+							.spawn((ServerWorld) world, null, null, entity.pos.add(0, 2, 0),
 									SpawnReason.TRIGGERED, true, true);
 
 					EntityType.ALLAY
-							.spawn((ServerWorld) world, null, null, null, entity.pos.add(0, 0.5, 0),
+							.spawn((ServerWorld) world, null, null, entity.pos.add(0, 2, 0),
 									SpawnReason.TRIGGERED, true, true)
 							.equipStack(EquipmentSlot.MAINHAND, new ItemStack(MainRegistry.FROGLIN_PLUSHABLE));
 				} else {
@@ -203,59 +205,59 @@ public class BuilderTileEntity extends BlockEntity
 	}
 
 	// Animation Code
-	private final AnimationFactory factory = new AnimationFactory(this);
+	private final AnimatableInstanceCache instanceCache = GeckoLibUtil.createInstanceCache(this);
 
-	private <E extends BlockEntity & IAnimatable> PlayState builderIdlePredicate(AnimationEvent<E> event) {
+	private <E extends BlockEntity & GeoAnimatable> PlayState builderIdlePredicate(AnimationState<E> event) {
 		AnimationController<?> controller = event.getController();
-		controller.setAnimation(new AnimationBuilder().addAnimation("animation.builder.idle", true));
+		controller.setAnimation(RawAnimation.begin().thenPlay("animation.builder.idle"));
 		return PlayState.CONTINUE;
 	}
 
-	private <E extends BlockEntity & IAnimatable> PlayState cubePredicateSpin(AnimationEvent<E> event) {
+	private <E extends BlockEntity & GeoAnimatable> PlayState cubePredicateSpin(AnimationState<E> event) {
 		AnimationController<?> controller = event.getController();
-		controller.transitionLengthTicks = 0;
+		controller.transitionLength(0);
 
-		controller.setAnimation(new AnimationBuilder().addAnimation("animation.builder.cube_spin"));
+		controller.setAnimation(RawAnimation.begin().thenPlay("animation.builder.cube_spin"));
 		// controller.markNeedsReload();
 		// .addAnimation("Botarium.anim.idle", true));
 
 		return PlayState.CONTINUE;
 	}
 
-	private <E extends BlockEntity & IAnimatable> PlayState cubePredicateHop(AnimationEvent<E> event) {
+	private <E extends BlockEntity & GeoAnimatable> PlayState cubePredicateHop(AnimationState<E> event) {
 		AnimationController<?> controller = event.getController();
 		// controller.transitionLengthTicks = 0;
 
 		if (shouldHop) {
-			controller.setAnimation(new AnimationBuilder().addAnimation("animation.builder.edgecubes_jump"));
-			if (controller.getAnimationState() == AnimationState.Stopped) {
+			controller.setAnimation(RawAnimation.begin().thenPlay("animation.builder.edgecubes_jump"));
+			if (controller.getAnimationState() == AnimationController.State.STOPPED) {
 				shouldHop = false;
 			}
 			// .addAnimation("fertilizer.animation.idle", true));
 		} else {
 			// controller.setAnimation(new AnimationBuilder());
-			controller.markNeedsReload();
+			controller.forceAnimationReset();
 			// .addAnimation("Botarium.anim.idle", true));
 		}
 		return PlayState.CONTINUE;
 	}
 
 	@Override
-	public void registerControllers(AnimationData data) {
-		data.addAnimationController(
+	public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
+		controllers.add(
 				new AnimationController<BuilderTileEntity>(this, "controller", 0, this::builderIdlePredicate));
 
-		data.addAnimationController(
+		controllers.add(
 				new AnimationController<BuilderTileEntity>(this, "cube_spin_controller", 0,
 						this::cubePredicateSpin));
-		data.addAnimationController(
+		controllers.add(
 				new AnimationController<BuilderTileEntity>(this, "cube__hop_controller", 0,
 						this::cubePredicateHop));
 	}
 
 	@Override
-	public AnimationFactory getFactory() {
-		return this.factory;
+	public AnimatableInstanceCache getAnimatableInstanceCache() {
+		return this.instanceCache;
 	}
 
 }

@@ -1,27 +1,32 @@
 package com.seacroak.plushables.registry;
 
-import com.seacroak.plushables.PlushablesMod;
-import com.seacroak.plushables.block.BuilderBlock;
-import com.seacroak.plushables.block.CluckyBlock;
-import com.seacroak.plushables.block.FoxBlock;
-import com.seacroak.plushables.block.FroglinBlock;
-import com.seacroak.plushables.block.PenguinBlock;
-
+import com.seacroak.plushables.block.*;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.minecraft.block.Block;
+import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.item.Item;
 
 public final class MainRegistry {
-	static final FabricItemSettings defaultItemSettings = new FabricItemSettings().maxCount(8)
-			.group(PlushablesMod.PLUSHABLES_GROUP);
+	// Item Settings
+	static final FabricItemSettings defaultItemSettings = new FabricItemSettings().maxCount(8);
+	static final FabricItemSettings plushableItemSettings = new FabricItemSettings().maxCount(8).equipmentSlot(stack -> EquipmentSlot.HEAD);
 
+	// Complex Plushables
 	public static final BuilderBlock BUILDER_BLOCK = register("builder_block", new BuilderBlock());
+	public static final CluckyBlock CLUCKY_BLOCK = register("clucky_plushable", new CluckyBlock(),
+			plushableItemSettings);
 
-	public static final CluckyBlock CLUCKY_BLOCK = register("clucky_plushable", new CluckyBlock());
+	// Simple Plushables
+	public static final PenguinBlock PENGUIN_PLUSHABLE = register("penguin_plushable", new PenguinBlock(),
+			plushableItemSettings);
+	public static final FroglinBlock FROGLIN_PLUSHABLE = register("froglin_plushable", new FroglinBlock(),
+			plushableItemSettings);
+	public static final FoxBlock FOX_PLUSHABLE = register("fox_plushable", new FoxBlock(), plushableItemSettings);
+	public static final PigBlock PIG_PLUSHABLE = register("pig_plushable", new PigBlock(), plushableItemSettings);
+	public static final TrufflesBlock TRUFFLES_PLUSHABLE = register("truffles_plushable", new TrufflesBlock(),
+			plushableItemSettings);
 
-	public static final PenguinBlock PENGUIN_PLUSHABLE = register("penguin_plushable", new PenguinBlock());
-	public static final FroglinBlock FROGLIN_PLUSHABLE = register("froglin_plushable", new FroglinBlock());
-	public static final FoxBlock FOX_PLUSHABLE = register("fox_plushable", new FoxBlock());
+	// Items
 	public static final Item HEART_OF_GOLD = register("heart_of_gold");
 
 	public static void init() {

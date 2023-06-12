@@ -1,15 +1,11 @@
 package com.seacroak.plushables.block;
 
-import org.jetbrains.annotations.Nullable;
-
 import com.seacroak.plushables.block.tile.BuilderTileEntity;
 import com.seacroak.plushables.registry.TileRegistry;
-
-import net.minecraft.block.AbstractBlock;
+import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.BlockRenderType;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.BlockWithEntity;
-import net.minecraft.block.Material;
 import net.minecraft.block.ShapeContext;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityTicker;
@@ -27,12 +23,12 @@ import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
+import org.jetbrains.annotations.Nullable;
 
 public class BuilderBlock extends BlockWithEntity {
 
 	public BuilderBlock() {
-		super(AbstractBlock.Settings.of(Material.WOOD).strength(2.5f).sounds(BlockSoundGroup.WOOD).requiresTool());
-
+		super(FabricBlockSettings.create().strength(2.5f).sounds(BlockSoundGroup.WOOD).requiresTool());
 		setDefaultState(this.stateManager.getDefaultState());
 	}
 
@@ -52,7 +48,7 @@ public class BuilderBlock extends BlockWithEntity {
 
 	@Override
 	public BlockRenderType getRenderType(BlockState state) {
-		return BlockRenderType.INVISIBLE;
+		return BlockRenderType.ENTITYBLOCK_ANIMATED;
 	}
 
 	@Nullable

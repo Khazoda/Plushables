@@ -27,18 +27,19 @@ public class BuilderScreenHandler extends ScreenHandler {
         super(ScreenRegistry.BUILDER_SCREEN_HANDLER, syncId);
         checkSize(inventory, 4);
         this.inventory = inventory;
-        this.world = playerInventory.player.world;
+        this.world = playerInventory.player.getWorld();
         inventory.onOpen(playerInventory.player);
         this.propertyDelegate = delegate;
 
-        // Input Slots
-        this.addSlot(new Slot(inventory, 0, 55, 23));
-        this.addSlot(new Slot(inventory, 1, 55, 59));
-        // Output Slot
-        this.addSlot(new Slot(inventory, 2, 98, 41));
-
+        // Top Slot
+        this.addSlot(new Slot(inventory, 0, 55, 20));
         // Heart of Gold Slot
-        this.addSlot(new Slot(inventory, 3, 55, 41));
+        this.addSlot(new Slot(inventory, 3, 55, 39));
+        // Bottom Slot
+        this.addSlot(new Slot(inventory, 1, 55, 58));
+
+        // Output Slot
+        this.addSlot(new Slot(inventory, 2, 98, 39));
 
         addPlayerInventory(playerInventory);
         addPlayerHotbar(playerInventory);
@@ -68,7 +69,7 @@ public class BuilderScreenHandler extends ScreenHandler {
     }
 
     @Override
-    public ItemStack transferSlot(PlayerEntity player, int invSlot) {
+    public ItemStack quickMove(PlayerEntity player, int invSlot) {
         ItemStack newStack = ItemStack.EMPTY;
         Slot slot = this.slots.get(invSlot);
         if (slot != null && slot.hasStack()) {

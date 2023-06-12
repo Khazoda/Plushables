@@ -2,17 +2,17 @@
   "type": "plushables:builder",
   "ingredients": [
     {
-      "item": "minecraft:lily_pad"
+      "item": "minecraft:mud"
     },
     {
-      "item": "minecraft:green_wool"
+      "item": "minecraft:pink_wool"
     },
     {
       "item": "plushables:heart_of_gold"
     }
   ],
   "output": {
-    "item": "plushables:froglin_plushable",
+    "item": "plushables:pig_plushable",
     "count": 1
   }
 }

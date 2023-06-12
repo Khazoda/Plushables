@@ -1,20 +1,11 @@
 package com.seacroak.plushables.block;
 
-import java.util.Random;
-
-import org.jetbrains.annotations.Nullable;
-
+import com.seacroak.plushables.block.tile.CluckyTileEntity;
 import com.seacroak.plushables.registry.SoundRegistry;
 import com.seacroak.plushables.registry.TileRegistry;
 import com.seacroak.plushables.util.VoxelShapeUtils;
-
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockRenderType;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.BlockWithEntity;
-import net.minecraft.block.Material;
-import net.minecraft.block.ShapeContext;
+import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemPlacementContext;
@@ -26,22 +17,26 @@ import net.minecraft.sound.SoundEvents;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.DirectionProperty;
 import net.minecraft.state.property.Properties;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.BlockMirror;
-import net.minecraft.util.BlockRotation;
-import net.minecraft.util.Hand;
-import net.minecraft.util.ItemScatterer;
+import net.minecraft.util.*;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
+import net.minecraft.util.math.random.LocalRandom;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
+import org.jetbrains.annotations.Nullable;
+import software.bernie.geckolib.core.animation.AnimationController;
+
+import java.util.Random;
 
 public class CluckyBlock extends BlockWithEntity {
-	public static Random rand;
+	static java.util.Random rand;
+	static net.minecraft.util.math.random.Random randMoan;
+	public BlockEntity blockEntityReference;
+
 	// HorizontalFacingBlock Code
 	public static final DirectionProperty FACING = Properties.HORIZONTAL_FACING;
 
@@ -57,9 +52,12 @@ public class CluckyBlock extends BlockWithEntity {
 	//
 
 	public CluckyBlock() {
-		super(FabricBlockSettings.of(Material.WOOL).sounds(BlockSoundGroup.WOOL).strength(0.7f).nonOpaque());
+		super(FabricBlockSettings.create().sounds(BlockSoundGroup.WOOL).strength(0.7f).nonOpaque());
 		setDefaultState(this.stateManager.getDefaultState().with(Properties.HORIZONTAL_FACING, Direction.NORTH));
 		rand = new Random();
+		randMoan = new LocalRandom(100);
+
+		blockEntityReference = null;
 	}
 
 	// Shift Right Click pickup code
@@ -90,6 +88,26 @@ public class CluckyBlock extends BlockWithEntity {
 							rand.nextFloat(-0.05f, 0.05f), rand.nextFloat(-0.05f, 0.05f),
 							rand.nextFloat(-0.05f, 0.05f));
 				}
+				// Right click interaction
+			} else {
+				BlockEntity blockEntity = world.getBlockEntity(pos);
+				if (blockEntity instanceof CluckyTileEntity) {
+					CluckyTileEntity cluckyEntity = (CluckyTileEntity) blockEntity;
+					cluckyEntity.setShouldLook(true);
+					// One in 20 chance to make a sus cluck
+					if (cluckyEntity.getShouldLook()
+							&& cluckyEntity.lookController.getAnimationState() == AnimationController.State.STOPPED) {
+						if (randMoan.nextBetween(0, 10) == 5) {
+							world.playSound(player, pos, SoundRegistry.CLUCKY_MOAN, SoundCategory.BLOCKS, 0.5f, 1f);
+						} else {
+							System.out.println((float) randMoan.nextFloat());
+							world.playSound(player, pos, SoundRegistry.CLUCKY_CLUCK, SoundCategory.BLOCKS, 0.5f,
+									(float) 0.7f + randMoan.nextFloat() / 2);
+						}
+					}
+
+					return ActionResult.SUCCESS;
+				}
 			}
 
 		}
@@ -98,7 +116,7 @@ public class CluckyBlock extends BlockWithEntity {
 
 	@Override
 	public BlockRenderType getRenderType(BlockState state) {
-		return BlockRenderType.INVISIBLE;
+		return BlockRenderType.ENTITYBLOCK_ANIMATED;
 	}
 
 	@Nullable
@@ -109,7 +127,7 @@ public class CluckyBlock extends BlockWithEntity {
 
 	@Override
 	public BlockState getPlacementState(ItemPlacementContext context) {
-		return this.getDefaultState().with(Properties.HORIZONTAL_FACING, context.getPlayerFacing().getOpposite());
+		return this.getDefaultState().with(Properties.HORIZONTAL_FACING, context.getHorizontalPlayerFacing().getOpposite());
 
 	}
 
@@ -126,10 +144,9 @@ public class CluckyBlock extends BlockWithEntity {
 
 	static public VoxelShape getShape() {
 		VoxelShape shape = VoxelShapes.empty();
-		shape = VoxelShapes.union(shape, VoxelShapes.cuboid(0.375, 0.078125, 0.375, 0.625, 0.265625, 0.6875));
-		shape = VoxelShapes.union(shape, VoxelShapes.cuboid(0.4375, 0.203125, 0.3125, 0.5625, 0.390625, 0.4375));
-		shape = VoxelShapes.union(shape, VoxelShapes.cuboid(0.4375, 0.265625, 0.25, 0.5625, 0.328125, 0.3125));
-		shape = VoxelShapes.union(shape, VoxelShapes.cuboid(0.25, 0.015625, 0.3125, 0.75, 0.078125, 0.75));
+		shape = VoxelShapes.union(shape,
+				VoxelShapes.cuboid(0.375, 0.0703125, 0.375, 0.625, 0.2578125, 0.6875));
+		shape = VoxelShapes.union(shape, VoxelShapes.cuboid(0.25, 0.0078125, 0.3125, 0.75, 0.0703125, 0.75));
 
 		return shape;
 	}

@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "facing=north": { "model": "plushables:block/pig_plushable", "y": 0 },
+    "facing=south": { "model": "plushables:block/pig_plushable", "y": 180 },
+    "facing=east": { "model": "plushables:block/pig_plushable", "y": 90 },
+    "facing=west": { "model": "plushables:block/pig_plushable", "y": 270 }
+  }
+}

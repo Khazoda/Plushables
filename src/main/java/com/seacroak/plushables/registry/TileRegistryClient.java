@@ -2,10 +2,9 @@ package com.seacroak.plushables.registry;
 
 import com.seacroak.plushables.client.renderer.tile.BuilderTileRenderer;
 import com.seacroak.plushables.client.renderer.tile.CluckyTileRenderer;
-
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-import net.fabricmc.fabric.api.client.rendering.v1.BlockEntityRendererRegistry;
+import net.minecraft.client.render.block.entity.BlockEntityRendererFactories;
 import net.minecraft.client.render.block.entity.BlockEntityRendererFactory;
 
 // public class TileRegistry {
@@ -23,12 +22,11 @@ import net.minecraft.client.render.block.entity.BlockEntityRendererFactory;
 // }
 
 public final class TileRegistryClient {
-	@SuppressWarnings("unchecked")
 	@Environment(EnvType.CLIENT)
 	public static void initClient() {
-		BlockEntityRendererRegistry.register(TileRegistry.BUILDER_TILE,
+		BlockEntityRendererFactories.register(TileRegistry.BUILDER_TILE,
 				(BlockEntityRendererFactory.Context rendererDispatcherIn) -> new BuilderTileRenderer());
-		BlockEntityRendererRegistry.register(TileRegistry.CLUCKY_TILE,
+		BlockEntityRendererFactories.register(TileRegistry.CLUCKY_TILE,
 				(BlockEntityRendererFactory.Context rendererDispatcherIn) -> new CluckyTileRenderer());
 	}
 }

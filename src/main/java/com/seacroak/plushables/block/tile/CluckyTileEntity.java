@@ -5,35 +5,45 @@ import com.seacroak.plushables.registry.TileRegistry;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.util.math.BlockPos;
-import software.bernie.geckolib3.core.AnimationState;
-import software.bernie.geckolib3.core.IAnimatable;
-import software.bernie.geckolib3.core.PlayState;
-import software.bernie.geckolib3.core.builder.AnimationBuilder;
-import software.bernie.geckolib3.core.controller.AnimationController;
-import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
-import software.bernie.geckolib3.core.manager.AnimationData;
-import software.bernie.geckolib3.core.manager.AnimationFactory;
+import software.bernie.geckolib.animatable.GeoBlockEntity;
+import software.bernie.geckolib.core.animatable.GeoAnimatable;
+import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
+import software.bernie.geckolib.core.animation.AnimatableManager;
+import software.bernie.geckolib.core.animation.AnimationController;
+import software.bernie.geckolib.core.animation.AnimationState;
+import software.bernie.geckolib.core.animation.RawAnimation;
+import software.bernie.geckolib.core.object.PlayState;
+import software.bernie.geckolib.util.GeckoLibUtil;
 
-public class CluckyTileEntity extends BlockEntity
-		implements IAnimatable {
+public class CluckyTileEntity extends BlockEntity implements GeoBlockEntity {
 
-	private static boolean shouldLook;
+	public boolean shouldLook;
+	public AnimationController<?> lookController;
 
 	public CluckyTileEntity(BlockPos pos, BlockState state) {
 		super(TileRegistry.CLUCKY_TILE, pos, state);
 		shouldLook = false;
+		lookController = null;
+	}
+
+	public void setShouldLook(boolean val) {
+		this.shouldLook = val;
+	}
+
+	public boolean getShouldLook() {
+		return this.shouldLook;
 	}
 
 	// Animation Code
-	private final AnimationFactory factory = new AnimationFactory(this);
+	private final AnimatableInstanceCache instanceCache = GeckoLibUtil.createInstanceCache(this);
 
-	private <E extends BlockEntity & IAnimatable> PlayState cluckyIdlePredicate(AnimationEvent<E> event) {
+	private <E extends BlockEntity & GeoAnimatable> PlayState cluckyIdlePredicate(AnimationState<E> event) {
 		AnimationController<?> controller = event.getController();
-		controller.setAnimation(new AnimationBuilder().addAnimation("animation.chicken.wiggle", true));
+		controller.setAnimation(RawAnimation.begin().thenPlay("animation.chicken.wiggle"));
 		return PlayState.CONTINUE;
 	}
 
-	// private <E extends BlockEntity & IAnimatable> PlayState
+	// private <E extends BlockEntity & GeoAnimatable> PlayState
 	// cubePredicateSpin(AnimationEvent<E> event) {
 	// AnimationController<?> controller = event.getController();
 	// controller.transitionLengthTicks = 0;
@@ -46,40 +56,40 @@ public class CluckyTileEntity extends BlockEntity
 	// return PlayState.CONTINUE;
 	// }
 
-	private <E extends BlockEntity & IAnimatable> PlayState cluckyLookPredicate(AnimationEvent<E> event) {
-		AnimationController<?> controller = event.getController();
+	private <E extends BlockEntity & GeoAnimatable> PlayState cluckyLookPredicate(AnimationState<E> event) {
+		lookController = event.getController();
 		// controller.transitionLengthTicks = 0;
 
 		if (shouldLook) {
-			controller.setAnimation(new AnimationBuilder().addAnimation("animation.chicken.look"));
-			if (controller.getAnimationState() == AnimationState.Stopped) {
+			lookController.setAnimation(RawAnimation.begin().thenPlay("animation.chicken.look"));
+			if (lookController.getAnimationState() == AnimationController.State.STOPPED) {
 				shouldLook = false;
 			}
 			// .addAnimation("fertilizer.animation.idle", true));
 		} else {
-			// controller.setAnimation(new AnimationBuilder());
-			controller.markNeedsReload();
+			// lookController.setAnimation(new AnimationBuilder());
+			lookController.forceAnimationReset();
 			// .addAnimation("Botarium.anim.idle", true));
 		}
 		return PlayState.CONTINUE;
 	}
 
 	@Override
-	public void registerControllers(AnimationData data) {
-		data.addAnimationController(
+	public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
+		controllers.add(
 				new AnimationController<CluckyTileEntity>(this, "controller", 0, this::cluckyIdlePredicate));
 
 		// data.addAnimationController(
 		// new AnimationController<CluckyTileEntity>(this, "cube_spin_controller", 0,
 		// this::cubePredicateSpin));
-		data.addAnimationController(
+		controllers.add(
 				new AnimationController<CluckyTileEntity>(this, "clucky_look_controller", 0,
 						this::cluckyLookPredicate));
 	}
 
 	@Override
-	public AnimationFactory getFactory() {
-		return this.factory;
+	public AnimatableInstanceCache getAnimatableInstanceCache() {
+		return this.instanceCache;
 	}
 
 }
