@@ -25,6 +25,8 @@ public final class MainRegistry {
 	public static final PigBlock PIG_PLUSHABLE = register("pig_plushable", new PigBlock(), plushableItemSettings);
 	public static final TrufflesBlock TRUFFLES_PLUSHABLE = register("truffles_plushable", new TrufflesBlock(),
 			plushableItemSettings);
+  public static final DjungelskogBlock DJUNGELSKOG_PLUSHABLE = register("djungelskog_plushable", new DjungelskogBlock(),
+    plushableItemSettings);
 
 	// Items
 	public static final Item HEART_OF_GOLD = register("heart_of_gold");
