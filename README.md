@@ -23,6 +23,6 @@
 </p>
 <div style="min-width:100%; display:block;">
 <img src="https://github.com/Khazoda/Plushables/raw/Latest-Stable/web_assets/warning.png" alt="Plushables Warning" />
-<img src="https://github.com/Khazoda/Plushables/raw/Latest-Stable/web_assets/description.png" alt="Plushables Description" />
+<img src="https://github.com/Khazoda/Plushables/raw/Latest-Stable/web_assets/description_new1.png" alt="Plushables Description" />
 </div>
 </div>
