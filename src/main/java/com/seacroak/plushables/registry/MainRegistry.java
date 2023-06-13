@@ -33,6 +33,8 @@ public final class MainRegistry {
     plushableItemSettings);
   public static final UnicornBlock UNICORN_PLUSHABLE = register("unicorn_plushable", new UnicornBlock(),
     plushableItemSettings);
+  public static final DragonBlock DRAGON_PLUSHABLE = register("dragon_plushable", new DragonBlock(),
+    plushableItemSettings);
 
   // Items
 	public static final Item HEART_OF_GOLD = register("heart_of_gold");
