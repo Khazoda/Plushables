@@ -10,5 +10,8 @@
   },
   "clucky_moan": {
     "sounds": ["plushables:simon_cluck"]
+  },
+  "rupert_purr": {
+    "sounds": ["plushables:rupert_purr"]
   }
 }

@@ -15,7 +15,7 @@ public final class MainRegistry {
 	public static final BuilderBlock BUILDER_BLOCK = register("builder_block", new BuilderBlock());
 	public static final CluckyBlock CLUCKY_BLOCK = register("clucky_plushable", new CluckyBlock(),
 			plushableItemSettings);
-  public static final RupertBlock RUPERT_BLOCK = register("rupert_box", new RupertBlock(),
+  public static final RupertBlock RUPERT_BLOCK = register("rupert_plushable", new RupertBlock(),
     plushableItemSettings);
 
 

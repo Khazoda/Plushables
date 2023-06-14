@@ -7,7 +7,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "plushables:rupert_box"
+          "name": "plushables:rupert_plushable"
         }
       ],
       "conditions": [

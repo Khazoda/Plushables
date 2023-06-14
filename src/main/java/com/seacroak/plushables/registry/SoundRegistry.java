@@ -10,6 +10,7 @@ public final class SoundRegistry {
 	public static final SoundEvent PLUSHABLE_POP = register("plushable_pop");
 	public static final SoundEvent CLUCKY_CLUCK = register("clucky_cluck");
 	public static final SoundEvent CLUCKY_MOAN = register("clucky_moan");
+  public static final SoundEvent RUPERT_PURR = register("rupert_purr");
 
 	public static void init() {
 	}
