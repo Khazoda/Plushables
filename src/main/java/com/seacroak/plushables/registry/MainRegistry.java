@@ -35,7 +35,8 @@ public final class MainRegistry {
     plushableItemSettings);
   public static final DragonBlock DRAGON_PLUSHABLE = register("dragon_plushable", new DragonBlock(),
     plushableItemSettings);
-
+  public static final RaptorBlock RAPTOR_PLUSHABLE = register("raptor_plushable", new RaptorBlock(),
+    plushableItemSettings);
   // Items
 	public static final Item HEART_OF_GOLD = register("heart_of_gold");
   public static final Item POWERED_HEART = register("powered_heart");
