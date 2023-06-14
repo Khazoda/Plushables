@@ -15,6 +15,9 @@ public final class MainRegistry {
 	public static final BuilderBlock BUILDER_BLOCK = register("builder_block", new BuilderBlock());
 	public static final CluckyBlock CLUCKY_BLOCK = register("clucky_plushable", new CluckyBlock(),
 			plushableItemSettings);
+  public static final RupertBlock RUPERT_BLOCK = register("rupert_box", new RupertBlock(),
+    plushableItemSettings);
+
 
 	// Simple Plushables
 	public static final PenguinBlock PENGUIN_PLUSHABLE = register("penguin_plushable", new PenguinBlock(),
@@ -37,6 +40,7 @@ public final class MainRegistry {
     plushableItemSettings);
   public static final RaptorBlock RAPTOR_PLUSHABLE = register("raptor_plushable", new RaptorBlock(),
     plushableItemSettings);
+
   // Items
 	public static final Item HEART_OF_GOLD = register("heart_of_gold");
   public static final Item POWERED_HEART = register("powered_heart");

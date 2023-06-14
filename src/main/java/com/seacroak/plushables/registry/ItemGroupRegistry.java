@@ -26,6 +26,8 @@ public class ItemGroupRegistry {
         entries.add(new ItemStack(MainRegistry.UNICORN_PLUSHABLE));
         entries.add(new ItemStack(MainRegistry.DRAGON_PLUSHABLE));
         entries.add(new ItemStack(MainRegistry.RAPTOR_PLUSHABLE));
+        entries.add(new ItemStack(MainRegistry.RUPERT_BLOCK));
+
 
       }).build();
   }

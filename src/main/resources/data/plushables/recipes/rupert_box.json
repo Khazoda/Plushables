@@ -1,0 +1,18 @@
+{
+  "type": "plushables:builder",
+  "ingredients": [
+    {
+      "tag": "minecraft:fishes"
+    },
+    {
+      "item": "minecraft:black_wool"
+    },
+    {
+      "item": "plushables:powered_heart"
+    }
+  ],
+  "output": {
+    "item": "plushables:rupert_box",
+    "count": 1
+  }
+}

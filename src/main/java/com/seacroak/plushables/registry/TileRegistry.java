@@ -4,6 +4,7 @@ import com.seacroak.plushables.PlushablesMod;
 import com.seacroak.plushables.block.tile.BuilderTileEntity;
 import com.seacroak.plushables.block.tile.CluckyTileEntity;
 
+import com.seacroak.plushables.block.tile.RupertTileEntity;
 import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.registry.Registries;
@@ -33,4 +34,9 @@ public final class TileRegistry {
 			Registries.BLOCK_ENTITY_TYPE, PlushablesMod.MOD_ID + ":clucky_tile",
 			FabricBlockEntityTypeBuilder.create(CluckyTileEntity::new,
 					MainRegistry.CLUCKY_BLOCK).build(null));
+
+  public static final BlockEntityType<RupertTileEntity> RUPERT_TILE = Registry.register(
+    Registries.BLOCK_ENTITY_TYPE, PlushablesMod.MOD_ID + ":rupert_tile",
+    FabricBlockEntityTypeBuilder.create(RupertTileEntity::new,
+      MainRegistry.RUPERT_BLOCK).build(null));
 }
