@@ -8,9 +8,6 @@
   "clucky_cluck": {
     "sounds": ["plushables:nadia_cluck"]
   },
-  "clucky_moan": {
-    "sounds": ["plushables:simon_cluck"]
-  },
   "rupert_purr": {
     "sounds": ["plushables:rupert_purr"]
   }

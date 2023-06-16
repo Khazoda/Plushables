@@ -7,7 +7,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "plushables:dragon_plushable"
+          "name": "plushables:whelpling_plushable"
         }
       ],
       "conditions": [

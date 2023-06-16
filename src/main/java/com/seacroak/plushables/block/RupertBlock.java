@@ -27,7 +27,6 @@ public class RupertBlock extends AnimatronicPlushable {
   @Override
   public ActionResult onUse(BlockState state, World world, BlockPos pos,
                             PlayerEntity player, Hand hand, BlockHitResult hit) {
-
     // Injects superclass method
     super.onUse(state, world, pos, player, hand, hit);
     if (world.isClient) {

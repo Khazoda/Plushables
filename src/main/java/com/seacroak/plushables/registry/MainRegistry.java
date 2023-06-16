@@ -17,6 +17,8 @@ public final class MainRegistry {
 			plushableItemSettings);
   public static final RupertBlock RUPERT_BLOCK = register("rupert_plushable", new RupertBlock(),
     plushableItemSettings);
+  public static final DragonBlock DRAGON_BLOCK = register("dragon_plushable", new DragonBlock(),
+    plushableItemSettings);
 
 
 	// Simple Plushables
@@ -36,7 +38,7 @@ public final class MainRegistry {
     plushableItemSettings);
   public static final UnicornBlock UNICORN_PLUSHABLE = register("unicorn_plushable", new UnicornBlock(),
     plushableItemSettings);
-  public static final DragonBlock DRAGON_PLUSHABLE = register("dragon_plushable", new DragonBlock(),
+  public static final WhelplingBlock WHELPLING_PLUSHABLE = register("whelpling_plushable", new WhelplingBlock(),
     plushableItemSettings);
   public static final RaptorBlock RAPTOR_PLUSHABLE = register("raptor_plushable", new RaptorBlock(),
     plushableItemSettings);
