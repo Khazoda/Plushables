@@ -28,6 +28,8 @@ public class ItemGroupRegistry {
         entries.add(new ItemStack(MainRegistry.RAPTOR_PLUSHABLE));
         entries.add(new ItemStack(MainRegistry.RUPERT_BLOCK));
         entries.add(new ItemStack(MainRegistry.DRAGON_BLOCK));
+        entries.add(new ItemStack(MainRegistry.WIZARD_PLUSHABLE));
+
 
       }).build();
   }
