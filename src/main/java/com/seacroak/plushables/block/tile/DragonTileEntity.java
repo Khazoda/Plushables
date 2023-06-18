@@ -38,7 +38,7 @@ public class DragonTileEntity extends BlockEntity implements GeoBlockEntity {
 
 	private <E extends BlockEntity & GeoAnimatable> PlayState cluckyIdlePredicate(AnimationState<E> event) {
 		AnimationController<?> controller = event.getController();
-		controller.setAnimation(RawAnimation.begin().thenPlay("animation.chicken.wiggle"));
+		controller.setAnimation(RawAnimation.begin().thenPlay("animation.dragon.flap"));
 		return PlayState.CONTINUE;
 	}
 
@@ -60,7 +60,7 @@ public class DragonTileEntity extends BlockEntity implements GeoBlockEntity {
 		// controller.transitionLengthTicks = 0;
 
 		if (shouldLook) {
-			lookController.setAnimation(RawAnimation.begin().thenPlay("animation.chicken.look"));
+			lookController.setAnimation(RawAnimation.begin().thenPlay("animation.dragon.scratch"));
 			if (lookController.getAnimationState() == AnimationController.State.STOPPED) {
 				shouldLook = false;
 			}

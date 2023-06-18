@@ -21,7 +21,7 @@ public class DragonModel extends GeoModel<DragonTileEntity> {
 
 	@Override
 	public Identifier getTextureResource(DragonTileEntity entity) {
-		return GenericUtils.ID("textures/block/dragon_texture.png");
+		return GenericUtils.ID("textures/block/lightfury_texture.png");
 	}
 
 	@Override
