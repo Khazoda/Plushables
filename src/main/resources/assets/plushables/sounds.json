@@ -10,5 +10,8 @@
   },
   "rupert_purr": {
     "sounds": ["plushables:rupert_purr"]
+  },
+  "swmg": {
+    "sounds": ["plushables:swmg"]
   }
 }
