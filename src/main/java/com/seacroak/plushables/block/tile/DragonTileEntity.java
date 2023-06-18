@@ -16,75 +16,69 @@ import software.bernie.geckolib.util.GeckoLibUtil;
 
 public class DragonTileEntity extends BlockEntity implements GeoBlockEntity {
 
-	public boolean shouldLook;
-	public AnimationController<?> lookController;
+  public boolean shouldLook;
+  public AnimationController<?> lookController;
+  private int variant = 0;
 
-	public DragonTileEntity(BlockPos pos, BlockState state) {
-		super(TileRegistry.DRAGON_TILE, pos, state);
-		shouldLook = false;
-		lookController = null;
-	}
+  public DragonTileEntity(BlockPos pos, BlockState state) {
+    super(TileRegistry.DRAGON_TILE, pos, state);
+    shouldLook = false;
+    lookController = null;
+  }
 
-	public void setShouldLook(boolean val) {
-		this.shouldLook = val;
-	}
 
-	public boolean getShouldLook() {
-		return this.shouldLook;
-	}
+  public void setShouldLook(boolean val) {
+    this.shouldLook = val;
+  }
 
-	// Animation Code
-	private final AnimatableInstanceCache instanceCache = GeckoLibUtil.createInstanceCache(this);
+  public boolean getShouldLook() {
+    return this.shouldLook;
+  }
 
-	private <E extends BlockEntity & GeoAnimatable> PlayState cluckyIdlePredicate(AnimationState<E> event) {
-		AnimationController<?> controller = event.getController();
-		controller.setAnimation(RawAnimation.begin().thenPlay("animation.dragon.flap"));
-		return PlayState.CONTINUE;
-	}
+  // Animation Code
+  private final AnimatableInstanceCache instanceCache = GeckoLibUtil.createInstanceCache(this);
 
-	// private <E extends BlockEntity & GeoAnimatable> PlayState
-	// cubePredicateSpin(AnimationEvent<E> event) {
-	// AnimationController<?> controller = event.getController();
-	// controller.transitionLengthTicks = 0;
+  private <E extends BlockEntity & GeoAnimatable> PlayState dragonIdlePredicate(AnimationState<E> event) {
+    AnimationController<?> controller = event.getController();
+    controller.setAnimation(RawAnimation.begin().thenPlay("animation.dragon.flap"));
+    return PlayState.CONTINUE;
+  }
 
-	// controller.setAnimation(new
-	// AnimationBuilder().addAnimation("animation.chicken.look"));
-	// // controller.markNeedsReload();
-	// // .addAnimation("Botarium.anim.idle", true));
+  public void setVariant(int i) {
+    this.variant = i;
+  }
 
-	// return PlayState.CONTINUE;
-	// }
+  public int getVariant() {
+    return this.variant;
+  }
 
-	private <E extends BlockEntity & GeoAnimatable> PlayState cluckyLookPredicate(AnimationState<E> event) {
-		lookController = event.getController();
-		// controller.transitionLengthTicks = 0;
+  private <E extends BlockEntity & GeoAnimatable> PlayState dragonLookPredicate(AnimationState<E> event) {
+    lookController = event.getController();
+    // controller.transitionLengthTicks = 0;
 
-		if (shouldLook) {
-			lookController.setAnimation(RawAnimation.begin().thenPlay("animation.dragon.scratch"));
-			if (lookController.getAnimationState() == AnimationController.State.STOPPED) {
-				shouldLook = false;
-			}
-			// .addAnimation("fertilizer.animation.idle", true));
-		} else {
-			// lookController.setAnimation(new AnimationBuilder());
-			lookController.forceAnimationReset();
-			// .addAnimation("Botarium.anim.idle", true));
-		}
-		return PlayState.CONTINUE;
-	}
+    if (shouldLook) {
+      lookController.setAnimation(RawAnimation.begin().thenPlay("animation.dragon.scratch"));
+      if (lookController.getAnimationState() == AnimationController.State.STOPPED) {
+        shouldLook = false;
+      }
+    } else {
+      lookController.forceAnimationReset();
+    }
+    return PlayState.CONTINUE;
+  }
 
-	@Override
-	public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
-		controllers.add(
-				new AnimationController<DragonTileEntity>(this, "controller", 0, this::cluckyIdlePredicate));
-		controllers.add(
-				new AnimationController<DragonTileEntity>(this, "clucky_look_controller", 0,
-						this::cluckyLookPredicate));
-	}
+  @Override
+  public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
+    controllers.add(
+      new AnimationController<DragonTileEntity>(this, "controller", 0, this::dragonIdlePredicate));
+    controllers.add(
+      new AnimationController<DragonTileEntity>(this, "clucky_look_controller", 0,
+        this::dragonLookPredicate));
+  }
 
-	@Override
-	public AnimatableInstanceCache getAnimatableInstanceCache() {
-		return this.instanceCache;
-	}
+  @Override
+  public AnimatableInstanceCache getAnimatableInstanceCache() {
+    return this.instanceCache;
+  }
 
 }

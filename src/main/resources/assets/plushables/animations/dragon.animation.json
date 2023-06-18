@@ -103,7 +103,8 @@
 			}
 		},
 		"animation.dragon.flap": {
-			"animation_length": 19,
+			"loop": true,
+			"animation_length": 18.875,
 			"bones": {
 				"RWings2": {
 					"rotation": {
@@ -226,6 +227,5 @@
 				}
 			}
 		}
-	},
-	"geckolib_format_version": 2
+	}
 }

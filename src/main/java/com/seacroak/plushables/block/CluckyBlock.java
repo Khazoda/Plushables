@@ -36,7 +36,6 @@ public class CluckyBlock extends AnimatronicPlushable {
         cluckyEntity.setShouldLook(true);
         if (cluckyEntity.getShouldLook()
           && cluckyEntity.lookController.getAnimationState() == AnimationController.State.STOPPED) {
-          System.out.println((float) randPitch.nextFloat());
           world.playSound(player, pos, SoundRegistry.CLUCKY_CLUCK, SoundCategory.BLOCKS, 0.5f,
             (float) 0.7f + randPitch.nextFloat() / 2);
         }

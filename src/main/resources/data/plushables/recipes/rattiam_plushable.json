@@ -2,7 +2,7 @@
   "type": "plushables:builder",
   "ingredients": [
     {
-      "item": "minecraft:spider_eye"
+      "item": "minecraft:wheat"
     },
     {
       "item": "minecraft:gray_wool"

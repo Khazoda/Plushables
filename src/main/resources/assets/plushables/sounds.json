@@ -13,5 +13,8 @@
   },
   "swmg": {
     "sounds": ["plushables:swmg"]
+  },
+  "lightfury": {
+    "sounds": ["plushables:lightfury"]
   }
 }
