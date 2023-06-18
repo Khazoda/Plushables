@@ -5,5 +5,7 @@
   "block.plushables.penguin_plushable": "毛绒玩具§7§l企鹅§r",
   "block.plushables.fox_plushable": "毛绒玩具§6§l狐狸§r",
   "block.plushables.froglin_plushable": "毛绒玩具§2§l青蛙§r",
-  "block.plushables.clucky_plushable": "毛绒玩具§l母鸡下蛋"
+  "block.plushables.clucky_plushable": "毛绒玩具§l母鸡下蛋",
+  "block.plushables.pig_plushable": "毛绒玩具§c§l猪",
+  "block.plushables.truffles_plushable": "毛绒玩具§c§l松露"
 }
