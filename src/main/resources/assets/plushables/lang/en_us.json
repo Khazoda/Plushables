@@ -17,6 +17,7 @@
   "block.plushables.raptor_plushable": "Plushable §9§lVelociraptor",
   "block.plushables.rupert_plushable": "Plushable §8§lRupert",
   "block.plushables.dragon_plushable": "Plushable §f§lDragon",
-  "block.plushables.wizard_plushable": "Plushable §5§lWizard"
-
+  "block.plushables.wizard_plushable": "Plushable §5§lWizard",
+  "block.plushables.goblin_plushable": "Plushable §a§lGoblin",
+  "block.plushables.beaux_plushable": "Plushable §8§lBeaux"
 }

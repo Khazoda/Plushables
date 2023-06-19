@@ -2,17 +2,17 @@
   "type": "plushables:builder",
   "ingredients": [
     {
-      "item": "minecraft:cherry_leaves"
+      "item": "minecraft:bone"
     },
     {
-      "item": "minecraft:white_wool"
+      "item": "minecraft:gray_wool"
     },
     {
       "item": "plushables:heart_of_gold"
     }
   ],
   "output": {
-    "item": "plushables:unicorn_plushable",
+    "item": "plushables:beaux_plushable",
     "count": 1
   }
 }

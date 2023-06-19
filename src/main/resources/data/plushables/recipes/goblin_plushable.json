@@ -2,17 +2,17 @@
   "type": "plushables:builder",
   "ingredients": [
     {
-      "item": "minecraft:cherry_leaves"
+      "item": "minecraft:red_mushroom"
     },
     {
-      "item": "minecraft:white_wool"
+      "item": "minecraft:lime_wool"
     },
     {
       "item": "plushables:heart_of_gold"
     }
   ],
   "output": {
-    "item": "plushables:unicorn_plushable",
+    "item": "plushables:goblin_plushable",
     "count": 1
   }
 }
