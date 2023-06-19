@@ -21,10 +21,10 @@
 
 __Required__:
 [Fabric API](https://www.modrinth.com/mod/fabric-api/versions),
-[GeckoLib](https://www.modrinth.com/mod/fabric-api/versions)
+[GeckoLib](https://www.modrinth.com/mod/geckolib/versions)
 
 __Optional__:
-[Roughly Enough Items](https://www.modrinth.com/mod/fabric-api/versions)
+[Roughly Enough Items](https://www.modrinth.com/mod/rei/versions)
 
 </p>
 <div style="min-width:100%; display:block;">
