@@ -3,11 +3,11 @@
 <br/>
 <p style="text-align: center; display: flex; justify-content: center; gap:10px;">
     <a href="https://fabricmc.net/" target="_blank"><img style="display: inline-block; position:relative;" src="https://img.shields.io/badge/mod%20loader-Fabric-brightgreen" /></a>
-     <a href="https://github.com/Khazoda/Plushables/tree/1.20.1-FABRIC" target="_blank"><img style="display: inline-block; position:relative;" src="https://img.shields.io/badge/latest%20version-1.20.1-blue" /></a>
+     <a href="https://github.com/Khazoda/Plushables/tree/1.20-FABRIC" target="_blank"><img style="display: inline-block; position:relative;" src="https://img.shields.io/badge/latest%20version-1.20-blue" /></a>
 </p>
 <p style="text-align: center; display: flex; justify-content: center; gap:10px;">
     <a href="https://github.com/Khazoda/Plushables/issues" target="_blank"><img style="display: inline-block; position:relative;" src="https://img.shields.io/github/issues/Khazoda/Plushables" /></a>
-    <a href="https://github.com/Khazoda/Plushables/tree/1.20.1-FABRIC" target="_blank"><img style="display: inline-block; position:relative;" src="https://img.shields.io/github/last-commit/Khazoda/Plushables/1.20.1-FABRIC" /></a>
+    <a href="https://github.com/Khazoda/Plushables/tree/1.20-FABRIC" target="_blank"><img style="display: inline-block; position:relative;" src="https://img.shields.io/github/last-commit/Khazoda/Plushables/1.20-FABRIC" /></a>
 </p>
 
 <p style="text-align: center; display: flex; justify-content: center; gap:10px;">
