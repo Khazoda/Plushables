@@ -18,9 +18,9 @@
 <a href="https://modrinth.com/mod/plushables" style="margin-left: 2px;margin-right: 2px">![Modrinth Downloads](https://img.shields.io/modrinth/dt/plushables?logo=modrinth)</a>
 </p>
 <p style="text-align: center; display: flex; justify-content: center; gap:10px;">
-<a href="https://modrinth.com/mod/fabric-api/versions" target="_blank"><img src="https://github.com/Khazoda/Plushables/raw/1.20-FABRIC/web_assets/download-fabric-api-button.png"></a>
-<a href="https://modrinth.com/mod/geckolib/versions" target="_blank"><img src="https://github.com/Khazoda/Plushables/raw/1.20-FABRIC/web_assets/download-geckolib-button.png"></a>
-<a href="https://modrinth.com/mod/rei/versions" target="_blank"><img src="https://github.com/Khazoda/Plushables/raw/1.20-FABRIC/web_assets/download-rei-button.png"></a>
+<a href="https://modrinth.com/mod/fabric-api/versions" target="_blank"><img src="https://github.com/Khazoda/Plushables/raw/1.20-FABRIC/web_assets/download-fabric-api-buttons.png"></a>
+<a href="https://modrinth.com/mod/geckolib/versions" target="_blank"><img src="https://github.com/Khazoda/Plushables/raw/1.20-FABRIC/web_assets/download-geckolib-buttons.png"></a>
+<a href="https://modrinth.com/mod/rei/versions" target="_blank"><img src="https://github.com/Khazoda/Plushables/raw/1.20-FABRIC/web_assets/download-rei-buttons.png"></a>
 
 </p>
 <div style="min-width:100%; display:block;">
