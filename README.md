@@ -18,8 +18,8 @@
 <a href="https://modrinth.com/mod/plushables" style="margin-left: 2px;margin-right: 2px">![Modrinth Downloads](https://img.shields.io/modrinth/dt/plushables?logo=modrinth)</a>
 </p>
 <p style="text-align: center; display: flex; justify-content: center; gap:10px;">
-<a href="https://www.curseforge.com/minecraft/mc-mods/fabric-api/files" target="_blank"><img src="https://github.com/Khazoda/Plushables/raw/1.19-FABRIC/web_assets/button_fabric.png"></a>
-<a href="https://www.curseforge.com/minecraft/mc-mods/geckolib/files" target="_blank"><img src="https://github.com/Khazoda/Plushables/raw/1.19-FABRIC/web_assets/button_geckolib.png"></a>
+<a href="https://modrinth.com/mod/fabric-api/versions" target="_blank"><img src="https://github.com/Khazoda/Plushables/raw/1.20-FABRIC/web_assets/button_fabric.png"></a>
+<a href="https://modrinth.com/mod/geckolib/versions" target="_blank"><img src="https://github.com/Khazoda/Plushables/raw/1.20-FABRIC/web_assets/button_geckolib.png"></a>
 </p>
 <div style="min-width:100%; display:block;">
 <img src="https://raw.githubusercontent.com/Khazoda/Plushables/1.20-FABRIC/web_assets/information-1.0.0.png" alt="Plushables Information" />
