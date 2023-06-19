@@ -15,6 +15,11 @@ public final class MainRegistry {
 	public static final BuilderBlock BUILDER_BLOCK = register("builder_block", new BuilderBlock());
 	public static final CluckyBlock CLUCKY_BLOCK = register("clucky_plushable", new CluckyBlock(),
 			plushableItemSettings);
+  public static final RupertBlock RUPERT_BLOCK = register("rupert_plushable", new RupertBlock(),
+    plushableItemSettings);
+  public static final DragonBlock DRAGON_BLOCK = register("dragon_plushable", new DragonBlock(),
+    plushableItemSettings);
+
 
 	// Simple Plushables
 	public static final PenguinBlock PENGUIN_PLUSHABLE = register("penguin_plushable", new PenguinBlock(),
@@ -25,9 +30,28 @@ public final class MainRegistry {
 	public static final PigBlock PIG_PLUSHABLE = register("pig_plushable", new PigBlock(), plushableItemSettings);
 	public static final TrufflesBlock TRUFFLES_PLUSHABLE = register("truffles_plushable", new TrufflesBlock(),
 			plushableItemSettings);
+  public static final DjungelskogBlock DJUNGELSKOG_PLUSHABLE = register("djungelskog_plushable", new DjungelskogBlock(),
+    plushableItemSettings);
+  public static final RattiamBlock RATTIAM_PLUSHABLE = register("rattiam_plushable", new RattiamBlock(),
+    plushableItemSettings);
+  public static final TriceratopsBlock TRICERATOPS_PLUSHABLE = register("triceratops_plushable", new TriceratopsBlock(),
+    plushableItemSettings);
+  public static final UnicornBlock UNICORN_PLUSHABLE = register("unicorn_plushable", new UnicornBlock(),
+    plushableItemSettings);
+  public static final WhelplingBlock WHELPLING_PLUSHABLE = register("whelpling_plushable", new WhelplingBlock(),
+    plushableItemSettings);
+  public static final RaptorBlock RAPTOR_PLUSHABLE = register("raptor_plushable", new RaptorBlock(),
+    plushableItemSettings);
+  public static final WizardBlock WIZARD_PLUSHABLE = register("wizard_plushable", new WizardBlock(),
+    plushableItemSettings);
+  public static final BeauxBlock BEAUX_PLUSHABLE = register("beaux_plushable", new BeauxBlock(),
+    plushableItemSettings);
+  public static final GoblinBlock GOBLIN_PLUSHABLE = register("goblin_plushable", new GoblinBlock(),
+    plushableItemSettings);
 
-	// Items
+  // Items
 	public static final Item HEART_OF_GOLD = register("heart_of_gold");
+  public static final Item POWERED_HEART = register("powered_heart");
 
 	public static void init() {
 	}

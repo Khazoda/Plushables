@@ -6,9 +6,6 @@ import net.minecraft.client.render.RenderLayer;
 import net.minecraft.util.Identifier;
 import software.bernie.geckolib.model.GeoModel;
 
-/**
- * @author VoutVouniern Copyright (c) 03.06.2022 Developed by VoutVouniern
- */
 public class BuilderModel extends GeoModel<BuilderTileEntity> {
 
     @Override

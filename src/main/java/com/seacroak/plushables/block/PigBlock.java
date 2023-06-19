@@ -133,12 +133,4 @@ public class PigBlock extends SimplePlushable {
   protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
     builder.add(FACING);
   }
-
-  // @Override
-  // public void appendTooltip(ItemStack stack, @Nullable BlockView world,
-  // List<Text> tooltip, TooltipContext options) {
-  // tooltip.add(Text.translatable("Plushables").formatted(Formatting.ITALIC).formatted(Formatting.GREEN));
-  // super.appendTooltip(stack, world, tooltip, options);
-  // }
-
 }
