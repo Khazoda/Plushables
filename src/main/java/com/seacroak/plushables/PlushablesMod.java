@@ -1,6 +1,8 @@
 package com.seacroak.plushables;
 
 import com.mojang.logging.LogUtils;
+import com.seacroak.plushables.registry.ItemGroupRegistry;
+import com.seacroak.plushables.registry.MainRegistry;
 import net.minecraft.client.Minecraft;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.level.block.Blocks;
@@ -32,6 +34,10 @@ public class PlushablesMod
     public PlushablesMod()
     {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
+
+        MainRegistry.register(modEventBus);
+
+        ItemGroupRegistry.register(modEventBus);
 
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);

@@ -1,0 +1,20 @@
+{
+  "builder_ding": {
+    "sounds": ["plushables:builder_ding"]
+  },
+  "plushable_pop": {
+    "sounds": ["plushables:plop"]
+  },
+  "clucky_cluck": {
+    "sounds": ["plushables:nadia_cluck"]
+  },
+  "rupert_purr": {
+    "sounds": ["plushables:rupert_purr"]
+  },
+  "swmg": {
+    "sounds": ["plushables:swmg"]
+  },
+  "lightfury": {
+    "sounds": ["plushables:lightfury"]
+  }
+}

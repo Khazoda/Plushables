@@ -1,0 +1,18 @@
+{
+  "type": "plushables:builder",
+  "ingredients": [
+    {
+      "item": "minecraft:blaze_rod"
+    },
+    {
+      "item": "minecraft:white_wool"
+    },
+    {
+      "item": "plushables:powered_heart"
+    }
+  ],
+  "output": {
+    "item": "plushables:dragon_plushable",
+    "count": 1
+  }
+}

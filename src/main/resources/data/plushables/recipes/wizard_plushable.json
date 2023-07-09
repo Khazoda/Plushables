@@ -1,0 +1,18 @@
+{
+  "type": "plushables:builder",
+  "ingredients": [
+    {
+      "item": "minecraft:gold_ingot"
+    },
+    {
+      "item": "minecraft:purple_wool"
+    },
+    {
+      "item": "plushables:heart_of_gold"
+    }
+  ],
+  "output": {
+    "item": "plushables:wizard_plushable",
+    "count": 1
+  }
+}
