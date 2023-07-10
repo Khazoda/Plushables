@@ -9,13 +9,8 @@ import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
 public class PenguinBlock extends SimplePlushable {
-
-//  public static final DirectionProperty FACING = HorizontalDirectionalBlock.FACING;
-
   public PenguinBlock() {
     super();
-//    this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH));
-
   }
 
   @Override
