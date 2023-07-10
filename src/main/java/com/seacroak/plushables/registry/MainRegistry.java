@@ -22,10 +22,7 @@ public class MainRegistry {
   // Complex Plushables
 
   //  Simple Plushables
-  public static final RegistryObject<Block> PENGUIN_PLUSHABLE = registerBlock("penguin_plushable",
-      () -> new PenguinBlock(BlockBehaviour.Properties.copy(Blocks.WHITE_WOOL)
-          .strength(0.7f)
-          .requiresCorrectToolForDrops()));
+  public static final RegistryObject<Block> PENGUIN_PLUSHABLE = registerBlock("penguin_plushable", () -> new PenguinBlock());
 
   // Item
   public static final RegistryObject<Item> HEART_OF_GOLD = ITEMS.register("heart_of_gold", () -> new Item(new Item.Properties()));
