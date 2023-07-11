@@ -5,6 +5,8 @@ import com.seacroak.plushables.registry.ItemGroupRegistry;
 import com.seacroak.plushables.registry.MainRegistry;
 import com.seacroak.plushables.registry.SoundRegistry;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.ItemBlockRenderTypes;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.api.distmarker.Dist;
@@ -21,6 +23,8 @@ import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.ForgeRegistries;
 import org.slf4j.Logger;
+
+import static com.seacroak.plushables.registry.MainRegistry.PIG_PLUSHABLE;
 
 // The value here should match an entry in the META-INF/mods.toml file
 @Mod(PlushablesMod.MOD_ID)
@@ -66,7 +70,7 @@ public class PlushablesMod
     public void onServerStarting(ServerStartingEvent event)
     {
         // Do something when the server starts
-        LOGGER.info("HELLO from server starting");
+        LOGGER.info("Plushables has loaded on the server!");
     }
 
     // You can use EventBusSubscriber to automatically register all static methods in the class annotated with @SubscribeEvent
@@ -76,9 +80,7 @@ public class PlushablesMod
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event)
         {
-            // Some client setup code
-            LOGGER.info("HELLO FROM CLIENT SETUP");
-            LOGGER.info("MINECRAFT NAME >> {}", Minecraft.getInstance().getUser().getName());
+            LOGGER.info("Plushables has loaded on the client!");
         }
     }
 }

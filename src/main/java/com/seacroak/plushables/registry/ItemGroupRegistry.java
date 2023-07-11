@@ -20,6 +20,19 @@ public class ItemGroupRegistry {
             pOutput.accept(MainRegistry.HEART_OF_GOLD.get());
             pOutput.accept(MainRegistry.POWERED_HEART.get());
             pOutput.accept(MainRegistry.PENGUIN_PLUSHABLE.get());
+            pOutput.accept(MainRegistry.FROGLIN_PLUSHABLE.get());
+            pOutput.accept(MainRegistry.FOX_PLUSHABLE.get());
+            pOutput.accept(MainRegistry.PIG_PLUSHABLE.get());
+            pOutput.accept(MainRegistry.TRUFFLES_PLUSHABLE.get());
+            pOutput.accept(MainRegistry.DJUNGELSKOG_PLUSHABLE.get());
+            pOutput.accept(MainRegistry.RATTIAM_PLUSHABLE.get());
+            pOutput.accept(MainRegistry.TRICERATOPS_PLUSHABLE.get());
+            pOutput.accept(MainRegistry.UNICORN_PLUSHABLE.get());
+            pOutput.accept(MainRegistry.WHELPLING_PLUSHABLE.get());
+            pOutput.accept(MainRegistry.RAPTOR_PLUSHABLE.get());
+            pOutput.accept(MainRegistry.WIZARD_PLUSHABLE.get());
+            pOutput.accept(MainRegistry.BEAUX_PLUSHABLE.get());
+            pOutput.accept(MainRegistry.GOBLIN_PLUSHABLE.get());
 
           })
           .build());
