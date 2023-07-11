@@ -1,10 +1,11 @@
 package com.seacroak.plushables.block;
 
 import com.seacroak.plushables.registry.SoundRegistry;
+import com.seacroak.plushables.registry.TileRegistry;
+import com.seacroak.plushables.util.HorizontalDirectionalBaseEntityBlock;
 import com.seacroak.plushables.util.VoxelShapeUtils;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.core.NonNullList;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -16,7 +17,11 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.RenderShape;
+import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
@@ -25,19 +30,28 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.Random;
 
-public abstract class SimplePlushable extends HorizontalDirectionalBlock {
-  public static Random rand;
+import static com.seacroak.plushables.util.HorizontalDirectionalBaseEntityBlock.HorizontalDirectionalBlock.FACING;
 
-  public SimplePlushable() {
+public abstract class AnimatronicPlushable extends HorizontalDirectionalBaseEntityBlock {
+  //  Fields
+  public static Random rand;
+  public BlockEntity blockEntityReference;
+
+  //  Constructor
+  public AnimatronicPlushable() {
     super(BlockBehaviour.Properties
         .copy(Blocks.WHITE_WOOL)
         .sound(SoundType.WOOL)
         .strength(0.7f)
-        .requiresCorrectToolForDrops());
+        .requiresCorrectToolForDrops()
+        .noOcclusion());
+
     rand = new Random();
+    blockEntityReference = null;
   }
 
   @Override
@@ -67,8 +81,6 @@ public abstract class SimplePlushable extends HorizontalDirectionalBlock {
     return InteractionResult.PASS;
   }
 
-
-
   @Override
   public boolean onDestroyedByPlayer(BlockState state, Level level, BlockPos pos, Player player, boolean willHarvest, FluidState fluid) {
     if (level.isClientSide) {
@@ -94,9 +106,9 @@ public abstract class SimplePlushable extends HorizontalDirectionalBlock {
 
   final VoxelShape blockShape = buildShape();
   final VoxelShape[] blockShapes = {blockShape,
-      VoxelShapeUtils.rotateShape(Direction.NORTH, Direction.EAST, blockShape),
-      VoxelShapeUtils.rotateShape(Direction.NORTH, Direction.SOUTH, blockShape),
-      VoxelShapeUtils.rotateShape(Direction.NORTH, Direction.WEST, blockShape)};
+    VoxelShapeUtils.rotateShape(Direction.NORTH, Direction.EAST, blockShape),
+    VoxelShapeUtils.rotateShape(Direction.NORTH, Direction.SOUTH, blockShape),
+    VoxelShapeUtils.rotateShape(Direction.NORTH, Direction.WEST, blockShape)};
 
   @Override
   public VoxelShape getShape(BlockState pState, BlockGetter pLevel, BlockPos pPos, CollisionContext pContext) {
@@ -115,14 +127,23 @@ public abstract class SimplePlushable extends HorizontalDirectionalBlock {
     }
   }
 
+  @Nullable
+  @Override
+  public BlockEntity newBlockEntity(BlockPos pPos, BlockState pState) {
+    return TileRegistry.CLUCKY_TILE.get().create(pPos, pState);
+  }
+
+  @Override
   public RenderShape getRenderShape(BlockState pState) {
-    return RenderShape.MODEL;
+    return RenderShape.ENTITYBLOCK_ANIMATED;
   }
 
   protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> pBuilder) {
     pBuilder.add(FACING);
   }
 
+  @Nullable
+  @Override
   public BlockState getStateForPlacement(BlockPlaceContext pContext) {
     return this.defaultBlockState().setValue(FACING, pContext.getHorizontalDirection().getOpposite());
   }

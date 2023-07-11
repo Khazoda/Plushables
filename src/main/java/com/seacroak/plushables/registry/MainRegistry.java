@@ -18,8 +18,11 @@ public class MainRegistry {
   public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, PlushablesMod.MOD_ID);
   public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, PlushablesMod.MOD_ID);
 
-
   // Complex Plushables
+  public static final RegistryObject<Block> BUILDER_BLOCK = registerBlock("builder_block",  () -> new BuilderBlock());
+  public static final RegistryObject<Block> CLUCKY_BLOCK = registerBlock("clucky_plushable",  () -> new CluckyBlock());
+  public static final RegistryObject<Block> RUPERT_BLOCK = registerBlock("rupert_plushable",  () -> new RupertBlock());
+  public static final RegistryObject<Block> DRAGON_BLOCK = registerBlock("dragon_plushable",  () -> new DragonBlock());
 
   //  Simple Plushables
   public static final RegistryObject<Block> PENGUIN_PLUSHABLE = registerBlock("penguin_plushable", () -> new PenguinBlock());

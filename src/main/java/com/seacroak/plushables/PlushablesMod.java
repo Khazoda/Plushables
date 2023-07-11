@@ -1,10 +1,10 @@
 package com.seacroak.plushables;
 
 import com.mojang.logging.LogUtils;
-import com.seacroak.plushables.registry.ItemGroupRegistry;
-import com.seacroak.plushables.registry.MainRegistry;
-import com.seacroak.plushables.registry.SoundRegistry;
+import com.seacroak.plushables.gui.BuilderScreen;
+import com.seacroak.plushables.registry.*;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.world.item.CreativeModeTabs;
@@ -43,6 +43,10 @@ public class PlushablesMod
         MainRegistry.register(modEventBus);
         ItemGroupRegistry.register(modEventBus);
         SoundRegistry.register(modEventBus);
+        TileRegistry.register(modEventBus);
+        ScreenRegistry.register(modEventBus);
+        RecipeRegistry.register(modEventBus);
+
 
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);
@@ -80,6 +84,8 @@ public class PlushablesMod
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event)
         {
+            MenuScreens.register(ScreenRegistry.BUILDER_SCREEN_HANDLER.get(), BuilderScreen::new);
+
             LOGGER.info("Plushables has loaded on the client!");
         }
     }
