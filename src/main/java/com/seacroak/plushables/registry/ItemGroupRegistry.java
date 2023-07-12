@@ -19,9 +19,11 @@ public class ItemGroupRegistry {
           .displayItems((pParameters, pOutput) -> {
             pOutput.accept(MainRegistry.HEART_OF_GOLD.get());
             pOutput.accept(MainRegistry.POWERED_HEART.get());
+            pOutput.accept(MainRegistry.BUILDER_BLOCK.get());
             pOutput.accept(MainRegistry.PENGUIN_PLUSHABLE.get());
-            pOutput.accept(MainRegistry.FROGLIN_PLUSHABLE.get());
             pOutput.accept(MainRegistry.FOX_PLUSHABLE.get());
+            pOutput.accept(MainRegistry.FROGLIN_PLUSHABLE.get());
+            pOutput.accept(MainRegistry.CLUCKY_BLOCK.get());
             pOutput.accept(MainRegistry.PIG_PLUSHABLE.get());
             pOutput.accept(MainRegistry.TRUFFLES_PLUSHABLE.get());
             pOutput.accept(MainRegistry.DJUNGELSKOG_PLUSHABLE.get());
@@ -30,10 +32,11 @@ public class ItemGroupRegistry {
             pOutput.accept(MainRegistry.UNICORN_PLUSHABLE.get());
             pOutput.accept(MainRegistry.WHELPLING_PLUSHABLE.get());
             pOutput.accept(MainRegistry.RAPTOR_PLUSHABLE.get());
+            pOutput.accept(MainRegistry.RUPERT_BLOCK.get());
+            pOutput.accept(MainRegistry.DRAGON_BLOCK.get());
             pOutput.accept(MainRegistry.WIZARD_PLUSHABLE.get());
             pOutput.accept(MainRegistry.BEAUX_PLUSHABLE.get());
             pOutput.accept(MainRegistry.GOBLIN_PLUSHABLE.get());
-
           })
           .build());
 
