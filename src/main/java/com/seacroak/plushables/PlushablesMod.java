@@ -50,6 +50,7 @@ public class PlushablesMod {
     SoundRegistry.register(modEventBus);
     TileRegistry.register(modEventBus);
     RecipeRegistry.register(modEventBus);
+    ScreenRegistry.register(modEventBus);
 
 
     GeckoLib.initialize();
@@ -86,7 +87,6 @@ public class PlushablesMod {
     public static void onClientSetup(FMLClientSetupEvent event) {
       IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
       // Screens
-      ScreenRegistry.register(modEventBus);
       MenuScreens.register(ScreenRegistry.BUILDER_SCREEN_HANDLER.get(), BuilderScreen::new);
       // Block Entities (Tile Entities)
       TileRegistryClient.initClient();

@@ -25,6 +25,6 @@ public class RupertModel extends GeoModel<RupertTileEntity> {
 
 	@Override
 	public RenderType getRenderType(RupertTileEntity animatable, ResourceLocation texture) {
-		return RenderType.entityTranslucent(getTextureResource(animatable));
+		return RenderType.entityCutout(getTextureResource(animatable));
 	}
 }

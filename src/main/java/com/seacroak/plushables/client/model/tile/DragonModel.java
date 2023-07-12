@@ -29,6 +29,6 @@ public class DragonModel extends GeoModel<DragonTileEntity> {
 
 	@Override
 	public RenderType getRenderType(DragonTileEntity animatable, ResourceLocation texture) {
-		return RenderType.entityTranslucent(getTextureResource(animatable));
+		return RenderType.entityCutout(getTextureResource(animatable));
 	}
 }

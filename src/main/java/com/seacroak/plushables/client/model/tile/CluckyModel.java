@@ -25,6 +25,6 @@ public class CluckyModel extends GeoModel<CluckyTileEntity> {
 
 	@Override
 	public RenderType getRenderType(CluckyTileEntity animatable, ResourceLocation texture) {
-		return RenderType.entityTranslucent(getTextureResource(animatable));
+		return RenderType.entityCutout(getTextureResource(animatable));
 	}
 }
