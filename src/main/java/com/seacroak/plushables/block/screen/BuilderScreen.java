@@ -1,7 +1,6 @@
 package com.seacroak.plushables.block.screen;
 
 import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.blaze3d.vertex.PoseStack;
 import com.seacroak.plushables.PlushablesMod;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
@@ -17,11 +16,17 @@ public class BuilderScreen extends AbstractContainerScreen<BuilderScreenHandler>
 
   public BuilderScreen(BuilderScreenHandler menu, Inventory inventory, Component component) {
     super(menu, inventory, component);
+    /* Move "Inventory" label to the right*/
+    this.imageHeight = 168;
+    this.inventoryLabelY = this.imageHeight - 93;
+    this.inventoryLabelX = this.imageWidth - 58;
   }
 
   @Override
   protected void init() {
     super.init();
+    /* Center Block Name Title */
+    titleLabelX = (imageWidth - font.width(title)) / 2;
   }
 
   @Override
@@ -40,18 +45,17 @@ public class BuilderScreen extends AbstractContainerScreen<BuilderScreenHandler>
     int y = (height - imageHeight) / 2;
   }
 
-
   private void renderProgressArrow(GuiGraphics pGuiGraphics, int x, int y) {
     if(menu.isCrafting()) {
-      pGuiGraphics.blit(TEXTURE,x+72, y, 177, -20, menu.getScaledProgress(),this.imageHeight);
+      pGuiGraphics.blit(TEXTURE,x+31, y+36, 1, 169, menu.getScaledProgress(),18);
     }
   }
 
   @Override
   public void render(GuiGraphics pGuiGraphics, int pMouseX, int pMouseY, float pPartialTick) {
-    renderBackground(pGuiGraphics);
+    this.renderBackground(pGuiGraphics);
     super.render(pGuiGraphics, pMouseX, pMouseY, pPartialTick);
-    renderTooltip(pGuiGraphics, pMouseX, pMouseY);
+    this.renderTooltip(pGuiGraphics, pMouseX, pMouseY);
   }
 
 }

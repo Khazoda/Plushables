@@ -188,7 +188,7 @@ public class NewBuilderTileEntity extends BlockEntity implements MenuProvider, G
     AnimationController<?> controller = event.getController();
     controller.transitionLength(0);
 
-    controller.setAnimation(RawAnimation.begin().thenPlay("animation.builder.cube_spin"));
+    controller.setAnimation(RawAnimation.begin().thenPlay("animation.builder.idle"));
     // controller.markNeedsReload();
     // .addAnimation("Botarium.anim.idle", true));
 
@@ -200,7 +200,7 @@ public class NewBuilderTileEntity extends BlockEntity implements MenuProvider, G
     // controller.transitionLengthTicks = 0;
 
     if (shouldHop) {
-      controller.setAnimation(RawAnimation.begin().thenPlay("animation.builder.edgecubes_jump"));
+      controller.setAnimation(RawAnimation.begin().thenPlay("animation.builder.building"));
       if (controller.getAnimationState() == AnimationController.State.STOPPED) {
         shouldHop = false;
       }

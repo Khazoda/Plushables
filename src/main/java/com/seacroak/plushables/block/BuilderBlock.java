@@ -58,7 +58,7 @@ public class BuilderBlock extends BaseEntityBlock {
   /* BLOCK ENTITY */
   @Override
   public RenderShape getRenderShape(BlockState pState) {
-    return RenderShape.MODEL;
+    return RenderShape.INVISIBLE;
   }
 
   @Override

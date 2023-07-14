@@ -5,6 +5,8 @@ import com.seacroak.plushables.client.renderer.tile.BuilderTileRenderer;
 import com.seacroak.plushables.client.renderer.tile.CluckyTileRenderer;
 import com.seacroak.plushables.client.renderer.tile.DragonTileRenderer;
 import com.seacroak.plushables.client.renderer.tile.RupertTileRenderer;
+import net.minecraft.client.renderer.ItemBlockRenderTypes;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;

@@ -33,10 +33,10 @@ public class BuilderScreenHandler extends AbstractContainerMenu {
     addPlayerHotbar(inv);
 
     this.blockEntity.getCapability(ForgeCapabilities.ITEM_HANDLER).ifPresent(handler -> {
-      this.addSlot(new SlotItemHandler(handler, 0, 55, 18));    // Top Slot
-      this.addSlot(new SlotItemHandler(handler, 1, 55, 54));    // Bottom Slot
-      this.addSlot(new SlotItemHandler(handler, 2, 84, 36));    // Heart of Gold Slot
-      this.addSlot(new SlotItemHandler(handler, 3, 116, 36));    // Output Slot
+      this.addSlot(new SlotItemHandler(handler, 0, 33, 22));    // Heart of Gold Slot
+      this.addSlot(new SlotItemHandler(handler, 1, 33, 52));    // Wool Slot
+      this.addSlot(new SlotItemHandler(handler, 2, 56, 52));    // Item Slot
+      this.addSlot(new SlotItemHandler(handler, 3, 121, 37));   // Output Slot
     });
 
     addDataSlots(data);
@@ -49,7 +49,7 @@ public class BuilderScreenHandler extends AbstractContainerMenu {
   public int getScaledProgress() {
     int progress = this.data.get(0);
     int maxProgress = this.data.get(1);  // Max Progress
-    int progressArrowSize = 45; // This is the height in pixels of your arrow
+    int progressArrowSize = 87;
 
     return maxProgress != 0 && progress != 0 ? progress * progressArrowSize / maxProgress : 0;
   }
