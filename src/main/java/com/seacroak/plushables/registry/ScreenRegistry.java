@@ -1,7 +1,7 @@
 package com.seacroak.plushables.registry;
 
 import com.seacroak.plushables.PlushablesMod;
-import com.seacroak.plushables.gui.BuilderScreenHandler;
+import com.seacroak.plushables.block.screen.BuilderScreenHandler;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.MenuType;
 import net.minecraftforge.common.extensions.IForgeMenuType;

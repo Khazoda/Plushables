@@ -1,5 +1,6 @@
 package com.seacroak.plushables.registry;
 
+import com.seacroak.plushables.block.tile.NewBuilderTileEntity;
 import com.seacroak.plushables.client.renderer.tile.BuilderTileRenderer;
 import com.seacroak.plushables.client.renderer.tile.CluckyTileRenderer;
 import com.seacroak.plushables.client.renderer.tile.DragonTileRenderer;
@@ -11,7 +12,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 
 public final class TileRegistryClient {
   public static void initClient() {
-    BlockEntityRenderers.register(TileRegistry.BUILDER_TILE.get(),BuilderTileRenderer::new);
+    BlockEntityRenderers.register(TileRegistry.BUILDER_TILE.get(), BuilderTileRenderer::new);
     BlockEntityRenderers.register(TileRegistry.CLUCKY_TILE.get(),CluckyTileRenderer::new);
     BlockEntityRenderers.register(TileRegistry.DRAGON_TILE.get(),DragonTileRenderer::new);
     BlockEntityRenderers.register(TileRegistry.RUPERT_TILE.get(),RupertTileRenderer::new);

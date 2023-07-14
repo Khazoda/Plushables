@@ -1,6 +1,6 @@
 package com.seacroak.plushables.block;
 
-import com.seacroak.plushables.block.tile.BuilderTileEntity;
+import com.seacroak.plushables.block.tile.NewBuilderTileEntity;
 import com.seacroak.plushables.registry.TileRegistry;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerPlayer;
@@ -33,11 +33,7 @@ import org.jetbrains.annotations.Nullable;
 public class BuilderBlock extends BaseEntityBlock {
 
   public BuilderBlock() {
-    super(BlockBehaviour.Properties
-        .copy(Blocks.OAK_WOOD)
-        .sound(SoundType.WOOD)
-        .strength(2.5f)
-        .requiresCorrectToolForDrops());
+    super(BlockBehaviour.Properties.copy(Blocks.OAK_WOOD).sound(SoundType.WOOD).strength(2.5f).requiresCorrectToolForDrops());
     registerDefaultState(this.defaultBlockState());
   }
 
@@ -46,27 +42,7 @@ public class BuilderBlock extends BaseEntityBlock {
     return super.onDestroyedByPlayer(state, level, pos, player, willHarvest, fluid);
   }
 
-  @Override
-  public void onRemove(BlockState pState, Level pLevel, BlockPos pPos, BlockState pNewState, boolean pIsMoving) {
-    if (pState.is(pNewState.getBlock())) {
-      return;
-    }
-    BlockEntity blockEntity = pLevel.getBlockEntity(pPos);
-//    if (blockEntity instanceof Inventory) {
-      if (blockEntity instanceof Container) {
-//      Containers.dropItemStack(pLevel, pPos.getX(),pPos.getY(),pPos.getZ(), (Container) blockEntity);
-      pLevel.updateNeighbourForOutputSignal(pPos, this);
-    }
-    super.onRemove(pState, pLevel, pPos, pNewState, pIsMoving);
-  }
-
   //Functional Code
-  @Nullable
-  @Override
-  public BlockEntity newBlockEntity(BlockPos pPos, BlockState pState) {
-    return new BuilderTileEntity(pPos,pState);
-  }
-
   @Override
   public @NotNull VoxelShape getShape(BlockState pState, BlockGetter pLevel, BlockPos pPos, CollisionContext pContext) {
     VoxelShape shape = Shapes.empty();
@@ -79,6 +55,25 @@ public class BuilderBlock extends BaseEntityBlock {
     return shape;
   }
 
+  /* BLOCK ENTITY */
+  @Override
+  public RenderShape getRenderShape(BlockState pState) {
+    return RenderShape.MODEL;
+  }
+
+  @Override
+  public void onRemove(BlockState pState, Level pLevel, BlockPos pPos, BlockState pNewState, boolean pIsMoving) {
+    if (pState.getBlock() != pNewState.getBlock()) {
+      BlockEntity blockEntity = pLevel.getBlockEntity(pPos);
+      if (blockEntity instanceof NewBuilderTileEntity) {
+        ((NewBuilderTileEntity) blockEntity).drops();
+      }
+    }
+    super.onRemove(pState, pLevel, pPos, pNewState, pIsMoving);
+  }
+
+/*
+  TODO OLD USE METHOD - MAY NEED TO REVERT TO THIS
   @Override
   public InteractionResult use(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
     if (!pLevel.isClientSide) {
@@ -95,17 +90,32 @@ public class BuilderBlock extends BaseEntityBlock {
     }
     return InteractionResult.SUCCESS;
   }
+*/
 
-//  Block Entity Rendering
   @Override
-  public RenderShape getRenderShape(BlockState pState) {
-    return RenderShape.ENTITYBLOCK_ANIMATED;
+  public InteractionResult use(BlockState state, Level level, BlockPos pos,
+                               Player player, InteractionHand hand, BlockHitResult hit) {
+    if (!level.isClientSide()) {
+      BlockEntity blockEntity = level.getBlockEntity(pos);
+      if(blockEntity instanceof NewBuilderTileEntity) {
+        NetworkHooks.openScreen(((ServerPlayer)player), (NewBuilderTileEntity)blockEntity, pos);
+      } else {
+        throw new IllegalStateException("Container Provider is missing!");
+      }
+    }
+    return InteractionResult.sidedSuccess(level.isClientSide());
   }
 
   @Nullable
   @Override
-  public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level pLevel, BlockState pState, BlockEntityType<T> pBlockEntityType) {
-    return createTickerHelper(pBlockEntityType, TileRegistry.BUILDER_TILE.get(), BuilderTileEntity::tick);
+  public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
+    return new NewBuilderTileEntity(pos, state);
+  }
+
+  @Nullable
+  @Override
+  public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> type) {
+    return createTickerHelper(type, TileRegistry.BUILDER_TILE.get(), NewBuilderTileEntity::tick);
   }
 
 }
