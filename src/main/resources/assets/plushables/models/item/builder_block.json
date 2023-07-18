@@ -1,3 +1,4 @@
 {
-    "parent": "plushables:block/builder"
+    "parent": "plushables:block/builder_block",
+    "gui_light": "front"
 }

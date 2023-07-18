@@ -33,7 +33,7 @@ import org.jetbrains.annotations.Nullable;
 public class BuilderBlock extends BaseEntityBlock {
 
   public BuilderBlock() {
-    super(BlockBehaviour.Properties.copy(Blocks.OAK_WOOD).sound(SoundType.WOOD).strength(2.5f).requiresCorrectToolForDrops());
+    super(BlockBehaviour.Properties.copy(Blocks.STONE).sound(SoundType.STONE).strength(2.5f).requiresCorrectToolForDrops());
     registerDefaultState(this.defaultBlockState());
   }
 
@@ -45,14 +45,15 @@ public class BuilderBlock extends BaseEntityBlock {
   //Functional Code
   @Override
   public @NotNull VoxelShape getShape(BlockState pState, BlockGetter pLevel, BlockPos pPos, CollisionContext pContext) {
-    VoxelShape shape = Shapes.empty();
-    shape = Shapes.join(shape, Shapes.box(0.0625, 0, 0.0625, 0.1875, 0.625, 0.1875), BooleanOp.OR);
-    shape = Shapes.join(shape, Shapes.box(0.0625, 0, 0.8125, 0.1875, 0.625, 0.9375), BooleanOp.OR);
-    shape = Shapes.join(shape, Shapes.box(0.8125, 0, 0.8125, 0.9375, 0.625, 0.9375), BooleanOp.OR);
-    shape = Shapes.join(shape, Shapes.box(0.8125, 0, 0.0625, 0.9375, 0.625, 0.1875), BooleanOp.OR);
-    shape = Shapes.join(shape, Shapes.box(0.078125, 0.3125, 0.078125, 0.921875, 0.4375, 0.921875), BooleanOp.OR);
-    shape = Shapes.join(shape, Shapes.box(0.1875, 0.4375, 0.1875, 0.8125, 1.125, 0.8125), BooleanOp.OR);
-    return shape;
+      VoxelShape shape = Shapes.empty();
+      shape = Shapes.join(shape, Shapes.box(0.09375, 0.0156, 0.09375, 0.90625, 0.445, 0.9062), BooleanOp.OR);
+      shape = Shapes.join(shape, Shapes.box(0.8125, 0.0156, 0.0625, 0.9375, 0.635, 0.1875), BooleanOp.OR);
+      shape = Shapes.join(shape, Shapes.box(0.0625, 0.0156, 0.0625, 0.1875, 0.635, 0.1875), BooleanOp.OR);
+      shape = Shapes.join(shape, Shapes.box(0.0625, 0.0156, 0.8125, 0.1875, 0.635, 0.9375), BooleanOp.OR);
+      shape = Shapes.join(shape, Shapes.box(0.8125, 0.0156, 0.8125, 0.9375, 0.635, 0.9375), BooleanOp.OR);
+      shape = Shapes.join(shape, Shapes.box(0.125, 0.4531, 0.125, 0.875, 1.195, 0.875), BooleanOp.OR);
+
+      return shape;
   }
 
   /* BLOCK ENTITY */

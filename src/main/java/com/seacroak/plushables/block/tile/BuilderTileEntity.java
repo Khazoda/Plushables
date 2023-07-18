@@ -249,7 +249,7 @@ public class BuilderTileEntity extends BlockEntity
         new AnimationController<BuilderTileEntity>(this, "cube_spin_controller", 0,
             this::cubePredicateSpin));
     controllers.add(
-        new AnimationController<BuilderTileEntity>(this, "cube__hop_controller", 0,
+        new AnimationController<BuilderTileEntity>(this, "cube_hop_controller", 0,
             this::cubePredicateHop));
   }
 
