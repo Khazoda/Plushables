@@ -49,9 +49,9 @@ public class BuilderScreenHandler extends AbstractContainerMenu {
 
     this.blockEntity.getCapability(ForgeCapabilities.ITEM_HANDLER).ifPresent(handler -> {
       this.addSlot(new SlotItemHandler(handler, 0, 55, 20));    // Top Slot
-      this.addSlot(new SlotItemHandler(handler, 3, 55, 39));    // Heart of Gold Slot
-      this.addSlot(new SlotItemHandler(handler, 1, 55, 58));    // Bottom Slot
-      this.addSlot(new SlotItemHandler(handler, 2, 98, 39));    // Output Slot
+      this.addSlot(new SlotItemHandler(handler, 1, 55, 39));    // Heart of Gold Slot
+      this.addSlot(new SlotItemHandler(handler, 2, 55, 58));    // Bottom Slot
+      this.addSlot(new SlotItemHandler(handler, 3, 98, 39));    // Output Slot
     });
     addDataSlots(data);
   }

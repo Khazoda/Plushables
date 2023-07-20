@@ -28,8 +28,8 @@ public class BuilderRecipe implements Recipe<SimpleContainer> {
   @Override
   public boolean matches(SimpleContainer inventory, Level level) {
     if (!recipeItems.get(0).test(inventory.getItem(0))) return false;
-    if (!recipeItems.get(2).test(inventory.getItem(3))) return false;
     if (!recipeItems.get(1).test(inventory.getItem(1))) return false;
+    if (!recipeItems.get(2).test(inventory.getItem(2))) return false;
     return true;
   }
 

@@ -33,10 +33,10 @@ public class BuilderScreenHandler extends AbstractContainerMenu {
     addPlayerHotbar(inv);
 
     this.blockEntity.getCapability(ForgeCapabilities.ITEM_HANDLER).ifPresent(handler -> {
-      this.addSlot(new SlotItemHandler(handler, 0, 33, 22));    // Heart of Gold Slot
-      this.addSlot(new SlotItemHandler(handler, 1, 33, 52));    // Wool Slot
-      this.addSlot(new SlotItemHandler(handler, 2, 56, 52));    // Item Slot
-      this.addSlot(new SlotItemHandler(handler, 3, 121, 37));   // Output Slot
+      this.addSlot(new SlotItemHandler(handler, 0, 32, 14));    // Item Slot
+      this.addSlot(new SlotItemHandler(handler, 1, 32, 44));    // Wool Slot
+      this.addSlot(new SlotItemHandler(handler, 2, 62, 29));    // Heart of Gold Slot
+      this.addSlot(new SlotItemHandler(handler, 3, 121, 30));   // Output Slot
     });
 
     addDataSlots(data);

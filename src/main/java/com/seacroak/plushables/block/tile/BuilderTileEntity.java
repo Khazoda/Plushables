@@ -160,15 +160,11 @@ public class BuilderTileEntity extends BlockEntity
     if (match.isPresent()) {
       entity.removeItem(0, 1);
       entity.removeItem(1, 1);
-      entity.removeItem(3, 1);
-      entity.setItem(2, new ItemStack(match.get().getResultItem(entity.level.registryAccess()).getItem(),
-          entity.getItem(2).getCount() + 1));
+      entity.removeItem(2, 1);
+      entity.setItem(3, new ItemStack(match.get().getResultItem(entity.level.registryAccess()).getItem(),
+          entity.getItem(3).getCount() + 1));
 
       if (!level.isClientSide()) {
-        // ! TODO implement networked solution for syncing hop animation across clients
-        // ! (currently works in SP but not MP as code is only ran on server)
-        shouldHop = true;
-        // System.out.println(rand.nextBetween(0, 20));
         // One in 20 chance to spawn an Allay
         if (rand.nextIntBetweenInclusive(0, 20) == 13) {
           EntityType.FIREWORK_ROCKET
@@ -195,11 +191,11 @@ public class BuilderTileEntity extends BlockEntity
   }
 
   private static boolean canInsertItemIntoOutputSlot(SimpleContainer inventory, ItemStack output) {
-    return inventory.getItem(2).getItem() == output.getItem() || inventory.getItem(2).isEmpty();
+    return inventory.getItem(3).getItem() == output.getItem() || inventory.getItem(3).isEmpty();
   }
 
   private static boolean canInsertAmountIntoOutputSlot(SimpleContainer inventory) {
-    return inventory.getItem(2).getMaxStackSize() > inventory.getItem(2).getCount();
+    return inventory.getItem(3).getMaxStackSize() > inventory.getItem(3).getCount();
   }
 
   // Animation Code

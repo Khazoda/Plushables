@@ -137,7 +137,18 @@ dependencies {
     // then special handling is done to allow a setup of a vanilla dependency without the use of an external repository.
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
 
-    implementation fg.deobf('software.bernie.geckolib:geckolib-forge-1.20:4.2')
+    implementation fg.deobf("software.bernie.geckolib:${project.geckolib_version}")
+
+    // REI Runtime for Forge (ForgeGradle)
+    runtimeOnly fg.deobf("me.shedaniel:RoughlyEnoughItems-forge:${project.rei_version}")
+    // REI API for Forge (ForgeGradle)
+    compileOnly fg.deobf("me.shedaniel:RoughlyEnoughItems-forge:${project.rei_version}")
+    compileOnly fg.deobf("me.shedaniel:RoughlyEnoughItems-api-forge:${project.rei_version}")
+    compileOnly fg.deobf("me.shedaniel:RoughlyEnoughItems-default-plugin-forge:${project.rei_version}")
+
+    implementation fg.deobf("me.shedaniel.cloth:cloth-config-forge:${project.cloth_config_version}")
+    implementation fg.deobf("dev.architectury:architectury-forge:${project.architectury_version}")
+
 
     // Example mod dependency with JEI - using fg.deobf() ensures the dependency is remapped to your development mappings
     // The JEI API is declared for compile time use, while the full JEI artifact is used at runtime
