@@ -143,9 +143,6 @@ dependencies {
     runtimeOnly fg.deobf("me.shedaniel:RoughlyEnoughItems-forge:${project.rei_version}")
     // REI API for Forge (ForgeGradle)
     compileOnly fg.deobf("me.shedaniel:RoughlyEnoughItems-forge:${project.rei_version}")
-    compileOnly fg.deobf("me.shedaniel:RoughlyEnoughItems-api-forge:${project.rei_version}")
-    compileOnly fg.deobf("me.shedaniel:RoughlyEnoughItems-default-plugin-forge:${project.rei_version}")
-
     implementation fg.deobf("me.shedaniel.cloth:cloth-config-forge:${project.cloth_config_version}")
     implementation fg.deobf("dev.architectury:architectury-forge:${project.architectury_version}")
 

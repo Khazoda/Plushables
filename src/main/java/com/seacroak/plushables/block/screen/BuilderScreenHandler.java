@@ -36,7 +36,7 @@ public class BuilderScreenHandler extends AbstractContainerMenu {
       this.addSlot(new SlotItemHandler(handler, 0, 32, 14));    // Item Slot
       this.addSlot(new SlotItemHandler(handler, 1, 32, 44));    // Wool Slot
       this.addSlot(new SlotItemHandler(handler, 2, 62, 29));    // Heart of Gold Slot
-      this.addSlot(new SlotItemHandler(handler, 3, 121, 30));   // Output Slot
+      this.addSlot(new SlotItemHandler(handler, 3, 131, 29));   // Output Slot
     });
 
     addDataSlots(data);
@@ -49,7 +49,7 @@ public class BuilderScreenHandler extends AbstractContainerMenu {
   public int getScaledProgress() {
     int progress = this.data.get(0);
     int maxProgress = this.data.get(1);  // Max Progress
-    int progressArrowSize = 87;
+    int progressArrowSize = 74;
 
     return maxProgress != 0 && progress != 0 ? progress * progressArrowSize / maxProgress : 0;
   }

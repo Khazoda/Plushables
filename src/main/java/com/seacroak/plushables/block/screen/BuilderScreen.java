@@ -47,7 +47,7 @@ public class BuilderScreen extends AbstractContainerScreen<BuilderScreenHandler>
 
   private void renderProgressArrow(GuiGraphics pGuiGraphics, int x, int y) {
     if(menu.isCrafting()) {
-      pGuiGraphics.blit(TEXTURE,x+31, y+36, 1, 169, menu.getScaledProgress(),18);
+      pGuiGraphics.blit(TEXTURE,x+81, y+22, 1, 169, menu.getScaledProgress(),30);
     }
   }
 
