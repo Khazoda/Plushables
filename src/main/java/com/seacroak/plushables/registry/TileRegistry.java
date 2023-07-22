@@ -2,12 +2,8 @@ package com.seacroak.plushables.registry;
 
 import com.seacroak.plushables.PlushablesMod;
 import com.seacroak.plushables.block.tile.*;
-import net.minecraft.world.inventory.AbstractContainerMenu;
-import net.minecraft.world.inventory.MenuType;
 import net.minecraft.world.level.block.entity.BlockEntityType;
-import net.minecraftforge.common.extensions.IForgeMenuType;
 import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.network.IContainerFactory;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
@@ -19,8 +15,8 @@ public final class TileRegistry {
 	public static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITIES =
 			DeferredRegister.create(ForgeRegistries.BLOCK_ENTITY_TYPES, PlushablesMod.MOD_ID);
 
-	public static final RegistryObject<BlockEntityType<NewBuilderTileEntity>> BUILDER_TILE = BLOCK_ENTITIES.register("builder_tile",
-			() -> BlockEntityType.Builder.of(NewBuilderTileEntity::new, BUILDER_BLOCK.get()).build(null));
+	public static final RegistryObject<BlockEntityType<BuilderTileEntity>> BUILDER_TILE = BLOCK_ENTITIES.register("builder_tile",
+			() -> BlockEntityType.Builder.of(BuilderTileEntity::new, BUILDER_BLOCK.get()).build(null));
 	public static final RegistryObject<BlockEntityType<CluckyTileEntity>> CLUCKY_TILE = BLOCK_ENTITIES.register("clucky_tile",
 			() -> BlockEntityType.Builder.of(CluckyTileEntity::new, CLUCKY_BLOCK.get()).build(null));
 	public static final RegistryObject<BlockEntityType<RupertTileEntity>> RUPERT_TILE = BLOCK_ENTITIES.register("rupert_tile",

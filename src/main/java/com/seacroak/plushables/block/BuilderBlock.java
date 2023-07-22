@@ -1,6 +1,6 @@
 package com.seacroak.plushables.block;
 
-import com.seacroak.plushables.block.tile.NewBuilderTileEntity;
+import com.seacroak.plushables.block.tile.BuilderTileEntity;
 import com.seacroak.plushables.registry.TileRegistry;
 import com.seacroak.plushables.util.HorizontalDirectionalBaseEntityBlock;
 import com.seacroak.plushables.util.VoxelShapeUtils;
@@ -19,8 +19,6 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.BooleanOp;
@@ -88,8 +86,8 @@ public class BuilderBlock extends HorizontalDirectionalBaseEntityBlock {
   public void onRemove(BlockState pState, Level pLevel, BlockPos pPos, BlockState pNewState, boolean pIsMoving) {
     if (pState.getBlock() != pNewState.getBlock()) {
       BlockEntity blockEntity = pLevel.getBlockEntity(pPos);
-      if (blockEntity instanceof NewBuilderTileEntity) {
-        ((NewBuilderTileEntity) blockEntity).drops();
+      if (blockEntity instanceof BuilderTileEntity) {
+        ((BuilderTileEntity) blockEntity).drops();
       }
     }
     super.onRemove(pState, pLevel, pPos, pNewState, pIsMoving);
@@ -120,8 +118,8 @@ public class BuilderBlock extends HorizontalDirectionalBaseEntityBlock {
                                Player player, InteractionHand hand, BlockHitResult hit) {
     if (!level.isClientSide()) {
       BlockEntity blockEntity = level.getBlockEntity(pos);
-      if (blockEntity instanceof NewBuilderTileEntity) {
-        NetworkHooks.openScreen(((ServerPlayer) player), (NewBuilderTileEntity) blockEntity, pos);
+      if (blockEntity instanceof BuilderTileEntity) {
+        NetworkHooks.openScreen(((ServerPlayer) player), (BuilderTileEntity) blockEntity, pos);
       } else {
         throw new IllegalStateException("Container Provider is missing!");
       }
@@ -132,13 +130,13 @@ public class BuilderBlock extends HorizontalDirectionalBaseEntityBlock {
   @Nullable
   @Override
   public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
-    return new NewBuilderTileEntity(pos, state);
+    return new BuilderTileEntity(pos, state);
   }
 
   @Nullable
   @Override
   public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> type) {
-    return createTickerHelper(type, TileRegistry.BUILDER_TILE.get(), NewBuilderTileEntity::tick);
+    return createTickerHelper(type, TileRegistry.BUILDER_TILE.get(), BuilderTileEntity::tick);
   }
 
   // Base BlockState Properties

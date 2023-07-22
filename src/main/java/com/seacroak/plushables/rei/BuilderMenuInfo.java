@@ -1,6 +1,6 @@
 package com.seacroak.plushables.rei;
 
-import com.seacroak.plushables.gui.BuilderScreenHandler;
+import com.seacroak.plushables.block.screen.BuilderScreenHandler;
 import me.shedaniel.rei.api.common.transfer.info.MenuInfoContext;
 import me.shedaniel.rei.api.common.transfer.info.simple.SimplePlayerInventoryMenuInfo;
 import me.shedaniel.rei.api.common.transfer.info.stack.SlotAccessor;

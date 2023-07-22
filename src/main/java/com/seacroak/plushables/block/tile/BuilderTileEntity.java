@@ -1,24 +1,17 @@
 package com.seacroak.plushables.block.tile;
 
-import com.seacroak.plushables.gui.BuilderInventory;
-import com.seacroak.plushables.gui.BuilderScreenHandler;
+import com.seacroak.plushables.block.screen.BuilderScreenHandler;
 import com.seacroak.plushables.recipe.BuilderRecipe;
 import com.seacroak.plushables.registry.MainRegistry;
-import com.seacroak.plushables.registry.SoundRegistry;
 import com.seacroak.plushables.registry.TileRegistry;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.NonNullList;
+import net.minecraft.core.Direction;
+import net.minecraft.core.RegistryAccess;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.world.ContainerHelper;
+import net.minecraft.world.Containers;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.SimpleContainer;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
@@ -27,7 +20,12 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.levelgen.SingleThreadedRandomSource;
+import net.minecraftforge.common.capabilities.Capability;
+import net.minecraftforge.common.capabilities.ForgeCapabilities;
+import net.minecraftforge.common.util.LazyOptional;
+import net.minecraftforge.items.IItemHandler;
+import net.minecraftforge.items.ItemStackHandler;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib.animatable.GeoBlockEntity;
 import software.bernie.geckolib.core.animatable.GeoAnimatable;
@@ -40,149 +38,118 @@ import software.bernie.geckolib.core.object.PlayState;
 import software.bernie.geckolib.util.GeckoLibUtil;
 
 import java.util.Optional;
-import java.util.Random;
 
-public class BuilderTileEntity extends BlockEntity
-    implements GeoBlockEntity, MenuProvider, BuilderInventory {
+public class BuilderTileEntity extends BlockEntity implements MenuProvider, GeoBlockEntity {
+  private boolean animationIsCrafting = false;
 
-  static SingleThreadedRandomSource rand;
-  private static boolean shouldHop;
+  private final ItemStackHandler itemHandler = new ItemStackHandler(4) {
+    @Override
+    protected void onContentsChanged(int slot) {
+      setChanged();
+    }
+  };
+  private LazyOptional<IItemHandler> lazyItemHandler = LazyOptional.empty();
 
-  // Recipe / Inventory Code
-  private final NonNullList<ItemStack> inventory = NonNullList.withSize(4, ItemStack.EMPTY);
-  protected final ContainerData propertyDelegate;
+  protected final ContainerData data;
   private int progress = 0;
-  private int maxProgress = 63;
+  private int maxProgress = 78;
 
   public BuilderTileEntity(BlockPos pos, BlockState state) {
-
     super(TileRegistry.BUILDER_TILE.get(), pos, state);
-    shouldHop = false;
-    rand = new SingleThreadedRandomSource(100);
-    this.propertyDelegate = new ContainerData() {
+    this.data = new ContainerData() {
+      @Override
       public int get(int index) {
-        switch (index) {
-          case 0:
-            return BuilderTileEntity.this.progress;
-          case 1:
-            return BuilderTileEntity.this.maxProgress;
-          default:
-            return 0;
-        }
+        return switch (index) {
+          case 0 -> BuilderTileEntity.this.progress;
+          case 1 -> BuilderTileEntity.this.maxProgress;
+          default -> 0;
+        };
       }
 
+      @Override
       public void set(int index, int value) {
         switch (index) {
-          case 0:
-            BuilderTileEntity.this.progress = value;
-            break;
-          case 1:
-            BuilderTileEntity.this.maxProgress = value;
-            break;
+          case 0 -> BuilderTileEntity.this.progress = value;
+          case 1 -> BuilderTileEntity.this.maxProgress = value;
         }
       }
 
       @Override
       public int getCount() {
-        return 0;
+        return 2;
       }
-
     };
   }
 
   @Override
   public Component getDisplayName() {
-    return this.getBlockState().getBlock().getName();
+    return Component.literal("Plushable Builder");
   }
-
 
   @Nullable
   @Override
-  public AbstractContainerMenu createMenu(int pContainerId, Inventory pPlayerInventory, Player pPlayer) {
-    return new BuilderScreenHandler(pContainerId, pPlayerInventory, this, this.propertyDelegate);
+  public AbstractContainerMenu createMenu(int id, Inventory inventory, Player player) {
+    return new BuilderScreenHandler(id, inventory, this, this.data);
   }
 
+  @Override
+  public @NotNull <T> LazyOptional<T> getCapability(@NotNull Capability<T> cap, @Nullable Direction side) {
+    if (cap == ForgeCapabilities.ITEM_HANDLER) {
+      return lazyItemHandler.cast();
+    }
+    return super.getCapability(cap, side);
+  }
 
   @Override
-  public NonNullList<ItemStack> getItems() {
-    return inventory;
+  public void onLoad() {
+    super.onLoad();
+    lazyItemHandler = LazyOptional.of(() -> itemHandler);
+  }
+
+  @Override
+  public void invalidateCaps() {
+    super.invalidateCaps();
+    lazyItemHandler.invalidate();
+  }
+
+  @Override
+  protected void saveAdditional(CompoundTag nbt) {
+    nbt.put("inventory", itemHandler.serializeNBT());
+    nbt.putInt("builder.progress", this.progress);
+    super.saveAdditional(nbt);
   }
 
   @Override
   public void load(CompoundTag nbt) {
     super.load(nbt);
-    ContainerHelper.loadAllItems(nbt, inventory);
+    itemHandler.deserializeNBT(nbt.getCompound("inventory"));
+    progress = nbt.getInt("builder.progress");
   }
 
-  @Override
-  protected void saveAdditional(CompoundTag nbt) {
-    ContainerHelper.saveAllItems(nbt, inventory);
-    return;
+  /* Drop Inventory Contents */
+  public void drops() {
+    SimpleContainer inventory = new SimpleContainer(itemHandler.getSlots());
+    for (int i = 0; i < itemHandler.getSlots(); i++) {
+      inventory.setItem(i, itemHandler.getStackInSlot(i));
+    }
+    Containers.dropContents(this.level, this.worldPosition, inventory);
   }
-
 
   public static void tick(Level level, BlockPos pos, BlockState state, BuilderTileEntity entity) {
+    if (level.isClientSide()) {
+      return;
+    }
     if (hasRecipe(entity)) {
+      entity.animationIsCrafting = true;
       entity.progress++;
-      if (entity.progress > entity.maxProgress) {
+      setChanged(level, pos, state);
+      if (entity.progress >= entity.maxProgress) {
         craftItem(entity);
       }
     } else {
+      entity.animationIsCrafting = false;
       entity.resetProgress();
-    }
-  }
-
-  private static boolean hasRecipe(BuilderTileEntity entity) {
-    Level level = entity.level;
-    SimpleContainer inventory = new SimpleContainer(entity.inventory.size());
-    for (int i = 0; i < entity.inventory.size(); i++) {
-      inventory.setItem(i, entity.getItem(i));
-
-    }
-
-    Optional<BuilderRecipe> match = level.getRecipeManager().getRecipeFor(BuilderRecipe.Type.INSTANCE, inventory, level);
-
-    return match.isPresent()
-        && canInsertAmountIntoOutputSlot(inventory)
-        && canInsertItemIntoOutputSlot(inventory, match.get().getResultItem(entity.level.registryAccess()));
-  }
-
-  private static void craftItem(BuilderTileEntity entity) {
-    Level level = entity.level;
-    SimpleContainer inventory = new SimpleContainer(entity.inventory.size());
-    for (int i = 0; i < entity.inventory.size(); i++) {
-      inventory.setItem(i, entity.getItem(i));
-    }
-
-    Optional<BuilderRecipe> match = level.getRecipeManager()
-        .getRecipeFor(BuilderRecipe.Type.INSTANCE, inventory, level);
-
-    if (match.isPresent()) {
-      entity.removeItem(0, 1);
-      entity.removeItem(1, 1);
-      entity.removeItem(2, 1);
-      entity.setItem(3, new ItemStack(match.get().getResultItem(entity.level.registryAccess()).getItem(),
-          entity.getItem(3).getCount() + 1));
-
-      if (!level.isClientSide()) {
-        // One in 20 chance to spawn an Allay
-        if (rand.nextIntBetweenInclusive(0, 20) == 13) {
-          EntityType.FIREWORK_ROCKET
-              .spawn((ServerLevel) level, null, (Player) null, entity.getBlockPos().above(2),
-                  MobSpawnType.TRIGGERED, true, true);
-
-          EntityType.ALLAY
-              .spawn((ServerLevel) level, null, (Player) null, entity.getBlockPos().above(2),
-                  MobSpawnType.TRIGGERED, true, true)
-              .setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(MainRegistry.FROGLIN_PLUSHABLE.get()));
-        } else {
-          level.playSound(null, entity.getBlockPos(), SoundRegistry.BUILDER_DING.get(),
-              SoundSource.BLOCKS, 100f, 1f);
-          level.playSound(null, entity.getBlockPos(), SoundEvents.MOSS_BREAK,
-              SoundSource.BLOCKS, 0.7f, 1f);
-        }
-      }
-      entity.resetProgress();
+      setChanged(level, pos, state);
     }
   }
 
@@ -190,48 +157,62 @@ public class BuilderTileEntity extends BlockEntity
     this.progress = 0;
   }
 
-  private static boolean canInsertItemIntoOutputSlot(SimpleContainer inventory, ItemStack output) {
-    return inventory.getItem(3).getItem() == output.getItem() || inventory.getItem(3).isEmpty();
+  private static void craftItem(BuilderTileEntity entity) {
+    Level level = entity.level;
+    SimpleContainer inventory = new SimpleContainer(entity.itemHandler.getSlots());
+    for (int i = 0; i < entity.itemHandler.getSlots(); i++) {
+      inventory.setItem(i, entity.itemHandler.getStackInSlot(i));
+    }
+
+    Optional<BuilderRecipe> recipe = level.getRecipeManager()
+        .getRecipeFor(BuilderRecipe.Type.INSTANCE,inventory,level);
+
+    if (hasRecipe(entity)) {
+      entity.itemHandler.extractItem(0, 1, false);
+      entity.itemHandler.extractItem(1, 1, false);
+      entity.itemHandler.extractItem(2, 1, false);
+      entity.itemHandler.setStackInSlot(3, new ItemStack(recipe.get().getResultItem(RegistryAccess.EMPTY).getItem(), entity.itemHandler.getStackInSlot(3).getCount() + 1));
+      entity.resetProgress();
+    }
+  }
+
+  private static boolean hasRecipe(BuilderTileEntity entity) {
+    Level level = entity.level;
+    SimpleContainer inventory = new SimpleContainer(entity.itemHandler.getSlots());
+    for (int i = 0; i < entity.itemHandler.getSlots(); i++) {
+      inventory.setItem(i, entity.itemHandler.getStackInSlot(i));
+    }
+
+    Optional<BuilderRecipe> recipe = level.getRecipeManager()
+        .getRecipeFor(BuilderRecipe.Type.INSTANCE,inventory,level);
+
+    return recipe.isPresent() && canInsertAmountIntoOutputSlot(inventory)
+        && canInsertItemIntoOutputSlot(inventory,new ItemStack(recipe.get()
+        .getResultItem(RegistryAccess.EMPTY).getItem(), 1));
+  }
+
+  private static boolean canInsertItemIntoOutputSlot(SimpleContainer inventory, ItemStack itemStack) {
+    return inventory.getItem(3).getItem() == itemStack.getItem() || inventory.getItem(3).isEmpty();
   }
 
   private static boolean canInsertAmountIntoOutputSlot(SimpleContainer inventory) {
     return inventory.getItem(3).getMaxStackSize() > inventory.getItem(3).getCount();
   }
 
-  // Animation Code
+  /* GeckoLib */
   private final AnimatableInstanceCache instanceCache = GeckoLibUtil.createInstanceCache(this);
 
   private <E extends BlockEntity & GeoAnimatable> PlayState builderIdlePredicate(AnimationState<E> event) {
     AnimationController<?> controller = event.getController();
+    controller.transitionLength(0);
     controller.setAnimation(RawAnimation.begin().thenPlay("animation.builder.idle"));
     return PlayState.CONTINUE;
   }
 
-  private <E extends BlockEntity & GeoAnimatable> PlayState cubePredicateSpin(AnimationState<E> event) {
+  private <E extends BlockEntity & GeoAnimatable> PlayState builderCraftingPredicate(AnimationState<E> event) {
     AnimationController<?> controller = event.getController();
-    controller.transitionLength(0);
-
-    controller.setAnimation(RawAnimation.begin().thenPlay("animation.builder.cube_spin"));
-    // controller.markNeedsReload();
-    // .addAnimation("Botarium.anim.idle", true));
-
-    return PlayState.CONTINUE;
-  }
-
-  private <E extends BlockEntity & GeoAnimatable> PlayState cubePredicateHop(AnimationState<E> event) {
-    AnimationController<?> controller = event.getController();
-    // controller.transitionLengthTicks = 0;
-
-    if (shouldHop) {
-      controller.setAnimation(RawAnimation.begin().thenPlay("animation.builder.edgecubes_jump"));
-      if (controller.getAnimationState() == AnimationController.State.STOPPED) {
-        shouldHop = false;
-      }
-      // .addAnimation("fertilizer.animation.idle", true));
-    } else {
-      // controller.setAnimation(new AnimationBuilder());
-      controller.forceAnimationReset();
-      // .addAnimation("Botarium.anim.idle", true));
+    if (this.progress > 0 && this.progress < this.maxProgress) {
+      controller.setAnimation(RawAnimation.begin().thenPlay("animation.builder.building"));
     }
     return PlayState.CONTINUE;
   }
@@ -240,19 +221,14 @@ public class BuilderTileEntity extends BlockEntity
   public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
     controllers.add(
         new AnimationController<BuilderTileEntity>(this, "controller", 0, this::builderIdlePredicate));
-
     controllers.add(
-        new AnimationController<BuilderTileEntity>(this, "cube_spin_controller", 0,
-            this::cubePredicateSpin));
-    controllers.add(
-        new AnimationController<BuilderTileEntity>(this, "cube_hop_controller", 0,
-            this::cubePredicateHop));
+        new AnimationController<BuilderTileEntity>(this, "building_controller", 0,
+            this::builderCraftingPredicate));
   }
 
   @Override
   public AnimatableInstanceCache getAnimatableInstanceCache() {
     return this.instanceCache;
   }
-
 
 }

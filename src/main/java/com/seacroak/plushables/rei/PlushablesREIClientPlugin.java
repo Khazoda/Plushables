@@ -1,6 +1,6 @@
 package com.seacroak.plushables.rei;
 
-import com.seacroak.plushables.gui.BuilderScreen;
+import com.seacroak.plushables.block.screen.BuilderScreen;
 import com.seacroak.plushables.recipe.BuilderRecipe;
 import com.seacroak.plushables.registry.MainRegistry;
 import me.shedaniel.math.Rectangle;

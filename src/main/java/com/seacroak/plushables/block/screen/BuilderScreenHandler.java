@@ -1,6 +1,6 @@
 package com.seacroak.plushables.block.screen;
 
-import com.seacroak.plushables.block.tile.NewBuilderTileEntity;
+import com.seacroak.plushables.block.tile.BuilderTileEntity;
 import com.seacroak.plushables.registry.MainRegistry;
 import com.seacroak.plushables.registry.ScreenRegistry;
 import net.minecraft.network.FriendlyByteBuf;
@@ -14,7 +14,7 @@ import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.items.SlotItemHandler;
 
 public class BuilderScreenHandler extends AbstractContainerMenu {
-  public final NewBuilderTileEntity blockEntity;
+  public final BuilderTileEntity blockEntity;
   private final Level level;
   private final ContainerData data;
 
@@ -25,7 +25,7 @@ public class BuilderScreenHandler extends AbstractContainerMenu {
   public BuilderScreenHandler(int id, Inventory inv, BlockEntity entity, ContainerData data) {
     super(ScreenRegistry.BUILDER_SCREEN_HANDLER.get(), id);
     checkContainerSize(inv, 3);
-    blockEntity = (NewBuilderTileEntity) entity;
+    blockEntity = (BuilderTileEntity) entity;
     this.level = inv.player.level();
     this.data = data;
 

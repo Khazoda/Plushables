@@ -10,7 +10,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
 
 public class BuilderScreen extends AbstractContainerScreen<BuilderScreenHandler> {
-  private static final ResourceLocation TEXTURE =
+  public static final ResourceLocation TEXTURE =
       new ResourceLocation(PlushablesMod.MOD_ID,"textures/gui/builder_gui.png");
 
 
