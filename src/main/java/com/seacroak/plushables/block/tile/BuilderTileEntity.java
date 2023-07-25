@@ -6,9 +6,11 @@ import com.seacroak.plushables.registry.MainRegistry;
 import com.seacroak.plushables.registry.TileRegistry;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.NonNullList;
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.world.Containers;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.SimpleContainer;
@@ -16,6 +18,7 @@ import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerData;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -37,10 +40,13 @@ import software.bernie.geckolib.core.animation.RawAnimation;
 import software.bernie.geckolib.core.object.PlayState;
 import software.bernie.geckolib.util.GeckoLibUtil;
 
+import java.util.Arrays;
 import java.util.Optional;
 
 public class BuilderTileEntity extends BlockEntity implements MenuProvider, GeoBlockEntity {
   private boolean animationIsCrafting = false;
+  private final NonNullList<ItemStack> outputItems;
+  private boolean shouldReRender;
 
   private final ItemStackHandler itemHandler = new ItemStackHandler(4) {
     @Override
@@ -56,6 +62,9 @@ public class BuilderTileEntity extends BlockEntity implements MenuProvider, GeoB
 
   public BuilderTileEntity(BlockPos pos, BlockState state) {
     super(TileRegistry.BUILDER_TILE.get(), pos, state);
+    this.outputItems = NonNullList.withSize(4, ItemStack.EMPTY);
+    this.shouldReRender = true;
+
     this.data = new ContainerData() {
       @Override
       public int get(int index) {
@@ -135,11 +144,16 @@ public class BuilderTileEntity extends BlockEntity implements MenuProvider, GeoB
     Containers.dropContents(this.level, this.worldPosition, inventory);
   }
 
-  public static void tick(Level level, BlockPos pos, BlockState state, BuilderTileEntity entity) {
-    if (level.isClientSide()) {
-      return;
-    }
+
+  public static void tick(@NotNull Level level, BlockPos pos, BlockState state, BuilderTileEntity entity) {
+
     if (hasRecipe(entity)) {
+      /* Clientside in-block output plushable rendering*/
+      if (entity.level.isClientSide()) {
+        craftItemRender(entity);
+        return;
+      }
+      /* Serverside recipe handling */
       entity.animationIsCrafting = true;
       entity.progress++;
       setChanged(level, pos, state);
@@ -165,17 +179,54 @@ public class BuilderTileEntity extends BlockEntity implements MenuProvider, GeoB
     }
 
     Optional<BuilderRecipe> recipe = level.getRecipeManager()
-        .getRecipeFor(BuilderRecipe.Type.INSTANCE,inventory,level);
+        .getRecipeFor(BuilderRecipe.Type.INSTANCE, inventory, level);
 
     if (hasRecipe(entity)) {
+      /* Handle item manipulation to complete the recipe */
       entity.itemHandler.extractItem(0, 1, false);
       entity.itemHandler.extractItem(1, 1, false);
       entity.itemHandler.extractItem(2, 1, false);
-      entity.itemHandler.setStackInSlot(3, new ItemStack(recipe.get().getResultItem(RegistryAccess.EMPTY).getItem(), entity.itemHandler.getStackInSlot(3).getCount() + 1));
+      entity.itemHandler.setStackInSlot(3, new ItemStack(recipe.get().getResultItem(RegistryAccess.EMPTY).getItem()
+          , entity.itemHandler.getStackInSlot(3).getCount() + 1));
       entity.resetProgress();
     }
+    setChanged(entity.level, entity.getBlockPos(), entity.getBlockState());
   }
 
+  /* Mini Plushable Rendering Methods*/
+  private static void craftItemRender(BuilderTileEntity entity) {
+    /* Terminate method if flag not set */
+    if (!entity.shouldReRender) return;
+    /* Build dummy inventory */
+    SimpleContainer temp_inventory = new SimpleContainer(entity.itemHandler.getSlots());
+    /* Get recipe manager */
+    Optional<BuilderRecipe> recipe = entity.level.getRecipeManager()
+        .getRecipeFor(BuilderRecipe.Type.INSTANCE, temp_inventory, entity.level);
+    /* Populate recipe slot data */
+    ItemStack input_item = entity.itemHandler.getStackInSlot(0);
+    ItemStack input_wool = entity.itemHandler.getStackInSlot(1);
+    ItemStack input_heart = entity.itemHandler.getStackInSlot(2);
+    ItemStack output_plush = entity.itemHandler.getStackInSlot(3);
+    /* Idle crafting state */
+    if (entity.progress == 0 || entity.progress >= entity.maxProgress) {
+      entity.outputItems.set(0,input_item);
+      entity.outputItems.set(1,input_wool);
+      entity.outputItems.set(2,input_heart);
+      entity.outputItems.set(3,output_plush);
+    }
+    /* Crafting state */
+  }
+
+  public ClientboundBlockEntityDataPacket getUpdatePacket() {
+    return ClientboundBlockEntityDataPacket.create(this);
+  }
+
+  public NonNullList<ItemStack> getOutput() {
+    System.out.println(this.outputItems.get(0).getItem().asItem());
+    return this.outputItems;
+  }
+
+  /* */
   private static boolean hasRecipe(BuilderTileEntity entity) {
     Level level = entity.level;
     SimpleContainer inventory = new SimpleContainer(entity.itemHandler.getSlots());
@@ -184,10 +235,10 @@ public class BuilderTileEntity extends BlockEntity implements MenuProvider, GeoB
     }
 
     Optional<BuilderRecipe> recipe = level.getRecipeManager()
-        .getRecipeFor(BuilderRecipe.Type.INSTANCE,inventory,level);
+        .getRecipeFor(BuilderRecipe.Type.INSTANCE, inventory, level);
 
     return recipe.isPresent() && canInsertAmountIntoOutputSlot(inventory)
-        && canInsertItemIntoOutputSlot(inventory,new ItemStack(recipe.get()
+        && canInsertItemIntoOutputSlot(inventory, new ItemStack(recipe.get()
         .getResultItem(RegistryAccess.EMPTY).getItem(), 1));
   }
 
@@ -199,31 +250,31 @@ public class BuilderTileEntity extends BlockEntity implements MenuProvider, GeoB
     return inventory.getItem(3).getMaxStackSize() > inventory.getItem(3).getCount();
   }
 
+
   /* GeckoLib */
   private final AnimatableInstanceCache instanceCache = GeckoLibUtil.createInstanceCache(this);
 
   private <E extends BlockEntity & GeoAnimatable> PlayState builderIdlePredicate(AnimationState<E> event) {
     AnimationController<?> controller = event.getController();
-    controller.transitionLength(0);
     controller.setAnimation(RawAnimation.begin().thenPlay("animation.builder.idle"));
     return PlayState.CONTINUE;
   }
 
-  private <E extends BlockEntity & GeoAnimatable> PlayState builderCraftingPredicate(AnimationState<E> event) {
-    AnimationController<?> controller = event.getController();
-    if (this.progress > 0 && this.progress < this.maxProgress) {
-      controller.setAnimation(RawAnimation.begin().thenPlay("animation.builder.building"));
-    }
-    return PlayState.CONTINUE;
-  }
+//  private <E extends BlockEntity & GeoAnimatable> PlayState builderCraftingPredicate(AnimationState<E> event) {
+//    AnimationController<?> controller = event.getController();
+//    if (this.progress > 0 && this.progress < this.maxProgress) {
+//      controller.setAnimation(RawAnimation.begin().thenPlay("animation.builder.building"));
+//    }
+//    return PlayState.CONTINUE;
+//  }
 
   @Override
   public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
     controllers.add(
         new AnimationController<BuilderTileEntity>(this, "controller", 0, this::builderIdlePredicate));
-    controllers.add(
-        new AnimationController<BuilderTileEntity>(this, "building_controller", 0,
-            this::builderCraftingPredicate));
+//    controllers.add(
+//        new AnimationController<BuilderTileEntity>(this, "building_controller", 0,
+//            this::builderCraftingPredicate));
   }
 
   @Override
