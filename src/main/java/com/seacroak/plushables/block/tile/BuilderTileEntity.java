@@ -23,6 +23,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.common.util.LazyOptional;
@@ -52,6 +53,7 @@ public class BuilderTileEntity extends BlockEntity implements MenuProvider, GeoB
     @Override
     protected void onContentsChanged(int slot) {
       setChanged();
+//      rerenderBuilder();
     }
   };
   private LazyOptional<IItemHandler> lazyItemHandler = LazyOptional.empty();
@@ -146,7 +148,6 @@ public class BuilderTileEntity extends BlockEntity implements MenuProvider, GeoB
 
 
   public static void tick(@NotNull Level level, BlockPos pos, BlockState state, BuilderTileEntity entity) {
-
     if (hasRecipe(entity)) {
       /* Clientside in-block output plushable rendering*/
       if (entity.level.isClientSide()) {
@@ -161,6 +162,7 @@ public class BuilderTileEntity extends BlockEntity implements MenuProvider, GeoB
         craftItem(entity);
       }
     } else {
+      craftItemRenderReset(entity);
       entity.animationIsCrafting = false;
       entity.resetProgress();
       setChanged(level, pos, state);
@@ -188,6 +190,9 @@ public class BuilderTileEntity extends BlockEntity implements MenuProvider, GeoB
       entity.itemHandler.extractItem(2, 1, false);
       entity.itemHandler.setStackInSlot(3, new ItemStack(recipe.get().getResultItem(RegistryAccess.EMPTY).getItem()
           , entity.itemHandler.getStackInSlot(3).getCount() + 1));
+      entity.rerenderBuilder();
+      entity.outputItems.set(3,new ItemStack(recipe.get().getResultItem(RegistryAccess.EMPTY).getItem()));
+
       entity.resetProgress();
     }
     setChanged(entity.level, entity.getBlockPos(), entity.getBlockState());
@@ -196,25 +201,26 @@ public class BuilderTileEntity extends BlockEntity implements MenuProvider, GeoB
   /* Mini Plushable Rendering Methods*/
   private static void craftItemRender(BuilderTileEntity entity) {
     /* Terminate method if flag not set */
-    if (!entity.shouldReRender) return;
-    /* Build dummy inventory */
-    SimpleContainer temp_inventory = new SimpleContainer(entity.itemHandler.getSlots());
-    /* Get recipe manager */
-    Optional<BuilderRecipe> recipe = entity.level.getRecipeManager()
-        .getRecipeFor(BuilderRecipe.Type.INSTANCE, temp_inventory, entity.level);
+//    if (!entity.shouldReRender) return;
     /* Populate recipe slot data */
     ItemStack input_item = entity.itemHandler.getStackInSlot(0);
     ItemStack input_wool = entity.itemHandler.getStackInSlot(1);
     ItemStack input_heart = entity.itemHandler.getStackInSlot(2);
     ItemStack output_plush = entity.itemHandler.getStackInSlot(3);
     /* Idle crafting state */
-    if (entity.progress == 0 || entity.progress >= entity.maxProgress) {
-      entity.outputItems.set(0,input_item);
-      entity.outputItems.set(1,input_wool);
-      entity.outputItems.set(2,input_heart);
-      entity.outputItems.set(3,output_plush);
-    }
-    /* Crafting state */
+    entity.outputItems.set(0, input_item);
+    entity.outputItems.set(1, input_wool);
+    entity.outputItems.set(2, input_heart);
+    entity.outputItems.set(3, output_plush);
+
+    entity.shouldReRender = false;
+  }
+
+  private static void craftItemRenderReset(BuilderTileEntity entity) {
+    entity.outputItems.set(0, ItemStack.EMPTY);
+    entity.outputItems.set(1, ItemStack.EMPTY);
+    entity.outputItems.set(2, ItemStack.EMPTY);
+    entity.outputItems.set(3, ItemStack.EMPTY);
   }
 
   public ClientboundBlockEntityDataPacket getUpdatePacket() {
@@ -222,11 +228,9 @@ public class BuilderTileEntity extends BlockEntity implements MenuProvider, GeoB
   }
 
   public NonNullList<ItemStack> getOutput() {
-    System.out.println(this.outputItems.get(0).getItem().asItem());
     return this.outputItems;
   }
 
-  /* */
   private static boolean hasRecipe(BuilderTileEntity entity) {
     Level level = entity.level;
     SimpleContainer inventory = new SimpleContainer(entity.itemHandler.getSlots());
@@ -248,6 +252,12 @@ public class BuilderTileEntity extends BlockEntity implements MenuProvider, GeoB
 
   private static boolean canInsertAmountIntoOutputSlot(SimpleContainer inventory) {
     return inventory.getItem(3).getMaxStackSize() > inventory.getItem(3).getCount();
+  }
+
+  public void rerenderBuilder() {
+    this.setChanged();
+    this.getLevel().sendBlockUpdated(this.getBlockPos(), this.getBlockState(), this.getBlockState(), 3);
+    this.shouldReRender = true;
   }
 
 

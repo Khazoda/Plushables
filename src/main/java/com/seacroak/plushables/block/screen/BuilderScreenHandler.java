@@ -92,6 +92,7 @@ public class BuilderScreenHandler extends AbstractContainerMenu {
     } else {
       sourceSlot.setChanged();
     }
+    blockEntity.rerenderBuilder();
     sourceSlot.onTake(playerIn, sourceStack);
     return copyOfSourceStack;
   }

@@ -16,27 +16,29 @@ public class ItemGroupRegistry {
   public static final RegistryObject<CreativeModeTab> PLUSHABLES_TAB = PLUSHABLES_GROUP.register("plushables_tab",
       () -> CreativeModeTab.builder().icon(() -> new ItemStack(MainRegistry.HEART_OF_GOLD.get()))
           .title(Component.translatable("itemGroup.plushables.creative_tab"))
-          .displayItems((pParameters, pOutput) -> {
-            pOutput.accept(MainRegistry.HEART_OF_GOLD.get());
-            pOutput.accept(MainRegistry.POWERED_HEART.get());
-            pOutput.accept(MainRegistry.BUILDER_BLOCK.get());
-            pOutput.accept(MainRegistry.PENGUIN_PLUSHABLE.get());
-            pOutput.accept(MainRegistry.FOX_PLUSHABLE.get());
-            pOutput.accept(MainRegistry.FROGLIN_PLUSHABLE.get());
-            pOutput.accept(MainRegistry.CLUCKY_BLOCK.get());
-            pOutput.accept(MainRegistry.PIG_PLUSHABLE.get());
-            pOutput.accept(MainRegistry.TRUFFLES_PLUSHABLE.get());
-            pOutput.accept(MainRegistry.DJUNGELSKOG_PLUSHABLE.get());
-            pOutput.accept(MainRegistry.RATTIAM_PLUSHABLE.get());
-            pOutput.accept(MainRegistry.TRICERATOPS_PLUSHABLE.get());
-            pOutput.accept(MainRegistry.UNICORN_PLUSHABLE.get());
-            pOutput.accept(MainRegistry.WHELPLING_PLUSHABLE.get());
-            pOutput.accept(MainRegistry.RAPTOR_PLUSHABLE.get());
-            pOutput.accept(MainRegistry.RUPERT_BLOCK.get());
-            pOutput.accept(MainRegistry.DRAGON_BLOCK.get());
-            pOutput.accept(MainRegistry.WIZARD_PLUSHABLE.get());
-            pOutput.accept(MainRegistry.BEAUX_PLUSHABLE.get());
-            pOutput.accept(MainRegistry.GOBLIN_PLUSHABLE.get());
+          .displayItems((pParameters, event) -> {
+            event.accept(MainRegistry.HEART_OF_GOLD.get());
+            event.accept(MainRegistry.POWERED_HEART.get());
+            event.accept(MainRegistry.BUILDER_BLOCK.get());
+            event.accept(MainRegistry.PENGUIN_PLUSHABLE.get());
+            event.accept(MainRegistry.FOX_PLUSHABLE.get());
+            event.accept(MainRegistry.FROGLIN_PLUSHABLE.get());
+            event.accept(MainRegistry.CLUCKY_BLOCK.get());
+            event.accept(MainRegistry.PIG_PLUSHABLE.get());
+            event.accept(MainRegistry.TRUFFLES_PLUSHABLE.get());
+            event.accept(MainRegistry.DJUNGELSKOG_PLUSHABLE.get());
+            event.accept(MainRegistry.RATTIAM_PLUSHABLE.get());
+            event.accept(MainRegistry.TRICERATOPS_PLUSHABLE.get());
+            event.accept(MainRegistry.UNICORN_PLUSHABLE.get());
+            event.accept(MainRegistry.WHELPLING_PLUSHABLE.get());
+            event.accept(MainRegistry.RAPTOR_PLUSHABLE.get());
+            event.accept(MainRegistry.RUPERT_BLOCK.get());
+            event.accept(MainRegistry.DRAGON_BLOCK.get());
+            event.accept(MainRegistry.WIZARD_PLUSHABLE.get());
+            event.accept(MainRegistry.BEAUX_PLUSHABLE.get());
+            event.accept(MainRegistry.GOBLIN_PLUSHABLE.get());
+            /* Caps */
+            event.accept(MainRegistry.FROGLIN_CAP.get());
           })
           .build());
 

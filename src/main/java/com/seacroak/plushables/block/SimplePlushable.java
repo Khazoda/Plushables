@@ -40,6 +40,7 @@ public abstract class SimplePlushable extends HorizontalDirectionalBlock {
     rand = new Random();
   }
 
+
   @Override
   public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
     // Serverside code
