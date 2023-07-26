@@ -59,4 +59,6 @@ public record BuilderDisplay(List<EntryIngredient> inputs, List<EntryIngredient>
             );
         }
     }
+
+
 }

@@ -31,4 +31,6 @@ public class PlushablesREIClientPlugin implements REIClientPlugin {
             return new Rectangle(screen.getGuiLeft() + 84, screen.getGuiTop() + 32, 42, 9);
         }, BuilderScreen.class, PlushablesREICommonPlugin.BUILDER);
     }
+
+
 }

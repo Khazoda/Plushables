@@ -24,25 +24,23 @@ public class BuilderCategory implements DisplayCategory<BuilderDisplay> {
         int textureX = bounds.getX() + (bounds.getWidth() - 140) / 2;
         int textureY = bounds.getY() + (bounds.getHeight() - 63) / 2;
 
-//        widgets.add(Widgets.createRecipeBase(bounds));
-        widgets.add(Widgets.createTexturedWidget(BuilderScreen.TEXTURE, textureX - 18, textureY + 0, 0, 0, 176, 74));
-//        widgets.add(Widgets.createTexturedWidget(BuilderScreen.TEXTURE, textureX + 3, textureY + 4, 25, 9, 134, 56));
+        widgets.add(Widgets.createTexturedWidget(BuilderScreen.TEXTURE, textureX - 18, textureY -5, 0, 0, 176, 74));
 
         /* Input Slots */
-        widgets.add(Widgets.createSlot(new Point(textureX + 14, textureY + 14)).entries(display.inputs().get(0))
+        widgets.add(Widgets.createSlot(new Point(textureX + 14, textureY + 9)).entries(display.inputs().get(0))
                 .disableBackground());
-        widgets.add(Widgets.createSlot(new Point(textureX + 14, textureY + 44)).entries(display.inputs().get(1))
+        widgets.add(Widgets.createSlot(new Point(textureX + 14, textureY + 39)).entries(display.inputs().get(1))
                 .disableBackground());
-        widgets.add(Widgets.createSlot(new Point(textureX + 44, textureY + 29)).entries(display.inputs().get(2))
+        widgets.add(Widgets.createSlot(new Point(textureX + 44, textureY + 24)).entries(display.inputs().get(2))
                 .disableBackground());
 
         /* Output Slot */
-        widgets.add(Widgets.createSlot(new Point(textureX + 113, textureY + 29)).entries(display.output().get(0))
+        widgets.add(Widgets.createSlot(new Point(textureX + 113, textureY + 24)).entries(display.output().get(0))
                 .disableBackground());
 
         /* Progress Arrow */
         widgets.add(Widgets.createDrawableWidget((context, mouseX, mouseY, delta) -> {
-            context.blit(BuilderScreen.TEXTURE, textureX + 63, textureY + 22, 1, 169,
+            context.blit(BuilderScreen.TEXTURE, textureX + 63, textureY + 17, 1, 169,
                     (int) ((System.currentTimeMillis() / 150d) % 86d), 30);
         }));
 
@@ -51,7 +49,12 @@ public class BuilderCategory implements DisplayCategory<BuilderDisplay> {
 
     @Override
     public int getDisplayHeight() {
-        return DisplayCategory.super.getDisplayHeight() + 6;
+        return DisplayCategory.super.getDisplayHeight() + 12;
+    }
+
+    @Override
+    public int getDisplayWidth(BuilderDisplay display) {
+        return DisplayCategory.super.getDisplayWidth(display) + 20;
     }
 
     @Override
@@ -68,4 +71,5 @@ public class BuilderCategory implements DisplayCategory<BuilderDisplay> {
     public CategoryIdentifier<? extends BuilderDisplay> getCategoryIdentifier() {
         return PlushablesREICommonPlugin.BUILDER;
     }
+
 }
