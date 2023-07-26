@@ -13,7 +13,6 @@ public class BuilderScreen extends AbstractContainerScreen<BuilderScreenHandler>
   public static final ResourceLocation TEXTURE =
       new ResourceLocation(PlushablesMod.MOD_ID,"textures/gui/builder_gui.png");
 
-
   public BuilderScreen(BuilderScreenHandler menu, Inventory inventory, Component component) {
     super(menu, inventory, component);
     /* Move "Inventory" label to the right*/
@@ -50,6 +49,8 @@ public class BuilderScreen extends AbstractContainerScreen<BuilderScreenHandler>
       pGuiGraphics.blit(TEXTURE,x+81, y+22, 1, 169, menu.getScaledProgress(),30);
     }
   }
+
+
 
   @Override
   public void render(GuiGraphics pGuiGraphics, int pMouseX, int pMouseY, float pPartialTick) {

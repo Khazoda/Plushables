@@ -28,7 +28,7 @@ public class PlushablesREIClientPlugin implements REIClientPlugin {
     @Override
     public void registerScreens(ScreenRegistry registry) {
         registry.registerClickArea(screen -> {
-            return new Rectangle(screen.getGuiLeft() + 72, screen.getGuiTop() + 43, 24, 9);
+            return new Rectangle(screen.getGuiLeft() + 84, screen.getGuiTop() + 32, 42, 9);
         }, BuilderScreen.class, PlushablesREICommonPlugin.BUILDER);
     }
 }
