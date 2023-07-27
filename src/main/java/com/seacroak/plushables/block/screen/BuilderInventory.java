@@ -1,4 +1,4 @@
-package com.seacroak.plushables.gui;
+package com.seacroak.plushables.block.screen;
 
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.Inventories;

@@ -1,4 +1,4 @@
-package com.seacroak.plushables.gui;
+package com.seacroak.plushables.block.screen;
 
 import com.seacroak.plushables.registry.ScreenRegistry;
 import net.minecraft.entity.player.PlayerEntity;
@@ -24,26 +24,20 @@ public class BuilderScreenHandler extends ScreenHandler {
   public BuilderScreenHandler(int syncId, PlayerInventory playerInventory,
                               Inventory inventory, PropertyDelegate delegate) {
     super(ScreenRegistry.BUILDER_SCREEN_HANDLER, syncId);
-    checkSize(inventory, 4);
     this.inventory = inventory;
-//      this.world = playerInventory.player.method_48926();
     this.world = playerInventory.player.getWorld();
-    inventory.onOpen(playerInventory.player);
     this.propertyDelegate = delegate;
 
-    // Top Slot
-    this.addSlot(new Slot(inventory, 0, 55, 20));
-    // Heart of Gold Slot
-    this.addSlot(new Slot(inventory, 3, 55, 39));
-    // Bottom Slot
-    this.addSlot(new Slot(inventory, 1, 55, 58));
+    checkSize(inventory, 4);
+    inventory.onOpen(playerInventory.player);
 
-    // Output Slot
-    this.addSlot(new Slot(inventory, 2, 98, 39));
+    this.addSlot(new Slot(inventory, 0, 32, 14));    // Item Slot
+    this.addSlot(new Slot(inventory, 1, 32, 44));    // Wool Slot
+    this.addSlot(new Slot(inventory, 2, 62, 29));    // Heart of Gold Slot
+    this.addSlot(new Slot(inventory, 3, 131, 29));   // Output Slot
 
     addPlayerInventory(playerInventory);
     addPlayerHotbar(playerInventory);
-
     addProperties(delegate);
   }
 
@@ -54,13 +48,9 @@ public class BuilderScreenHandler extends ScreenHandler {
   public int getScaledProgress() {
     int progress = this.propertyDelegate.get(0);
     int maxProgress = this.propertyDelegate.get(1); // Max Progress
-    int progressArrowSize = 24; // This is the width in pixels of your arrow
+    int progressArrowSize = 74; // This is the width in pixels of your arrow
 
     return maxProgress != 0 && progress != 0 ? progress * progressArrowSize / maxProgress : 0;
-  }
-
-  public boolean isLightningStorm() {
-    return world.isThundering();
   }
 
   @Override

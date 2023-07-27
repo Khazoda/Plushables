@@ -2,6 +2,7 @@ package com.seacroak.plushables.item;
 
 
 import com.seacroak.plushables.client.renderer.item.FroglinCapRenderer;
+import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.minecraft.client.render.entity.model.BipedEntityModel;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
@@ -22,12 +23,14 @@ import java.util.function.Consumer;
 import java.util.function.Supplier;
 
 public class CapArmorItem extends ArmorItem implements GeoItem {
+  static final FabricItemSettings capItemSettings = new FabricItemSettings().maxCount(1);
   private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
   private final Supplier<Object> renderProvider = GeoItem.makeRenderer(this);
 
-  public CapArmorItem(ArmorMaterial armorMaterial, Type type, Settings settings) {
-    super(armorMaterial, type, settings);
+  public CapArmorItem(ArmorMaterial armorMaterial, Type type) {
+    super(armorMaterial, type, capItemSettings);
   }
+
   @Override
   public void createRenderer(Consumer<Object> consumer) {
     consumer.accept(new RenderProvider() {
@@ -46,7 +49,8 @@ public class CapArmorItem extends ArmorItem implements GeoItem {
       }
     });
   }
-  private PlayState predicate(AnimationState animationState) {
+
+  protected PlayState predicate(AnimationState animationState) {
     animationState.getController().setAnimation(RawAnimation.begin().then("animation.cap_froglin.idle", Animation.LoopType.LOOP));
     return PlayState.CONTINUE;
   }

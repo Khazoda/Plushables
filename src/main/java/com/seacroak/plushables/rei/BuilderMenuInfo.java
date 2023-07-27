@@ -1,6 +1,6 @@
 package com.seacroak.plushables.rei;
 
-import com.seacroak.plushables.gui.BuilderScreenHandler;
+import com.seacroak.plushables.block.screen.BuilderScreenHandler;
 import me.shedaniel.rei.api.common.transfer.info.MenuInfoContext;
 import me.shedaniel.rei.api.common.transfer.info.simple.SimplePlayerInventoryMenuInfo;
 import me.shedaniel.rei.api.common.transfer.info.stack.SlotAccessor;
@@ -14,8 +14,8 @@ public record BuilderMenuInfo(BuilderDisplay display)
     public Iterable<SlotAccessor> getInputSlots(MenuInfoContext<BuilderScreenHandler, ?, BuilderDisplay> context) {
         return List.of(
                 SlotAccessor.fromSlot(context.getMenu().getSlot(0)),
-                SlotAccessor.fromSlot(context.getMenu().getSlot(2)),
-                SlotAccessor.fromSlot(context.getMenu().getSlot(1)));
+                SlotAccessor.fromSlot(context.getMenu().getSlot(1)),
+                SlotAccessor.fromSlot(context.getMenu().getSlot(2)));
     }
 
     @Override

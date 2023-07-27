@@ -33,6 +33,7 @@ public class ItemGroupRegistry {
           entries.add(new ItemStack(MainRegistry.GOBLIN_PLUSHABLE));
           // Caps
           entries.add(new ItemStack(MainRegistry.FROGLIN_CAP));
+          entries.add(new ItemStack(MainRegistry.FOX_CAP));
 
         }).build();
   }

@@ -33,9 +33,9 @@ public class BuilderRecipe implements Recipe<SimpleInventory> {
   public boolean matches(SimpleInventory inventory, World world) {
     if (!recipeItems.get(0).test(inventory.getStack(0)))
       return false;
-    if (!recipeItems.get(2).test(inventory.getStack(3)))
-      return false;
     if (!recipeItems.get(1).test(inventory.getStack(1)))
+      return false;
+    if (!recipeItems.get(2).test(inventory.getStack(2)))
       return false;
     return true;
   }

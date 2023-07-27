@@ -2,20 +2,24 @@ package com.seacroak.plushables.registry;
 
 import com.seacroak.plushables.block.*;
 import com.seacroak.plushables.item.CapArmorItem;
-import com.seacroak.plushables.item.CapMaterials;
+import com.seacroak.plushables.item.FoxCap;
+import com.seacroak.plushables.item.FroglinCap;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.minecraft.block.Block;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.item.ArmorItem;
+import net.minecraft.item.ArmorMaterials;
 import net.minecraft.item.Item;
+import software.bernie.geckolib.renderer.GeoArmorRenderer;
 
 public final class MainRegistry {
   // Item Settings
-  static final FabricItemSettings defaultItemSettings = new FabricItemSettings().maxCount(8);
+  static final FabricItemSettings defaultItemSettings = new FabricItemSettings().maxCount(64);
   static final FabricItemSettings plushableItemSettings = new FabricItemSettings().maxCount(8).equipmentSlot(stack -> EquipmentSlot.HEAD);
 
   // Complex Plushables
-  public static final BuilderBlock BUILDER_BLOCK = register("builder_block", new BuilderBlock());
+  public static final BuilderBlock BUILDER_BLOCK = register("builder_block", new BuilderBlock(),
+      defaultItemSettings);
   public static final CluckyBlock CLUCKY_BLOCK = register("clucky_plushable", new CluckyBlock(),
       plushableItemSettings);
   public static final RupertBlock RUPERT_BLOCK = register("rupert_plushable", new RupertBlock(),
@@ -59,7 +63,8 @@ public final class MainRegistry {
   public static final Item POWERED_HEART = register("powered_heart");
 
   // Caps
-  public static final Item FROGLIN_CAP = registerCap("cap_froglin");
+  public static final Item FROGLIN_CAP = registerCap("cap_froglin",new FroglinCap());
+  public static final Item FOX_CAP = registerCap("cap_fox",new FoxCap());
 
 
 
@@ -78,7 +83,7 @@ public final class MainRegistry {
     return RegistryHelper.registerItem(name, new Item(defaultItemSettings));
   }
 
-  private static Item registerCap(String name) { return RegistryHelper.registerItem(name, new CapArmorItem(CapMaterials.CAP_MATERIAL,ArmorItem.Type.HELMET,defaultItemSettings));}
+  private static Item registerCap(String name, CapArmorItem capType) { return RegistryHelper.registerItem(name, capType);}
 
   private static Item register(String name, FabricItemSettings itemSettings) {
     return RegistryHelper.registerItem(name, new Item(itemSettings));

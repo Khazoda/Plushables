@@ -1,7 +1,6 @@
 package com.seacroak.plushables.rei;
 
-import com.mojang.blaze3d.systems.RenderSystem;
-import com.seacroak.plushables.gui.BuilderScreen;
+import com.seacroak.plushables.block.screen.BuilderScreen;
 import com.seacroak.plushables.registry.MainRegistry;
 import me.shedaniel.math.Point;
 import me.shedaniel.math.Rectangle;
@@ -22,25 +21,27 @@ public class BuilderCategory implements DisplayCategory<BuilderDisplay> {
     public List<Widget> setupDisplay(BuilderDisplay display, Rectangle bounds) {
         final var widgets = new ArrayList<Widget>();
 
-        int textureX = bounds.getX() + (bounds.getWidth() - 63) / 2;
-        int textureY = bounds.getY() + (bounds.getHeight() - 60) / 2;
+        int textureX = bounds.getX() + (bounds.getWidth() - 140) / 2;
+        int textureY = bounds.getY() + (bounds.getHeight() - 63) / 2;
 
-        widgets.add(Widgets.createRecipeBase(bounds));
-        widgets.add(Widgets.createTexturedWidget(BuilderScreen.TEXTURE, textureX, textureY, 52, 17, 63, 60));
+        widgets.add(Widgets.createTexturedWidget(BuilderScreen.TEXTURE, textureX - 18, textureY -5, 0, 0, 176, 74));
 
-        widgets.add(Widgets.createSlot(new Point(textureX + 3, textureY + 3)).entries(display.inputs().get(0))
-                .disableBackground());
-        widgets.add(Widgets.createSlot(new Point(textureX + 3, textureY + 41)).entries(display.inputs().get(1))
-                .disableBackground());
-        widgets.add(Widgets.createSlot(new Point(textureX + 3, textureY + 22)).entries(display.inputs().get(2))
-                .disableBackground());
+        /* Input Slots */
+        widgets.add(Widgets.createSlot(new Point(textureX + 14, textureY + 9)).entries(display.inputs().get(0))
+            .disableBackground());
+        widgets.add(Widgets.createSlot(new Point(textureX + 14, textureY + 39)).entries(display.inputs().get(1))
+            .disableBackground());
+        widgets.add(Widgets.createSlot(new Point(textureX + 44, textureY + 24)).entries(display.inputs().get(2))
+            .disableBackground());
 
-        widgets.add(Widgets.createSlot(new Point(textureX + 46, textureY + 22)).entries(display.output().get(0))
-                .disableBackground());
+        /* Output Slot */
+        widgets.add(Widgets.createSlot(new Point(textureX + 113, textureY + 24)).entries(display.output().get(0))
+            .disableBackground());
 
+        /* Progress Arrow */
         widgets.add(Widgets.createDrawableWidget((context, mouseX, mouseY, delta) -> {
-            context.drawTexture(BuilderScreen.TEXTURE, textureX + 20, textureY + 26, 176, 64,
-                    (int) ((System.currentTimeMillis() / 150d) % 24d), 9);
+            context.drawTexture(BuilderScreen.TEXTURE, textureX + 63, textureY + 17, 1, 169,
+                (int) ((System.currentTimeMillis() / 150d) % 86d), 30);
         }));
 
         return widgets;
@@ -48,7 +49,12 @@ public class BuilderCategory implements DisplayCategory<BuilderDisplay> {
 
     @Override
     public int getDisplayHeight() {
-        return DisplayCategory.super.getDisplayHeight() + 6;
+        return DisplayCategory.super.getDisplayHeight() + 12;
+    }
+
+    @Override
+    public int getDisplayWidth(BuilderDisplay display) {
+        return DisplayCategory.super.getDisplayWidth(display) + 20;
     }
 
     @Override

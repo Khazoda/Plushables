@@ -21,5 +21,7 @@
   "block.plushables.goblin_plushable": "Plushable §a§lGoblin",
   "block.plushables.beaux_plushable": "Plushable §8§lBeaux",
 
-  "item.plushables.cap_froglin": "§2§lFroglin§r Cap"
+  "item.plushables.cap_froglin": "§2§lFroglin§r Cap",
+  "item.plushables.cap_fox": "§6§lFox§r Cap"
+
 }

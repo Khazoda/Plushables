@@ -1,6 +1,6 @@
 package com.seacroak.plushables.rei;
 
-import com.seacroak.plushables.gui.BuilderScreen;
+import com.seacroak.plushables.block.screen.BuilderScreen;
 import com.seacroak.plushables.recipe.BuilderRecipe;
 import com.seacroak.plushables.registry.MainRegistry;
 import me.shedaniel.math.Rectangle;
@@ -26,7 +26,7 @@ public class PlushablesREIClientPlugin implements REIClientPlugin {
     @Override
     public void registerScreens(ScreenRegistry registry) {
         registry.registerClickArea(screen -> {
-            return new Rectangle(screen.rootX() + 72, screen.rootY() + 43, 24, 9);
+            return new Rectangle(screen.rootX() + 84, screen.rootY() + 32, 42, 9);
         }, BuilderScreen.class, PlushablesREICommonPlugin.BUILDER);
     }
 }
