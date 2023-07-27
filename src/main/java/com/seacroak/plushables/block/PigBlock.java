@@ -87,7 +87,7 @@ public class PigBlock extends SimplePlushable {
     VoxelShape s = VoxelShapes.empty();
     s = VoxelShapes.union(s, VoxelShapes.cuboid(0.125, 0, 0.125, 0.3125, 0.1875, 0.5));
     s = VoxelShapes.union(s, VoxelShapes.cuboid(0.59375, 0, 0.1875, 0.96875, 0.1875, 0.375));
-    s = VoxelShapes.union(s, VoxelShapes.cuboid(0.25, 0.003125, 0.21875, 0.75, 0.3156249999999998, 0.875));
+    s = VoxelShapes.union(s, VoxelShapes.cuboid(0.25, 0.003125, 0.21875, 0.75, 0.315625, 0.875));
     s = VoxelShapes.union(s, VoxelShapes.cuboid(0.5625, 0, 0.875, 0.75, 0.1875, 1));
     s = VoxelShapes.union(s, VoxelShapes.cuboid(0.25, 0, 0.875, 0.4375, 0.1875, 1));
     s = VoxelShapes.union(s, VoxelShapes.cuboid(0.34375, 0, 0.03125, 0.65625, 0.3125, 0.21875));

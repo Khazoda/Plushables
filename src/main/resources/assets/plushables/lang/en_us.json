@@ -1,5 +1,5 @@
 {
-  "itemGroup.plushables.plushables": "Plushables",
+  "itemGroup.plushables.plushables": "§cP§6l§eu§as§bh§9a§5b§cl§6e§es",
   "item.plushables.heart_of_gold": "§6Heart of Gold",
   "item.plushables.powered_heart": "§cPowered §6Heart of Gold",
   "block.plushables.builder_block": "Plushable Builder",
@@ -19,5 +19,7 @@
   "block.plushables.dragon_plushable": "Plushable §f§lDragon",
   "block.plushables.wizard_plushable": "Plushable §5§lWizard",
   "block.plushables.goblin_plushable": "Plushable §a§lGoblin",
-  "block.plushables.beaux_plushable": "Plushable §8§lBeaux"
+  "block.plushables.beaux_plushable": "Plushable §8§lBeaux",
+
+  "item.plushables.cap_froglin": "§2§lFroglin§r Cap"
 }

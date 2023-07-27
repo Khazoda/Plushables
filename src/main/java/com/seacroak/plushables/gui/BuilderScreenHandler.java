@@ -89,7 +89,6 @@ public class BuilderScreenHandler extends ScreenHandler {
         slot.markDirty();
       }
     }
-
     return newStack;
   }
 
