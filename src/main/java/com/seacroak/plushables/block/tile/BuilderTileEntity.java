@@ -188,11 +188,11 @@ public class BuilderTileEntity extends BlockEntity
 		controller.setAnimation(RawAnimation.begin().thenPlay("animation.builder.idle"));
 		return PlayState.CONTINUE;
 	}
-
 	@Override
 	public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
 		controllers.add(
 				new AnimationController<BuilderTileEntity>(this, "controller", 0, this::builderIdlePredicate));
+
 	}
 
 	@Override
