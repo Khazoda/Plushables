@@ -25,6 +25,6 @@ public class BuilderModel extends GeoModel<BuilderTileEntity> {
 
     @Override
     public RenderLayer getRenderType(BuilderTileEntity animatable, Identifier texture) {
-        return RenderLayer.getEntityTranslucent(getTextureResource(animatable));
+        return RenderLayer.getEntityCutout(getTextureResource(animatable));
     }
 }

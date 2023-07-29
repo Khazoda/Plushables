@@ -2,6 +2,7 @@ package com.seacroak.plushables.block;
 
 import com.seacroak.plushables.block.tile.BuilderTileEntity;
 import com.seacroak.plushables.registry.TileRegistry;
+import com.seacroak.plushables.util.HorizontalDirectionalBaseEntityBlock;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.BlockRenderType;
 import net.minecraft.block.BlockState;
@@ -25,10 +26,11 @@ import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
-public class BuilderBlock extends BlockWithEntity {
+public class BuilderBlock extends HorizontalDirectionalBaseEntityBlock {
 
   public BuilderBlock() {
-    super(FabricBlockSettings.create().strength(2.5f).sounds(BlockSoundGroup.WOOD).requiresTool());
+
+    super(FabricBlockSettings.create().strength(2.5f).sounds(BlockSoundGroup.COPPER).requiresTool());
     setDefaultState(this.stateManager.getDefaultState());
   }
 
@@ -83,18 +85,8 @@ public class BuilderBlock extends BlockWithEntity {
     super.onStateReplaced(state, world, pos, newState, moved);
   }
 
-  @Override
-  public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
-    return blockShape;
-  }
-
-  static final VoxelShape blockShape = getShape();
-
-  static public VoxelShape getShape() {
-    VoxelShape shape = VoxelShapes.empty();
-
-    shape = VoxelShapes.union(shape, VoxelShapes.cuboid(0, 0, 0, 1, 1, 1));
-
+  public VoxelShape getShape() {
+    VoxelShape shape = VoxelShapes.cuboid(0, 0.0625, 0, 1, 1, 1);
     return shape;
   }
 

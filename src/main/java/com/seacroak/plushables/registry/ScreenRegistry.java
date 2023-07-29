@@ -10,10 +10,6 @@ import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.resource.featuretoggle.FeatureFlags;
 import net.minecraft.screen.ScreenHandlerType;
-
-// Screen registry is in ClientRegistry.java
-// Screen handlers are registered here
-
 public final class ScreenRegistry {
     public static final ScreenHandlerType<BuilderScreenHandler> BUILDER_SCREEN_HANDLER = new ScreenHandlerType<>(
             BuilderScreenHandler::new, FeatureFlags.DEFAULT_ENABLED_FEATURES);

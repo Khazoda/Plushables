@@ -9,20 +9,6 @@ import net.fabricmc.api.Environment;
 import net.minecraft.client.render.block.entity.BlockEntityRendererFactories;
 import net.minecraft.client.render.block.entity.BlockEntityRendererFactory;
 
-// public class TileRegistry {
-// 	// public static final BlockEntityType<HabitatTileEntity> HABITAT_TILE =
-// 	// Registry.register(
-// 	// Registry.BLOCK_ENTITY_TYPE, GeckoLib.ModID + ":habitattile",
-// 	// FabricBlockEntityTypeBuilder.create(HabitatTileEntity::new,
-// 	// BlockRegistry.HABITAT_BLOCK).build(null));
-// 	// public static final BlockEntityType<FertilizerTileEntity> FERTILIZER =
-// 	// Registry.register(Registry.BLOCK_ENTITY_TYPE,
-// 	// GeckoLib.ModID + ":fertilizertile",
-// 	// FabricBlockEntityTypeBuilder.create(FertilizerTileEntity::new,
-// 	// BlockRegistry.FERTILIZER_BLOCK).build(null));
-
-// }
-
 public final class TileRegistryClient {
 	@Environment(EnvType.CLIENT)
 	public static void initClient() {

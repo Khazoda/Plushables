@@ -9,7 +9,7 @@ public class FroglinCapModel extends GeoModel<FroglinCap> {
 
   @Override
   public Identifier getModelResource(FroglinCap animatable) {
-    return GenericUtils.ID("geo/cap_froglin.geo.json");
+    return GenericUtils.ID("geo/armor/cap_froglin.geo.json");
   }
 
   @Override
@@ -19,6 +19,6 @@ public class FroglinCapModel extends GeoModel<FroglinCap> {
 
   @Override
   public Identifier getAnimationResource(FroglinCap animatable) {
-    return GenericUtils.ID("animations/cap_froglin.animation.json");
+    return GenericUtils.ID("animations/armor/cap_froglin.animation.json");
   }
 }

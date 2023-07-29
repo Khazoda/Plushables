@@ -3,6 +3,7 @@
 	"animations": {
 		"animation.builder.idle": {
 			"loop": true,
+			"animation_length": 16.29167,
 			"bones": {
 				"cog": {
 					"rotation": {
@@ -11,12 +12,12 @@
 				},
 				"cog2": {
 					"rotation": {
-						"vector": ["((query.anim_time * 20) * 10) * -1", 0, 0]
+						"vector": ["((query.anim_time * 20) * 15) * -1", 0, 0]
 					}
 				},
 				"cog_small": {
 					"rotation": {
-						"vector": ["(query.anim_time * 20) * 10", 0, 0]
+						"vector": ["(query.anim_time * 20) * 20", 0, 0]
 					}
 				},
 				"piston_1": {
@@ -51,7 +52,7 @@
 						"vector": [0, "query.anim_time * 500", 0]
 					},
 					"position": {
-						"vector": ["math.sin(query.anim_time * 200) * 5 * -1", "math.sin(query.anim_time * 200) * 1 * -1 ", "math.cos(query.anim_time * 200) * 5 * -1"]
+						"vector": ["math.sin(query.anim_time * 200) * 5 * -1", "-1+math.sin(query.anim_time * 200) * 1 * 1", "math.cos(query.anim_time * 200) * 5 * -1"]
 					}
 				},
 				"mini_1": {
@@ -60,6 +61,18 @@
 					},
 					"position": {
 						"vector": ["math.sin(query.anim_time * 200) * 1", "math.sin(query.anim_time * 200) * 3", "math.cos(query.anim_time * 200) * 3"]
+					}
+				},
+				"mini_3": {
+					"rotation": {
+						"vector": [0, "query.anim_time * 100", 0]
+					},
+					"scale": {
+						"vector": [
+							"math.clamp(math.sin(query.anim_time * 10) * 1,0.5,2)",
+							"math.clamp(math.sin(query.anim_time * 10) * 1,0.5,2)",
+							"math.clamp(math.sin(query.anim_time * 10) * 1,0.5,2)"
+						]
 					}
 				}
 			}

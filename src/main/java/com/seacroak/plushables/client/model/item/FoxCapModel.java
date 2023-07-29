@@ -9,7 +9,7 @@ public class FoxCapModel extends GeoModel<FoxCap> {
 
   @Override
   public Identifier getModelResource(FoxCap animatable) {
-    return GenericUtils.ID("geo/cap_fox.geo.json");
+    return GenericUtils.ID("geo/armor/cap_fox.geo.json");
   }
 
   @Override
@@ -19,6 +19,6 @@ public class FoxCapModel extends GeoModel<FoxCap> {
 
   @Override
   public Identifier getAnimationResource(FoxCap animatable) {
-    return GenericUtils.ID("animations/cap_fox.animation.json");
+    return GenericUtils.ID("animations/armor/cap_fox.animation.json");
   }
 }
