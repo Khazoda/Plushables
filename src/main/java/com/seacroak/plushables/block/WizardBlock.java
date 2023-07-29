@@ -1,12 +1,13 @@
 package com.seacroak.plushables.block;
 
 import com.seacroak.plushables.registry.SoundRegistry;
-import com.seacroak.plushables.util.PlushablesNetworking;
+import com.seacroak.plushables.util.networking.ParticlePacketHandler;
+import com.seacroak.plushables.util.networking.PlushablesNetworking;
+import com.seacroak.plushables.util.networking.SoundPacketHandler;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.world.ServerWorld;
-import net.minecraft.sound.SoundCategory;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.hit.BlockHitResult;
@@ -45,19 +46,21 @@ public class WizardBlock extends SimplePlushable {
     if (player.shouldCancelInteraction()) return ActionResult.PASS;
 
     if (world instanceof ServerWorld serverWorld) {
-      PlushablesNetworking.sendDataToClients(serverWorld, new PlushablesNetworking.SoundPacket(player, pos));
+      SoundPacketHandler.sendPacketToClients(serverWorld, new SoundPacketHandler.SoundPacket(player, pos,SoundRegistry.SWMG));
+      ParticlePacketHandler.sendPacketToClients(serverWorld, new ParticlePacketHandler.ParticlePacket
+          (player, pos,"minecraft:note",1,new Vec3d(0,0.5,0),0f));
+      ParticlePacketHandler.sendPacketToClients(serverWorld, new ParticlePacketHandler.ParticlePacket
+          (player, pos,"minecraft:glow",5,new Vec3d(0,0,0),0.05f));
+
+      return ActionResult.SUCCESS;
+    } else {
+      PlushablesNetworking.playSound(SoundRegistry.SWMG, world, pos, 1f);
+      PlushablesNetworking.spawnParticles(ParticleTypes.NOTE, world, pos, 1, new Vec3d(0, 0.5, 0), 0);
+      PlushablesNetworking.spawnParticles(ParticleTypes.GLOW, world, pos, 5, new Vec3d(0, 0, 0), 0.05f);
       return ActionResult.SUCCESS;
     }
-    playSoundAnimation(world, pos.toCenterPos(), pos, 1f);
-    return ActionResult.SUCCESS;
 
   }
 
-  public static void playSoundAnimation(World world, Vec3d vec, BlockPos pos, float volume) {
-    world.addParticle(ParticleTypes.NOTE, vec.x, vec.y + 0.5, vec.z, rand.nextFloat(-0.05f, 0.05f), rand.nextFloat(-0.05f, 0.05f), rand.nextFloat(-0.05f, 0.05f));
-    for (int i = 0; i < 5; i++) {
-      world.addParticle(ParticleTypes.GLOW, vec.x, vec.y, vec.z, rand.nextFloat(-0.05f, 0.05f), rand.nextFloat(-0.05f, 0.05f), rand.nextFloat(-0.05f, 0.05f));
-    }
-    world.playSoundAtBlockCenter(BlockPos.ofFloored(vec) , SoundRegistry.SWMG, SoundCategory.BLOCKS, volume, 1, true);
-  }
+
 }
