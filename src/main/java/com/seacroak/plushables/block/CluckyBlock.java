@@ -51,10 +51,6 @@ public class CluckyBlock extends AnimatronicPlushable {
     return ActionResult.PASS;
   }
 
-  public void triggerAnimation() {
-
-  }
-
   public VoxelShape getShape() {
     VoxelShape shape = VoxelShapes.empty();
     shape = VoxelShapes.union(shape,

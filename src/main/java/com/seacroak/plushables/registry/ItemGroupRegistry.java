@@ -8,7 +8,7 @@ import net.minecraft.text.Text;
 public class ItemGroupRegistry {
   public static ItemGroup createItemGroup() {
     return FabricItemGroup.builder()
-        .icon(() -> new ItemStack(MainRegistry.HEART_OF_GOLD))
+        .icon(() -> new ItemStack(MainRegistry.PENGUIN_PLUSHABLE))
         .displayName(Text.translatable("itemGroup.plushables.plushables"))
         .entries((displayContext, entries) -> {
           entries.add(new ItemStack(MainRegistry.HEART_OF_GOLD));
@@ -31,6 +31,10 @@ public class ItemGroupRegistry {
           entries.add(new ItemStack(MainRegistry.WIZARD_PLUSHABLE));
           entries.add(new ItemStack(MainRegistry.BEAUX_PLUSHABLE));
           entries.add(new ItemStack(MainRegistry.GOBLIN_PLUSHABLE));
+          entries.add(new ItemStack(MainRegistry.BIG_TATER_PLUSHABLE));
+          entries.add(new ItemStack(MainRegistry.GRUMBLY_TATER_PLUSHABLE));
+
+
           // Caps
           entries.add(new ItemStack(MainRegistry.FROGLIN_CAP));
           entries.add(new ItemStack(MainRegistry.FOX_CAP));

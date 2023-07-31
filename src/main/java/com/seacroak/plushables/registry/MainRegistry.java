@@ -8,10 +8,7 @@ import com.seacroak.plushables.item.UnicornCap;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.minecraft.block.Block;
 import net.minecraft.entity.EquipmentSlot;
-import net.minecraft.item.ArmorItem;
-import net.minecraft.item.ArmorMaterials;
 import net.minecraft.item.Item;
-import software.bernie.geckolib.renderer.GeoArmorRenderer;
 
 public final class MainRegistry {
   // Item Settings
@@ -58,6 +55,11 @@ public final class MainRegistry {
       plushableItemSettings);
   public static final GoblinBlock GOBLIN_PLUSHABLE = register("goblin_plushable", new GoblinBlock(),
       plushableItemSettings);
+  public static final BigTaterBlock BIG_TATER_PLUSHABLE = register("big_tater_plushable", new BigTaterBlock(),
+      plushableItemSettings);
+  public static final GrumblyTaterBlock GRUMBLY_TATER_PLUSHABLE = register("grumbly_tater_plushable", new GrumblyTaterBlock(),
+      plushableItemSettings);
+
 
   /* ITEMS */
   public static final Item HEART_OF_GOLD = register("heart_of_gold");
