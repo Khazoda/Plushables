@@ -1,4 +1,4 @@
-package com.seacroak.plushables.rei;
+package com.seacroak.plushables.compat.rei;
 
 import com.seacroak.plushables.recipe.BuilderRecipe;
 import me.shedaniel.rei.api.common.category.CategoryIdentifier;

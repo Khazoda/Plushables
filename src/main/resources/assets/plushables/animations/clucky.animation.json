@@ -1,7 +1,7 @@
 {
 	"format_version": "1.8.0",
 	"animations": {
-		"animation.chicken.wiggle": {
+		"idle": {
 			"loop": true,
 			"animation_length": 11.625,
 			"bones": {
@@ -129,7 +129,7 @@
 				}
 			}
 		},
-		"animation.chicken.look": {
+		"interaction": {
 			"animation_length": 3,
 			"bones": {
 				"Head": {

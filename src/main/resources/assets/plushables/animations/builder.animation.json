@@ -22,17 +22,17 @@
 				},
 				"piston_1": {
 					"position": {
-						"vector": [0, "math.sin(query.anim_time * 1000) * -1", 0]
+						"vector": [0, "0.1 + math.cos(query.anim_time * 200) * -1", 0]
 					}
 				},
 				"piston_2": {
 					"position": {
-						"vector": [0, "math.sin((query.anim_time + 1) * 1000) * -2", 0]
+						"vector": [0, "0.1 + math.sin((query.anim_time + 1) * 250) * -2", 0]
 					}
 				},
 				"piston_3": {
 					"position": {
-						"vector": [0, "math.sin((query.anim_time) * 1000) * -2", 0]
+						"vector": [0, "0.1 + math.sin((query.anim_time) * 325) * -2", 0]
 					}
 				},
 				"crystal": {

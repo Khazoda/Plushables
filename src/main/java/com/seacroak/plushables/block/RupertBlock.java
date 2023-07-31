@@ -33,11 +33,11 @@ public class RupertBlock extends AnimatronicPlushable {
       BlockEntity blockEntity = world.getBlockEntity(pos);
       if (blockEntity instanceof RupertTileEntity) {
         RupertTileEntity rupertEntity = (RupertTileEntity) blockEntity;
-        rupertEntity.setShouldLook(true);
-        if (rupertEntity.getShouldLook()
-          && rupertEntity.lookController.getAnimationState() == AnimationController.State.STOPPED) {
+        rupertEntity.shouldAnimate(true);
+        if (rupertEntity.shouldAnimate()
+            && rupertEntity.interactionController.getAnimationState() == AnimationController.State.STOPPED) {
           world.playSound(player, pos, SoundRegistry.RUPERT_PURR, SoundCategory.BLOCKS, 0.5f,
-            (float) 0.7f + randPitch.nextFloat() / 2);
+              (float) 0.7f + randPitch.nextFloat() / 2);
         }
         return ActionResult.SUCCESS;
       }

@@ -4,6 +4,7 @@ import com.seacroak.plushables.block.*;
 import com.seacroak.plushables.item.CapArmorItem;
 import com.seacroak.plushables.item.FoxCap;
 import com.seacroak.plushables.item.FroglinCap;
+import com.seacroak.plushables.item.UnicornCap;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.minecraft.block.Block;
 import net.minecraft.entity.EquipmentSlot;
@@ -65,6 +66,7 @@ public final class MainRegistry {
   // Caps
   public static final Item FROGLIN_CAP = registerCap("cap_froglin",new FroglinCap());
   public static final Item FOX_CAP = registerCap("cap_fox",new FoxCap());
+  public static final Item UNICORN_CAP = registerCap("cap_unicorn",new UnicornCap());
 
 
 

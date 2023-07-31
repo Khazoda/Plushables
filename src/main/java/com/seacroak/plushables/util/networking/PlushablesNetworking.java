@@ -12,11 +12,10 @@ import java.util.Random;
 
 public class PlushablesNetworking {
 
-
   /* Call this method after sending packet when wanting to play sound */
-  public static void playSound(SoundEvent sound, World world, BlockPos pos, float volume) {
+  public static void playSoundOnClient(SoundEvent sound, World world, BlockPos pos, float volume, float pitch) {
     Vec3d vec = pos.toCenterPos();
-    world.playSoundAtBlockCenter(BlockPos.ofFloored(vec), sound, SoundCategory.BLOCKS, volume, 1, true);
+    world.playSoundAtBlockCenter(BlockPos.ofFloored(vec), sound, SoundCategory.BLOCKS, volume, pitch, true);
   }
 
   /* Call this method after sending packet when wanting to spawn particles */
@@ -30,6 +29,16 @@ public class PlushablesNetworking {
           rand.nextFloat(-spread, spread), rand.nextFloat(-spread, spread), rand.nextFloat(-spread, spread));
     }
   }
+
+//  public static <E extends AnimatronicBlockEntity> void triggerAnimation(Class<E> animatable, boolean shouldAnimate, World world, BlockPos pos) {
+//    Vec3d vec = pos.toCenterPos();
+//    BlockEntity blockEntity = world.getBlockEntity(pos);
+//    E transformedBE = animatable.cast(blockEntity);
+//    if(animatable.isInstance(blockEntity)) {
+//      transformedBE.shouldAnimate(shouldAnimate);
+//      transformedBE.animationName = "interaction";
+//    }
+//  }
 
   public static void registerGlobalSoundPacketReceiver() {
     /* Registers global packet receiver in MainRegistry.class */

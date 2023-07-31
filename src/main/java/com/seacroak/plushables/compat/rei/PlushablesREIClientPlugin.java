@@ -1,4 +1,4 @@
-package com.seacroak.plushables.rei;
+package com.seacroak.plushables.compat.rei;
 
 import com.seacroak.plushables.block.screen.BuilderScreen;
 import com.seacroak.plushables.recipe.BuilderRecipe;

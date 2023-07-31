@@ -51,7 +51,7 @@ public class CapArmorItem extends ArmorItem implements GeoItem {
   }
 
   protected PlayState predicate(AnimationState animationState) {
-    animationState.getController().setAnimation(RawAnimation.begin().then("animation.cap_froglin.idle", Animation.LoopType.LOOP));
+    animationState.getController().setAnimation(RawAnimation.begin().then("idle", Animation.LoopType.LOOP));
     return PlayState.CONTINUE;
   }
 

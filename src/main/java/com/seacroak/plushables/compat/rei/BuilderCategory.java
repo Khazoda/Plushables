@@ -1,4 +1,4 @@
-package com.seacroak.plushables.rei;
+package com.seacroak.plushables.compat.rei;
 
 import com.seacroak.plushables.block.screen.BuilderScreen;
 import com.seacroak.plushables.registry.MainRegistry;
@@ -40,7 +40,7 @@ public class BuilderCategory implements DisplayCategory<BuilderDisplay> {
 
         /* Progress Arrow */
         widgets.add(Widgets.createDrawableWidget((context, mouseX, mouseY, delta) -> {
-            context.drawTexture(BuilderScreen.TEXTURE, textureX + 63, textureY + 17, 1, 169,
+            context.drawTexture(BuilderScreen.TEXTURE, textureX + 63, textureY + 17, 1, 186,
                 (int) ((System.currentTimeMillis() / 150d) % 86d), 30);
         }));
 

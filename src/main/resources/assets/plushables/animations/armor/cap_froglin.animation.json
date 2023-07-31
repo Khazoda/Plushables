@@ -1,7 +1,7 @@
 {
 	"format_version": "1.8.0",
 	"animations": {
-		"animation.cap_froglin.idle": {
+		"idle": {
 			"loop": true
 		}
 	}

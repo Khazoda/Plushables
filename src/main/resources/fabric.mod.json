@@ -15,8 +15,15 @@
   "entrypoints": {
     "main": ["com.seacroak.plushables.PlushablesMod"],
     "client": ["com.seacroak.plushables.PlushablesModClient"],
-    "rei_client": ["com.seacroak.plushables.rei.PlushablesREIClientPlugin"],
-    "rei_common": ["com.seacroak.plushables.rei.PlushablesREICommonPlugin"]
+    "rei_client": [
+      "com.seacroak.plushables.compat.rei.PlushablesREIClientPlugin"
+    ],
+    "rei_common": [
+      "com.seacroak.plushables.compat.rei.PlushablesREICommonPlugin"
+    ],
+    "emi": [
+      "com.seacroak.plushables.compat.emi.PlushablesEMIPlugin"
+    ]
   },
   "mixins": ["plushables.mixins.json"],
   "depends": {

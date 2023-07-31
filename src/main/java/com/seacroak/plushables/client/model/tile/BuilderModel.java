@@ -20,7 +20,7 @@ public class BuilderModel extends GeoModel<BuilderTileEntity> {
 
     @Override
     public Identifier getTextureResource(BuilderTileEntity entity) {
-        return GenericUtils.ID("textures/block/builder.png");
+        return GenericUtils.ID("textures/block/builder_texture.png");
     }
 
     @Override

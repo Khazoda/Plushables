@@ -46,7 +46,7 @@ public class WizardBlock extends SimplePlushable {
     if (player.shouldCancelInteraction()) return ActionResult.PASS;
 
     if (world instanceof ServerWorld serverWorld) {
-      SoundPacketHandler.sendPacketToClients(serverWorld, new SoundPacketHandler.SoundPacket(player, pos,SoundRegistry.SWMG));
+      SoundPacketHandler.sendPacketToClients(serverWorld, new SoundPacketHandler.SoundPacket(player, pos,SoundRegistry.SWMG,1f));
       ParticlePacketHandler.sendPacketToClients(serverWorld, new ParticlePacketHandler.ParticlePacket
           (player, pos,"minecraft:note",1,new Vec3d(0,0.5,0),0f));
       ParticlePacketHandler.sendPacketToClients(serverWorld, new ParticlePacketHandler.ParticlePacket
@@ -54,7 +54,7 @@ public class WizardBlock extends SimplePlushable {
 
       return ActionResult.SUCCESS;
     } else {
-      PlushablesNetworking.playSound(SoundRegistry.SWMG, world, pos, 1f);
+      PlushablesNetworking.playSoundOnClient(SoundRegistry.SWMG, world, pos, 1f,1f);
       PlushablesNetworking.spawnParticles(ParticleTypes.NOTE, world, pos, 1, new Vec3d(0, 0.5, 0), 0);
       PlushablesNetworking.spawnParticles(ParticleTypes.GLOW, world, pos, 5, new Vec3d(0, 0, 0), 0.05f);
       return ActionResult.SUCCESS;

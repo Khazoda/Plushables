@@ -4,7 +4,6 @@ import com.seacroak.plushables.registry.MainRegistry;
 import com.seacroak.plushables.registry.ScreenRegistry;
 import com.seacroak.plushables.registry.TileRegistryClient;
 
-import com.seacroak.plushables.util.GenericUtils;
 import com.seacroak.plushables.util.networking.PacketDecoder;
 import com.seacroak.plushables.util.networking.ParticlePacketHandler;
 import com.seacroak.plushables.util.networking.PlushablesNetworking;
@@ -44,7 +43,7 @@ public final class PlushablesModClient implements ClientModInitializer {
       client.execute(() -> {
         if (client.world == null)
           return;
-        PlushablesNetworking.playSound(decodedSoundEvent,client.world, BlockPos.ofFloored(packet.pos), 1f);
+        PlushablesNetworking.playSoundOnClient(decodedSoundEvent,client.world, BlockPos.ofFloored(packet.pos), 1f, packet.pitch);
 
       });
     }));
