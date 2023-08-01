@@ -9,11 +9,8 @@ public class RaptorBlock extends SimplePlushable {
   @Override
   public VoxelShape getShape() {
     VoxelShape shape = VoxelShapes.empty();
-    shape = VoxelShapes.union(shape, VoxelShapes.cuboid(0.25, 0, 0.25, 0.40625, 0.25, 0.5));
-    shape = VoxelShapes.union(shape, VoxelShapes.cuboid(0.25, 0.25, 0.25, 0.40625, 0.375, 0.375));
-    shape = VoxelShapes.union(shape, VoxelShapes.cuboid(0.2343, 0.3125, 0.1093, 0.4218, 0.5, 0.3125));
-    shape = VoxelShapes.union(shape, VoxelShapes.cuboid(0.2656, 0.3437, 0.0312, 0.375, 0.4687, 0.1093));
-
+    shape = VoxelShapes.union(shape, VoxelShapes.cuboid(0.3125, 0, 0.078125, 0.6875, 0.734375, 0.59375));
+    shape = VoxelShapes.union(shape, VoxelShapes.cuboid(0.421875, 0.59375, -0.0625, 0.59375, 0.703125, 0.078125));
     return shape;
   }
 }

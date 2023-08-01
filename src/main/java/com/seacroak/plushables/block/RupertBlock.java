@@ -48,8 +48,8 @@ public class RupertBlock extends AnimatronicPlushable {
   @Override
   public VoxelShape getShape() {
     VoxelShape shape = VoxelShapes.empty();
-    shape = VoxelShapes.union(shape, VoxelShapes.cuboid(0.375, 0, 0.1875, 0.5625, 0.125, 0.5));
-    shape = VoxelShapes.union(shape, VoxelShapes.cuboid(0.4062, 0, 0.4843, 0.5937, 0.125, 0.7343));
+    shape = VoxelShapes.union(shape, VoxelShapes.cuboid(0.1875, 0, 0.5, 0.75, 0.125, 0.6875));
+
     return shape;
   }
 

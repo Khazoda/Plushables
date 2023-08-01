@@ -33,6 +33,9 @@ public class ItemGroupRegistry {
           entries.add(new ItemStack(MainRegistry.GOBLIN_PLUSHABLE));
           entries.add(new ItemStack(MainRegistry.BIG_TATER_PLUSHABLE));
           entries.add(new ItemStack(MainRegistry.GRUMBLY_TATER_PLUSHABLE));
+          entries.add(new ItemStack(MainRegistry.OTTER_PLUSHABLE));
+          entries.add(new ItemStack(MainRegistry.SHRUMP_PLUSHABLE));
+          entries.add(new ItemStack(MainRegistry.OCTOPLUSH_PLUSHABLE));
 
 
           // Caps
