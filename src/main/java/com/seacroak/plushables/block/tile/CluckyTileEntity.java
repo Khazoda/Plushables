@@ -17,7 +17,7 @@ import software.bernie.geckolib.util.GeckoLibUtil;
 
 public class CluckyTileEntity extends AnimatronicBlockEntity {
 
-	public CluckyTileEntity(BlockPos pos, BlockState state) {
-		super(TileRegistry.CLUCKY_TILE, pos, state);
-	}
+  public CluckyTileEntity(BlockPos pos, BlockState state) {
+    super(TileRegistry.CLUCKY_TILE, pos, state);
+  }
 }
