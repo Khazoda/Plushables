@@ -38,6 +38,7 @@ public class ItemGroupRegistry {
           entries.add(new ItemStack(MainRegistry.OCTOPLUSH_PLUSHABLE));
           entries.add(new ItemStack(MainRegistry.SNAIL_PLUSHABLE));
           entries.add(new ItemStack(MainRegistry.WHALE_PLUSHABLE));
+          entries.add(new ItemStack(MainRegistry.ORANGUTAN_BLOCK));
 
 
           // Caps

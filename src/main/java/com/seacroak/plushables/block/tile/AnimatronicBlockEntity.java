@@ -34,7 +34,7 @@ public class AnimatronicBlockEntity extends BlockEntity implements GeoBlockEntit
     return this.shouldAnimate;
   }
 
-  private <E extends BlockEntity & GeoAnimatable> PlayState interactionPredicate(AnimationState<E> e) {
+  protected <E extends BlockEntity & GeoAnimatable> PlayState interactionPredicate(AnimationState<E> e) {
     interactionController = e.getController();
     if (this.shouldAnimate) {
       interactionController.setAnimation(RawAnimation.begin().thenPlay(animationName));
@@ -47,7 +47,7 @@ public class AnimatronicBlockEntity extends BlockEntity implements GeoBlockEntit
     return PlayState.CONTINUE;
   }
 
-  private <E extends BlockEntity & GeoAnimatable> PlayState idlePredicate(AnimationState<E> e) {
+  protected <E extends BlockEntity & GeoAnimatable> PlayState idlePredicate(AnimationState<E> e) {
     e.getController().setAnimation(RawAnimation.begin().thenPlay("idle"));
     return PlayState.CONTINUE;
   }

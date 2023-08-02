@@ -1,9 +1,6 @@
 package com.seacroak.plushables.registry;
 
-import com.seacroak.plushables.client.renderer.tile.BuilderTileRenderer;
-import com.seacroak.plushables.client.renderer.tile.CluckyTileRenderer;
-import com.seacroak.plushables.client.renderer.tile.DragonTileRenderer;
-import com.seacroak.plushables.client.renderer.tile.RupertTileRenderer;
+import com.seacroak.plushables.client.renderer.tile.*;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.render.block.entity.BlockEntityRendererFactories;
@@ -20,5 +17,7 @@ public final class TileRegistryClient {
       (BlockEntityRendererFactory.Context rendererDispatcherIn) -> new RupertTileRenderer());
     BlockEntityRendererFactories.register(TileRegistry.DRAGON_TILE,
       (BlockEntityRendererFactory.Context rendererDispatcherIn) -> new DragonTileRenderer());
+		BlockEntityRendererFactories.register(TileRegistry.ORANGUTAN_TILE,
+				(BlockEntityRendererFactory.Context rendererDispatcherIn) -> new OrangutanTileRenderer());
 	}
 }

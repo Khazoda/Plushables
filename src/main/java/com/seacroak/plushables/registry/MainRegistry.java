@@ -27,7 +27,8 @@ public final class MainRegistry {
       plushableItemSettings);
   public static final DragonBlock DRAGON_BLOCK = registerPlushable("dragon_plushable", new DragonBlock(),
       plushableItemSettings);
-
+  public static final OrangutanBlock ORANGUTAN_BLOCK = registerPlushable("orangutan_plushable", new OrangutanBlock(),
+      plushableItemSettings);
 
   /* Simple Plushables */
   public static final PenguinBlock PENGUIN_PLUSHABLE = registerPlushable("penguin_plushable", new PenguinBlock(),
