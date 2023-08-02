@@ -9,7 +9,7 @@ public class ItemGroupRegistry {
   public static ItemGroup createItemGroup() {
     return FabricItemGroup.builder()
         .icon(() -> new ItemStack(MainRegistry.PENGUIN_PLUSHABLE))
-        .displayName(Text.translatable("itemGroup.plushables.plushables"))
+        .displayName(Text.translatable("itemGroup.plushables.itemGroup"))
         .entries((displayContext, entries) -> {
           entries.add(new ItemStack(MainRegistry.HEART_OF_GOLD));
           entries.add(new ItemStack(MainRegistry.POWERED_HEART));
@@ -36,6 +36,8 @@ public class ItemGroupRegistry {
           entries.add(new ItemStack(MainRegistry.OTTER_PLUSHABLE));
           entries.add(new ItemStack(MainRegistry.SHRUMP_PLUSHABLE));
           entries.add(new ItemStack(MainRegistry.OCTOPLUSH_PLUSHABLE));
+          entries.add(new ItemStack(MainRegistry.SNAIL_PLUSHABLE));
+          entries.add(new ItemStack(MainRegistry.WHALE_PLUSHABLE));
 
 
           // Caps

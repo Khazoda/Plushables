@@ -1,5 +1,5 @@
 {
-  "itemGroup.plushables.plushables": "§cP§6l§eu§as§bh§9a§5b§cl§6e§es",
+  "itemGroup.plushables.itemGroup": "§cP§6l§eu§as§bh§9a§5b§cl§6e§es",
   "item.plushables.heart_of_gold": "§6Heart of Gold",
   "item.plushables.powered_heart": "§cPowered §6Heart of Gold",
   "block.plushables.builder_block": "Plushable Builder",
@@ -25,6 +25,8 @@
   "block.plushables.otter_plushable": "Plushable §b§lOtter",
   "block.plushables.shrump_plushable": "Plushable §2§lShrump",
   "block.plushables.octoplush_plushable": "§b§lOctoplushable",
+  "block.plushables.snail_plushable": "Plushable §7§lSnail",
+  "block.plushables.whale_plushable": "Plushable §9§lWhale",
 
   "item.plushables.cap_froglin": "§2§lFroglin§r Cap",
   "item.plushables.cap_fox": "§6§lFox§r Cap",

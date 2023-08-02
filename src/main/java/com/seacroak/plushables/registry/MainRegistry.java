@@ -68,6 +68,10 @@ public final class MainRegistry {
       plushableItemSettings);
   public static final OctoplushBlock OCTOPLUSH_PLUSHABLE = registerPlushable("octoplush_plushable", new OctoplushBlock(),
       plushableItemSettings);
+  public static final SnailBlock SNAIL_PLUSHABLE = registerPlushable("snail_plushable", new SnailBlock(),
+      plushableItemSettings);
+  public static final WhaleBlock WHALE_PLUSHABLE = registerPlushable("whale_plushable", new WhaleBlock(),
+      plushableItemSettings);
 
 
   /* Caps */
