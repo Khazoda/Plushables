@@ -30,11 +30,4 @@ public class TrufflesBlock extends SimplePlushable {
 
     return shape;
   }
-  @Override
-  public void appendTooltip(ItemStack stack, @Nullable BlockView world,
-                            List<Text> tooltip, TooltipContext options) {
-    tooltip.add(Text.translatable("With a certain white flower, even").formatted(Formatting.ITALIC).formatted(Formatting.DARK_GRAY));
-    tooltip.add(Text.translatable("a pig could look this cute...").formatted(Formatting.ITALIC).formatted(Formatting.DARK_GRAY));
-    super.appendTooltip(stack, world, tooltip, options);
-  }
 }
