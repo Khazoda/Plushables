@@ -28,6 +28,6 @@ public class PlushablesEMIPlugin implements EmiPlugin {
       registry.addRecipe(new PlushablesEMIRecipe(recipe));
     }
 
-//    registry.addRecipeHandler(ScreenRegistry.BUILDER_SCREEN_HANDLER, new BuilderEMIRecipeHandler());
+    registry.addRecipeHandler(ScreenRegistry.BUILDER_SCREEN_HANDLER, new BuilderEMIRecipeHandler());
   }
 }
