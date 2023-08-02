@@ -26,7 +26,8 @@ public final class PlushablesMod implements ModInitializer {
 		RecipeRegistry.init();
 		new TileRegistry();
 
-		PlushablesNetworking.registerGlobalSoundPacketReceiver();
+		PlushablesNetworking.registerGlobalSoundPacketReceiverWithPlayer();
+		PlushablesNetworking.registerGlobalSoundPacketReceiverWithoutPlayer();
 		PlushablesNetworking.registerGlobalParticlePacketReceiver();
 
 		GeckoLib.initialize();

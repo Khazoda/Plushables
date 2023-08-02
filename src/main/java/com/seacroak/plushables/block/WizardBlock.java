@@ -40,25 +40,24 @@ public class WizardBlock extends SimplePlushable {
                             PlayerEntity player, Hand hand, BlockHitResult hit) {
     // Injects superclass method
     super.onUse(state, world, pos, player, hand, hit);
-
     if (player.shouldCancelInteraction()) return ActionResult.PASS;
+    if (!player.isSneaking()) {
+      if (world instanceof ServerWorld serverWorld) {
+        SoundPacketHandler.sendPlayerPacketToClients(serverWorld, new SoundPacketHandler.PlayerSoundPacket(player, pos, SoundRegistry.SWMG, 1f));
+        ParticlePacketHandler.sendPacketToClients(serverWorld, new ParticlePacketHandler.ParticlePacket
+            (player, pos, "minecraft:note", 1, new Vec3d(0, 0.5, 0), 0f));
+        ParticlePacketHandler.sendPacketToClients(serverWorld, new ParticlePacketHandler.ParticlePacket
+            (player, pos, "minecraft:glow", 5, new Vec3d(0, 0, 0), 0.05f));
 
-    if (world instanceof ServerWorld serverWorld) {
-      SoundPacketHandler.sendPacketToClients(serverWorld, new SoundPacketHandler.SoundPacket(player, pos,SoundRegistry.SWMG,1f));
-      ParticlePacketHandler.sendPacketToClients(serverWorld, new ParticlePacketHandler.ParticlePacket
-          (player, pos,"minecraft:note",1,new Vec3d(0,0.5,0),0f));
-      ParticlePacketHandler.sendPacketToClients(serverWorld, new ParticlePacketHandler.ParticlePacket
-          (player, pos,"minecraft:glow",5,new Vec3d(0,0,0),0.05f));
+        return ActionResult.CONSUME;
 
-      return ActionResult.SUCCESS;
-    } else {
-      PlushablesNetworking.playSoundOnClient(SoundRegistry.SWMG, world, pos, 1f,1f);
-      PlushablesNetworking.spawnParticles(ParticleTypes.NOTE, world, pos, 1, new Vec3d(0, 0.5, 0), 0);
-      PlushablesNetworking.spawnParticles(ParticleTypes.GLOW, world, pos, 5, new Vec3d(0, 0, 0), 0.05f);
-      return ActionResult.SUCCESS;
+      } else {
+        PlushablesNetworking.playSoundOnClient(SoundRegistry.SWMG, world, pos, 1f, 1f);
+        PlushablesNetworking.spawnParticlesOnClient(ParticleTypes.NOTE, world, pos, 1, new Vec3d(0, 0.5, 0), 0);
+        PlushablesNetworking.spawnParticlesOnClient(ParticleTypes.GLOW, world, pos, 5, new Vec3d(0, 0, 0), 0.05f);
+        return ActionResult.SUCCESS;
+      }
     }
-
+    return ActionResult.PASS;
   }
-
-
 }

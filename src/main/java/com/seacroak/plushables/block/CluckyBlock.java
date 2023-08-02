@@ -32,20 +32,21 @@ public class CluckyBlock extends AnimatronicPlushable {
     super.onUse(state, world, pos, player, hand, hit);
     float randomPitch = (float) 0.7f + randPitch.nextFloat() / 2;
     // Send packets to server
-    if (world instanceof ServerWorld serverWorld) {
-      SoundPacketHandler.sendPacketToClients(serverWorld, new SoundPacketHandler.SoundPacket(player, pos, SoundRegistry.CLUCKY_CLUCK,randomPitch));
-      return ActionResult.SUCCESS;
-
-    } else if (world.isClient) {
-      BlockEntity blockEntity = world.getBlockEntity(pos);
-      if (blockEntity instanceof CluckyTileEntity) {
-        CluckyTileEntity cluckyEntity = (CluckyTileEntity) blockEntity;
-        cluckyEntity.shouldAnimate(true);
-        if (cluckyEntity.shouldAnimate()
-            && cluckyEntity.interactionController.getAnimationState() == AnimationController.State.STOPPED) {
-          PlushablesNetworking.playSoundOnClient(SoundRegistry.CLUCKY_CLUCK, world, pos, 1f,randomPitch);
+    if (!player.isSneaking()) {
+      if (world instanceof ServerWorld serverWorld) {
+        SoundPacketHandler.sendPlayerPacketToClients(serverWorld, new SoundPacketHandler.PlayerSoundPacket(player, pos, SoundRegistry.CLUCKY_CLUCK, randomPitch));
+        return ActionResult.CONSUME;
+      } else if (world.isClient) {
+        BlockEntity blockEntity = world.getBlockEntity(pos);
+        if (blockEntity instanceof CluckyTileEntity) {
+          CluckyTileEntity cluckyEntity = (CluckyTileEntity) blockEntity;
+          cluckyEntity.shouldAnimate(true);
+          if (cluckyEntity.shouldAnimate()
+              && cluckyEntity.interactionController.getAnimationState() == AnimationController.State.STOPPED) {
+            PlushablesNetworking.playSoundOnClient(SoundRegistry.CLUCKY_CLUCK, world, pos, 1f, randomPitch);
+          }
+          return ActionResult.SUCCESS;
         }
-        return ActionResult.SUCCESS;
       }
     }
     return ActionResult.PASS;

@@ -19,7 +19,7 @@ public class PlushablesNetworking {
   }
 
   /* Call this method after sending packet when wanting to spawn particles */
-  public static void spawnParticles(ParticleEffect particleType, World world, BlockPos pos,  int particleCount, Vec3d offset, float spread) {
+  public static void spawnParticlesOnClient(ParticleEffect particleType, World world, BlockPos pos, int particleCount, Vec3d offset, float spread) {
     Vec3d vec = pos.toCenterPos();
     Random rand = new Random();
 
@@ -40,14 +40,26 @@ public class PlushablesNetworking {
 //    }
 //  }
 
-  public static void registerGlobalSoundPacketReceiver() {
+  /* Receiver WITH Player Data*/
+  public static void registerGlobalSoundPacketReceiverWithPlayer() {
     /* Registers global packet receiver in MainRegistry.class */
-    ServerPlayNetworking.registerGlobalReceiver(SoundPacketHandler.PACKET_ID, ((server, player, handler, buf, responseSender) -> {
-      var packet = SoundPacketHandler.SoundPacket.read(buf);
+    ServerPlayNetworking.registerGlobalReceiver(SoundPacketHandler.PACKET_ID_PLAYER, ((server, player, handler, buf, responseSender) -> {
+      var packet = SoundPacketHandler.PlayerSoundPacket.read(buf);
       if (packet.player == player.getUuid())
         return;
       server.execute(() -> {
-        SoundPacketHandler.sendPacketToClients(player.getServerWorld(), packet);
+        SoundPacketHandler.sendPlayerPacketToClients(player.getServerWorld(), packet);
+      });
+    }));
+  }
+
+  /* Receiver WITHOUT Player Data*/
+  public static void registerGlobalSoundPacketReceiverWithoutPlayer() {
+    /* Registers global packet receiver in MainRegistry.class */
+    ServerPlayNetworking.registerGlobalReceiver(SoundPacketHandler.PACKET_ID_NO_PLAYER, ((server, player, handler, buf, responseSender) -> {
+      var packet = SoundPacketHandler.NoPlayerSoundPacket.read(buf);
+      server.execute(() -> {
+        SoundPacketHandler.sendNoPlayerPacketToClients(player.getServerWorld(), packet);
       });
     }));
   }

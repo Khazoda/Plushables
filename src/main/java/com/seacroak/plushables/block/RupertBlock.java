@@ -1,11 +1,15 @@
 package com.seacroak.plushables.block;
 
+import com.seacroak.plushables.block.tile.DragonTileEntity;
 import com.seacroak.plushables.block.tile.RupertTileEntity;
 import com.seacroak.plushables.registry.SoundRegistry;
 import com.seacroak.plushables.registry.TileRegistry;
+import com.seacroak.plushables.util.networking.PlushablesNetworking;
+import com.seacroak.plushables.util.networking.SoundPacketHandler;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
@@ -29,17 +33,21 @@ public class RupertBlock extends AnimatronicPlushable {
                             PlayerEntity player, Hand hand, BlockHitResult hit) {
     // Injects superclass method
     super.onUse(state, world, pos, player, hand, hit);
-    if (world.isClient) {
-      BlockEntity blockEntity = world.getBlockEntity(pos);
-      if (blockEntity instanceof RupertTileEntity) {
-        RupertTileEntity rupertEntity = (RupertTileEntity) blockEntity;
-        rupertEntity.shouldAnimate(true);
-        if (rupertEntity.shouldAnimate()
-            && rupertEntity.interactionController.getAnimationState() == AnimationController.State.STOPPED) {
-          world.playSound(player, pos, SoundRegistry.RUPERT_PURR, SoundCategory.BLOCKS, 0.5f,
-              (float) 0.7f + randPitch.nextFloat() / 2);
+    if (!player.isSneaking()) {
+      if (world instanceof ServerWorld serverWorld) {
+        SoundPacketHandler.sendPlayerPacketToClients(serverWorld, new SoundPacketHandler.PlayerSoundPacket(player, pos, SoundRegistry.RUPERT_PURR, 1f));
+        return ActionResult.CONSUME;
+      } else if (world.isClient) {
+        BlockEntity blockEntity = world.getBlockEntity(pos);
+        if (blockEntity instanceof RupertTileEntity) {
+          RupertTileEntity rupertEntity = (RupertTileEntity) blockEntity;
+          rupertEntity.shouldAnimate(true);
+          if (rupertEntity.shouldAnimate()
+              && rupertEntity.interactionController.getAnimationState() == AnimationController.State.STOPPED) {
+            PlushablesNetworking.playSoundOnClient(SoundRegistry.RUPERT_PURR, world, pos, 1f, (float) 0.7f + randPitch.nextFloat() / 2);
+          }
+          return ActionResult.SUCCESS;
         }
-        return ActionResult.SUCCESS;
       }
     }
     return ActionResult.PASS;

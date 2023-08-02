@@ -39,12 +39,23 @@ public final class PlushablesModClient implements ClientModInitializer {
 //    Complex Plushables
     BlockRenderLayerMap.INSTANCE.putBlock(MainRegistry.RUPERT_BLOCK, RenderLayer.getCutout());
 
-    /* Sound Event Networking Packet Client Receipt */
-    ClientPlayNetworking.registerGlobalReceiver(SoundPacketHandler.PACKET_ID, ((client, handler, buf, responseSender) -> {
-      var packet = SoundPacketHandler.SoundPacket.read(buf);
+    /* Sound Event Networking Packet Client Receipts */
+    ClientPlayNetworking.registerGlobalReceiver(SoundPacketHandler.PACKET_ID_PLAYER, ((client, handler, buf, responseSender) -> {
+      var packet = SoundPacketHandler.PlayerSoundPacket.read(buf);
       SoundEvent decodedSoundEvent = PacketDecoder.decodeSoundEvent(packet.soundIdentifier);
       if (packet.player == client.player.getUuid())
         return;
+      client.execute(() -> {
+        if (client.world == null)
+          return;
+        PlushablesNetworking.playSoundOnClient(decodedSoundEvent,client.world, BlockPos.ofFloored(packet.pos), 1f, packet.pitch);
+
+      });
+    }));
+
+    ClientPlayNetworking.registerGlobalReceiver(SoundPacketHandler.PACKET_ID_NO_PLAYER, ((client, handler, buf, responseSender) -> {
+      var packet = SoundPacketHandler.NoPlayerSoundPacket.read(buf);
+      SoundEvent decodedSoundEvent = PacketDecoder.decodeSoundEvent(packet.soundIdentifier);
       client.execute(() -> {
         if (client.world == null)
           return;
@@ -65,7 +76,7 @@ public final class PlushablesModClient implements ClientModInitializer {
       client.execute(() -> {
         if (client.world == null)
           return;
-        PlushablesNetworking.spawnParticles(decodedParticles,client.world, BlockPos.ofFloored(packet.pos), packet.particleCount,packet.offset,packet.spread);
+        PlushablesNetworking.spawnParticlesOnClient(decodedParticles,client.world, BlockPos.ofFloored(packet.pos), packet.particleCount,packet.offset,packet.spread);
 
       });
     }));

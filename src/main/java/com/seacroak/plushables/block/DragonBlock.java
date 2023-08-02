@@ -38,24 +38,27 @@ public class DragonBlock extends AnimatronicPlushable {
   public DragonBlock() {
     super();
   }
+
   // Shift Right Click pickup code
   @Override
   public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
     super.onUse(state, world, pos, player, hand, hit);
 
-    if (world instanceof ServerWorld serverWorld) {
-      SoundPacketHandler.sendPacketToClients(serverWorld, new SoundPacketHandler.SoundPacket(player, pos, SoundRegistry.LIGHTFURY,1f));
-      return ActionResult.SUCCESS;
-    } else if (world.isClient) {
-      BlockEntity blockEntity = world.getBlockEntity(pos);
-      if (blockEntity instanceof DragonTileEntity) {
-        DragonTileEntity dragonEntity = (DragonTileEntity) blockEntity;
-        dragonEntity.shouldAnimate(true);
-        if (dragonEntity.shouldAnimate()
-            && dragonEntity.interactionController.getAnimationState() == AnimationController.State.STOPPED) {
-          PlushablesNetworking.playSoundOnClient(SoundRegistry.LIGHTFURY, world, pos, 1f,1f);
+    if (!player.isSneaking()) {
+      if (world instanceof ServerWorld serverWorld) {
+        SoundPacketHandler.sendPlayerPacketToClients(serverWorld, new SoundPacketHandler.PlayerSoundPacket(player, pos, SoundRegistry.LIGHTFURY, 1f));
+        return ActionResult.CONSUME;
+      } else if (world.isClient) {
+        BlockEntity blockEntity = world.getBlockEntity(pos);
+        if (blockEntity instanceof DragonTileEntity) {
+          DragonTileEntity dragonEntity = (DragonTileEntity) blockEntity;
+          dragonEntity.shouldAnimate(true);
+          if (dragonEntity.shouldAnimate()
+              && dragonEntity.interactionController.getAnimationState() == AnimationController.State.STOPPED) {
+            PlushablesNetworking.playSoundOnClient(SoundRegistry.LIGHTFURY, world, pos, 1f, 1f);
+          }
+          return ActionResult.SUCCESS;
         }
-        return ActionResult.SUCCESS;
       }
     }
     return ActionResult.PASS;

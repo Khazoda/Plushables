@@ -3,6 +3,9 @@ package com.seacroak.plushables.block;
 import com.seacroak.plushables.registry.SoundRegistry;
 import com.seacroak.plushables.registry.TileRegistry;
 import com.seacroak.plushables.util.VoxelShapeUtils;
+import com.seacroak.plushables.util.networking.ParticlePacketHandler;
+import com.seacroak.plushables.util.networking.PlushablesNetworking;
+import com.seacroak.plushables.util.networking.SoundPacketHandler;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
@@ -10,6 +13,7 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.item.ItemStack;
 import net.minecraft.particle.ParticleTypes;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
@@ -21,6 +25,7 @@ import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.math.random.LocalRandom;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
@@ -52,28 +57,26 @@ public abstract class AnimatronicPlushable extends BlockWithEntity {
   @Override
   public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
 
-    // Serverside code
-    if (!world.isClient) {
-      if (player.isSneaking()) {
+    if (player.isSneaking()) {
+      /* Serverside */
+      if (world instanceof ServerWorld serverWorld) {
+        SoundPacketHandler.sendPlayerPacketToClients(serverWorld, new SoundPacketHandler.PlayerSoundPacket(player, pos, SoundRegistry.PLUSHABLE_POP, 1f));
+        SoundPacketHandler.sendPlayerPacketToClients(serverWorld, new SoundPacketHandler.PlayerSoundPacket(player, pos, SoundEvents.BLOCK_WOOL_HIT, 1f));
+        ParticlePacketHandler.sendPacketToClients(serverWorld, new ParticlePacketHandler.ParticlePacket(player, pos, "minecraft:poof", 5, new Vec3d(0, 0, 0), 0.05f));
+        ParticlePacketHandler.sendPacketToClients(serverWorld, new ParticlePacketHandler.ParticlePacket(player, pos, "minecraft:glow", 5, new Vec3d(0, 0, 0), 0.05f));
+
         ItemScatterer.spawn(world, pos, DefaultedList.ofSize(1, new ItemStack(this)));
         world.updateComparators(pos, this);
         world.removeBlock(pos, false);
         return ActionResult.CONSUME;
-      }
-    }
-    // Clientside code
-    if (world.isClient) {
-      if (player.isSneaking()) {
-        world.playSound(player, pos, SoundRegistry.PLUSHABLE_POP, SoundCategory.BLOCKS, 0.5f, 1f);
-        world.playSound(player, pos, SoundEvents.BLOCK_WOOL_HIT, SoundCategory.BLOCKS, 0.5f, 1f);
 
-        // Custom breaking particle code
-        for (int i = 0; i < 5; i++) {
-          world.addParticle(ParticleTypes.POOF, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, rand.nextFloat(-0.05f, 0.05f), rand.nextFloat(-0.05f, 0.05f), rand.nextFloat(-0.05f, 0.05f));
-          world.addParticle(ParticleTypes.GLOW, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, rand.nextFloat(-0.05f, 0.05f), rand.nextFloat(-0.05f, 0.05f), rand.nextFloat(-0.05f, 0.05f));
-        }
+        /* Clientside */
+      } else if (world.isClient) {
+        PlushablesNetworking.playSoundOnClient(SoundRegistry.PLUSHABLE_POP, world, pos, 1f, 1f);
+        PlushablesNetworking.playSoundOnClient(SoundEvents.BLOCK_WOOL_HIT, world, pos, 1f, 1f);
+        PlushablesNetworking.spawnParticlesOnClient(ParticleTypes.POOF, world, pos, 5, new Vec3d(0, 0, 0), 0.05f);
+        PlushablesNetworking.spawnParticlesOnClient(ParticleTypes.GLOW, world, pos, 5, new Vec3d(0, 0, 0), 0.05f);
       }
-
     }
     return ActionResult.PASS;
   }
@@ -101,9 +104,9 @@ public abstract class AnimatronicPlushable extends BlockWithEntity {
 
   final VoxelShape blockShape = getShape();
   final VoxelShape[] blockShapes = {blockShape,
-    VoxelShapeUtils.rotateShape(Direction.NORTH, Direction.EAST, blockShape),
-    VoxelShapeUtils.rotateShape(Direction.NORTH, Direction.SOUTH, blockShape),
-    VoxelShapeUtils.rotateShape(Direction.NORTH, Direction.WEST, blockShape)};
+      VoxelShapeUtils.rotateShape(Direction.NORTH, Direction.EAST, blockShape),
+      VoxelShapeUtils.rotateShape(Direction.NORTH, Direction.SOUTH, blockShape),
+      VoxelShapeUtils.rotateShape(Direction.NORTH, Direction.WEST, blockShape)};
 
   @Override
   public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
