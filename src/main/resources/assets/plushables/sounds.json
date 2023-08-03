@@ -16,5 +16,8 @@
   },
   "lightfury": {
     "sounds": ["plushables:lightfury"]
+  },
+  "orangutan": {
+    "sounds": ["plushables:orangutan"]
   }
 }

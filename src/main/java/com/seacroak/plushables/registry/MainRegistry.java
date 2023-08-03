@@ -79,6 +79,7 @@ public final class MainRegistry {
   public static final Item FROGLIN_CAP = registerCap("cap_froglin", new FroglinCap());
   public static final Item FOX_CAP = registerCap("cap_fox", new FoxCap());
   public static final Item UNICORN_CAP = registerCap("cap_unicorn", new UnicornCap());
+  public static final Item MUSHROOM_CAP = registerCap("cap_mushroom", new MushroomCap());
 
 
   public static void init() {

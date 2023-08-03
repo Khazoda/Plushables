@@ -38,7 +38,7 @@ public class OrangutanBlock extends AnimatronicPlushable {
       BlockEntity blockEntity = world.getBlockEntity(pos);
       if (world instanceof ServerWorld serverWorld) {
         /* Server: Send sound packet to clients*/
-        SoundPacketHandler.sendPlayerPacketToClients(serverWorld, new SoundPacketHandler.PlayerSoundPacket(player, pos, SoundRegistry.CLUCKY_CLUCK, randomPitch));
+        SoundPacketHandler.sendPlayerPacketToClients(serverWorld, new SoundPacketHandler.PlayerSoundPacket(player, pos, SoundRegistry.ORANGUTAN, randomPitch));
         /* Server: Send animation packet to clients*/
         if (blockEntity instanceof OrangutanTileEntity) {
           AnimationPacketHandler.sendPacketToClients(serverWorld, new AnimationPacketHandler.AnimationPacket(player, pos, true, "interaction"));
@@ -51,7 +51,7 @@ public class OrangutanBlock extends AnimatronicPlushable {
           OrangutanTileEntity orangutanEntity = (OrangutanTileEntity) blockEntity;
           if (orangutanEntity.shouldAnimate()
               && orangutanEntity.interactionController.getAnimationState() == AnimationController.State.STOPPED) {
-            PlushablesNetworking.playSoundOnClient(SoundRegistry.CLUCKY_CLUCK, world, pos, 1f, randomPitch);
+            PlushablesNetworking.playSoundOnClient(SoundRegistry.ORANGUTAN, world, pos, 1f, randomPitch);
           }
           return ActionResult.SUCCESS;
         }
