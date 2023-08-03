@@ -12,11 +12,11 @@ import net.minecraft.util.math.Vec3d;
 
 import java.util.UUID;
 
-public class AnimationStatePacketHandler {
+public class AnimationPacketHandler {
   public static final Identifier PACKET_ID = GenericUtils.ID("plushable_animation_packet");
 
   /* Animation Packet*/
-  public static void sendPacketToClients(ServerWorld world, AnimationStatePacketHandler.AnimationPacket packet) {
+  public static void sendPacketToClients(ServerWorld world, AnimationPacketHandler.AnimationPacket packet) {
     world.getPlayers().forEach(player -> {
       if (player.getUuid() == packet.player)
         return;
@@ -30,15 +30,17 @@ public class AnimationStatePacketHandler {
     public UUID player;
     public Vec3d pos;
     public boolean shouldAnimate;
+    public String animationName;
 
-    public AnimationPacket(UUID player, Vec3d pos,boolean shouldAnimate) {
+    public AnimationPacket(UUID player, Vec3d pos, boolean shouldAnimate, String animationName) {
       this.player = player;
       this.pos = pos;
       this.shouldAnimate = shouldAnimate;
+      this.animationName = animationName;
     }
 
-    public AnimationPacket(PlayerEntity player, BlockPos pos, boolean shouldAnimate) {
-      this(player.getUuid(), pos.toCenterPos(),shouldAnimate);
+    public AnimationPacket(PlayerEntity player, BlockPos pos, boolean shouldAnimate, String animationName) {
+      this(player.getUuid(), pos.toCenterPos(), shouldAnimate, animationName);
     }
 
     public void write(PacketByteBuf buf) {
@@ -47,13 +49,15 @@ public class AnimationStatePacketHandler {
       buf.writeDouble(pos.y);
       buf.writeDouble(pos.z);
       buf.writeBoolean(shouldAnimate);
+      buf.writeString(animationName);
     }
 
-    public static AnimationStatePacketHandler.AnimationPacket read(PacketByteBuf buf) {
+    public static AnimationPacketHandler.AnimationPacket read(PacketByteBuf buf) {
       UUID player = buf.readUuid();
       Vec3d pos = new Vec3d(buf.readDouble(), buf.readDouble(), buf.readDouble());
       boolean shouldAnimate = buf.readBoolean();
-      return new AnimationStatePacketHandler.AnimationPacket(player, pos,shouldAnimate);
+      String animationName = buf.readString();
+      return new AnimationPacketHandler.AnimationPacket(player, pos, shouldAnimate,animationName);
     }
   }
 }

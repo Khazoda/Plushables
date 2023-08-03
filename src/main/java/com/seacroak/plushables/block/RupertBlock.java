@@ -1,9 +1,11 @@
 package com.seacroak.plushables.block;
 
+import com.seacroak.plushables.block.tile.CluckyTileEntity;
 import com.seacroak.plushables.block.tile.DragonTileEntity;
 import com.seacroak.plushables.block.tile.RupertTileEntity;
 import com.seacroak.plushables.registry.SoundRegistry;
 import com.seacroak.plushables.registry.TileRegistry;
+import com.seacroak.plushables.util.networking.AnimationPacketHandler;
 import com.seacroak.plushables.util.networking.PlushablesNetworking;
 import com.seacroak.plushables.util.networking.SoundPacketHandler;
 import net.minecraft.block.BlockState;
@@ -34,14 +36,20 @@ public class RupertBlock extends AnimatronicPlushable {
     // Injects superclass method
     super.onUse(state, world, pos, player, hand, hit);
     if (!player.isSneaking()) {
+      BlockEntity blockEntity = world.getBlockEntity(pos);
       if (world instanceof ServerWorld serverWorld) {
+        /* Server: Send sound packet to clients*/
         SoundPacketHandler.sendPlayerPacketToClients(serverWorld, new SoundPacketHandler.PlayerSoundPacket(player, pos, SoundRegistry.RUPERT_PURR, 1f));
+        /* Server: Send animation packet to clients*/
+        if (blockEntity instanceof RupertTileEntity) {
+          AnimationPacketHandler.sendPacketToClients(serverWorld, new AnimationPacketHandler.AnimationPacket(player, pos, true, "interaction"));
+        }
         return ActionResult.CONSUME;
       } else if (world.isClient) {
-        BlockEntity blockEntity = world.getBlockEntity(pos);
         if (blockEntity instanceof RupertTileEntity) {
+          /* Client: Play animation */
+          PlushablesNetworking.playAnimationOnClient(true, world, pos, "interaction");
           RupertTileEntity rupertEntity = (RupertTileEntity) blockEntity;
-          rupertEntity.shouldAnimate(true);
           if (rupertEntity.shouldAnimate()
               && rupertEntity.interactionController.getAnimationState() == AnimationController.State.STOPPED) {
             PlushablesNetworking.playSoundOnClient(SoundRegistry.RUPERT_PURR, world, pos, 1f, (float) 0.7f + randPitch.nextFloat() / 2);

@@ -4,10 +4,7 @@ import com.seacroak.plushables.registry.MainRegistry;
 import com.seacroak.plushables.registry.ScreenRegistry;
 import com.seacroak.plushables.registry.TileRegistryClient;
 
-import com.seacroak.plushables.util.networking.PacketDecoder;
-import com.seacroak.plushables.util.networking.ParticlePacketHandler;
-import com.seacroak.plushables.util.networking.PlushablesNetworking;
-import com.seacroak.plushables.util.networking.SoundPacketHandler;
+import com.seacroak.plushables.util.networking.*;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -78,6 +75,19 @@ public final class PlushablesModClient implements ClientModInitializer {
         if (client.world == null)
           return;
         PlushablesNetworking.spawnParticlesOnClient(decodedParticles,client.world, BlockPos.ofFloored(packet.pos), packet.particleCount,packet.offset,packet.spread);
+
+      });
+    }));
+
+    ClientPlayNetworking.registerGlobalReceiver(AnimationPacketHandler.PACKET_ID, ((client, handler, buf, responseSender) -> {
+      var packet = AnimationPacketHandler.AnimationPacket.read(buf);
+
+      if (packet.player == client.player.getUuid())
+        return;
+      client.execute(() -> {
+        if (client.world == null)
+          return;
+        PlushablesNetworking.playAnimationOnClient(packet.shouldAnimate,client.world, BlockPos.ofFloored(packet.pos),packet.animationName);
 
       });
     }));

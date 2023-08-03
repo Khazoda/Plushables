@@ -29,6 +29,7 @@ public final class PlushablesMod implements ModInitializer {
 		PlushablesNetworking.registerGlobalSoundPacketReceiverWithPlayer();
 		PlushablesNetworking.registerGlobalSoundPacketReceiverWithoutPlayer();
 		PlushablesNetworking.registerGlobalParticlePacketReceiver();
+		PlushablesNetworking.registerGlobalAnimationPacketReceiver();
 
 		GeckoLib.initialize();
 		LOGGER.info("Plushables has loaded");

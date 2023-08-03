@@ -1,6 +1,8 @@
 package com.seacroak.plushables.util.networking;
 
+import com.seacroak.plushables.block.tile.AnimatronicBlockEntity;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
+import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.particle.ParticleEffect;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvent;
@@ -30,15 +32,14 @@ public class PlushablesNetworking {
     }
   }
 
-//  public static <E extends AnimatronicBlockEntity> void triggerAnimation(Class<E> animatable, boolean shouldAnimate, World world, BlockPos pos) {
-//    Vec3d vec = pos.toCenterPos();
-//    BlockEntity blockEntity = world.getBlockEntity(pos);
-//    E transformedBE = animatable.cast(blockEntity);
-//    if(animatable.isInstance(blockEntity)) {
-//      transformedBE.shouldAnimate(shouldAnimate);
-//      transformedBE.animationName = "interaction";
-//    }
-//  }
+  public static void playAnimationOnClient(boolean shouldAnimate, World world, BlockPos pos, String animationName) {
+    Vec3d vec = pos.toCenterPos();
+    BlockEntity blockEntity = world.getBlockEntity(pos);
+    if(blockEntity instanceof AnimatronicBlockEntity) {
+      ((AnimatronicBlockEntity)blockEntity).animationName = animationName;
+      ((AnimatronicBlockEntity)blockEntity).shouldAnimate = shouldAnimate;
+    }
+  }
 
   /* Receiver WITH Player Data*/
   public static void registerGlobalSoundPacketReceiverWithPlayer() {
@@ -72,6 +73,18 @@ public class PlushablesNetworking {
         return;
       server.execute(() -> {
         ParticlePacketHandler.sendPacketToClients(player.getServerWorld(), packet);
+      });
+    }));
+  }
+
+  public static void registerGlobalAnimationPacketReceiver() {
+    /* Registers global packet receiver in MainRegistry.class */
+    ServerPlayNetworking.registerGlobalReceiver(AnimationPacketHandler.PACKET_ID, ((server, player, handler, buf, responseSender) -> {
+      var packet = AnimationPacketHandler.AnimationPacket.read(buf);
+      if (packet.player == player.getUuid())
+        return;
+      server.execute(() -> {
+        AnimationPacketHandler.sendPacketToClients(player.getServerWorld(), packet);
       });
     }));
   }

@@ -4,6 +4,7 @@ import com.seacroak.plushables.block.tile.CluckyTileEntity;
 import com.seacroak.plushables.block.tile.DragonTileEntity;
 import com.seacroak.plushables.registry.SoundRegistry;
 import com.seacroak.plushables.registry.TileRegistry;
+import com.seacroak.plushables.util.networking.AnimationPacketHandler;
 import com.seacroak.plushables.util.networking.PlushablesNetworking;
 import com.seacroak.plushables.util.networking.SoundPacketHandler;
 import net.minecraft.block.Block;
@@ -45,14 +46,20 @@ public class DragonBlock extends AnimatronicPlushable {
     super.onUse(state, world, pos, player, hand, hit);
 
     if (!player.isSneaking()) {
+      BlockEntity blockEntity = world.getBlockEntity(pos);
       if (world instanceof ServerWorld serverWorld) {
+        /* Server: Send sound packet to clients*/
         SoundPacketHandler.sendPlayerPacketToClients(serverWorld, new SoundPacketHandler.PlayerSoundPacket(player, pos, SoundRegistry.LIGHTFURY, 1f));
+       /* Server: Send animation packet to clients*/
+        if (blockEntity instanceof DragonTileEntity) {
+          AnimationPacketHandler.sendPacketToClients(serverWorld, new AnimationPacketHandler.AnimationPacket(player, pos, true, "interaction"));
+        }
         return ActionResult.CONSUME;
       } else if (world.isClient) {
-        BlockEntity blockEntity = world.getBlockEntity(pos);
         if (blockEntity instanceof DragonTileEntity) {
+          /* Client: Play animation */
+          PlushablesNetworking.playAnimationOnClient(true, world, pos, "interaction");
           DragonTileEntity dragonEntity = (DragonTileEntity) blockEntity;
-          dragonEntity.shouldAnimate(true);
           if (dragonEntity.shouldAnimate()
               && dragonEntity.interactionController.getAnimationState() == AnimationController.State.STOPPED) {
             PlushablesNetworking.playSoundOnClient(SoundRegistry.LIGHTFURY, world, pos, 1f, 1f);
