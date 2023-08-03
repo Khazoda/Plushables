@@ -23,7 +23,7 @@
   "block.plushables.big_tater_plushable": "Plushable §c§lBig Tater",
   "block.plushables.grumbly_tater_plushable": "Plushable §4§lGrumbly Tater",
   "block.plushables.otter_plushable": "Plushable §b§lOtter",
-  "block.plushables.shrump_plushable": "Plushable §2§lShrump",
+  "block.plushables.shrump_plushable": "Plushable §4§lShrump",
   "block.plushables.octoplush_plushable": "§b§lOctoplushable",
   "block.plushables.snail_plushable": "Plushable §7§lSnail",
   "block.plushables.whale_plushable": "Plushable §9§lWhale",
@@ -32,7 +32,7 @@
   "item.plushables.cap_froglin": "§2§lFroglin§r Cap",
   "item.plushables.cap_fox": "§6§lFox§r Cap",
   "item.plushables.cap_unicorn": "§c§lU§6§ln§e§li§a§lc§b§lo§9§lr§5§ln§r Cap",
-  "item.plushables.cap_mushroom": "§2§Mushroom§r Cap",
+  "item.plushables.cap_mushroom": "§4§lMushroom§r Cap",
 
   "emi.category.plushables.plushable_builder": "Plushable Builder"
 }
