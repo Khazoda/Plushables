@@ -6,7 +6,7 @@
 	},
 	"elements": [
 		{
-			"from": [4, 0.2, 4],
+			"from": [4, 0, 4],
 			"to": [12, 10.2, 10],
 			"rotation": {"angle": 0, "axis": "y", "origin": [0, 0.2, 0]},
 			"faces": {
