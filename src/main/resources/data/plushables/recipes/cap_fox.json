@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "plushables:fox_plushable"
+    },
+    {
+      "item": "minecraft:leather_helmet"
+    }
+  ],
+  "result": {
+    "item": "plushables:cap_fox"
+  }
+}
