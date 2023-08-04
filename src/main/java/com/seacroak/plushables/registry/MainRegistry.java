@@ -80,6 +80,8 @@ public final class MainRegistry {
   public static final Item FOX_CAP = registerCap("cap_fox", new FoxCap());
   public static final Item UNICORN_CAP = registerCap("cap_unicorn", new UnicornCap());
   public static final Item MUSHROOM_CAP = registerCap("cap_mushroom", new MushroomCap());
+  public static final Item BEAUX_CAP = registerCap("cap_beaux", new BeauxCap());
+  public static final Item TRUFFLES_CAP = registerCap("cap_truffles", new TrufflesCap());
 
 
   public static void init() {

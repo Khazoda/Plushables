@@ -33,6 +33,8 @@
   "item.plushables.cap_fox": "§6§lFox§r Cap",
   "item.plushables.cap_unicorn": "§c§lU§6§ln§e§li§a§lc§b§lo§9§lr§5§ln§r Cap",
   "item.plushables.cap_mushroom": "§4§lMushroom§r Cap",
+  "item.plushables.cap_beaux": "§8§lBeaux§r Accessories",
+  "item.plushables.cap_truffles": "§c§lTruffles§r Cap",
 
   "emi.category.plushables.plushable_builder": "Plushable Builder"
 }

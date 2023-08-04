@@ -46,6 +46,8 @@ public class ItemGroupRegistry {
           entries.add(new ItemStack(MainRegistry.FOX_CAP));
           entries.add(new ItemStack(MainRegistry.UNICORN_CAP));
           entries.add(new ItemStack(MainRegistry.MUSHROOM_CAP));
+          entries.add(new ItemStack(MainRegistry.BEAUX_CAP));
+          entries.add(new ItemStack(MainRegistry.TRUFFLES_CAP));
 
         }).build();
   }
