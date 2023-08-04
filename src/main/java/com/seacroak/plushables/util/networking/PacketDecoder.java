@@ -16,6 +16,8 @@ public class PacketDecoder {
       case "plushables:rupert_purr": returnValue = SoundRegistry.RUPERT_PURR; break;
       case "plushables:swmg": returnValue = SoundRegistry.SWMG; break;
       case "plushables:lightfury": returnValue = SoundRegistry.LIGHTFURY; break;
+      case "plushables:orangutan": returnValue = SoundRegistry.ORANGUTAN; break;
+
 
       /* MC Sounds */
       case "minecraft:block.moss.place": returnValue = SoundEvents.BLOCK_MOSS_PLACE; break;
