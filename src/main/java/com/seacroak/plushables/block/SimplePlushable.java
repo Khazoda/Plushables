@@ -48,6 +48,7 @@ public abstract class SimplePlushable extends HorizontalFacingBlock {
 
     if (player.isSneaking()) {
       /* Serverside */
+      if(!player.canModifyBlocks()) return ActionResult.CONSUME;
       if (world instanceof ServerWorld serverWorld) {
         SoundPacketHandler.sendPlayerPacketToClients(serverWorld, new SoundPacketHandler.PlayerSoundPacket(player, pos, SoundRegistry.PLUSHABLE_POP, 1f));
         SoundPacketHandler.sendPlayerPacketToClients(serverWorld, new SoundPacketHandler.PlayerSoundPacket(player, pos, SoundEvents.BLOCK_WOOL_HIT, 1f));
