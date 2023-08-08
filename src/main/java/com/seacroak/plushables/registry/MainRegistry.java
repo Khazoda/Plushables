@@ -73,7 +73,8 @@ public final class MainRegistry {
       plushableItemSettings);
   public static final WhaleBlock WHALE_PLUSHABLE = registerPlushable("whale_plushable", new WhaleBlock(),
       plushableItemSettings);
-
+  public static final GoldfishBlock GOLDFISH_PLUSHABLE = registerPlushable("goldfish_plushable", new GoldfishBlock(),
+      plushableItemSettings);
 
   /* Caps */
   public static final Item FROGLIN_CAP = registerCap("cap_froglin", new FroglinCap());

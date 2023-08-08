@@ -17,6 +17,7 @@ public class PacketDecoder {
       case "plushables:swmg": returnValue = SoundRegistry.SWMG; break;
       case "plushables:lightfury": returnValue = SoundRegistry.LIGHTFURY; break;
       case "plushables:orangutan": returnValue = SoundRegistry.ORANGUTAN; break;
+      case "plushables:goldfish": returnValue = SoundRegistry.GOLDFISH; break;
 
 
       /* MC Sounds */
@@ -36,6 +37,8 @@ public class PacketDecoder {
       case "minecraft:glow": returnValue = ParticleTypes.GLOW; break;
       case "minecraft:note": returnValue = ParticleTypes.NOTE; break;
       case "minecraft:poof": returnValue = ParticleTypes.POOF; break;
+      case "minecraft:dolphin": returnValue = ParticleTypes.DOLPHIN; break;
+      case "minecraft:fishing": returnValue = ParticleTypes.FISHING; break;
 
       default: returnValue = ParticleTypes.SCULK_SOUL;
     }

@@ -19,5 +19,8 @@
   },
   "orangutan": {
     "sounds": ["plushables:orangutan"]
+  },
+  "goldfish": {
+    "sounds": ["plushables:goldfish"]
   }
 }

@@ -13,6 +13,7 @@ public final class SoundRegistry {
   public static final SoundEvent SWMG = register("swmg");
   public static final SoundEvent LIGHTFURY = register("lightfury");
 	public static final SoundEvent ORANGUTAN = register("orangutan");
+	public static final SoundEvent GOLDFISH = register("goldfish");
 
 	public static void init() {
 	}
