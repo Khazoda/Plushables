@@ -11,8 +11,7 @@ public class OctoplushBlock extends SimplePlushable {
   @Override
   public VoxelShape getShape() {
     VoxelShape shape = VoxelShapes.empty();
-    shape = VoxelShapes.union(shape, VoxelShapes.cuboid(0.375, 0, 0.375, 0.625, 0.25, 0.625));
-
+    shape = VoxelShapes.union(shape, VoxelShapes.cuboid(0.28125, 0.015625, 0.28125, 0.71875, 0.46875, 0.71875));
     return shape;
   }
 }

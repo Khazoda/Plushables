@@ -61,10 +61,8 @@ public class CluckyBlock extends AnimatronicPlushable {
 
   public VoxelShape getShape() {
     VoxelShape shape = VoxelShapes.empty();
-    shape = VoxelShapes.union(shape,
-        VoxelShapes.cuboid(0.375, 0.0703125, 0.375, 0.625, 0.2578125, 0.6875));
-    shape = VoxelShapes.union(shape, VoxelShapes.cuboid(0.25, 0.0078125, 0.3125, 0.75, 0.0703125, 0.75));
-
+    shape = VoxelShapes.union(shape, VoxelShapes.cuboid(0.375, 0.0625, 0.375, 0.625, 0.25, 0.6875));
+    shape = VoxelShapes.union(shape, VoxelShapes.cuboid(0.25, 0, 0.3125, 0.75, 0.0625, 0.75));
     return shape;
   }
 
