@@ -1,5 +1,6 @@
 package com.seacroak.plushables;
 
+import com.seacroak.plushables.registry.EntityRendererRegistry;
 import com.seacroak.plushables.registry.MainRegistry;
 import com.seacroak.plushables.registry.ScreenRegistry;
 import com.seacroak.plushables.registry.TileRegistryClient;
@@ -21,9 +22,10 @@ public final class PlushablesModClient implements ClientModInitializer {
   public void onInitializeClient() {
     ScreenRegistry.initClient();
     TileRegistryClient.initClient();
+    EntityRendererRegistry.initClient();
 
-//    Functional Transparency
-//    Simple Plushables
+    /* Functional Transparency*/
+    /* Simple Plushables */
     BlockRenderLayerMap.INSTANCE.putBlock(MainRegistry.PIG_PLUSHABLE, RenderLayer.getCutout());
     BlockRenderLayerMap.INSTANCE.putBlock(MainRegistry.TRUFFLES_PLUSHABLE, RenderLayer.getCutout());
     BlockRenderLayerMap.INSTANCE.putBlock(MainRegistry.WHELPLING_PLUSHABLE, RenderLayer.getCutout());
@@ -35,7 +37,7 @@ public final class PlushablesModClient implements ClientModInitializer {
     BlockRenderLayerMap.INSTANCE.putBlock(MainRegistry.WHALE_PLUSHABLE, RenderLayer.getCutout());
     BlockRenderLayerMap.INSTANCE.putBlock(MainRegistry.GOLDFISH_PLUSHABLE, RenderLayer.getCutout());
 
-//    Complex Plushables
+    /* Complex Plushables */
     BlockRenderLayerMap.INSTANCE.putBlock(MainRegistry.RUPERT_BLOCK, RenderLayer.getCutout());
 
     /* Sound Event Networking Packet Client Receipts */
@@ -47,7 +49,7 @@ public final class PlushablesModClient implements ClientModInitializer {
       client.execute(() -> {
         if (client.world == null)
           return;
-        PlushablesNetworking.playSoundOnClient(decodedSoundEvent,client.world, BlockPos.ofFloored(packet.pos), 1f, packet.pitch);
+        PlushablesNetworking.playSoundOnClient(decodedSoundEvent, client.world, BlockPos.ofFloored(packet.pos), 1f, packet.pitch);
 
       });
     }));
@@ -58,7 +60,7 @@ public final class PlushablesModClient implements ClientModInitializer {
       client.execute(() -> {
         if (client.world == null)
           return;
-        PlushablesNetworking.playSoundOnClient(decodedSoundEvent,client.world, BlockPos.ofFloored(packet.pos), 1f, packet.pitch);
+        PlushablesNetworking.playSoundOnClient(decodedSoundEvent, client.world, BlockPos.ofFloored(packet.pos), 1f, packet.pitch);
 
       });
     }));
@@ -75,7 +77,7 @@ public final class PlushablesModClient implements ClientModInitializer {
       client.execute(() -> {
         if (client.world == null)
           return;
-        PlushablesNetworking.spawnParticlesOnClient(decodedParticles,client.world, BlockPos.ofFloored(packet.pos), packet.particleCount,packet.offset,packet.spread);
+        PlushablesNetworking.spawnParticlesOnClient(decodedParticles, client.world, BlockPos.ofFloored(packet.pos), packet.particleCount, packet.offset, packet.spread);
 
       });
     }));
@@ -88,7 +90,7 @@ public final class PlushablesModClient implements ClientModInitializer {
       client.execute(() -> {
         if (client.world == null)
           return;
-        PlushablesNetworking.playAnimationOnClient(packet.shouldAnimate,client.world, BlockPos.ofFloored(packet.pos),packet.animationName);
+        PlushablesNetworking.playAnimationOnClient(packet.shouldAnimate, client.world, BlockPos.ofFloored(packet.pos), packet.animationName);
 
       });
     }));

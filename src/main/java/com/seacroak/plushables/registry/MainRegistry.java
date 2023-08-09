@@ -15,6 +15,8 @@ public final class MainRegistry {
   /* Standard Blocks */
   public static final BuilderBlock BUILDER_BLOCK = registerBlock("builder_block", new BuilderBlock(),
       defaultItemSettings);
+  public static final HatRackBlock HAT_RACK_BLOCK = registerBlock("hat_rack_block", new HatRackBlock(),
+      defaultItemSettings);
 
   /* Standard Items */
   public static final Item HEART_OF_GOLD = registerItem("heart_of_gold");
