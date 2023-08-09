@@ -1,12 +1,14 @@
 package com.seacroak.plushables.block.tile;
 
 import com.seacroak.plushables.registry.TileRegistry;
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
 
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.Inventories;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.network.listener.ClientPlayPacketListener;
 import net.minecraft.network.packet.Packet;
@@ -19,57 +21,75 @@ import org.jetbrains.annotations.Nullable;
 public class BasketBlockEntity extends BlockEntity {
   private final DefaultedList<ItemStack> plushieStack = DefaultedList.ofSize(4, ItemStack.EMPTY);
   private int topIndex;
+  private boolean isEmpty = true;
 
   public BasketBlockEntity(BlockPos pos, BlockState state) {
     super(TileRegistry.HAT_RACK_TILE, pos, state);
     this.topIndex = 0;
+    if (this.plushieStack.get(0) != ItemStack.EMPTY) this.isEmpty = false;
   }
 
-  public boolean addToStack(PlayerEntity player, ItemStack item) {
-    System.out.println(topIndex);
-    player.getActiveItem().setCount(player.getActiveItem().getCount() - 1);
-    this.plushieStack.set(topIndex, item);
-    if (this.plushieStack.get(topIndex) != ItemStack.EMPTY && this.plushieStack.get(topIndex) == item) {
-      if(this.topIndex != 3) this.topIndex += 1;
-      NbtCompound nbtTag = new NbtCompound();
-      writeNbt(nbtTag);
-      sync();
-      return true;
-    }
-    return false;
+  public void addToStack(PlayerEntity player, ItemStack item) {
+
+    this.plushieStack.set(topIndex, new ItemStack(Items.ANDESITE));
+    if (this.topIndex != 3) this.topIndex += 1;
+
+//    this.isEmpty = false;
+//    player.getActiveItem().setCount(player.getActiveItem().getCount() - 1);
+//    this.plushieStack.set(topIndex, item);
+//    this.isEmpty = false;
+//    if (this.plushieStack.get(topIndex) != ItemStack.EMPTY && this.plushieStack.get(topIndex) == item) {
+//      if (this.topIndex != 3) this.topIndex += 1;
+//      sync();
+//      return true;
+//    }
+//    return false;
   }
 
-  public boolean removeFromStack(PlayerEntity player) {
-    if (topIndex == 0 && this.plushieStack.get(0) == ItemStack.EMPTY) return false;
-    player.giveItemStack(plushieStack.get(topIndex));
-    this.plushieStack.set(topIndex, ItemStack.EMPTY);
-    if (this.plushieStack.get(topIndex) == ItemStack.EMPTY) {
-      if(this.topIndex != 0) this.topIndex -= 1;
-      NbtCompound nbtTag = new NbtCompound();
-      writeNbt(nbtTag);
-      sync();
-      return true;
-    }
-    return false;
+  public void removeFromStack(PlayerEntity player) {
+        this.plushieStack.set(topIndex, ItemStack.EMPTY);
+      if (this.topIndex != 0) this.topIndex -= 1;
+
+
+//    if (topIndex == 0 && this.plushieStack.get(0) == ItemStack.EMPTY) {
+//      this.isEmpty = true;
+//      return false;
+//    }
+//    player.giveItemStack(plushieStack.get(topIndex));
+//    this.plushieStack.set(topIndex, ItemStack.EMPTY);
+//
+//    if (this.plushieStack.get(topIndex) == ItemStack.EMPTY) {
+//      if (this.topIndex != 0) this.topIndex -= 1;
+//      sync();
+//      return true;
+//    }
+//    return false;
   }
 
   public DefaultedList<ItemStack> getPlushieStack() {
+    System.out.println(this.topIndex);
+    System.out.println(this.plushieStack.get(this.topIndex));
     return this.plushieStack;
+  }
+
+  public boolean isEmpty() {
+    return this.isEmpty;
   }
 
   /* Data Serialization */
   @Override
   public void readNbt(NbtCompound nbt) {
-    super.readNbt(nbt);
     Inventories.readNbt(nbt, this.plushieStack);
-    this.topIndex = nbt.getInt("topIndex");
+    topIndex = nbt.getInt("topIndex");
+    isEmpty = nbt.getBoolean("isEmpty");
   }
 
   @Override
-  public void writeNbt(NbtCompound nbt) {
-    Inventories.writeNbt(nbt, this.plushieStack);
-    nbt.putInt("topIndex", this.topIndex);
-    return;
+  protected void writeNbt(NbtCompound compound) {
+    NbtCompound nbt = new NbtCompound();
+    Inventories.writeNbt(nbt, plushieStack);
+    nbt.putInt("topIndex", topIndex);
+    nbt.putBoolean("isEmpty", isEmpty);
   }
 
   public static void tick(World world, BlockPos pos, BlockState state, BasketBlockEntity be) {
@@ -79,18 +99,18 @@ public class BasketBlockEntity extends BlockEntity {
   @Nullable
   @Override
   public Packet<ClientPlayPacketListener> toUpdatePacket() {
-    return BlockEntityUpdateS2CPacket.create(this, BlockEntity::toInitialChunkDataNbt);
+    return BlockEntityUpdateS2CPacket.create(this);
   }
 
   @Override
   public NbtCompound toInitialChunkDataNbt() {
-    NbtCompound nbtTag = new NbtCompound();
-    writeNbt(nbtTag);
-    return nbtTag;
+    NbtCompound nbt = new NbtCompound();
+    return nbt;
   }
 
-  protected void sync() {
+  public void sync() {
     markDirty();
-    world.updateListeners(getPos(), getCachedState(), getCachedState(), 3);
+    world.updateNeighbors(pos, world.getBlockState(pos).getBlock());
+    world.updateListeners(pos, world.getBlockState(pos), getCachedState(), Block.NOTIFY_LISTENERS);
   }
 }

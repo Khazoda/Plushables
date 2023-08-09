@@ -2,15 +2,19 @@ package com.seacroak.plushables.client.entityrenderers;
 
 import com.seacroak.plushables.block.tile.BasketBlockEntity;
 import net.minecraft.block.CampfireBlock;
+import net.minecraft.client.MinecraftClient;
+import net.minecraft.client.render.OverlayTexture;
 import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.render.block.entity.BlockEntityRenderer;
 import net.minecraft.client.render.block.entity.BlockEntityRendererFactory;
 import net.minecraft.client.render.item.ItemRenderer;
+import net.minecraft.client.render.model.BakedModel;
 import net.minecraft.client.render.model.json.ModelTransformationMode;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.Direction;
+import net.minecraft.util.math.RotationAxis;
 
 public class BasketEntityRenderer implements BlockEntityRenderer<BasketBlockEntity> {
   private final ItemRenderer itemRenderer;
@@ -20,24 +24,28 @@ public class BasketEntityRenderer implements BlockEntityRenderer<BasketBlockEnti
   }
 
   public void render(BasketBlockEntity blockEntity, float f, MatrixStack stack, VertexConsumerProvider vertexConsumerProvider, int i, int j) {
-    Direction direction = (Direction) blockEntity.getCachedState().get(CampfireBlock.FACING);
-    DefaultedList<ItemStack> hats = blockEntity.getPlushieStack();
+    if (blockEntity.isEmpty()) return;
     int seed = (int) blockEntity.getPos().asLong();
+    DefaultedList<ItemStack> plushieStack = blockEntity.getPlushieStack();
+    stack.push();
+    stack.scale(0.5f, 0.5f, 0.5f);
 
-//    System.out.println(hats.get(0));
-    if (hats.get(0) != ItemStack.EMPTY) {
-      stack.push();
-      stack.translate(0, 0.5, 0);
-      this.itemRenderer.renderItem(hats.get(0), ModelTransformationMode.HEAD, i, j, stack, vertexConsumerProvider, blockEntity.getWorld(), seed);
-      stack.pop();
-    }
-    if (hats.get(1) != ItemStack.EMPTY) {
-      stack.push();
-      stack.translate(1, 0.5, 0);
-      this.itemRenderer.renderItem(hats.get(1), ModelTransformationMode.HEAD, i, j, stack, vertexConsumerProvider, blockEntity.getWorld(), seed + 1);
-      stack.pop();
+    for (int x = 0; x < plushieStack.size(); ++x) {
+      ItemStack plushie = plushieStack.get(x);
+      if (plushie != ItemStack.EMPTY) {
+        stack.translate(0.5F, 0.44921875F, 0.5F);
+        stack.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(x * 90));
+        stack.translate(-0.3125F, -0.3125F, 0.0F);
+
+        BakedModel bakedModel = itemRenderer.getModels().getModel(plushie);
+        itemRenderer.renderItem(plushie, ModelTransformationMode.GROUND, true, stack, vertexConsumerProvider, i, OverlayTexture.DEFAULT_UV, bakedModel);
+
+      }
     }
 
+    stack.pop();
+
+//    Direction direction = (Direction) blockEntity.getCachedState().get(CampfireBlock.FACING);
 //      if (leftHat != ItemStack.EMPTY) {
 //        matrixStack.push();
 //        matrixStack.translate(0.5F, 0.44921875F, 0.5F);

@@ -67,8 +67,7 @@ public class BasketBlock extends BlockWithEntity {
       if (!(world instanceof ServerWorld)) return ActionResult.CONSUME;
       BasketBlockEntity be = ((BasketBlockEntity) world.getBlockEntity(pos));
       if ((be == null)) return ActionResult.CONSUME;
-      if ((be.removeFromStack(player))) return ActionResult.CONSUME;
-
+      be.removeFromStack(player);
     } else if (!player.isSneaking()) {
       /* Add held item to stack */
       if (!(world instanceof ServerWorld)) return ActionResult.CONSUME;

@@ -1,0 +1,4 @@
+{
+  "parent": "plushables:block/trater_plushable",
+  "gui_light": "front"
+}
