@@ -1,8 +1,10 @@
 package com.seacroak.plushables.block;
 
 import com.seacroak.plushables.block.tile.BuilderTileEntity;
-import com.seacroak.plushables.block.tile.HatRackBlockEntity;
+import com.seacroak.plushables.block.tile.BasketBlockEntity;
 import com.seacroak.plushables.item.CapArmorItem;
+import com.seacroak.plushables.item.PlushableBlockItem;
+import com.seacroak.plushables.registry.MainRegistry;
 import com.seacroak.plushables.registry.SoundRegistry;
 import com.seacroak.plushables.registry.TileRegistry;
 import com.seacroak.plushables.util.VoxelShapeUtils;
@@ -42,10 +44,10 @@ import org.jetbrains.annotations.Nullable;
 
 import static net.minecraft.state.property.Properties.FACING;
 
-public class HatRackBlock extends BlockWithEntity {
+public class BasketBlock extends BlockWithEntity {
   public static final DirectionProperty FACING = Properties.HORIZONTAL_FACING;
 
-  public HatRackBlock() {
+  public BasketBlock() {
     super(FabricBlockSettings.create().sounds(BlockSoundGroup.WOOD).strength(1f).nonOpaque());
     setDefaultState(this.stateManager.getDefaultState().with(Properties.HORIZONTAL_FACING, Direction.NORTH));
   }
@@ -53,41 +55,32 @@ public class HatRackBlock extends BlockWithEntity {
   @Nullable
   @Override
   public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
-    return TileRegistry.HAT_RACK_TILE.instantiate(pos,state);
+    return TileRegistry.HAT_RACK_TILE.instantiate(pos, state);
   }
 
   @Override
   public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
 
-    if (world instanceof ServerWorld serverWorld) {
-      BlockEntity entity = world.getBlockEntity(pos);
-      if (entity instanceof HatRackBlockEntity) {
-        Direction direction = hit.getSide();
-        Direction facing = state.get(FACING);
-        if (direction == facing) {
-          Vec3d hitLocation = hit.getPos().subtract(pos.getX(), pos.getY(), pos.getZ());
-          double x = getXFromHit(facing, hitLocation);
-          double y = getYFromHit(facing, hitLocation);
-//          player.sendMessage(Text.literal(String.valueOf(x)));
-//          player.sendMessage(Text.literal(String.valueOf(y)));
+    if (!player.canModifyBlocks()) return ActionResult.CONSUME;
+    if (player.isSneaking()) {
+      /* Remove top item from stack */
+      if (!(world instanceof ServerWorld)) return ActionResult.CONSUME;
+      BasketBlockEntity be = ((BasketBlockEntity) world.getBlockEntity(pos));
+      if ((be == null)) return ActionResult.CONSUME;
+      if ((be.removeFromStack(player))) return ActionResult.CONSUME;
 
-          ItemStack itemStack = player.getEquippedStack(EquipmentSlot.MAINHAND);
-          if (itemStack.getItem() instanceof CapArmorItem capItem) {
-            /* Prong 1 Clicked */
-            if (y > 0.0 && y <= 0.5 && x >= 0.4 && x <= 0.82) {
-              if (!world.isClient && ((HatRackBlockEntity) entity).setLeftHat(player, player.getAbilities().creativeMode ? itemStack.copy() : itemStack))
-                return ActionResult.SUCCESS;
-            }
-            /* Prong 2 Clicked*/
-            if (y > 0.50 && y <= 1.0 && x >= 0.4 && x <= 0.82) {
-              if (!world.isClient && ((HatRackBlockEntity) entity).setRightHat(player, player.getAbilities().creativeMode ? itemStack.copy() : itemStack))
-                return ActionResult.SUCCESS;
-            }
-          }
-        }
+    } else if (!player.isSneaking()) {
+      /* Add held item to stack */
+      if (!(world instanceof ServerWorld)) return ActionResult.CONSUME;
+      ItemStack itemStack = player.getEquippedStack(EquipmentSlot.MAINHAND);
+      if (itemStack.getItem() instanceof PlushableBlockItem) {
+        BasketBlockEntity be = ((BasketBlockEntity) world.getBlockEntity(pos));
+        if ((be == null)) return ActionResult.CONSUME;
+        if(be.getPlushieStack().get(3) != ItemStack.EMPTY) return ActionResult.CONSUME;
+        be.addToStack(player, itemStack.copyWithCount(1));
       }
     }
-    return ActionResult.PASS;
+    return ActionResult.SUCCESS;
   }
 
   private double getXFromHit(Direction facing, Vec3d hit) {
@@ -114,17 +107,16 @@ public class HatRackBlock extends BlockWithEntity {
 
   public VoxelShape getShape() {
     VoxelShape shape = VoxelShapes.empty();
-    shape = VoxelShapes.union(shape, VoxelShapes.cuboid(0, 0.4375, 0.875, 1, 0.8125, 1));
-    shape = VoxelShapes.union(shape, VoxelShapes.cuboid(0.6875, 0.5, 0.625, 0.8125, 0.625, 0.875));
-    shape = VoxelShapes.union(shape, VoxelShapes.cuboid(0.1875, 0.625, 0.625, 0.3125, 0.75, 0.875));
+    shape = VoxelShapes.union(shape, VoxelShapes.cuboid(0.125, 0, 0.0625, 0.875, 0.9375, 0.125));
+    shape = VoxelShapes.union(shape, VoxelShapes.cuboid(0.125, 0, 0.875, 0.875, 0.9375, 0.9375));
+    shape = VoxelShapes.union(shape, VoxelShapes.cuboid(0.875, 0, 0.125, 0.9375, 0.9375, 0.875));
+    shape = VoxelShapes.union(shape, VoxelShapes.cuboid(0.0625, 0, 0.125, 0.125, 0.9375, 0.875));
+    shape = VoxelShapes.union(shape, VoxelShapes.cuboid(0.125, 0, 0.125, 0.875, 0.0625, 0.875));
     return shape;
   }
 
   final VoxelShape blockShape = getShape();
-  final VoxelShape[] blockShapes = {blockShape,
-      VoxelShapeUtils.rotateShape(Direction.NORTH, Direction.EAST, blockShape),
-      VoxelShapeUtils.rotateShape(Direction.NORTH, Direction.SOUTH, blockShape),
-      VoxelShapeUtils.rotateShape(Direction.NORTH, Direction.WEST, blockShape)};
+  final VoxelShape[] blockShapes = {blockShape, VoxelShapeUtils.rotateShape(Direction.NORTH, Direction.EAST, blockShape), VoxelShapeUtils.rotateShape(Direction.NORTH, Direction.SOUTH, blockShape), VoxelShapeUtils.rotateShape(Direction.NORTH, Direction.WEST, blockShape)};
 
   @Override
   public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
@@ -167,7 +159,7 @@ public class HatRackBlock extends BlockWithEntity {
   @Nullable
   @Override
   public <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
-    return checkType(type, TileRegistry.HAT_RACK_TILE, HatRackBlockEntity::tick);
+    return checkType(type, TileRegistry.HAT_RACK_TILE, BasketBlockEntity::tick);
   }
 
   // Initial state upon placing

@@ -15,7 +15,7 @@ public final class MainRegistry {
   /* Standard Blocks */
   public static final BuilderBlock BUILDER_BLOCK = registerBlock("builder_block", new BuilderBlock(),
       defaultItemSettings);
-  public static final HatRackBlock HAT_RACK_BLOCK = registerBlock("hat_rack_block", new HatRackBlock(),
+  public static final BasketBlock BASKET_BLOCK = registerBlock("basket_block", new BasketBlock(),
       defaultItemSettings);
 
   /* Standard Items */

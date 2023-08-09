@@ -15,10 +15,10 @@ public final class TileRegistry {
 			FabricBlockEntityTypeBuilder.create(BuilderTileEntity::new,
 					MainRegistry.BUILDER_BLOCK).build(null));
 
-	public static final BlockEntityType<HatRackBlockEntity> HAT_RACK_TILE = Registry.register(
-			Registries.BLOCK_ENTITY_TYPE, PlushablesMod.MOD_ID + ":hat_rack_tile",
-			FabricBlockEntityTypeBuilder.create(HatRackBlockEntity::new,
-					MainRegistry.HAT_RACK_BLOCK).build(null));
+	public static final BlockEntityType<BasketBlockEntity> HAT_RACK_TILE = Registry.register(
+			Registries.BLOCK_ENTITY_TYPE, PlushablesMod.MOD_ID + ":basket_tile",
+			FabricBlockEntityTypeBuilder.create(BasketBlockEntity::new,
+					MainRegistry.BASKET_BLOCK).build(null));
 
 	public static final BlockEntityType<CluckyTileEntity> CLUCKY_TILE = Registry.register(
 			Registries.BLOCK_ENTITY_TYPE, PlushablesMod.MOD_ID + ":clucky_tile",

@@ -16,18 +16,21 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.List;
+public class BasketBlockEntity extends BlockEntity {
+  private final DefaultedList<ItemStack> plushieStack = DefaultedList.ofSize(4, ItemStack.EMPTY);
+  private int topIndex;
 
-public class HatRackBlockEntity extends BlockEntity {
-  private final DefaultedList<ItemStack> hats = DefaultedList.ofSize(2, ItemStack.EMPTY);
-
-  public HatRackBlockEntity(BlockPos pos, BlockState state) {
+  public BasketBlockEntity(BlockPos pos, BlockState state) {
     super(TileRegistry.HAT_RACK_TILE, pos, state);
+    this.topIndex = 0;
   }
 
-  public boolean setLeftHat(PlayerEntity player, ItemStack item) {
-    this.hats.set(0, item);
-    if (this.hats.get(0) != ItemStack.EMPTY && this.hats.get(0) == item){
+  public boolean addToStack(PlayerEntity player, ItemStack item) {
+    System.out.println(topIndex);
+    player.getActiveItem().setCount(player.getActiveItem().getCount() - 1);
+    this.plushieStack.set(topIndex, item);
+    if (this.plushieStack.get(topIndex) != ItemStack.EMPTY && this.plushieStack.get(topIndex) == item) {
+      if(this.topIndex != 3) this.topIndex += 1;
       NbtCompound nbtTag = new NbtCompound();
       writeNbt(nbtTag);
       sync();
@@ -36,9 +39,12 @@ public class HatRackBlockEntity extends BlockEntity {
     return false;
   }
 
-  public boolean setRightHat(PlayerEntity player, ItemStack item) {
-    this.hats.set(1, item);
-    if (this.hats.get(1) != ItemStack.EMPTY && this.hats.get(1) == item) {
+  public boolean removeFromStack(PlayerEntity player) {
+    if (topIndex == 0 && this.plushieStack.get(0) == ItemStack.EMPTY) return false;
+    player.giveItemStack(plushieStack.get(topIndex));
+    this.plushieStack.set(topIndex, ItemStack.EMPTY);
+    if (this.plushieStack.get(topIndex) == ItemStack.EMPTY) {
+      if(this.topIndex != 0) this.topIndex -= 1;
       NbtCompound nbtTag = new NbtCompound();
       writeNbt(nbtTag);
       sync();
@@ -47,24 +53,26 @@ public class HatRackBlockEntity extends BlockEntity {
     return false;
   }
 
-  public DefaultedList<ItemStack> getHats() {
-    return this.hats;
+  public DefaultedList<ItemStack> getPlushieStack() {
+    return this.plushieStack;
   }
 
   /* Data Serialization */
   @Override
   public void readNbt(NbtCompound nbt) {
     super.readNbt(nbt);
-    Inventories.readNbt(nbt, hats);
+    Inventories.readNbt(nbt, this.plushieStack);
+    this.topIndex = nbt.getInt("topIndex");
   }
 
   @Override
   public void writeNbt(NbtCompound nbt) {
-    Inventories.writeNbt(nbt, hats);
+    Inventories.writeNbt(nbt, this.plushieStack);
+    nbt.putInt("topIndex", this.topIndex);
     return;
   }
 
-  public static void tick(World world, BlockPos pos, BlockState state, HatRackBlockEntity be) {
+  public static void tick(World world, BlockPos pos, BlockState state, BasketBlockEntity be) {
     if (world.isClient) return;
   }
 

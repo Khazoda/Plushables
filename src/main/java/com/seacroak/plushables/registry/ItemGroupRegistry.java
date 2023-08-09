@@ -43,7 +43,7 @@ public class ItemGroupRegistry {
 
 
           // Caps
-          entries.add(new ItemStack(MainRegistry.HAT_RACK_BLOCK));
+          entries.add(new ItemStack(MainRegistry.BASKET_BLOCK));
           entries.add(new ItemStack(MainRegistry.FROGLIN_CAP));
           entries.add(new ItemStack(MainRegistry.FOX_CAP));
           entries.add(new ItemStack(MainRegistry.UNICORN_CAP));

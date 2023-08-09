@@ -1,8 +1,6 @@
 package com.seacroak.plushables.client.entityrenderers;
 
-import com.seacroak.plushables.block.tile.HatRackBlockEntity;
-import net.fabricmc.api.EnvType;
-import net.fabricmc.api.Environment;
+import com.seacroak.plushables.block.tile.BasketBlockEntity;
 import net.minecraft.block.CampfireBlock;
 import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.render.block.entity.BlockEntityRenderer;
@@ -13,21 +11,20 @@ import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.Direction;
-import net.minecraft.util.math.RotationAxis;
 
-public class HatRackEntityRenderer implements BlockEntityRenderer<HatRackBlockEntity> {
+public class BasketEntityRenderer implements BlockEntityRenderer<BasketBlockEntity> {
   private final ItemRenderer itemRenderer;
 
-  public HatRackEntityRenderer(BlockEntityRendererFactory.Context ctx) {
+  public BasketEntityRenderer(BlockEntityRendererFactory.Context ctx) {
     this.itemRenderer = ctx.getItemRenderer();
   }
 
-  public void render(HatRackBlockEntity blockEntity, float f, MatrixStack stack, VertexConsumerProvider vertexConsumerProvider, int i, int j) {
+  public void render(BasketBlockEntity blockEntity, float f, MatrixStack stack, VertexConsumerProvider vertexConsumerProvider, int i, int j) {
     Direction direction = (Direction) blockEntity.getCachedState().get(CampfireBlock.FACING);
-    DefaultedList<ItemStack> hats = blockEntity.getHats();
+    DefaultedList<ItemStack> hats = blockEntity.getPlushieStack();
     int seed = (int) blockEntity.getPos().asLong();
 
-    System.out.println(hats.get(0));
+//    System.out.println(hats.get(0));
     if (hats.get(0) != ItemStack.EMPTY) {
       stack.push();
       stack.translate(0, 0.5, 0);
