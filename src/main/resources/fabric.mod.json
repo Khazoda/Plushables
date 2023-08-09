@@ -4,17 +4,34 @@
   "version": "1.1.0",
   "name": "Plushables",
   "description": "Craft cute plushies for your home",
-  "authors": ["Khazoda","glisco","BumbleSculpts","Luke"],
+  "authors": [
+    "Khazoda/June (Author)"
+  ],
+  "contributors": [
+    "glisco (Contributor)",
+    {
+      "name": "BumbleSculpts (Artist)",
+      "contact": {
+        "homepage": "https://twitter.com/BumbleSculpts"
+      }
+    },
+    "Luke (Artist)"
+  ],
   "contact": {
     "homepage": "https://seacroak.com",
-    "sources": "https://github.com/Khazoda/Plushables"
+    "sources": "https://github.com/Khazoda/Plushables",
+    "issues": "https://github.com/Khazoda/Plushables/issues"
   },
   "license": "CC0 1.0 Universal with Commons Clause v1.0",
   "icon": "assets/plushables/mod_icon.png",
   "environment": "*",
   "entrypoints": {
-    "main": ["com.seacroak.plushables.PlushablesMod"],
-    "client": ["com.seacroak.plushables.PlushablesModClient"],
+    "main": [
+      "com.seacroak.plushables.PlushablesMod"
+    ],
+    "client": [
+      "com.seacroak.plushables.PlushablesModClient"
+    ],
     "rei_client": [
       "com.seacroak.plushables.compat.rei.PlushablesREIClientPlugin"
     ],
@@ -25,7 +42,9 @@
       "com.seacroak.plushables.compat.emi.PlushablesEMIPlugin"
     ]
   },
-  "mixins": ["plushables.mixins.json"],
+  "mixins": [
+    "plushables.mixins.json"
+  ],
   "depends": {
     "fabricloader": ">=0.14.6",
     "fabric": "*",

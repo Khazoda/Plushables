@@ -2,6 +2,7 @@ package com.seacroak.plushables.block;
 
 import com.seacroak.plushables.block.tile.BuilderTileEntity;
 import com.seacroak.plushables.block.tile.HatRackBlockEntity;
+import com.seacroak.plushables.item.CapArmorItem;
 import com.seacroak.plushables.registry.SoundRegistry;
 import com.seacroak.plushables.registry.TileRegistry;
 import com.seacroak.plushables.util.VoxelShapeUtils;
@@ -71,8 +72,7 @@ public class HatRackBlock extends BlockWithEntity {
 //          player.sendMessage(Text.literal(String.valueOf(y)));
 
           ItemStack itemStack = player.getEquippedStack(EquipmentSlot.MAINHAND);
-          if (itemStack.getItem() instanceof BlockItem blockItem) {
-
+          if (itemStack.getItem() instanceof CapArmorItem capItem) {
             /* Prong 1 Clicked */
             if (y > 0.0 && y <= 0.5 && x >= 0.4 && x <= 0.82) {
               if (!world.isClient && ((HatRackBlockEntity) entity).setLeftHat(player, player.getAbilities().creativeMode ? itemStack.copy() : itemStack))
