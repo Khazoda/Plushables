@@ -1,8 +1,6 @@
 package com.seacroak.plushables.client.entityrenderers;
 
-import com.seacroak.plushables.block.tile.BasketBlockEntity;
-import net.minecraft.block.CampfireBlock;
-import net.minecraft.client.MinecraftClient;
+import com.seacroak.plushables.block.tile.AAABasketBlockEntity;
 import net.minecraft.client.render.OverlayTexture;
 import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.render.block.entity.BlockEntityRenderer;
@@ -13,17 +11,16 @@ import net.minecraft.client.render.model.json.ModelTransformationMode;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.collection.DefaultedList;
-import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.RotationAxis;
 
-public class BasketEntityRenderer implements BlockEntityRenderer<BasketBlockEntity> {
+public class AAABasketEntityRenderer implements BlockEntityRenderer<AAABasketBlockEntity> {
   private final ItemRenderer itemRenderer;
 
-  public BasketEntityRenderer(BlockEntityRendererFactory.Context ctx) {
+  public AAABasketEntityRenderer(BlockEntityRendererFactory.Context ctx) {
     this.itemRenderer = ctx.getItemRenderer();
   }
 
-  public void render(BasketBlockEntity blockEntity, float f, MatrixStack stack, VertexConsumerProvider vertexConsumerProvider, int i, int j) {
+  public void render(AAABasketBlockEntity blockEntity, float f, MatrixStack stack, VertexConsumerProvider vertexConsumerProvider, int i, int j) {
     if (blockEntity.isEmpty()) return;
     int seed = (int) blockEntity.getPos().asLong();
     DefaultedList<ItemStack> plushieStack = blockEntity.getPlushieStack();

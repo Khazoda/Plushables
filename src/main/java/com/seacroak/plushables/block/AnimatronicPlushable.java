@@ -104,33 +104,12 @@ public abstract class AnimatronicPlushable extends BlockWithEntity {
   }
 
   final VoxelShape blockShape = getShape();
-  final VoxelShape[] blockShapes = {blockShape,
-      VoxelShapeUtils.rotateShape(Direction.NORTH, Direction.EAST, blockShape),
-      VoxelShapeUtils.rotateShape(Direction.NORTH, Direction.SOUTH, blockShape),
-      VoxelShapeUtils.rotateShape(Direction.NORTH, Direction.WEST, blockShape)};
+  final VoxelShape[] blockShapes = VoxelShapeUtils.calculateBlockShapes(blockShape);
 
   @Override
   public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
-    Direction direction = (Direction) state.get(FACING);
-
-    switch (direction) {
-      case NORTH: {
-        return blockShapes[0];
-      }
-      case EAST: {
-        return blockShapes[1];
-      }
-      case SOUTH: {
-        return blockShapes[2];
-
-      }
-      case WEST: {
-        return blockShapes[3];
-
-      }
-      default:
-        return blockShape;
-    }
+    Direction direction = state.get(FACING);
+    return VoxelShapeUtils.getSidedOutlineShape(direction, blockShape, blockShapes);
   }
 
   @Override
@@ -152,7 +131,7 @@ public abstract class AnimatronicPlushable extends BlockWithEntity {
   @Nullable
   @Override
   public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
-    return TileRegistry.CLUCKY_TILE.instantiate(pos, state);
+    return null;
   }
 
 

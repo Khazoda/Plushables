@@ -11,6 +11,7 @@ public class ItemGroupRegistry {
         .icon(() -> new ItemStack(MainRegistry.PENGUIN_PLUSHABLE))
         .displayName(Text.translatable("itemGroup.plushables.itemGroup"))
         .entries((displayContext, entries) -> {
+          entries.add(new ItemStack(MainRegistry.BASKET_BLOCK));
           entries.add(new ItemStack(MainRegistry.BUILDER_BLOCK));
           entries.add(new ItemStack(MainRegistry.HEART_OF_GOLD));
           entries.add(new ItemStack(MainRegistry.POWERED_HEART));
@@ -44,7 +45,6 @@ public class ItemGroupRegistry {
 
 
           // Caps
-          entries.add(new ItemStack(MainRegistry.BASKET_BLOCK));
           entries.add(new ItemStack(MainRegistry.FROGLIN_CAP));
           entries.add(new ItemStack(MainRegistry.FOX_CAP));
           entries.add(new ItemStack(MainRegistry.UNICORN_CAP));
