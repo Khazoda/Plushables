@@ -25,6 +25,9 @@ public final class PlushablesModClient implements ClientModInitializer {
     EntityRendererRegistry.initClient();
 
     /* Functional Transparency*/
+    /* Blocks */
+    BlockRenderLayerMap.INSTANCE.putBlock(MainRegistry.BASKET_BLOCK, RenderLayer.getCutout());
+
     /* Simple Plushables */
     BlockRenderLayerMap.INSTANCE.putBlock(MainRegistry.PIG_PLUSHABLE, RenderLayer.getCutout());
     BlockRenderLayerMap.INSTANCE.putBlock(MainRegistry.TRUFFLES_PLUSHABLE, RenderLayer.getCutout());
