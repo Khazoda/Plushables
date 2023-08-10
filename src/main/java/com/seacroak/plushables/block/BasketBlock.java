@@ -7,7 +7,9 @@ import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityTicker;
 import net.minecraft.block.entity.BlockEntityType;
+import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.Items;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.text.Text;
 import net.minecraft.util.ActionResult;
@@ -35,17 +37,23 @@ public class BasketBlock extends BlockWithEntity {
   @Override
   public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
     if (world.isClient) return ActionResult.CONSUME;
-    player.sendMessage(Text.literal("Right Clicked :3"));
 
     BasketBlockEntity be = (BasketBlockEntity) world.getBlockEntity(pos);
     if (be == null) return ActionResult.FAIL;
     if (!player.isSneaking()) {
-      be.setBing(5);
-      return ActionResult.SUCCESS;
+      if (player.getMainHandStack().isOf(Items.HEART_OF_THE_SEA)) {
+        player.sendMessage(Text.literal(String.valueOf(be.getPlushStack().get(0))));
+        player.sendMessage(Text.literal(String.valueOf(be.getPlushStack().get(1))));
+        player.sendMessage(Text.literal(String.valueOf(be.getPlushStack().get(2))));
+        player.sendMessage(Text.literal(String.valueOf(be.getPlushStack().get(3))));
+        return ActionResult.SUCCESS;
+      }
+      if (be.pushPlush(player.getEquippedStack(EquipmentSlot.MAINHAND)))
+        return ActionResult.SUCCESS;
     }
     if (player.isSneaking()) {
-      player.sendMessage(Text.literal(String.valueOf(be.getBing())));
-      return ActionResult.SUCCESS;
+      if (be.popPlush())
+        return ActionResult.SUCCESS;
     }
     return ActionResult.SUCCESS;
   }
