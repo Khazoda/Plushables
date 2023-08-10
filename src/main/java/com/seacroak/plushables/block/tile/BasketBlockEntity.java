@@ -6,6 +6,7 @@ import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.inventory.Inventories;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
+import net.minecraft.nbt.NbtList;
 import net.minecraft.network.listener.ClientPlayPacketListener;
 import net.minecraft.network.packet.Packet;
 import net.minecraft.network.packet.s2c.play.BlockEntityUpdateS2CPacket;
@@ -16,7 +17,8 @@ import org.jetbrains.annotations.Nullable;
 
 public class BasketBlockEntity extends BlockEntity {
   public static final int stack_size = 4;
-  private DefaultedList<ItemStack> plushStack = DefaultedList.ofSize(4, ItemStack.EMPTY);
+  //  private DefaultedList<ItemStack> plushStack = DefaultedList.ofSize(4, ItemStack.EMPTY);
+  private ItemStack[] plushStack = {ItemStack.EMPTY, ItemStack.EMPTY, ItemStack.EMPTY, ItemStack.EMPTY,};
   private int top_pointer = 0;
 
   public BasketBlockEntity(BlockPos pos, BlockState state) {
@@ -29,7 +31,7 @@ public class BasketBlockEntity extends BlockEntity {
   public boolean pushPlush(ItemStack in) {
     if (top_pointer > stack_size - 1) return false;
     if (top_pointer == -1) top_pointer += 1;
-    plushStack.set(top_pointer, in);
+    plushStack[top_pointer] = in;
     top_pointer += 1;
     sync();
     return true;
@@ -38,27 +40,40 @@ public class BasketBlockEntity extends BlockEntity {
   public boolean popPlush() {
     if (top_pointer < 0) return false;
     if (top_pointer == 4) top_pointer -= 1;
-    plushStack.set(top_pointer, ItemStack.EMPTY);
+    plushStack[top_pointer] = ItemStack.EMPTY;
     top_pointer -= 1;
     sync();
     return true;
   }
 
-  public DefaultedList<ItemStack> getPlushStack() {
-    return plushStack;
+  public ItemStack[] getPlushStack() {
+    return this.plushStack;
   }
 
   /* Data Serialization */
   @Override
   protected void writeNbt(NbtCompound nbt) {
     super.writeNbt(nbt);
-    Inventories.writeNbt(nbt, plushStack);
+
+    NbtList nbtList = new NbtList();
+    for (ItemStack plush : plushStack
+    ) {
+      NbtCompound itemNbt = new NbtCompound();
+      plush.writeNbt(itemNbt);
+      nbtList.add(itemNbt);
+    }
+    nbt.put("plushStack", nbtList);
   }
 
   @Override
   public void readNbt(NbtCompound nbt) {
     super.readNbt(nbt);
-    Inventories.readNbt(nbt, plushStack);
+    NbtList nbtList = nbt.getList("plushStack", 10);
+    for (int i = 0; i < nbtList.size(); i++) {
+      NbtCompound itemNbt = nbtList.getCompound(i);
+      ItemStack itemStack = ItemStack.fromNbt(itemNbt);
+      plushStack[i] = itemStack;
+    }
     sync();
   }
 

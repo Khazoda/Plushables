@@ -42,10 +42,16 @@ public class BasketBlock extends BlockWithEntity {
     if (be == null) return ActionResult.FAIL;
     if (!player.isSneaking()) {
       if (player.getMainHandStack().isOf(Items.HEART_OF_THE_SEA)) {
-        player.sendMessage(Text.literal(String.valueOf(be.getPlushStack().get(0))));
-        player.sendMessage(Text.literal(String.valueOf(be.getPlushStack().get(1))));
-        player.sendMessage(Text.literal(String.valueOf(be.getPlushStack().get(2))));
-        player.sendMessage(Text.literal(String.valueOf(be.getPlushStack().get(3))));
+//        player.sendMessage(Text.literal(String.valueOf(be.getPlushStack().get(0))));
+//        player.sendMessage(Text.literal(String.valueOf(be.getPlushStack().get(1))));
+//        player.sendMessage(Text.literal(String.valueOf(be.getPlushStack().get(2))));
+//        player.sendMessage(Text.literal(String.valueOf(be.getPlushStack().get(3))));
+
+        player.sendMessage(Text.literal(String.valueOf(be.getPlushStack()[0])));
+        player.sendMessage(Text.literal(String.valueOf(be.getPlushStack()[1])));
+        player.sendMessage(Text.literal(String.valueOf(be.getPlushStack()[2])));
+        player.sendMessage(Text.literal(String.valueOf(be.getPlushStack()[3])));
+
         return ActionResult.SUCCESS;
       }
       if (be.pushPlush(player.getEquippedStack(EquipmentSlot.MAINHAND)))
