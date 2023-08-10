@@ -3,21 +3,18 @@ package com.seacroak.plushables.block.tile;
 import com.seacroak.plushables.registry.TileRegistry;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
-import net.minecraft.inventory.Inventories;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.nbt.NbtList;
 import net.minecraft.network.listener.ClientPlayPacketListener;
 import net.minecraft.network.packet.Packet;
 import net.minecraft.network.packet.s2c.play.BlockEntityUpdateS2CPacket;
-import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
 public class BasketBlockEntity extends BlockEntity {
   public static final int stack_size = 4;
-  //  private DefaultedList<ItemStack> plushStack = DefaultedList.ofSize(4, ItemStack.EMPTY);
   private ItemStack[] plushStack = {ItemStack.EMPTY, ItemStack.EMPTY, ItemStack.EMPTY, ItemStack.EMPTY,};
   private int top_pointer = 0;
 
