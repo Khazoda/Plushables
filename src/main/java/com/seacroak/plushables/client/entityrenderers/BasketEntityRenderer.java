@@ -16,7 +16,7 @@ import net.minecraft.util.math.RotationAxis;
 
 import java.util.Objects;
 
-import static com.seacroak.plushables.block.tile.BasketBlockEntity.stack_size;
+import static com.seacroak.plushables.block.tile.BasketBlockEntity.max_stack_size;
 
 public class BasketEntityRenderer implements BlockEntityRenderer<BasketBlockEntity> {
   private final ItemRenderer itemRenderer;
@@ -45,7 +45,7 @@ public class BasketEntityRenderer implements BlockEntityRenderer<BasketBlockEnti
     stack.push();
     stack.translate(0.5F, 0.25f, 0.5F);
     stack.scale(0.5f, 0.5f, 0.5f);
-    for (int i = startIndex; i < stack_size; i++) {
+    for (int i = startIndex; i < max_stack_size; i++) {
       stack.push();
       if (i % 4 == 0) {
         stack.translate(0.3f, i * 0.19f, 0.3f);

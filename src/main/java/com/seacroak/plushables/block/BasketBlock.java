@@ -32,6 +32,7 @@ import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class BasketBlock extends BlockWithEntity {
@@ -50,29 +51,56 @@ public class BasketBlock extends BlockWithEntity {
   public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
 
     BasketBlockEntity be = (BasketBlockEntity) world.getBlockEntity(pos);
+
     if (be == null) return ActionResult.FAIL;
     /* Add ItemStack to basket */
     if (!player.isSneaking()) {
-      if (be.pushPlush(player.getEquippedStack(EquipmentSlot.MAINHAND)))
+      /* Run only if player has nothing hand */
+      if (player.getEquippedStack(EquipmentSlot.MAINHAND).isOf(Items.AIR)) return ActionResult.CONSUME;
+      if (be.pushPlush(player)) {
         if (world instanceof ServerWorld serverWorld)
           SoundPacketHandler.sendPlayerPacketToClients(serverWorld, new SoundPacketHandler.PlayerSoundPacket(player, pos, SoundRegistry.BASKET_IN, 1f));
         else if (world.isClient)
           PlushablesNetworking.playSoundOnClient(SoundRegistry.BASKET_IN, world, pos, 1f, 1f);
-      return ActionResult.SUCCESS;
+        return ActionResult.SUCCESS;
+      } else {
+        return ActionResult.CONSUME;
+      }
     }
     /* Remove ItemStack from basket*/
     if (player.isSneaking()) {
-      if (be.popPlush())
-        if (world instanceof ServerWorld serverWorld)
-          SoundPacketHandler.sendPlayerPacketToClients(serverWorld, new SoundPacketHandler.PlayerSoundPacket(player, pos, SoundRegistry.BASKET_OUT, 1f));
-        else if (world.isClient)
-          PlushablesNetworking.playSoundOnClient(SoundRegistry.BASKET_OUT, world, pos, 1f, 1f);
-      return ActionResult.SUCCESS;
+      /* Run only if player has a plush in hand TODO implement config option here for allowing all block types */
+      ItemStack heldStack = player.getEquippedStack(EquipmentSlot.MAINHAND);
+      if ((heldStack.isOf(Items.AIR))) {
+        if (be.popPlush(player)) {
+          player.sendMessage(Text.literal("+" + be.getTopPointer()));
+          if (world instanceof ServerWorld serverWorld)
+            SoundPacketHandler.sendPlayerPacketToClients(serverWorld, new SoundPacketHandler.PlayerSoundPacket(player, pos, SoundRegistry.BASKET_OUT, 1f));
+          else if (world.isClient)
+            PlushablesNetworking.playSoundOnClient(SoundRegistry.BASKET_OUT, world, pos, 1f, 1f);
+          return ActionResult.SUCCESS;
+        } else {
+          return ActionResult.CONSUME;
+        }
+      }
     }
     return ActionResult.SUCCESS;
   }
 
-
+  @Override
+  public void onBlockBreakStart(BlockState state, World world, BlockPos pos, PlayerEntity player) {
+    BlockEntity be = world.getBlockEntity(pos);
+    if (!(be instanceof BasketBlockEntity)) return;
+    ItemStack[] array = ((BasketBlockEntity) be).getPlushStack();
+    DefaultedList<ItemStack> list = DefaultedList.ofSize(array.length, ItemStack.EMPTY);
+    for (int i = 0; i < array.length; i++) {
+      list.set(i, array[i].copyAndEmpty());
+      ((BasketBlockEntity) be).popPlush(player);
+    }
+    world.updateComparators(pos, this);
+    ((BasketBlockEntity) be).sync();
+    super.onBlockBreakStart(state, world, pos, player);
+  }
 
   @Override
   public void onStateReplaced(BlockState state, World world, BlockPos pos, BlockState newState, boolean moved) {

@@ -39,8 +39,8 @@
   "item.plushables.cap_beaux": "§8§lBeaux§r Accessories",
   "item.plushables.cap_truffles": "§c§lTruffles§r Cap",
 
-  "block.plushables.basket.tooltip.line_1": "§6Use:§7 Add held plush to basket§r",
-  "block.plushables.basket.tooltip.line_2": "§6Use & Sneak:§7 Take plush from basket§r",
+  "block.plushables.basket.tooltip.line_1": "§6Use while holding item:§7 Add held plush to basket§r",
+  "block.plushables.basket.tooltip.line_2": "§6Use & sneak with empty hand:§7 Take plush from basket§r",
   "block.plushables.basket.tooltip.line_3": "§6Attack:§7 Take all plushies from basket§r",
   "block.plushables.trater.tooltip": "§6A trousered tater is not to be feared, but idolized.§r",
 

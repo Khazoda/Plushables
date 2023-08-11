@@ -3,20 +3,23 @@ package com.seacroak.plushables.block.tile;
 import com.seacroak.plushables.registry.TileRegistry;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.entity.EquipmentSlot;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.nbt.NbtList;
 import net.minecraft.network.listener.ClientPlayPacketListener;
 import net.minecraft.network.packet.Packet;
 import net.minecraft.network.packet.s2c.play.BlockEntityUpdateS2CPacket;
-import net.minecraft.util.collection.DefaultedList;
+import net.minecraft.text.Text;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
 public class BasketBlockEntity extends BlockEntity {
-  public static final int stack_size = 8;
+  public static final int max_stack_size = 8;
   private ItemStack[] plushStack = {ItemStack.EMPTY, ItemStack.EMPTY, ItemStack.EMPTY, ItemStack.EMPTY, ItemStack.EMPTY, ItemStack.EMPTY, ItemStack.EMPTY, ItemStack.EMPTY};
   private int top_pointer = 0;
   private int[] seeds = {0, 0, 0, 0, 0, 0, 0, 0};
@@ -24,7 +27,7 @@ public class BasketBlockEntity extends BlockEntity {
   public BasketBlockEntity(BlockPos pos, BlockState state) {
     super(TileRegistry.BASKET_TILE, pos, state);
     Random random = Random.create();
-    for (int i = 0; i < stack_size; i++) {
+    for (int i = 0; i < max_stack_size; i++) {
       seeds[i] = random.nextInt(100);
     }
     sync();
@@ -33,26 +36,76 @@ public class BasketBlockEntity extends BlockEntity {
   public static void tick(World world, BlockPos pos, BlockState state, BasketBlockEntity be) {
   }
 
-  public boolean pushPlush(ItemStack in) {
-    if (top_pointer > stack_size - 1) return false;
-    if (top_pointer == -1) top_pointer += 1;
-    plushStack[top_pointer] = in;
+  public boolean pushPlush(PlayerEntity player) {
+    player.sendMessage(Text.literal("Push Query Slot " + top_pointer));
+    /* If stack is full, cancel interaction */
+    if (top_pointer == max_stack_size) return false;
+    /* If emptied totally, reset pointer */
+    if (top_pointer == -1) top_pointer = 0;
+    /* Account for last operation */
+    if (!plushStack[top_pointer].isOf(Items.AIR)) top_pointer += 1;
+    player.sendMessage(Text.literal("Pushing slot " + top_pointer + " with " + player.getEquippedStack(EquipmentSlot.MAINHAND).getItem()));
+    plushStack[top_pointer] = player.getEquippedStack(EquipmentSlot.MAINHAND).copyWithCount(1);
+    player.getEquippedStack(EquipmentSlot.MAINHAND)
+        .setCount(player.getEquippedStack(EquipmentSlot.MAINHAND).getCount() - 1);
     top_pointer += 1;
-    sync();
     return true;
   }
 
-  public boolean popPlush() {
-    if (top_pointer < 0) return false;
-    if (top_pointer == stack_size) top_pointer -= 1;
+  public boolean popPlush(PlayerEntity player) {
+    player.sendMessage(Text.literal("Pop Query Slot " + top_pointer));
+    /* If stack is empty, cancel interaction */
+    if (top_pointer == -1) return false;
+    /* If full totally, reset pointer */
+    if (top_pointer == max_stack_size) top_pointer = max_stack_size - 1;
+    /* Account for last operation */
+    if (plushStack[top_pointer].isOf(Items.AIR)) top_pointer -= 1;
+    player.sendMessage(Text.literal("Popping slot " + top_pointer));
+    player.giveItemStack(plushStack[top_pointer].copyWithCount(1));
     plushStack[top_pointer] = ItemStack.EMPTY;
     top_pointer -= 1;
-    sync();
     return true;
   }
+//  public boolean pushPlush(PlayerEntity player) {
+//    if (top_pointer == stack_size - 1) {
+//      if (!plushStack[top_pointer].isOf(Items.AIR)) return false;
+//      player.getEquippedStack(EquipmentSlot.MAINHAND)
+//          .setCount(player.getEquippedStack(EquipmentSlot.MAINHAND).getCount() - 1);
+//      plushStack[top_pointer] = player.getEquippedStack(EquipmentSlot.MAINHAND).copyWithCount(1);
+//    } else {
+//      player.getEquippedStack(EquipmentSlot.MAINHAND)
+//          .setCount(player.getEquippedStack(EquipmentSlot.MAINHAND).getCount() - 1);
+//      plushStack[top_pointer] = player.getEquippedStack(EquipmentSlot.MAINHAND).copyWithCount(1);
+//      top_pointer += 1;
+//    }
+//    sync();
+//    return true;
+//  }
+
+//  public boolean popPlush(PlayerEntity player) {
+//    boolean success = false;
+//    if (top_pointer == 0) return false;
+//    if (top_pointer == stack_size - 1) {
+//      if (plushStack[top_pointer].isOf(Items.AIR)) {
+//        top_pointer -= 1;
+//      }
+//      if (player.giveItemStack(plushStack[top_pointer].copyWithCount(1))) success = true;
+//      plushStack[top_pointer] = ItemStack.EMPTY;
+//    } else {
+//      if (player.giveItemStack(plushStack[top_pointer].copyWithCount(1))) success = true;
+//      plushStack[top_pointer] = ItemStack.EMPTY;
+//      top_pointer -= 1;
+//    }
+//    sync();
+//    return success;
+//  }
 
   public ItemStack[] getPlushStack() {
     return this.plushStack;
+  }
+
+  public int getTopPointer() {
+    return this.top_pointer;
   }
 
   public int[] getSeeds() {
