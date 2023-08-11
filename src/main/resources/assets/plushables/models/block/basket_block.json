@@ -3,7 +3,7 @@
 	"texture_size": [32, 32],
 	"textures": {
 		"0": "plushables:block/basket_texture",
-		"particle": "minecraft:oak"
+		"particle": "minecraft:block/spruce_planks"
 	},
 	"elements": [
 		{
@@ -65,11 +65,13 @@
 	],
 	"display": {
 		"thirdperson_righthand": {
-			"translation": [0, -0.75, -2.5],
+			"rotation": [14.75, 0, 0],
+			"translation": [0, -1.5, -2.5],
 			"scale": [0.4, 0.4, 0.4]
 		},
 		"thirdperson_lefthand": {
-			"translation": [0, -0.75, -2.5],
+			"rotation": [14.75, 0, 0],
+			"translation": [0, -1.5, -2.5],
 			"scale": [0.4, 0.4, 0.4]
 		},
 		"firstperson_righthand": {
@@ -84,7 +86,7 @@
 			"scale": [0.35, 0.35, 0.35]
 		},
 		"gui": {
-			"rotation": [19, -147, 0],
+			"rotation": [33, -135, 0],
 			"translation": [0, 0.25, 0],
 			"scale": [0.65, 0.65, 0.65]
 		},

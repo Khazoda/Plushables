@@ -1,7 +1,10 @@
 package com.seacroak.plushables.block;
 
 import com.seacroak.plushables.block.tile.BasketBlockEntity;
+import com.seacroak.plushables.registry.SoundRegistry;
 import com.seacroak.plushables.registry.TileRegistry;
+import com.seacroak.plushables.util.networking.PlushablesNetworking;
+import com.seacroak.plushables.util.networking.SoundPacketHandler;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
@@ -10,6 +13,7 @@ import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Items;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.text.Text;
 import net.minecraft.util.ActionResult;
@@ -36,28 +40,25 @@ public class BasketBlock extends BlockWithEntity {
 
   @Override
   public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
-    if (world.isClient) return ActionResult.CONSUME;
 
     BasketBlockEntity be = (BasketBlockEntity) world.getBlockEntity(pos);
     if (be == null) return ActionResult.FAIL;
+    /* Add ItemStack to basket */
     if (!player.isSneaking()) {
-      if (player.getMainHandStack().isOf(Items.HEART_OF_THE_SEA)) {
-        /* TODO Heart of the Sea Debug */
-        player.sendMessage(Text.literal(String.valueOf(be.getPlushStack()[0])));
-        player.sendMessage(Text.literal(String.valueOf(be.getPlushStack()[1])));
-        player.sendMessage(Text.literal(String.valueOf(be.getPlushStack()[2])));
-        player.sendMessage(Text.literal(String.valueOf(be.getPlushStack()[3])));
-        player.sendMessage(Text.literal(String.valueOf(be.getPlushStack()[4])));
-        player.sendMessage(Text.literal(String.valueOf(be.getPlushStack()[5])));
-        player.sendMessage(Text.literal(String.valueOf(be.getPlushStack()[6])));
-        player.sendMessage(Text.literal(String.valueOf(be.getPlushStack()[7])));
-        return ActionResult.SUCCESS;
-      }
       if (be.pushPlush(player.getEquippedStack(EquipmentSlot.MAINHAND)))
-        return ActionResult.SUCCESS;
+        if (world instanceof ServerWorld serverWorld)
+          SoundPacketHandler.sendPlayerPacketToClients(serverWorld, new SoundPacketHandler.PlayerSoundPacket(player, pos, SoundRegistry.BASKET_IN, 1f));
+        else if (world.isClient)
+          PlushablesNetworking.playSoundOnClient(SoundRegistry.BASKET_IN, world, pos, 1f, 1f);
+      return ActionResult.SUCCESS;
     }
+    /* Remove ItemStack to basket*/
     if (player.isSneaking()) {
       if (be.popPlush())
+        if (world instanceof ServerWorld serverWorld)
+          SoundPacketHandler.sendPlayerPacketToClients(serverWorld, new SoundPacketHandler.PlayerSoundPacket(player, pos, SoundRegistry.BASKET_OUT, 1f));
+        else if (world.isClient)
+          PlushablesNetworking.playSoundOnClient(SoundRegistry.BASKET_OUT, world, pos, 1f, 1f);
         return ActionResult.SUCCESS;
     }
     return ActionResult.SUCCESS;

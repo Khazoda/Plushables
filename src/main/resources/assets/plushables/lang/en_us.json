@@ -1,5 +1,6 @@
 {
   "itemGroup.plushables.itemGroup": "§cP§6l§eu§as§bh§9a§5b§cl§6e§es",
+  "block.plushables.basket_block": "Plushable Basket",
   "block.plushables.builder_block": "Plushable Builder",
   "item.plushables.heart_of_gold": "§6Heart of Gold",
   "item.plushables.powered_heart": "§cPowered §6Heart of Gold",
@@ -31,7 +32,6 @@
   "block.plushables.goldfish_plushable": "Plushable §6§lGoldfish",
   "block.plushables.trater_plushable": "Plushable §c§lTrater",
 
-  "block.plushables.basket_block": "Plush Basket",
   "item.plushables.cap_froglin": "§2§lFroglin§r Cap",
   "item.plushables.cap_fox": "§6§lFox§r Cap",
   "item.plushables.cap_unicorn": "§c§lU§6§ln§e§li§a§lc§b§lo§9§lr§5§ln§r Cap",

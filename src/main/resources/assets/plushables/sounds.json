@@ -22,5 +22,11 @@
   },
   "goldfish": {
     "sounds": ["plushables:goldfish"]
+  },
+  "basket_in": {
+    "sounds": ["plushables:basket_in"]
+  },
+  "basket_out": {
+    "sounds": ["plushables:basket_out"]
   }
 }
