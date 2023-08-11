@@ -15,16 +15,16 @@ import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
 public class BasketBlockEntity extends BlockEntity {
-  public static final int stack_size = 4;
-  private ItemStack[] plushStack = {ItemStack.EMPTY, ItemStack.EMPTY, ItemStack.EMPTY, ItemStack.EMPTY};
+  public static final int stack_size = 8;
+  private ItemStack[] plushStack = {ItemStack.EMPTY, ItemStack.EMPTY, ItemStack.EMPTY, ItemStack.EMPTY, ItemStack.EMPTY, ItemStack.EMPTY, ItemStack.EMPTY, ItemStack.EMPTY};
   private int top_pointer = 0;
-  private int[] seeds = {0,0,0,0};
+  private int[] seeds = {0, 0, 0, 0, 0, 0, 0, 0};
 
   public BasketBlockEntity(BlockPos pos, BlockState state) {
     super(TileRegistry.BASKET_TILE, pos, state);
     Random random = Random.create();
-    for (int i = 0; i < 4; i++) {
-      seeds[i] = random.nextInt(10);
+    for (int i = 0; i < stack_size; i++) {
+      seeds[i] = random.nextInt(100);
     }
     sync();
   }
@@ -43,7 +43,7 @@ public class BasketBlockEntity extends BlockEntity {
 
   public boolean popPlush() {
     if (top_pointer < 0) return false;
-    if (top_pointer == 4) top_pointer -= 1;
+    if (top_pointer == stack_size) top_pointer -= 1;
     plushStack[top_pointer] = ItemStack.EMPTY;
     top_pointer -= 1;
     sync();
@@ -72,7 +72,7 @@ public class BasketBlockEntity extends BlockEntity {
     }
     nbt.put("plush_stack", plushNbtList);
     nbt.putInt("top_pointer", top_pointer);
-    nbt.putIntArray("seeds",seeds);
+    nbt.putIntArray("seeds", seeds);
   }
 
   @Override

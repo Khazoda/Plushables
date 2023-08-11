@@ -47,6 +47,10 @@ public class BasketBlock extends BlockWithEntity {
         player.sendMessage(Text.literal(String.valueOf(be.getPlushStack()[1])));
         player.sendMessage(Text.literal(String.valueOf(be.getPlushStack()[2])));
         player.sendMessage(Text.literal(String.valueOf(be.getPlushStack()[3])));
+        player.sendMessage(Text.literal(String.valueOf(be.getPlushStack()[4])));
+        player.sendMessage(Text.literal(String.valueOf(be.getPlushStack()[5])));
+        player.sendMessage(Text.literal(String.valueOf(be.getPlushStack()[6])));
+        player.sendMessage(Text.literal(String.valueOf(be.getPlushStack()[7])));
         return ActionResult.SUCCESS;
       }
       if (be.pushPlush(player.getEquippedStack(EquipmentSlot.MAINHAND)))
