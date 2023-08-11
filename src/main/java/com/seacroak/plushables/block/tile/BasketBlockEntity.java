@@ -18,15 +18,20 @@ import net.minecraft.util.math.random.Random;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.Arrays;
+
+
 public class BasketBlockEntity extends BlockEntity {
   public static final int max_stack_size = 8;
-  private ItemStack[] plushStack = {ItemStack.EMPTY, ItemStack.EMPTY, ItemStack.EMPTY, ItemStack.EMPTY, ItemStack.EMPTY, ItemStack.EMPTY, ItemStack.EMPTY, ItemStack.EMPTY};
+  private final ItemStack[] plushStack = new ItemStack[8];
   private int top_pointer = 0;
-  private int[] seeds = {0, 0, 0, 0, 0, 0, 0, 0};
+  private int[] seeds = new int[8];
 
   public BasketBlockEntity(BlockPos pos, BlockState state) {
     super(TileRegistry.BASKET_TILE, pos, state);
     Random random = Random.create();
+    Arrays.fill(plushStack, ItemStack.EMPTY);
+
     for (int i = 0; i < max_stack_size; i++) {
       seeds[i] = random.nextInt(100);
     }
@@ -49,6 +54,7 @@ public class BasketBlockEntity extends BlockEntity {
     player.getEquippedStack(EquipmentSlot.MAINHAND)
         .setCount(player.getEquippedStack(EquipmentSlot.MAINHAND).getCount() - 1);
     top_pointer += 1;
+    sync();
     return true;
   }
 
@@ -64,41 +70,9 @@ public class BasketBlockEntity extends BlockEntity {
     player.giveItemStack(plushStack[top_pointer].copyWithCount(1));
     plushStack[top_pointer] = ItemStack.EMPTY;
     top_pointer -= 1;
+    sync();
     return true;
   }
-//  public boolean pushPlush(PlayerEntity player) {
-//    if (top_pointer == stack_size - 1) {
-//      if (!plushStack[top_pointer].isOf(Items.AIR)) return false;
-//      player.getEquippedStack(EquipmentSlot.MAINHAND)
-//          .setCount(player.getEquippedStack(EquipmentSlot.MAINHAND).getCount() - 1);
-//      plushStack[top_pointer] = player.getEquippedStack(EquipmentSlot.MAINHAND).copyWithCount(1);
-//    } else {
-//      player.getEquippedStack(EquipmentSlot.MAINHAND)
-//          .setCount(player.getEquippedStack(EquipmentSlot.MAINHAND).getCount() - 1);
-//      plushStack[top_pointer] = player.getEquippedStack(EquipmentSlot.MAINHAND).copyWithCount(1);
-//      top_pointer += 1;
-//    }
-//    sync();
-//    return true;
-//  }
-
-//  public boolean popPlush(PlayerEntity player) {
-//    boolean success = false;
-//    if (top_pointer == 0) return false;
-//    if (top_pointer == stack_size - 1) {
-//      if (plushStack[top_pointer].isOf(Items.AIR)) {
-//        top_pointer -= 1;
-//      }
-//      if (player.giveItemStack(plushStack[top_pointer].copyWithCount(1))) success = true;
-//      plushStack[top_pointer] = ItemStack.EMPTY;
-//    } else {
-//      if (player.giveItemStack(plushStack[top_pointer].copyWithCount(1))) success = true;
-//      plushStack[top_pointer] = ItemStack.EMPTY;
-//      top_pointer -= 1;
-//    }
-//    sync();
-//    return success;
-//  }
 
   public ItemStack[] getPlushStack() {
     return this.plushStack;

@@ -4,6 +4,7 @@ import com.seacroak.plushables.PlushablesMod;
 import com.seacroak.plushables.block.tile.BasketBlockEntity;
 import com.seacroak.plushables.registry.SoundRegistry;
 import com.seacroak.plushables.registry.TileRegistry;
+import com.seacroak.plushables.util.networking.BasketPacketHandler;
 import com.seacroak.plushables.util.networking.PlushablesNetworking;
 import com.seacroak.plushables.util.networking.SoundPacketHandler;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
@@ -74,9 +75,10 @@ public class BasketBlock extends BlockWithEntity {
       if ((heldStack.isOf(Items.AIR))) {
         if (be.popPlush(player)) {
           player.sendMessage(Text.literal("+" + be.getTopPointer()));
-          if (world instanceof ServerWorld serverWorld)
+          if (world instanceof ServerWorld serverWorld) {
             SoundPacketHandler.sendPlayerPacketToClients(serverWorld, new SoundPacketHandler.PlayerSoundPacket(player, pos, SoundRegistry.BASKET_OUT, 1f));
-          else if (world.isClient)
+//            BasketPacketHandler.sendPacketToClients(serverWorld, new BasketPacketHandler.BasketDataPacket(player, pos, be.getPlushStack(), be.getSeeds(), be.getTopPointer()));
+          } else if (world.isClient)
             PlushablesNetworking.playSoundOnClient(SoundRegistry.BASKET_OUT, world, pos, 1f, 1f);
           return ActionResult.SUCCESS;
         } else {
