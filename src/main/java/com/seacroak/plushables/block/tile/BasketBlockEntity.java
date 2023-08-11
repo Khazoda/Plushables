@@ -10,16 +10,23 @@ import net.minecraft.network.listener.ClientPlayPacketListener;
 import net.minecraft.network.packet.Packet;
 import net.minecraft.network.packet.s2c.play.BlockEntityUpdateS2CPacket;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.random.Random;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
 public class BasketBlockEntity extends BlockEntity {
   public static final int stack_size = 4;
-  private ItemStack[] plushStack = {ItemStack.EMPTY, ItemStack.EMPTY, ItemStack.EMPTY, ItemStack.EMPTY,};
+  private ItemStack[] plushStack = {ItemStack.EMPTY, ItemStack.EMPTY, ItemStack.EMPTY, ItemStack.EMPTY};
   private int top_pointer = 0;
+  private int[] seeds = {0,0,0,0};
 
   public BasketBlockEntity(BlockPos pos, BlockState state) {
     super(TileRegistry.BASKET_TILE, pos, state);
+    Random random = Random.create();
+    for (int i = 0; i < 4; i++) {
+      seeds[i] = random.nextInt(10);
+    }
+    sync();
   }
 
   public static void tick(World world, BlockPos pos, BlockState state, BasketBlockEntity be) {
@@ -47,30 +54,38 @@ public class BasketBlockEntity extends BlockEntity {
     return this.plushStack;
   }
 
+  public int[] getSeeds() {
+    return this.seeds;
+  }
+
   /* Data Serialization */
   @Override
   protected void writeNbt(NbtCompound nbt) {
     super.writeNbt(nbt);
 
-    NbtList nbtList = new NbtList();
+    NbtList plushNbtList = new NbtList();
     for (ItemStack plush : plushStack
     ) {
       NbtCompound itemNbt = new NbtCompound();
       plush.writeNbt(itemNbt);
-      nbtList.add(itemNbt);
+      plushNbtList.add(itemNbt);
     }
-    nbt.put("plushStack", nbtList);
+    nbt.put("plush_stack", plushNbtList);
+    nbt.putInt("top_pointer", top_pointer);
+    nbt.putIntArray("seeds",seeds);
   }
 
   @Override
   public void readNbt(NbtCompound nbt) {
     super.readNbt(nbt);
-    NbtList nbtList = nbt.getList("plushStack", 10);
+    NbtList nbtList = nbt.getList("plush_stack", 10);
     for (int i = 0; i < nbtList.size(); i++) {
       NbtCompound itemNbt = nbtList.getCompound(i);
       ItemStack itemStack = ItemStack.fromNbt(itemNbt);
       plushStack[i] = itemStack;
     }
+    top_pointer = nbt.getInt("top_pointer");
+    seeds = nbt.getIntArray("seeds");
     sync();
   }
 
