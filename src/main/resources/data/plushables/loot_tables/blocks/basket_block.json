@@ -2,19 +2,64 @@
   "type": "minecraft:block",
   "pools": [
     {
-      "rolls": 1,
-      "bonus_rolls": 0,
+      "bonus_rolls": 0.0,
       "entries": [
         {
-          "type": "minecraft:item",
-          "name": "plushables:basket_block"
+          "type": "minecraft:alternatives",
+          "children": [
+            {
+              "type": "minecraft:item",
+              "functions": [
+                {
+                  "function": "minecraft:set_count",
+                  "count": {
+                    "min": 2,
+                    "max": 6
+                  }
+                }
+              ],
+              "conditions": [
+                {
+                  "condition": "minecraft:damage_source_properties",
+                  "predicate": {
+                    "tags": [
+                      {
+                        "id": "is_explosion",
+                        "expected": false
+                      }
+                    ]
+                  }
+                }
+              ],
+              "name": "plushables:basket_block"
+            },
+            {
+              "type": "minecraft:item",
+              "functions": [
+                {
+                  "function": "minecraft:set_count",
+                  "count": {
+                    "min": 2,
+                    "max": 6
+                  }
+                }
+              ],
+              "condition": "minecraft:damage_source_properties",
+              "predicate": {
+                "tags": [
+                  {
+                    "id": "is_explosion",
+                    "expected": true
+                  }
+                ]
+              },
+              "name": "minecraft:stick"
+            }
+          ]
         }
       ],
-      "conditions": [
-        {
-          "condition": "minecraft:survives_explosion"
-        }
-      ]
+      "rolls": 1.0
     }
-  ]
+  ],
+  "random_sequence": "minecraft:blocks/basket_block"
 }

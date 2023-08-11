@@ -1,5 +1,6 @@
 package com.seacroak.plushables.block;
 
+import com.seacroak.plushables.PlushablesMod;
 import com.seacroak.plushables.block.tile.BasketBlockEntity;
 import com.seacroak.plushables.registry.SoundRegistry;
 import com.seacroak.plushables.registry.TileRegistry;
@@ -10,14 +11,19 @@ import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityTicker;
 import net.minecraft.block.entity.BlockEntityType;
+import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.inventory.Inventory;
+import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.text.Text;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
+import net.minecraft.util.ItemScatterer;
+import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.shape.VoxelShape;
@@ -25,6 +31,8 @@ import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
+
+import java.util.List;
 
 public class BasketBlock extends BlockWithEntity {
 
@@ -52,16 +60,30 @@ public class BasketBlock extends BlockWithEntity {
           PlushablesNetworking.playSoundOnClient(SoundRegistry.BASKET_IN, world, pos, 1f, 1f);
       return ActionResult.SUCCESS;
     }
-    /* Remove ItemStack to basket*/
+    /* Remove ItemStack from basket*/
     if (player.isSneaking()) {
       if (be.popPlush())
         if (world instanceof ServerWorld serverWorld)
           SoundPacketHandler.sendPlayerPacketToClients(serverWorld, new SoundPacketHandler.PlayerSoundPacket(player, pos, SoundRegistry.BASKET_OUT, 1f));
         else if (world.isClient)
           PlushablesNetworking.playSoundOnClient(SoundRegistry.BASKET_OUT, world, pos, 1f, 1f);
-        return ActionResult.SUCCESS;
+      return ActionResult.SUCCESS;
     }
     return ActionResult.SUCCESS;
+  }
+
+
+
+  @Override
+  public void onStateReplaced(BlockState state, World world, BlockPos pos, BlockState newState, boolean moved) {
+    if (state.isOf(newState.getBlock())) {
+      return;
+    }
+    BlockEntity blockEntity = world.getBlockEntity(pos);
+    if (blockEntity instanceof BasketBlockEntity) {
+      world.updateComparators(pos, this);
+    }
+    super.onStateReplaced(state, world, pos, newState, moved);
   }
 
   /* Rendering fluff */
@@ -93,4 +115,11 @@ public class BasketBlock extends BlockWithEntity {
     return BlockRenderType.MODEL;
   }
 
+  @Override
+  public void appendTooltip(ItemStack stack, @Nullable BlockView world, List<Text> tooltip, TooltipContext options) {
+    tooltip.add(Text.translatable("block." + PlushablesMod.MOD_ID + ".basket.tooltip.line_1"));
+    tooltip.add(Text.translatable("block." + PlushablesMod.MOD_ID + ".basket.tooltip.line_2"));
+    tooltip.add(Text.translatable("block." + PlushablesMod.MOD_ID + ".basket.tooltip.line_3"));
+    super.appendTooltip(stack, world, tooltip, options);
+  }
 }
