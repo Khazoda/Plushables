@@ -42,14 +42,12 @@ public class BasketBlockEntity extends BlockEntity {
   }
 
   public boolean pushPlush(PlayerEntity player) {
-    player.sendMessage(Text.literal("Push Query Slot " + top_pointer));
     /* If stack is full, cancel interaction */
     if (top_pointer == max_stack_size) return false;
     /* If emptied totally, reset pointer */
     if (top_pointer == -1) top_pointer = 0;
     /* Account for last operation */
     if (!plushStack[top_pointer].isOf(Items.AIR)) top_pointer += 1;
-    player.sendMessage(Text.literal("Pushing slot " + top_pointer + " with " + player.getEquippedStack(EquipmentSlot.MAINHAND).getItem()));
     plushStack[top_pointer] = player.getEquippedStack(EquipmentSlot.MAINHAND).copyWithCount(1);
     player.getEquippedStack(EquipmentSlot.MAINHAND)
         .setCount(player.getEquippedStack(EquipmentSlot.MAINHAND).getCount() - 1);
@@ -59,19 +57,26 @@ public class BasketBlockEntity extends BlockEntity {
   }
 
   public boolean popPlush(PlayerEntity player) {
-    player.sendMessage(Text.literal("Pop Query Slot " + top_pointer));
     /* If stack is empty, cancel interaction */
     if (top_pointer == -1) return false;
     /* If full totally, reset pointer */
     if (top_pointer == max_stack_size) top_pointer = max_stack_size - 1;
     /* Account for last operation */
     if (plushStack[top_pointer].isOf(Items.AIR)) top_pointer -= 1;
-    player.sendMessage(Text.literal("Popping slot " + top_pointer));
     player.giveItemStack(plushStack[top_pointer].copyWithCount(1));
     plushStack[top_pointer] = ItemStack.EMPTY;
     top_pointer -= 1;
     sync();
     return true;
+  }
+
+  public ItemStack[] popAll(PlayerEntity player) {
+    ItemStack[] poppedItems = Arrays.copyOf(plushStack, 8);
+    /* Reset plush stack to empty values */
+    Arrays.fill(plushStack, ItemStack.EMPTY);
+    top_pointer = 0;
+    sync();
+    return poppedItems;
   }
 
   public ItemStack[] getPlushStack() {

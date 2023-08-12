@@ -28,5 +28,8 @@
   },
   "basket_out": {
     "sounds": ["plushables:basket_out"]
+  },
+  "basket_attack": {
+    "sounds": ["plushables:basket_attack"]
   }
 }

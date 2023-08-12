@@ -20,6 +20,7 @@ public class PacketDecoder {
       case "plushables:goldfish": returnValue = SoundRegistry.GOLDFISH; break;
       case "plushables:basket_in": returnValue = SoundRegistry.BASKET_IN; break;
       case "plushables:basket_out": returnValue = SoundRegistry.BASKET_OUT; break;
+      case "plushables:basket_attack": returnValue = SoundRegistry.BASKET_ATTACK; break;
 
 
       /* MC Sounds */
