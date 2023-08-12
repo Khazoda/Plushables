@@ -46,9 +46,9 @@
 
   "emi.category.plushables.plushable_builder": "Plushable Builder",
 
-  "plushables.midnightconfig.title": "Configure Plushables",
-  "plushables.midnightconfig.betaWarning": "The following features are in beta. This means they tested and generally safe to use. If using this mod on a large server it's advised that beta features disabled.",
-  "plushables.midnightconfig.enableBasket": "Enable basket block",
-  "plushables.midnightconfig.experimentalWarning": "The following features are experimental; Please be cautious and enable them at your own risk.",
-  "plushables.midnightconfig.allowAllBlockItemsInBasket": "Allow all blocks to be placed in baskets [Potentially dangerous]"
+  "plushables.midnightconfig.title": "Configure §cP§6l§eu§as§bh§9a§5b§cl§6e§es§r",
+  "plushables.midnightconfig.betaWarning": "§6The following features are in beta:§r\nThis means they have been tested and are generally safe to use.\nIf using this mod on a large server it's advised that beta features are disabled.",
+  "plushables.midnightconfig.enable_baskets": "Enable basket block",
+  "plushables.midnightconfig.experimentalWarning": "§cThe following features are experimental:§r\nAll features here have the potential to cause either a headache or potentially irreversible damage to your world.\nPlease be cautious and enable them at your own risk.",
+  "plushables.midnightconfig.allow_all_block_items_in_baskets": "Allow all blocks to be placed in baskets §7[Potentially dangerous depending on what block is placed in basket]§r"
 }

@@ -49,7 +49,7 @@ dependencies {
     modLocalRuntime "dev.emi:emi-fabric:${project.emi_version}"
 
     // MidnightLib
-    modImplementation "maven.modrinth:midnightlib:${project.midnightlib_version}"
+    modImplementation include("maven.modrinth:midnightlib:${project.midnightlib_version}")
 
     // Uncomment the following line to enable the deprecated Fabric API modules.
     // These are included in the Fabric API production distribution and allow you to update your mod to the latest modules at a later more convenient time.
