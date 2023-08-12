@@ -3,8 +3,8 @@ package com.seacroak.plushables.block;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 
-public class GrumblyTaterBlock extends SimplePlushable {
-  public GrumblyTaterBlock() {
+public class BigIrritaterBlock extends SimplePlushable {
+  public BigIrritaterBlock() {
     super();
   }
 

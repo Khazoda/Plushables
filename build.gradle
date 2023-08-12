@@ -16,6 +16,9 @@ repositories {
         name = "TerraformersMC"
         url = "https://maven.terraformersmc.com/"
     }
+    maven {
+        url = "https://api.modrinth.com/maven"
+    }
 
     // Add repositories to retrieve artifacts from in here.
     // You should only use this when depending on other mods because
@@ -44,6 +47,9 @@ dependencies {
     // EMI
     modCompileOnly "dev.emi:emi-fabric:${project.emi_version}:api"
     modLocalRuntime "dev.emi:emi-fabric:${project.emi_version}"
+
+    // MidnightLib
+    modImplementation "maven.modrinth:midnightlib:${project.midnightlib_version}"
 
     // Uncomment the following line to enable the deprecated Fabric API modules.
     // These are included in the Fabric API production distribution and allow you to update your mod to the latest modules at a later more convenient time.

@@ -1,7 +1,7 @@
 {
 	"credit": "Made with Blockbench",
 	"textures": {
-		"0": "plushables:block/grumbly_tater_texture",
+		"0": "plushables:block/big_irritater_texture",
 		"particle": "plushables:block/blank"
 	},
 	"elements": [
@@ -59,16 +59,16 @@
 		},
 		{
 			"name": "face",
-			"from": [4, 10, 1.99],
-			"to": [12, 13, 1.99],
+			"from": [4, 10, 1.8],
+			"to": [12, 13, 1.8],
 			"faces": {
 				"north": {"uv": [8, 12, 16, 15], "texture": "#0"}
 			}
 		},
 		{
 			"name": "mouth",
-			"from": [4, 6, 1.99],
-			"to": [12, 9, 1.99],
+			"from": [4, 6, 1.8],
+			"to": [12, 9, 1.8],
 			"faces": {
 				"north": {"uv": [0, 12, 8, 15], "texture": "#0"}
 			}

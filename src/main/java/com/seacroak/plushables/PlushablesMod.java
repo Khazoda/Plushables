@@ -1,8 +1,10 @@
 package com.seacroak.plushables;
 
+import com.seacroak.plushables.config.PlushablesConfig;
 import com.seacroak.plushables.registry.*;
 import com.seacroak.plushables.util.GenericUtils;
 import com.seacroak.plushables.util.networking.PlushablesNetworking;
+import eu.midnightdust.lib.config.MidnightConfig;
 import net.fabricmc.api.ModInitializer;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.registry.Registries;
@@ -21,6 +23,7 @@ public final class PlushablesMod implements ModInitializer {
   @Override
   public void onInitialize() {
     Registry.register(Registries.ITEM_GROUP, GenericUtils.ID("plushables"), PLUSHABLES_GROUP);
+    MidnightConfig.init(MOD_ID, PlushablesConfig.class);
 
     MainRegistry.init();
     SoundRegistry.init();

@@ -22,7 +22,7 @@
   "block.plushables.goblin_plushable": "Plushable §a§lGoblin",
   "block.plushables.beaux_plushable": "Plushable §8§lBeaux",
   "block.plushables.big_tater_plushable": "Plushable §c§lBig Tater",
-  "block.plushables.grumbly_tater_plushable": "Plushable §4§lGrumbly Tater",
+  "block.plushables.big_irritater_plushable": "Plushable §4§lBig Irritater",
   "block.plushables.otter_plushable": "Plushable §b§lOtter",
   "block.plushables.shrump_plushable": "Plushable §4§lShrump",
   "block.plushables.octoplush_plushable": "§b§lOctoplushable",
@@ -44,5 +44,11 @@
   "block.plushables.basket.tooltip.line_3": "§6Attack:§7 Take all plushies from basket§r",
   "block.plushables.trater.tooltip": "§6A trousered tater is not to be feared, but idolized.§r",
 
-  "emi.category.plushables.plushable_builder": "Plushable Builder"
+  "emi.category.plushables.plushable_builder": "Plushable Builder",
+
+  "plushables.midnightconfig.title": "Configure Plushables",
+  "plushables.midnightconfig.betaWarning": "The following features are in beta. This means they tested and generally safe to use. If using this mod on a large server it's advised that beta features disabled.",
+  "plushables.midnightconfig.enableBasket": "Enable basket block",
+  "plushables.midnightconfig.experimentalWarning": "The following features are experimental; Please be cautious and enable them at your own risk.",
+  "plushables.midnightconfig.allowAllBlockItemsInBasket": "Allow all blocks to be placed in baskets [Potentially dangerous]"
 }

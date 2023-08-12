@@ -63,7 +63,7 @@ public final class MainRegistry {
       plushableItemSettings);
   public static final BigTaterBlock BIG_TATER_PLUSHABLE = registerPlushable("big_tater_plushable", new BigTaterBlock(),
       plushableItemSettings);
-  public static final GrumblyTaterBlock GRUMBLY_TATER_PLUSHABLE = registerPlushable("grumbly_tater_plushable", new GrumblyTaterBlock(),
+  public static final BigIrritaterBlock BIG_IRRITATER_PLUSHABLE = registerPlushable("big_irritater_plushable", new BigIrritaterBlock(),
       plushableItemSettings);
   public static final OtterBlock OTTER_PLUSHABLE = registerPlushable("otter_plushable", new OtterBlock(),
       plushableItemSettings);
