@@ -51,7 +51,7 @@ public class BasketBlock extends BlockWithEntity {
 
   @Override
   public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
-
+    if (!player.canModifyBlocks()) return ActionResult.CONSUME;
     BasketBlockEntity be = (BasketBlockEntity) world.getBlockEntity(pos);
     float randomPitch = 0.85f + random.nextFloat() / 4;
 
@@ -91,6 +91,7 @@ public class BasketBlock extends BlockWithEntity {
 
   @Override
   public void onBlockBreakStart(BlockState state, World world, BlockPos pos, PlayerEntity player) {
+    if (!player.canModifyBlocks()) return;
     float randomPitch = 0.85f + random.nextFloat() / 4;
     BlockEntity be = world.getBlockEntity(pos);
     if (!(be instanceof BasketBlockEntity)) return;
