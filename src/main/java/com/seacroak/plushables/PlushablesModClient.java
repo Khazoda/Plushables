@@ -50,7 +50,7 @@ public final class PlushablesModClient implements ClientModInitializer {
     ClientPlayNetworking.registerGlobalReceiver(ConfigPacketHandler.PACKET_ID, ((client, handler, buf, responseSender) -> {
       var packet = ConfigPacketHandler.ConfigPacket.read(buf);
       client.execute(() -> {
-        PlushablesNetworking.priorityConfig(packet.enable_basket,packet.allow_all_block_items_in_baskets);
+        PlushablesNetworking.priorityConfig(packet.enable_basket, packet.allow_all_block_items_in_baskets);
       });
     }));
 
@@ -83,10 +83,7 @@ public final class PlushablesModClient implements ClientModInitializer {
     /* Particle Networking Packet Client Receipt */
     ClientPlayNetworking.registerGlobalReceiver(ParticlePacketHandler.PACKET_ID, ((client, handler, buf, responseSender) -> {
       var packet = ParticlePacketHandler.ParticlePacket.read(buf);
-      System.out.println(packet.particleIdentifier);
       ParticleEffect decodedParticles = PacketDecoder.decodeParticle(packet.particleIdentifier);
-      System.out.println(decodedParticles);
-
       if (packet.player == client.player.getUuid())
         return;
       client.execute(() -> {

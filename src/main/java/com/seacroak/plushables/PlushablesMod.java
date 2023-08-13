@@ -28,6 +28,8 @@ public final class PlushablesMod implements ModInitializer {
     SoundRegistry.init();
     ScreenRegistry.init();
     RecipeRegistry.init();
+    /* Keep this in */
+    new TileRegistry();
 
     PlushablesNetworking.registerGlobalSoundPacketReceiverWithPlayer();
     PlushablesNetworking.registerGlobalSoundPacketReceiverWithoutPlayer();
