@@ -12,7 +12,7 @@ __Optional__:
 
 </p>
 <div style="min-width:100%; display:block;">
-<img src="https://raw.githubusercontent.com/Khazoda/Plushables/1.20.1-FABRIC/web_assets/information-1.1.1.png" alt="Plushables Information" />
-<img src="https://raw.githubusercontent.com/Khazoda/Plushables/1.20.1-FABRIC/web_assets/description-1.1.1.png" alt="Plushables Description" />
+<img src="https://raw.githubusercontent.com/Khazoda/Plushables/1.20.1-FABRIC/web_assets/information_1.1.1.png" alt="Plushables Information" />
+<img src="https://raw.githubusercontent.com/Khazoda/Plushables/1.20.1-FABRIC/web_assets/description_1.1.1.png" alt="Plushables Description" />
 </div>
 </div>
