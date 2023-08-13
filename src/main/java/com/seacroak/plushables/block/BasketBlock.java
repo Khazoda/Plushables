@@ -15,6 +15,7 @@ import net.minecraft.block.entity.BlockEntityTicker;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.EquipmentSlot;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
@@ -37,6 +38,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.List;
 
 import static com.seacroak.plushables.config.PlushablesConfig.allow_all_block_items_in_baskets;
+import static com.seacroak.plushables.config.PlushablesConfig.enable_baskets;
 
 public class BasketBlock extends BlockWithEntity {
   public static LocalRandom random;
@@ -65,6 +67,7 @@ public class BasketBlock extends BlockWithEntity {
       ItemStack heldItem = player.getEquippedStack(EquipmentSlot.MAINHAND);
       /* Return early if player's hand is empty or doesn't contain a plushie */
       if (heldItem.isOf(Items.AIR)) return ActionResult.CONSUME;
+      /* TODO (Someday extract this client server config checking functionality to a helper function) */
       /* Check client synced config */
       if (world.isClient) {
         if (!ClientConfigValues.allow_all_block_items_in_baskets) {
@@ -169,9 +172,17 @@ public class BasketBlock extends BlockWithEntity {
 
   @Override
   public void appendTooltip(ItemStack stack, @Nullable BlockView world, List<Text> tooltip, TooltipContext options) {
-    tooltip.add(Text.translatable("block." + PlushablesMod.MOD_ID + ".basket.tooltip.line_1"));
-    tooltip.add(Text.translatable("block." + PlushablesMod.MOD_ID + ".basket.tooltip.line_2"));
-    tooltip.add(Text.translatable("block." + PlushablesMod.MOD_ID + ".basket.tooltip.line_3"));
+    /* TODO Someday extract this client server config checking functionality to a helper function */
+    if (!ClientConfigValues.enable_baskets) {
+      tooltip.add(Text.translatable("block." + PlushablesMod.MOD_ID + ".disabled"));
+    } else {
+      tooltip.add(Text.translatable("block." + PlushablesMod.MOD_ID + ".basket.tooltip.line_1"));
+      tooltip.add(Text.translatable("block." + PlushablesMod.MOD_ID + ".basket.tooltip.line_2"));
+      tooltip.add(Text.translatable("block." + PlushablesMod.MOD_ID + ".basket.tooltip.line_3"));
+    }
+    if(ClientConfigValues.allow_all_block_items_in_baskets) {
+      tooltip.add(Text.translatable("block." + PlushablesMod.MOD_ID + ".basket.tooltip.experimental_enabled"));
+    }
     super.appendTooltip(stack, world, tooltip, options);
   }
 
@@ -190,4 +201,29 @@ public class BasketBlock extends BlockWithEntity {
   public boolean shouldDropItemsOnExplosion(Explosion explosion) {
     return false;
   }
+
+  /* Check whether block is enabled in config */
+  @Override
+  public void onPlaced(World world, BlockPos pos, BlockState state, @Nullable LivingEntity placer, ItemStack itemStack) {
+    super.onPlaced(world, pos, state, placer, itemStack);
+
+    /* TODO Someday extract this client server config checking functionality to a helper function */
+    if (world.isClient) {
+      if (!ClientConfigValues.enable_baskets) {
+        world.setBlockState(pos, Blocks.AIR.getDefaultState());
+      }
+      /* Check server config */
+    } else if (world instanceof ServerWorld serverWorld) {
+      if (!enable_baskets) {
+        world.setBlockState(pos, Blocks.AIR.getDefaultState());
+      }
+    }
+    if (!(ClientConfigValues.enable_baskets || enable_baskets)) {
+      assert placer != null;
+      if (world.isClient) placer.sendMessage(Text.translatable("block." + PlushablesMod.MOD_ID + ".disabled"));
+    }
+
+  }
+
+
 }

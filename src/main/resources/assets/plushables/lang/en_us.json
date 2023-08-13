@@ -42,6 +42,7 @@
   "block.plushables.basket.tooltip.line_1": "§6Use while holding item:§7 Add held plush to basket§r",
   "block.plushables.basket.tooltip.line_2": "§6Use & sneak with empty hand:§7 Take plush from basket§r",
   "block.plushables.basket.tooltip.line_3": "§6Attack:§7 Take all plushies from basket§r",
+  "block.plushables.basket.tooltip.experimental_enabled": "§aExperimental features enabled. Stay safe!§r",
   "block.plushables.trater.tooltip": "§6A trousered tater is not to be feared, but idolized.§r",
 
   "emi.category.plushables.plushable_builder": "Plushable Builder",
@@ -50,5 +51,9 @@
   "plushables.midnightconfig.betaWarning": "§6The following features are in beta:§r\nThis means they have been tested and are generally safe to use.\nIf using this mod on a large server it's advised that beta features are disabled.",
   "plushables.midnightconfig.enable_baskets": "Enable basket block",
   "plushables.midnightconfig.experimentalWarning": "§cThe following features are experimental:§r\nAll features here have the potential to cause either a headache or potentially irreversible damage to your world.\nPlease be cautious and enable them at your own risk.",
-  "plushables.midnightconfig.allow_all_block_items_in_baskets": "Allow all blocks to be placed in baskets §7[Potentially dangerous depending on what block is placed in basket]§r"
+  "plushables.midnightconfig.allow_all_block_items_in_baskets": "Allow all blocks to be placed in baskets §7[Potentially dangerous depending on what block is placed in basket]§r",
+
+  "block.plushables.disabled": "§4Sorry, this block has been disabled.§r",
+  "item.plushables.disabled": "§4Sorry, this item has been disabled.§r"
+
 }

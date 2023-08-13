@@ -17,8 +17,6 @@ public final class PlushablesMod implements ModInitializer {
   public static final String MOD_ID = "plushables";
   public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
   public static final ItemGroup PLUSHABLES_GROUP = ItemGroupRegistry.createItemGroup();
-  /* Unix Epoch start time since mod loaded. Used for timer comparisons */
-  public static Long START_TIME = System.currentTimeMillis() / 1000;
 
   @Override
   public void onInitialize() {
