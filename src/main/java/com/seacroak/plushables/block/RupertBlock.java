@@ -1,18 +1,15 @@
 package com.seacroak.plushables.block;
 
-import com.seacroak.plushables.block.tile.CluckyTileEntity;
-import com.seacroak.plushables.block.tile.DragonTileEntity;
 import com.seacroak.plushables.block.tile.RupertTileEntity;
 import com.seacroak.plushables.registry.SoundRegistry;
 import com.seacroak.plushables.registry.TileRegistry;
-import com.seacroak.plushables.util.networking.AnimationPacketHandler;
-import com.seacroak.plushables.util.networking.PlushablesNetworking;
-import com.seacroak.plushables.util.networking.SoundPacketHandler;
+import com.seacroak.plushables.networking.AnimationPacketHandler;
+import com.seacroak.plushables.networking.PlushablesNetworking;
+import com.seacroak.plushables.networking.SoundPacketHandler;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.server.world.ServerWorld;
-import net.minecraft.sound.SoundCategory;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.hit.BlockHitResult;

@@ -1,8 +1,8 @@
 package com.seacroak.plushables.block;
 import com.seacroak.plushables.registry.SoundRegistry;
-import com.seacroak.plushables.util.networking.ParticlePacketHandler;
-import com.seacroak.plushables.util.networking.PlushablesNetworking;
-import com.seacroak.plushables.util.networking.SoundPacketHandler;
+import com.seacroak.plushables.networking.ParticlePacketHandler;
+import com.seacroak.plushables.networking.PlushablesNetworking;
+import com.seacroak.plushables.networking.SoundPacketHandler;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.world.ServerWorld;

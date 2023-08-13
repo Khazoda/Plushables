@@ -1,11 +1,11 @@
 package com.seacroak.plushables;
 
+import com.seacroak.plushables.config.ConfigPacketHandler;
+import com.seacroak.plushables.networking.*;
 import com.seacroak.plushables.registry.EntityRendererRegistry;
 import com.seacroak.plushables.registry.MainRegistry;
 import com.seacroak.plushables.registry.ScreenRegistry;
 import com.seacroak.plushables.registry.TileRegistryClient;
-
-import com.seacroak.plushables.util.networking.*;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -14,9 +14,12 @@ import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.particle.ParticleEffect;
 import net.minecraft.sound.SoundEvent;
+import net.minecraft.text.Text;
 import net.minecraft.util.math.BlockPos;
 
 public final class PlushablesModClient implements ClientModInitializer {
+  public static boolean onServer = false;
+
   @Override
   @Environment(EnvType.CLIENT)
   public void onInitializeClient() {
@@ -44,7 +47,18 @@ public final class PlushablesModClient implements ClientModInitializer {
     /* Complex Plushables */
     BlockRenderLayerMap.INSTANCE.putBlock(MainRegistry.RUPERT_BLOCK, RenderLayer.getCutout());
 
-    /* Sound Event Networking Packet Client Receipts */
+    /* Config Sync Networking Packet Client Receipt */
+    ClientPlayNetworking.registerGlobalReceiver(ConfigPacketHandler.PACKET_ID, ((client, handler, buf, responseSender) -> {
+      var packet = ConfigPacketHandler.ConfigPacket.read(buf);
+      client.execute(() -> {
+        PlushablesNetworking.priorityConfig(packet.enable_basket,packet.allow_all_block_items_in_baskets);
+        client.player.sendMessage(Text.literal("packet receieved :o " + packet.allow_all_block_items_in_baskets + " " +packet.enable_basket ));
+        client.player.sendMessage(Text.literal(String.valueOf(onServer)));
+
+      });
+    }));
+
+    /* Sound Event Networking Packet Client Receipt */
     ClientPlayNetworking.registerGlobalReceiver(SoundPacketHandler.PACKET_ID_PLAYER, ((client, handler, buf, responseSender) -> {
       var packet = SoundPacketHandler.PlayerSoundPacket.read(buf);
       SoundEvent decodedSoundEvent = PacketDecoder.decodeSoundEvent(packet.soundIdentifier);
@@ -58,6 +72,7 @@ public final class PlushablesModClient implements ClientModInitializer {
       });
     }));
 
+    /* Sound Event Networking Packet Client Receipt */
     ClientPlayNetworking.registerGlobalReceiver(SoundPacketHandler.PACKET_ID_NO_PLAYER, ((client, handler, buf, responseSender) -> {
       var packet = SoundPacketHandler.NoPlayerSoundPacket.read(buf);
       SoundEvent decodedSoundEvent = PacketDecoder.decodeSoundEvent(packet.soundIdentifier);
@@ -86,6 +101,7 @@ public final class PlushablesModClient implements ClientModInitializer {
       });
     }));
 
+    /* Animation Event Networking Packet Client Receipt */
     ClientPlayNetworking.registerGlobalReceiver(AnimationPacketHandler.PACKET_ID, ((client, handler, buf, responseSender) -> {
       var packet = AnimationPacketHandler.AnimationPacket.read(buf);
 

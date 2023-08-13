@@ -1,4 +1,4 @@
-package com.seacroak.plushables.util.networking;
+package com.seacroak.plushables.networking;
 
 import com.seacroak.plushables.util.GenericUtils;
 import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;

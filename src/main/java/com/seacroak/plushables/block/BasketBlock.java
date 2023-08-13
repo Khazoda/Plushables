@@ -2,10 +2,11 @@ package com.seacroak.plushables.block;
 
 import com.seacroak.plushables.PlushablesMod;
 import com.seacroak.plushables.block.tile.BasketBlockEntity;
+import com.seacroak.plushables.item.PlushableBlockItem;
 import com.seacroak.plushables.registry.SoundRegistry;
 import com.seacroak.plushables.registry.TileRegistry;
-import com.seacroak.plushables.util.networking.PlushablesNetworking;
-import com.seacroak.plushables.util.networking.SoundPacketHandler;
+import com.seacroak.plushables.networking.PlushablesNetworking;
+import com.seacroak.plushables.networking.SoundPacketHandler;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
@@ -34,6 +35,8 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
+import static com.seacroak.plushables.config.PlushablesConfig.allow_all_block_items_in_baskets;
+
 public class BasketBlock extends BlockWithEntity {
   public static LocalRandom random;
 
@@ -58,8 +61,15 @@ public class BasketBlock extends BlockWithEntity {
     if (be == null) return ActionResult.FAIL;
     /* Add ItemStack to basket */
     if (!player.isSneaking()) {
-      /* Run only if player has nothing hand */
-      if (player.getEquippedStack(EquipmentSlot.MAINHAND).isOf(Items.AIR)) return ActionResult.CONSUME;
+      /* Return early if player's hand is empty or doesn't contain a plushie */
+      ItemStack heldItem = player.getEquippedStack(EquipmentSlot.MAINHAND);
+      /* Check if config is enabled on server first (Takes priority) */
+      if (!allow_all_block_items_in_baskets) {
+        if (heldItem.isOf(Items.AIR) || !(heldItem.getItem() instanceof PlushableBlockItem)) {
+          return ActionResult.CONSUME;
+        }
+      }
+
       if (be.pushPlush(player)) {
         if (world instanceof ServerWorld serverWorld)
           SoundPacketHandler.sendPlayerPacketToClients(serverWorld, new SoundPacketHandler.PlayerSoundPacket(player, pos, SoundRegistry.BASKET_IN, randomPitch));
@@ -72,7 +82,6 @@ public class BasketBlock extends BlockWithEntity {
     }
     /* Remove ItemStack from basket*/
     if (player.isSneaking()) {
-      /* Run only if player has a plush in hand TODO implement config option here for allowing all block types */
       ItemStack heldStack = player.getEquippedStack(EquipmentSlot.MAINHAND);
       if ((heldStack.isOf(Items.AIR))) {
         if (be.popPlush(player)) {

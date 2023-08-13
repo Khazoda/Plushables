@@ -1,33 +1,18 @@
 package com.seacroak.plushables.block;
 
 import com.seacroak.plushables.registry.SoundRegistry;
-import com.seacroak.plushables.util.networking.ParticlePacketHandler;
-import com.seacroak.plushables.util.networking.PlushablesNetworking;
-import com.seacroak.plushables.util.networking.SoundPacketHandler;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
+import com.seacroak.plushables.networking.ParticlePacketHandler;
+import com.seacroak.plushables.networking.PlushablesNetworking;
+import com.seacroak.plushables.networking.SoundPacketHandler;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.world.ServerWorld;
-import net.minecraft.state.StateManager;
-import net.minecraft.state.property.BooleanProperty;
-import net.minecraft.state.property.IntProperty;
-import net.minecraft.state.property.Property;
 import net.minecraft.util.ActionResult;
-import net.minecraft.util.Hand;
-import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
-import net.minecraft.util.math.random.Random;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.World;
-import net.minecraft.world.event.GameEvent;
-
-import java.util.Timer;
-import java.util.TimerTask;
-
-import static com.seacroak.plushables.PlushablesMod.START_TIME;
 
 
 public class WizardBlock extends SimpleInteractablePlushable {

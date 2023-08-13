@@ -1,6 +1,5 @@
 package com.seacroak.plushables.block.tile;
 
-import com.seacroak.plushables.util.networking.PlushablesNetworking;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityType;

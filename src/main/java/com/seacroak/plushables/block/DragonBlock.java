@@ -1,38 +1,24 @@
 package com.seacroak.plushables.block;
 
-import com.seacroak.plushables.block.tile.CluckyTileEntity;
 import com.seacroak.plushables.block.tile.DragonTileEntity;
 import com.seacroak.plushables.registry.SoundRegistry;
 import com.seacroak.plushables.registry.TileRegistry;
-import com.seacroak.plushables.util.networking.AnimationPacketHandler;
-import com.seacroak.plushables.util.networking.PlushablesNetworking;
-import com.seacroak.plushables.util.networking.SoundPacketHandler;
-import net.minecraft.block.Block;
+import com.seacroak.plushables.networking.AnimationPacketHandler;
+import com.seacroak.plushables.networking.PlushablesNetworking;
+import com.seacroak.plushables.networking.SoundPacketHandler;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
-import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
-import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.world.ServerWorld;
-import net.minecraft.sound.SoundCategory;
-import net.minecraft.state.StateManager;
-import net.minecraft.state.property.BooleanProperty;
-import net.minecraft.text.Text;
 import net.minecraft.util.ActionResult;
-import net.minecraft.util.Formatting;
 import net.minecraft.util.Hand;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
-import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib.core.animation.AnimationController;
-
-import java.util.List;
 
 public class DragonBlock extends AnimatronicPlushable {
 

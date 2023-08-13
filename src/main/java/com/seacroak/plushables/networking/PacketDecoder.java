@@ -1,4 +1,4 @@
-package com.seacroak.plushables.util.networking;
+package com.seacroak.plushables.networking;
 
 import com.seacroak.plushables.registry.SoundRegistry;
 import net.minecraft.particle.ParticleEffect;
