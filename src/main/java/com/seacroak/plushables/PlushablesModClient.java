@@ -52,9 +52,6 @@ public final class PlushablesModClient implements ClientModInitializer {
       var packet = ConfigPacketHandler.ConfigPacket.read(buf);
       client.execute(() -> {
         PlushablesNetworking.priorityConfig(packet.enable_basket,packet.allow_all_block_items_in_baskets);
-        client.player.sendMessage(Text.literal("packet receieved :o " + packet.allow_all_block_items_in_baskets + " " +packet.enable_basket ));
-        client.player.sendMessage(Text.literal(String.valueOf(onServer)));
-
       });
     }));
 

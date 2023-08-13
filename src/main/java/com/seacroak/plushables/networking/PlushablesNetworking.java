@@ -20,6 +20,7 @@ import java.util.Random;
 import java.util.UUID;
 
 import static com.seacroak.plushables.config.PlushablesConfig.allow_all_block_items_in_baskets;
+import static com.seacroak.plushables.config.PlushablesConfig.enable_baskets;
 
 public class PlushablesNetworking {
 
@@ -32,8 +33,7 @@ public class PlushablesNetworking {
   public static void registerServersideClientJoinListener() {
     ServerPlayConnectionEvents.JOIN.register((handler, sender, server) -> {
       ServerPlayerEntity joinedPlayer = handler.getPlayer();
-      /* TODO UNHARDCODE THE BOOLEAN CONFIG VALUES TO READ FROM SERVER CONFIG DATA*/
-      ConfigPacketHandler.sendConfigPacketToClient(joinedPlayer,new ConfigPacketHandler.ConfigPacket(joinedPlayer.getUuid(),false,allow_all_block_items_in_baskets));
+      ConfigPacketHandler.sendConfigPacketToClient(joinedPlayer,new ConfigPacketHandler.ConfigPacket(joinedPlayer.getUuid(),enable_baskets,allow_all_block_items_in_baskets));
     });
   }
 

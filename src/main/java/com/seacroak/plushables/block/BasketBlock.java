@@ -2,6 +2,7 @@ package com.seacroak.plushables.block;
 
 import com.seacroak.plushables.PlushablesMod;
 import com.seacroak.plushables.block.tile.BasketBlockEntity;
+import com.seacroak.plushables.config.ClientConfigValues;
 import com.seacroak.plushables.item.PlushableBlockItem;
 import com.seacroak.plushables.registry.SoundRegistry;
 import com.seacroak.plushables.registry.TileRegistry;
@@ -61,15 +62,21 @@ public class BasketBlock extends BlockWithEntity {
     if (be == null) return ActionResult.FAIL;
     /* Add ItemStack to basket */
     if (!player.isSneaking()) {
-      /* Return early if player's hand is empty or doesn't contain a plushie */
       ItemStack heldItem = player.getEquippedStack(EquipmentSlot.MAINHAND);
-      /* Check if config is enabled on server first (Takes priority) */
-      if (!allow_all_block_items_in_baskets) {
-        if (heldItem.isOf(Items.AIR) || !(heldItem.getItem() instanceof PlushableBlockItem)) {
-          return ActionResult.CONSUME;
+      /* Return early if player's hand is empty or doesn't contain a plushie */
+      if (heldItem.isOf(Items.AIR)) return ActionResult.CONSUME;
+      /* Check client synced config */
+      if (world.isClient) {
+        if (!ClientConfigValues.allow_all_block_items_in_baskets) {
+          if (!(heldItem.getItem() instanceof PlushableBlockItem)) return ActionResult.CONSUME;
+        }
+        /* Check server config */
+      } else if (world instanceof ServerWorld serverWorld) {
+        if (!allow_all_block_items_in_baskets) {
+          if (!(heldItem.getItem() instanceof PlushableBlockItem)) return ActionResult.CONSUME;
         }
       }
-
+      /* Adding an item is only executed if both the server and client allow it */
       if (be.pushPlush(player)) {
         if (world instanceof ServerWorld serverWorld)
           SoundPacketHandler.sendPlayerPacketToClients(serverWorld, new SoundPacketHandler.PlayerSoundPacket(player, pos, SoundRegistry.BASKET_IN, randomPitch));

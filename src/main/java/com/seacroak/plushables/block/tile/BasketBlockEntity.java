@@ -61,6 +61,8 @@ public class BasketBlockEntity extends BlockEntity {
     if (top_pointer == -1) return false;
     /* If full totally, reset pointer */
     if (top_pointer == max_stack_size) top_pointer = max_stack_size - 1;
+    /* Account for empty basket */
+    if(plushStack[top_pointer].isOf(Items.AIR) && top_pointer == 0) return false;
     /* Account for last operation */
     if (plushStack[top_pointer].isOf(Items.AIR)) top_pointer -= 1;
     player.giveItemStack(plushStack[top_pointer].copyWithCount(1));
