@@ -4,12 +4,8 @@ import com.seacroak.plushables.PlushablesMod;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.screen.ingame.HandledScreen;
 import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.text.OrderedText;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
-
-import javax.swing.text.AttributeSet;
-import javax.swing.text.Style;
 
 public class BuilderScreen extends HandledScreen<BuilderScreenHandler> {
     public static final Identifier TEXTURE = new Identifier(PlushablesMod.MOD_ID,

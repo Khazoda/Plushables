@@ -108,7 +108,6 @@ public class BuilderTileEntity extends BlockEntity
   @Override
   public void writeNbt(NbtCompound nbt) {
     Inventories.writeNbt(nbt, inventory);
-    return;
   }
 
   public static void tick(World world, BlockPos pos, BlockState state, BuilderTileEntity entity) {

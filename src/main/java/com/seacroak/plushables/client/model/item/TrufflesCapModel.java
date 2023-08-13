@@ -1,6 +1,5 @@
 package com.seacroak.plushables.client.model.item;
 
-import com.seacroak.plushables.item.FoxCap;
 import com.seacroak.plushables.item.TrufflesCap;
 import com.seacroak.plushables.util.GenericUtils;
 import net.minecraft.util.Identifier;

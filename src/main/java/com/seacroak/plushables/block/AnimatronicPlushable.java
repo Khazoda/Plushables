@@ -112,7 +112,7 @@ public abstract class AnimatronicPlushable extends BlockWithEntity {
 
   @Override
   public BlockState rotate(BlockState state, BlockRotation rotation) {
-    return (BlockState) state.with(FACING, rotation.rotate(state.get(FACING)));
+    return state.with(FACING, rotation.rotate(state.get(FACING)));
   }
 
   @Override

@@ -6,8 +6,6 @@ import com.seacroak.plushables.util.HorizontalDirectionalBaseEntityBlock;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.BlockRenderType;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.BlockWithEntity;
-import net.minecraft.block.ShapeContext;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityTicker;
 import net.minecraft.block.entity.BlockEntityType;
@@ -22,7 +20,6 @@ import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
-import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
@@ -78,7 +75,7 @@ public class BuilderBlock extends HorizontalDirectionalBaseEntityBlock {
     }
     BlockEntity blockEntity = world.getBlockEntity(pos);
     if (blockEntity instanceof Inventory) {
-      ItemScatterer.spawn(world, pos, (Inventory) ((Object) blockEntity));
+      ItemScatterer.spawn(world, pos, (Inventory) blockEntity);
       world.updateComparators(pos, this);
     }
     super.onStateReplaced(state, world, pos, newState, moved);

@@ -1,7 +1,5 @@
 package com.seacroak.plushables.compat.emi;
 
-import com.seacroak.plushables.block.screen.BuilderScreen;
-import com.seacroak.plushables.block.screen.BuilderScreenHandler;
 import com.seacroak.plushables.recipe.BuilderRecipe;
 import com.seacroak.plushables.registry.MainRegistry;
 import com.seacroak.plushables.registry.ScreenRegistry;
@@ -9,9 +7,7 @@ import com.seacroak.plushables.util.GenericUtils;
 import dev.emi.emi.api.EmiPlugin;
 import dev.emi.emi.api.EmiRegistry;
 import dev.emi.emi.api.recipe.EmiRecipeCategory;
-import dev.emi.emi.api.render.EmiTexture;
 import dev.emi.emi.api.stack.EmiStack;
-import net.minecraft.recipe.RecipeManager;
 import net.minecraft.util.Identifier;
 
 public class PlushablesEMIPlugin implements EmiPlugin {

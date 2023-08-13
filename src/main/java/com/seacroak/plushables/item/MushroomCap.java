@@ -1,7 +1,6 @@
 package com.seacroak.plushables.item;
 
 
-import com.seacroak.plushables.client.renderer.item.FoxCapRenderer;
 import com.seacroak.plushables.client.renderer.item.MushroomCapRenderer;
 import net.minecraft.client.render.entity.model.BipedEntityModel;
 import net.minecraft.entity.EquipmentSlot;

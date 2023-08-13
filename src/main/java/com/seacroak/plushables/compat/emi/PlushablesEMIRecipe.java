@@ -1,6 +1,5 @@
 package com.seacroak.plushables.compat.emi;
 
-import com.seacroak.plushables.block.screen.BuilderScreen;
 import com.seacroak.plushables.recipe.BuilderRecipe;
 import com.seacroak.plushables.util.GenericUtils;
 import dev.emi.emi.api.recipe.EmiRecipe;
@@ -9,7 +8,6 @@ import dev.emi.emi.api.render.EmiTexture;
 import dev.emi.emi.api.stack.EmiIngredient;
 import dev.emi.emi.api.stack.EmiStack;
 import dev.emi.emi.api.widget.WidgetHolder;
-import me.shedaniel.rei.api.client.gui.widgets.Widgets;
 import net.minecraft.util.Identifier;
 import org.jetbrains.annotations.Nullable;
 

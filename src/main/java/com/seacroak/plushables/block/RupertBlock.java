@@ -49,7 +49,7 @@ public class RupertBlock extends AnimatronicPlushable {
           RupertTileEntity rupertEntity = (RupertTileEntity) blockEntity;
           if (rupertEntity.shouldAnimate()
               && rupertEntity.interactionController.getAnimationState() == AnimationController.State.STOPPED) {
-            PlushablesNetworking.playSoundOnClient(SoundRegistry.RUPERT_PURR, world, pos, 1f, (float) 0.7f + randPitch.nextFloat() / 2);
+            PlushablesNetworking.playSoundOnClient(SoundRegistry.RUPERT_PURR, world, pos, 1f, 0.7f + randPitch.nextFloat() / 2);
           }
           return ActionResult.SUCCESS;
         }

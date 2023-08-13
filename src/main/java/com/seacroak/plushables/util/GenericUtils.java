@@ -1,8 +1,5 @@
 package com.seacroak.plushables.util;
 
-import com.seacroak.plushables.registry.SoundRegistry;
-import net.minecraft.sound.SoundEvent;
-import net.minecraft.sound.SoundEvents;
 import org.jetbrains.annotations.NotNull;
 
 import com.seacroak.plushables.PlushablesMod;

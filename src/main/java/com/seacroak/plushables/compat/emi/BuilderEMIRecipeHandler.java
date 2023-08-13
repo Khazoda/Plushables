@@ -2,7 +2,6 @@ package com.seacroak.plushables.compat.emi;
 
 import com.seacroak.plushables.block.screen.BuilderScreenHandler;
 import dev.emi.emi.api.recipe.EmiRecipe;
-import dev.emi.emi.api.recipe.handler.EmiRecipeHandler;
 import dev.emi.emi.api.recipe.handler.StandardRecipeHandler;
 import net.minecraft.screen.slot.Slot;
 import org.jetbrains.annotations.Nullable;

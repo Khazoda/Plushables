@@ -1,6 +1,5 @@
 package com.seacroak.plushables.client.model.tile;
 
-import com.seacroak.plushables.block.tile.CluckyTileEntity;
 import com.seacroak.plushables.block.tile.DragonTileEntity;
 import com.seacroak.plushables.util.GenericUtils;
 import net.minecraft.client.render.RenderLayer;

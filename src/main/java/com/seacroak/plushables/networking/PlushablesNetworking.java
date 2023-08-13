@@ -3,11 +3,9 @@ package com.seacroak.plushables.networking;
 import com.seacroak.plushables.block.tile.AnimatronicBlockEntity;
 import com.seacroak.plushables.config.ClientConfigValues;
 import com.seacroak.plushables.config.ConfigPacketHandler;
-import com.seacroak.plushables.config.PlushablesConfig;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayConnectionEvents;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.minecraft.block.entity.BlockEntity;
-import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.particle.ParticleEffect;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.sound.SoundCategory;
@@ -17,7 +15,6 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 
 import java.util.Random;
-import java.util.UUID;
 
 import static com.seacroak.plushables.config.PlushablesConfig.allow_all_block_items_in_baskets;
 import static com.seacroak.plushables.config.PlushablesConfig.enable_baskets;

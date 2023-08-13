@@ -31,7 +31,7 @@ public class CluckyBlock extends AnimatronicPlushable {
   public ActionResult onUse(BlockState state, World world, BlockPos pos,
                             PlayerEntity player, Hand hand, BlockHitResult hit) {
     super.onUse(state, world, pos, player, hand, hit);
-    float randomPitch = (float) 0.7f + randPitch.nextFloat() / 2;
+    float randomPitch = 0.7f + randPitch.nextFloat() / 2;
     // Send packets to server
     if (!player.isSneaking()) {
       BlockEntity blockEntity = world.getBlockEntity(pos);

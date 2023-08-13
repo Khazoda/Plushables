@@ -51,5 +51,5 @@ public class RegistryHelper {
     // ******************************
     public static Item registerItem(String name, Item item) {
         return Registry.register(Registries.ITEM, newID(name), item);
-    };
+    }
 }

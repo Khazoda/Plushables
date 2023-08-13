@@ -8,7 +8,6 @@ import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 import org.jetbrains.annotations.Nullable;
-import software.bernie.geckolib.GeckoLib;
 
 import java.util.List;
 

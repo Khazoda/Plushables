@@ -1,13 +1,6 @@
 package com.seacroak.plushables.block;
-import net.minecraft.client.item.TooltipContext;
-import net.minecraft.item.ItemStack;
-import net.minecraft.text.Text;
-import net.minecraft.util.Formatting;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
-import net.minecraft.world.BlockView;
-import org.jetbrains.annotations.Nullable;
-import java.util.List;
 
 public class TrufflesBlock extends SimplePlushable {
   public TrufflesBlock() {

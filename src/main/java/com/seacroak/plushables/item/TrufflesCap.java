@@ -1,7 +1,6 @@
 package com.seacroak.plushables.item;
 
 
-import com.seacroak.plushables.client.renderer.item.BeauxCapRenderer;
 import com.seacroak.plushables.client.renderer.item.TrufflesCapRenderer;
 import net.minecraft.client.render.entity.model.BipedEntityModel;
 import net.minecraft.entity.EquipmentSlot;
