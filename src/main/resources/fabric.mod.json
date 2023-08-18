@@ -1,21 +1,23 @@
 {
   "schemaVersion": 1,
   "id": "plushables",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "name": "Plushables",
   "description": "Craft cute plushies for your home",
   "authors": [
     "Khazoda/June"
   ],
   "contributors": [
-    "glisco (Contributor)",
     {
       "name": "BumbleSculpts (Artist)",
       "contact": {
         "homepage": "https://twitter.com/BumbleSculpts"
       }
     },
-    "Luke (Artist)"
+    "Luke (Artist)",
+    "glisco (Contributor)",
+    " ",
+    "With thanks to: Sammy, Hugman_76, Create SnR Team"
   ],
   "contact": {
     "homepage": "https://www.seacroak.com/projects/plushables",
