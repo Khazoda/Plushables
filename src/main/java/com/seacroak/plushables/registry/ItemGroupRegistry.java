@@ -42,6 +42,7 @@ public class ItemGroupRegistry {
           entries.add(new ItemStack(MainRegistry.ORANGUTAN_BLOCK));
           entries.add(new ItemStack(MainRegistry.GOLDFISH_PLUSHABLE));
           entries.add(new ItemStack(MainRegistry.TRATER_PLUSHABLE));
+          entries.add(new ItemStack(MainRegistry.CONDUCTOR_PLUSHABLE));
 
 
           // Caps
