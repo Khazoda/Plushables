@@ -1,4 +1,3 @@
-
 __Required__:
 [Fabric API](https://www.modrinth.com/mod/fabric-api/versions) **OR**
 [Quilted Fabric API](https://modrinth.com/mod/qsl/versions)
