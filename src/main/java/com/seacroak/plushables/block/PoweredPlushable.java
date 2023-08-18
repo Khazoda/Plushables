@@ -33,7 +33,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.Random;
 
-public abstract class AnimatronicPlushable extends BlockWithEntity {
+public abstract class PoweredPlushable extends BlockWithEntity {
   //  Fields
   public static Random rand;
   public static LocalRandom randPitch;
@@ -41,7 +41,7 @@ public abstract class AnimatronicPlushable extends BlockWithEntity {
   public static final DirectionProperty FACING = Properties.HORIZONTAL_FACING;
 
   //  Constructor
-  public AnimatronicPlushable() {
+  public PoweredPlushable() {
     super(FabricBlockSettings.create().sounds(BlockSoundGroup.WOOL).strength(0.7f).nonOpaque());
     setDefaultState(this.stateManager.getDefaultState().with(Properties.HORIZONTAL_FACING, Direction.NORTH));
 

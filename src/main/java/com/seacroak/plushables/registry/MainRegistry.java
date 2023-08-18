@@ -81,6 +81,9 @@ public final class MainRegistry {
       plushableItemSettings);
   public static final ConductorBlock CONDUCTOR_PLUSHABLE = registerPlushable("conductor_plushable", new ConductorBlock(),
       plushableItemSettings);
+  public static final AnimatronicBlock ANIMATRONIC_PLUSHABLE = registerPlushable("animatronic_plushable", new AnimatronicBlock(),
+      plushableItemSettings);
+
 
   /* Caps */
   public static final Item FROGLIN_CAP = registerCap("cap_froglin", new FroglinCap());

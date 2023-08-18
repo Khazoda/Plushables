@@ -1,6 +1,6 @@
 package com.seacroak.plushables.networking;
 
-import com.seacroak.plushables.block.tile.AnimatronicBlockEntity;
+import com.seacroak.plushables.block.tile.PoweredBlockEntity;
 import com.seacroak.plushables.config.ClientConfigValues;
 import com.seacroak.plushables.config.ConfigPacketHandler;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayConnectionEvents;
@@ -55,9 +55,9 @@ public class PlushablesNetworking {
   public static void playAnimationOnClient(boolean shouldAnimate, World world, BlockPos pos, String animationName) {
     Vec3d vec = pos.toCenterPos();
     BlockEntity blockEntity = world.getBlockEntity(pos);
-    if(blockEntity instanceof AnimatronicBlockEntity) {
-      ((AnimatronicBlockEntity)blockEntity).animationName = animationName;
-      ((AnimatronicBlockEntity)blockEntity).shouldAnimate = shouldAnimate;
+    if(blockEntity instanceof PoweredBlockEntity) {
+      ((PoweredBlockEntity)blockEntity).animationName = animationName;
+      ((PoweredBlockEntity)blockEntity).shouldAnimate = shouldAnimate;
     }
   }
 
