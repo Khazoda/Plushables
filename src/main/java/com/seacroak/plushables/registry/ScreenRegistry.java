@@ -1,7 +1,7 @@
 package com.seacroak.plushables.registry;
 
-import com.seacroak.plushables.gui.BuilderScreen;
-import com.seacroak.plushables.gui.BuilderScreenHandler;
+import com.seacroak.plushables.block.screen.BuilderScreen;
+import com.seacroak.plushables.block.screen.BuilderScreenHandler;
 import com.seacroak.plushables.util.GenericUtils;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -10,10 +10,6 @@ import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.resource.featuretoggle.FeatureFlags;
 import net.minecraft.screen.ScreenHandlerType;
-
-// Screen registry is in ClientRegistry.java
-// Screen handlers are registered here
-
 public final class ScreenRegistry {
     public static final ScreenHandlerType<BuilderScreenHandler> BUILDER_SCREEN_HANDLER = new ScreenHandlerType<>(
             BuilderScreenHandler::new, FeatureFlags.DEFAULT_ENABLED_FEATURES);

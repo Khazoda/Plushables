@@ -1,0 +1,18 @@
+{
+  "type": "plushables:builder",
+  "ingredients": [
+    {
+      "item": "minecraft:potato"
+    },
+    {
+      "item": "minecraft:red_wool"
+    },
+    {
+      "item": "plushables:heart_of_gold"
+    }
+  ],
+  "output": {
+    "item": "plushables:big_irritater_plushable",
+    "count": 1
+  }
+}

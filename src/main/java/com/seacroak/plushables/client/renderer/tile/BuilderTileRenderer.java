@@ -8,4 +8,5 @@ public class BuilderTileRenderer extends GeoBlockRenderer<BuilderTileEntity> {
     public BuilderTileRenderer() {
         super(new BuilderModel());
     }
+
 }

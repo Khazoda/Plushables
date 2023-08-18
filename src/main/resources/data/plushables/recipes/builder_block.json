@@ -1,6 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
-  "pattern": ["WDW", "RAY", "WDW"],
+  "pattern": ["CDC", "RAY", "CDC"],
   "key": {
     "R": {
       "item": "minecraft:red_dye"
@@ -14,8 +14,8 @@
     "D": {
       "item": "minecraft:redstone"
     },
-    "W": {
-      "tag": "minecraft:logs"
+    "C": {
+      "item": "minecraft:copper_ingot"
     }
   },
   "result": {

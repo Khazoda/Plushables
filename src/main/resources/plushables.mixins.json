@@ -4,7 +4,10 @@
   "package": "com.seacroak.plushables.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [],
-  "client": [],
+  "client": [
+    "PlayerEntityRendererMixin",
+    "BipedEntityModelMixin"
+  ],
   "injectors": {
     "defaultRequire": 1
   }

@@ -1,8 +1,9 @@
 {
-  "itemGroup.plushables.plushables": "Plushables",
+  "itemGroup.plushables.itemGroup": "§cP§6l§eu§as§bh§9a§5b§cl§6e§es",
+  "block.plushables.basket_block": "Plushable Basket",
+  "block.plushables.builder_block": "Plushable Builder",
   "item.plushables.heart_of_gold": "§6Heart of Gold",
   "item.plushables.powered_heart": "§cPowered §6Heart of Gold",
-  "block.plushables.builder_block": "Plushable Builder",
   "block.plushables.penguin_plushable": "Plushable §7§lPenguin§r",
   "block.plushables.fox_plushable": "Plushable §6§lFox§r",
   "block.plushables.froglin_plushable": "Plushable §2§lFroglin§r",
@@ -19,5 +20,40 @@
   "block.plushables.dragon_plushable": "Plushable §f§lDragon",
   "block.plushables.wizard_plushable": "Plushable §5§lWizard",
   "block.plushables.goblin_plushable": "Plushable §a§lGoblin",
-  "block.plushables.beaux_plushable": "Plushable §8§lBeaux"
+  "block.plushables.beaux_plushable": "Plushable §8§lBeaux",
+  "block.plushables.big_tater_plushable": "Plushable §c§lBig Tater",
+  "block.plushables.big_irritater_plushable": "Plushable §4§lBig Irritater",
+  "block.plushables.otter_plushable": "Plushable §b§lOtter",
+  "block.plushables.shrump_plushable": "Plushable §4§lShrump",
+  "block.plushables.octoplush_plushable": "§b§lOctoplushable",
+  "block.plushables.snail_plushable": "Plushable §7§lSnail",
+  "block.plushables.whale_plushable": "Plushable §9§lWhale",
+  "block.plushables.orangutan_plushable": "Plushable §6§lOrangutan",
+  "block.plushables.goldfish_plushable": "Plushable §6§lGoldfish",
+  "block.plushables.trater_plushable": "Plushable §c§lTrater",
+
+  "item.plushables.cap_froglin": "§2§lFroglin§r Cap",
+  "item.plushables.cap_fox": "§6§lFox§r Cap",
+  "item.plushables.cap_unicorn": "§c§lU§6§ln§e§li§a§lc§b§lo§9§lr§5§ln§r Cap",
+  "item.plushables.cap_mushroom": "§4§lMushroom§r Cap",
+  "item.plushables.cap_beaux": "§8§lBeaux§r Accessories",
+  "item.plushables.cap_truffles": "§c§lTruffles§r Cap",
+
+  "block.plushables.basket.tooltip.line_1": "§6Use while holding item:§7 Add held plush to basket§r",
+  "block.plushables.basket.tooltip.line_2": "§6Use & sneak with empty hand:§7 Take plush from basket§r",
+  "block.plushables.basket.tooltip.line_3": "§6Attack:§7 Take all plushies from basket§r",
+  "block.plushables.basket.tooltip.experimental_enabled": "§aExperimental features enabled. Stay safe!§r",
+  "block.plushables.trater.tooltip": "§6A trousered tater is not to be feared, but idolized.§r",
+
+  "emi.category.plushables.plushable_builder": "Plushable Builder",
+
+  "plushables.midnightconfig.title": "Configure §cP§6l§eu§as§bh§9a§5b§cl§6e§es§r",
+  "plushables.midnightconfig.betaWarning": "§6The following features are in beta:§r\nThis means they have been tested and are generally safe to use.\nIf using this mod on a large server it's advised that beta features are disabled.",
+  "plushables.midnightconfig.enable_baskets": "Enable basket block",
+  "plushables.midnightconfig.experimentalWarning": "§cThe following features are experimental:§r\nAll features here have the potential to cause either a headache or potentially irreversible damage to your world.\nPlease be cautious and enable them at your own risk.",
+  "plushables.midnightconfig.allow_all_block_items_in_baskets": "Allow all blocks to be placed in baskets §7[Potentially dangerous depending on what block is placed in basket]§r",
+
+  "block.plushables.disabled": "§4Sorry, this block has been disabled.§r",
+  "item.plushables.disabled": "§4Sorry, this item has been disabled.§r"
+
 }

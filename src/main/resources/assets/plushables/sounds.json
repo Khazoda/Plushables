@@ -16,5 +16,20 @@
   },
   "lightfury": {
     "sounds": ["plushables:lightfury"]
+  },
+  "orangutan": {
+    "sounds": ["plushables:orangutan"]
+  },
+  "goldfish": {
+    "sounds": ["plushables:goldfish"]
+  },
+  "basket_in": {
+    "sounds": ["plushables:basket_in"]
+  },
+  "basket_out": {
+    "sounds": ["plushables:basket_out"]
+  },
+  "basket_attack": {
+    "sounds": ["plushables:basket_attack"]
   }
 }

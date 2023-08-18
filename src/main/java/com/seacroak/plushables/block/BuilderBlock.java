@@ -2,11 +2,10 @@ package com.seacroak.plushables.block;
 
 import com.seacroak.plushables.block.tile.BuilderTileEntity;
 import com.seacroak.plushables.registry.TileRegistry;
+import com.seacroak.plushables.util.HorizontalDirectionalBaseEntityBlock;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.BlockRenderType;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.BlockWithEntity;
-import net.minecraft.block.ShapeContext;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityTicker;
 import net.minecraft.block.entity.BlockEntityType;
@@ -21,85 +20,70 @@ import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
-import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
-public class BuilderBlock extends BlockWithEntity {
+public class BuilderBlock extends HorizontalDirectionalBaseEntityBlock {
 
-	public BuilderBlock() {
-		super(FabricBlockSettings.create().strength(2.5f).sounds(BlockSoundGroup.WOOD).requiresTool());
-		setDefaultState(this.stateManager.getDefaultState());
-	}
+  public BuilderBlock() {
 
-	@Override
-	public ActionResult onUse(BlockState state, World world, BlockPos pos,
-			PlayerEntity player, Hand hand, BlockHitResult hit) {
-		if (!world.isClient) {
-			NamedScreenHandlerFactory screenHandlerFactory = state.createScreenHandlerFactory(world, pos);
+    super(FabricBlockSettings.create().strength(2.5f).sounds(BlockSoundGroup.COPPER).requiresTool());
+    setDefaultState(this.stateManager.getDefaultState());
+  }
 
-			if (screenHandlerFactory != null) {
-				player.openHandledScreen(screenHandlerFactory);
-			}
-		}
+  @Override
+  public ActionResult onUse(BlockState state, World world, BlockPos pos,
+                            PlayerEntity player, Hand hand, BlockHitResult hit) {
+    if (!world.isClient) {
+      NamedScreenHandlerFactory screenHandlerFactory = state.createScreenHandlerFactory(world, pos);
 
-		return ActionResult.SUCCESS;
-	}
+      if (screenHandlerFactory != null) {
+        player.openHandledScreen(screenHandlerFactory);
+      }
+    }
 
-	@Override
-	public BlockRenderType getRenderType(BlockState state) {
-		return BlockRenderType.ENTITYBLOCK_ANIMATED;
-	}
+    return ActionResult.SUCCESS;
+  }
 
-	@Nullable
-	@Override
-	public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
-		return TileRegistry.BUILDER_TILE.instantiate(pos, state);
-	}
+  @Override
+  public BlockRenderType getRenderType(BlockState state) {
+    return BlockRenderType.ENTITYBLOCK_ANIMATED;
+  }
 
-	@Nullable
-	@Override
-	public <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state,
-			BlockEntityType<T> type) {
-		return checkType(type, TileRegistry.BUILDER_TILE, BuilderTileEntity::tick);
-	}
+  @Nullable
+  @Override
+  public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
+    return TileRegistry.BUILDER_TILE.instantiate(pos, state);
+  }
 
-	@Override
-	public void onBreak(World world, BlockPos pos, BlockState state, PlayerEntity player) {
+  @Nullable
+  @Override
+  public <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state,
+                                                                BlockEntityType<T> type) {
+    return checkType(type, TileRegistry.BUILDER_TILE, BuilderTileEntity::tick);
+  }
 
-		super.onBreak(world, pos, state, player);
-	}
+  @Override
+  public void onBreak(World world, BlockPos pos, BlockState state, PlayerEntity player) {
+    super.onBreak(world, pos, state, player);
+  }
 
-	@Override
-	public void onStateReplaced(BlockState state, World world, BlockPos pos, BlockState newState, boolean moved) {
-		if (state.isOf(newState.getBlock())) {
-			return;
-		}
-		BlockEntity blockEntity = world.getBlockEntity(pos);
-		if (blockEntity instanceof Inventory) {
-			ItemScatterer.spawn(world, pos, (Inventory) ((Object) blockEntity));
-			world.updateComparators(pos, this);
-		}
-		super.onStateReplaced(state, world, pos, newState, moved);
-	}
+  @Override
+  public void onStateReplaced(BlockState state, World world, BlockPos pos, BlockState newState, boolean moved) {
+    if (state.isOf(newState.getBlock())) {
+      return;
+    }
+    BlockEntity blockEntity = world.getBlockEntity(pos);
+    if (blockEntity instanceof Inventory) {
+      ItemScatterer.spawn(world, pos, (Inventory) blockEntity);
+      world.updateComparators(pos, this);
+    }
+    super.onStateReplaced(state, world, pos, newState, moved);
+  }
 
-	@Override
-	public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
-		return blockShape;
-	}
-
-	static final VoxelShape blockShape = getShape();
-
-	static public VoxelShape getShape() {
-		VoxelShape shape = VoxelShapes.empty();
-		shape = VoxelShapes.union(shape, VoxelShapes.cuboid(0.0625, 0, 0.0625, 0.1875, 0.625, 0.1875));
-		shape = VoxelShapes.union(shape, VoxelShapes.cuboid(0.0625, 0, 0.8125, 0.1875, 0.625, 0.9375));
-		shape = VoxelShapes.union(shape, VoxelShapes.cuboid(0.8125, 0, 0.8125, 0.9375, 0.625, 0.9375));
-		shape = VoxelShapes.union(shape, VoxelShapes.cuboid(0.8125, 0, 0.0625, 0.9375, 0.625, 0.1875));
-		shape = VoxelShapes.union(shape, VoxelShapes.cuboid(0.078125, 0.3125, 0.078125, 0.921875, 0.4375, 0.921875));
-		shape = VoxelShapes.union(shape, VoxelShapes.cuboid(0.1875, 0.4375, 0.1875, 0.8125, 1.125, 0.8125));
-
-		return shape;
-	}
+  public VoxelShape getShape() {
+    VoxelShape shape = VoxelShapes.cuboid(0, 0.0625, 0, 1, 1, 1);
+    return shape;
+  }
 
 }

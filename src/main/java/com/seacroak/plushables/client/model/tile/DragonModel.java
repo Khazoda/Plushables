@@ -1,6 +1,5 @@
 package com.seacroak.plushables.client.model.tile;
 
-import com.seacroak.plushables.block.tile.CluckyTileEntity;
 import com.seacroak.plushables.block.tile.DragonTileEntity;
 import com.seacroak.plushables.util.GenericUtils;
 import net.minecraft.client.render.RenderLayer;
@@ -21,11 +20,7 @@ public class DragonModel extends GeoModel<DragonTileEntity> {
 
 	@Override
 	public Identifier getTextureResource(DragonTileEntity entity) {
-    if(entity.getVariant() == 1) {
-      return GenericUtils.ID("textures/block/toothless_texture.png");
-    } else {
-      return GenericUtils.ID("textures/block/lightfury_texture.png");
-    }
+		return GenericUtils.ID("textures/block/lightfury_texture.png");
 	}
 
 	@Override

@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": ["S S", "SXS", "SSS"],
+  "key": {
+    "S": {
+      "item": "minecraft:bamboo"
+    },
+    "X": {
+      "item": "minecraft:string"
+    }
+  },
+  "result": {
+    "item": "plushables:basket_block",
+    "count": 1
+  }
+}

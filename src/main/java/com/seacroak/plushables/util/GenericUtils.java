@@ -11,4 +11,6 @@ public class GenericUtils {
     public static Identifier ID(@NotNull String path) {
         return new Identifier(PlushablesMod.MOD_ID, path);
     }
+
+
 }
