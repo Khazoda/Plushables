@@ -31,6 +31,7 @@
   "block.plushables.orangutan_plushable": "Plushable §6§lOrangutan",
   "block.plushables.goldfish_plushable": "Plushable §6§lGoldfish",
   "block.plushables.trater_plushable": "Plushable §c§lTrater",
+  "block.plushables.moobloom_plushable": "Plushable §e§lMoobloom",
 
   "item.plushables.cap_froglin": "§2§lFroglin§r Cap",
   "item.plushables.cap_fox": "§6§lFox§r Cap",
@@ -54,6 +55,8 @@
   "plushables.midnightconfig.allow_all_block_items_in_baskets": "Allow all blocks to be placed in baskets §7[Potentially dangerous depending on what block is placed in basket]§r",
 
   "block.plushables.disabled": "§4Sorry, this block has been disabled.§r",
-  "item.plushables.disabled": "§4Sorry, this item has been disabled.§r"
+  "item.plushables.disabled": "§4Sorry, this item has been disabled.§r",
 
+  "resourcePack.plushables.bovinesandbuttercups_moobloom.name": "Bovines and Buttercups Moobloom Plushable",
+  "resourcePack.plushables.bovinesandbuttercups_moobloom.description": "Makes the Moobloom Plushable look like Bovines and Buttercups Moobloom."
 }

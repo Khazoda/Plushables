@@ -79,6 +79,8 @@ public final class MainRegistry {
       plushableItemSettings);
   public static final TraterBlock TRATER_PLUSHABLE = registerPlushable("trater_plushable", new TraterBlock(),
       plushableItemSettings);
+  public static final MoobloomBlock MOOBLOOM_PLUSHABLE = registerPlushable("moobloom_plushable", new MoobloomBlock(),
+      plushableItemSettings);
 
   /* Caps */
   public static final Item FROGLIN_CAP = registerCap("cap_froglin", new FroglinCap());

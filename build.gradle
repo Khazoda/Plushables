@@ -19,6 +19,15 @@ repositories {
     maven {
         url = "https://api.modrinth.com/maven"
     }
+    maven {
+        url "https://maven.merchantpug.net/releases"
+    }
+    maven {
+        url "https://jitpack.io"
+    }
+    maven {
+        url "https://maven.ladysnake.org/releases"
+    }
 
     // Add repositories to retrieve artifacts from in here.
     // You should only use this when depending on other mods because
@@ -46,10 +55,13 @@ dependencies {
 
     // EMI
     modCompileOnly "dev.emi:emi-fabric:${project.emi_version}:api"
-    modLocalRuntime "dev.emi:emi-fabric:${project.emi_version}"
+    modLocalRuntime "net.merchantpug:Bovines-And-Buttercups-Fabric:${project.bovines_version}"
 
     // MidnightLib
     modImplementation include("maven.modrinth:midnightlib:${project.midnightlib_version}")
+
+    // Uncomment the following line to enable Bovines and Buttercups for testing the integration.
+    modLocalRuntime "net.merchantpug:Bovines-And-Buttercups-Fabric:${project.bovines_version}"
 
     // Uncomment the following line to enable the deprecated Fabric API modules.
     // These are included in the Fabric API production distribution and allow you to update your mod to the latest modules at a later more convenient time.
