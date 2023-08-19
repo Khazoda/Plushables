@@ -2,8 +2,8 @@
 	"credit": "Made with Blockbench",
 	"texture_size": [32, 32],
 	"textures": {
-    "0": "plushables:block/moobloom_texture",
-    "particle": "plushables:block/blank"
+		"0": "plushables:block/moobloom_texture",
+		"particle": "plushables:block/blank"
 	},
 	"elements": [
 		{
@@ -167,31 +167,33 @@
 			"translation": [-5, 2, 8]
 		},
 		"firstperson_righthand": {
-			"rotation": [-10, 180, 0],
-			"translation": [-9, 6.25, 0],
+			"rotation": [-25, 180, 0],
+			"translation": [-9, 2.75, -2.5],
 			"scale": [0.75, 0.75, 0.75]
 		},
 		"firstperson_lefthand": {
 			"rotation": [-10, 133, 0],
-			"translation": [0, 5.5, 0],
+			"translation": [3, 5, -1.25],
 			"scale": [0.75, 0.75, 0.75]
 		},
-		"gui": {
-			"rotation": [180, -20, 180]
+		"ground": {
+			"translation": [0, 3.5, 0],
+			"scale": [0.7, 0.7, 0.7]
 		},
-    "ground": {
-      "translation": [0, 3.5, 0],
-      "scale": [0.7, 0.7, 0.7]
-    },
+		"gui": {
+			"rotation": [19, -147, 0],
+			"translation": [-0.25, 3.5, 0],
+			"scale": [1.2, 1.2, 1.2]
+		},
 		"head": {
 			"translation": [0, 18, 0],
-      "scale": [1.5, 1.5, 1.5]
+			"scale": [1.5, 1.5, 1.5]
 		},
 		"fixed": {
-			"translation": [0, 2.25, 0],
-			"scale": [1.0, 1.25, 1.25]
+			"translation": [0, 4, 0],
+			"scale": [1.25, 1.25, 1.25]
 		}
-  },
+	},
 	"groups": [
 		{
 			"name": "head",
