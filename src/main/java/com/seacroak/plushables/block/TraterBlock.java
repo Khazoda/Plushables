@@ -19,10 +19,10 @@ public class TraterBlock extends SimplePlushable {
   @Override
   public VoxelShape getShape() {
     VoxelShape shape = VoxelShapes.empty();
-    shape = VoxelShapes.union(shape, VoxelShapes.cuboid(0.5625, 0, 0.4375, 0.796875, 0.3125, 0.6875));
-    shape = VoxelShapes.union(shape, VoxelShapes.cuboid(0.203125, 0.3125, 0.265625, 0.796875, 1.0625, 0.796875));
-    shape = VoxelShapes.union(shape, VoxelShapes.cuboid(0.21875, 0.6875, 0.28125, 0.78125, 1.3125, 0.78125));
-    shape = VoxelShapes.union(shape, VoxelShapes.cuboid(0.203125, 0, 0.4375, 0.4375, 0.3125, 0.6875));
+    shape = VoxelShapes.union(shape, VoxelShapes.cuboid(0.5625, 0, 0.4375, 0.79375, 0.3125, 0.6875));
+    shape = VoxelShapes.union(shape, VoxelShapes.cuboid(0.2078125, 0.3125, 0.26875, 0.7953125, 1.0625, 0.803125));
+    shape = VoxelShapes.union(shape, VoxelShapes.cuboid(0.21875, 0.703125, 0.28125, 0.78125, 1.328125, 0.78125));
+    shape = VoxelShapes.union(shape, VoxelShapes.cuboid(0.2046875, 0, 0.4375, 0.4375, 0.3125, 0.6875));
 
     return shape;
   }
