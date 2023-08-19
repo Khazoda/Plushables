@@ -1,0 +1,4 @@
+{
+  "parent": "plushables:block/conductor_plushable",
+  "gui_light": "front"
+}

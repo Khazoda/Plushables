@@ -1,0 +1,4 @@
+{
+  "parent": "plushables:block/animatronic_plushable",
+  "gui_light": "front"
+}

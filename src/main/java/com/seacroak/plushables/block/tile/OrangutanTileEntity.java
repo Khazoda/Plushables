@@ -9,7 +9,7 @@ import software.bernie.geckolib.core.animation.AnimationState;
 import software.bernie.geckolib.core.animation.RawAnimation;
 import software.bernie.geckolib.core.object.PlayState;
 
-public class OrangutanTileEntity extends AnimatronicBlockEntity {
+public class OrangutanTileEntity extends PoweredBlockEntity {
 
   public OrangutanTileEntity(BlockPos pos, BlockState state) {
     super(TileRegistry.ORANGUTAN_TILE, pos, state);

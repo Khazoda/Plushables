@@ -14,13 +14,13 @@ import software.bernie.geckolib.core.animation.RawAnimation;
 import software.bernie.geckolib.core.object.PlayState;
 import software.bernie.geckolib.util.GeckoLibUtil;
 
-public class AnimatronicBlockEntity extends BlockEntity implements GeoBlockEntity {
+public class PoweredBlockEntity extends BlockEntity implements GeoBlockEntity {
   public boolean shouldAnimate;
   public AnimationController<?> interactionController;
   public String animationName;
   private final AnimatableInstanceCache instanceCache = GeckoLibUtil.createInstanceCache(this);
 
-  public AnimatronicBlockEntity(BlockEntityType<?> type, BlockPos pos, BlockState state) {
+  public PoweredBlockEntity(BlockEntityType<?> type, BlockPos pos, BlockState state) {
     super(type, pos, state);
     this.shouldAnimate = false;
     this.animationName = "interaction";
@@ -55,9 +55,9 @@ public class AnimatronicBlockEntity extends BlockEntity implements GeoBlockEntit
   @Override
   public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
     controllers.add(
-        new AnimationController<AnimatronicBlockEntity>(this, "interaction_controller", 0, this::interactionPredicate));
+        new AnimationController<PoweredBlockEntity>(this, "interaction_controller", 0, this::interactionPredicate));
     controllers.add(
-        new AnimationController<AnimatronicBlockEntity>(this, "idle_controller", 0, this::idlePredicate));
+        new AnimationController<PoweredBlockEntity>(this, "idle_controller", 0, this::idlePredicate));
   }
 
   @Override
