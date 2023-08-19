@@ -60,6 +60,6 @@
   "block.plushables.disabled": "§4Sorry, this block has been disabled.§r",
   "item.plushables.disabled": "§4Sorry, this item has been disabled.§r",
 
-  "resourcePack.plushables.bovinesandbuttercups_moobloom.name": "Bovines and Buttercups Moobloom Plushable",
-  "resourcePack.plushables.bovinesandbuttercups_moobloom.description": "Makes the Moobloom Plushable look like Bovines and Buttercups Moobloom."
+  "resourcePack.plushables.bovinesandbuttercups_moobloom.name": "Alternative Moobloom Plushable",
+  "resourcePack.plushables.bovinesandbuttercups_moobloom.description": "Use Bovines and Buttercups' Moobloom style for plushies"
 }
