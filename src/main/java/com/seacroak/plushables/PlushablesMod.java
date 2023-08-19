@@ -6,9 +6,7 @@ import com.seacroak.plushables.util.GenericUtils;
 import com.seacroak.plushables.networking.PlushablesNetworking;
 import eu.midnightdust.lib.config.MidnightConfig;
 import net.fabricmc.api.ModInitializer;
-import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
-import net.fabricmc.fabric.api.resource.ResourcePackActivationType;
-import net.fabricmc.loader.api.FabricLoader;
+
 import net.minecraft.item.ItemGroup;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
@@ -41,13 +39,8 @@ public final class PlushablesMod implements ModInitializer {
     PlushablesNetworking.registerGlobalAnimationPacketReceiver();
 
     GeckoLib.initialize();
-    LOGGER.info("Plushables has loaded");
+    if(ResourcePackRegistry.registerIfPresent("bovinesandbuttercups","bovinesandbuttercups_moobloom")) LOGGER.info("[Plushables] The bovines have arrived :)");
 
-    if (FabricLoader.getInstance().isModLoaded("bovinesandbuttercups")) {
-        FabricLoader.getInstance().getModContainer(MOD_ID).ifPresent(modContainer -> {
-            ResourceManagerHelper.registerBuiltinResourcePack(GenericUtils.ID("bovinesandbuttercups_moobloom"), modContainer, Text.translatable("resourcePack.plushables.bovinesandbuttercups_moobloom.name"), ResourcePackActivationType.DEFAULT_ENABLED);
-        });
-    }
+    LOGGER.info("[Plushables] Finished loading!");
   }
-
 }
