@@ -10,7 +10,9 @@ archivesBaseName = project.archives_base_name
 version = project.mod_version
 group = project.maven_group
 repositories {
+    /* GeckoLib */
     maven { url 'https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/' }
+    /* REI */
     maven { url "https://maven.shedaniel.me" }
     maven {
         name = "TerraformersMC"
@@ -19,6 +21,7 @@ repositories {
     maven {
         url = "https://api.modrinth.com/maven"
     }
+    /* Bovines and buttercups */
     maven {
         url "https://maven.merchantpug.net/releases"
     }
@@ -28,12 +31,6 @@ repositories {
     maven {
         url "https://maven.ladysnake.org/releases"
     }
-
-    // Add repositories to retrieve artifacts from in here.
-    // You should only use this when depending on other mods because
-    // Loom adds the essential maven repositories to download Minecraft and libraries from automatically.
-    // See https://docs.gradle.org/current/userguide/declaring_repositories.html
-    // for more information about repositories.
 }
 
 dependencies {
