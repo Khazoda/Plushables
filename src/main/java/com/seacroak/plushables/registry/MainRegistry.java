@@ -85,6 +85,8 @@ public final class MainRegistry {
       plushableItemSettings);
   public static final AnimatronicBlock ANIMATRONIC_PLUSHABLE = registerPlushable("animatronic_plushable", new AnimatronicBlock(),
       plushableItemSettings);
+  public static final MoobloomBlock MOOBLOOM_PLUSHABLE = registerPlushable("moobloom_plushable", new MoobloomBlock(),
+            plushableItemSettings);
 
 
   /* Caps */
