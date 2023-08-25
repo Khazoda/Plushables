@@ -159,8 +159,9 @@ public class BuilderTileEntity extends BlockEntity
 
 
       if (world instanceof ServerWorld serverWorld) {
-        SoundPacketHandler.sendNoPlayerPacketToClients(serverWorld, new SoundPacketHandler.NoPlayerSoundPacket(entity.getPos(), SoundRegistry.BUILDER_DING, 1f));
-        SoundPacketHandler.sendNoPlayerPacketToClients(serverWorld, new SoundPacketHandler.NoPlayerSoundPacket(entity.getPos(), SoundEvents.BLOCK_MOSS_PLACE, 1f));
+//        Todo fix builder ding serverwide sounds
+//        SoundPacketHandler.sendNoPlayerPacketToClients(serverWorld, new SoundPacketHandler.NoPlayerSoundPacket(entity.getPos(), SoundRegistry.BUILDER_DING, 1f));
+//        SoundPacketHandler.sendNoPlayerPacketToClients(serverWorld, new SoundPacketHandler.NoPlayerSoundPacket(entity.getPos(), SoundEvents.BLOCK_MOSS_PLACE, 1f));
       }
       entity.resetProgress();
     }
