@@ -7,6 +7,7 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.network.PacketByteBuf;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundEvent;
+import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
@@ -29,12 +30,14 @@ public class SoundPacketHandler {
 
   public static void sendNoPlayerPacketToClients(ServerWorld world, NoPlayerSoundPacket packet) {
     world.getPlayers().forEach(player -> {
-      var buf = PacketByteBufs.create();
-      packet.write(buf);
-      ServerPlayNetworking.send(player, PACKET_ID_NO_PLAYER, buf);
+      /* If player is within 16 blocks of builder block entity position */
+      if (Math.sqrt((Math.pow(packet.pos.getX() - player.getX(), 2) + Math.pow(packet.pos.getZ() - player.getZ(), 2) + Math.pow(packet.pos.getY() - player.getY(), 2))) <= 16) {
+        var buf = PacketByteBufs.create();
+        packet.write(buf);
+        ServerPlayNetworking.send(player, PACKET_ID_NO_PLAYER, buf);
+      }
     });
   }
-
 
   public static class PlayerSoundPacket {
     public UUID player;
@@ -43,15 +46,17 @@ public class SoundPacketHandler {
     public float pitch;
 
     /* Packet originating from player */
-    public PlayerSoundPacket(UUID player, Vec3d pos,String soundIdentifier,float pitch) {
+    public PlayerSoundPacket(UUID player, Vec3d pos, String soundIdentifier, float pitch) {
       this.player = player;
       this.pos = pos;
       this.soundIdentifier = soundIdentifier;
       this.pitch = pitch;
     }
-    public PlayerSoundPacket(PlayerEntity player, BlockPos pos, SoundEvent soundEvent,float pitch) {
-      this(player.getUuid(), pos.toCenterPos(),soundEvent.getId().toString(),pitch);
+
+    public PlayerSoundPacket(PlayerEntity player, BlockPos pos, SoundEvent soundEvent, float pitch) {
+      this(player.getUuid(), pos.toCenterPos(), soundEvent.getId().toString(), pitch);
     }
+
     public void writeWithPlayer(PacketByteBuf buf) {
       buf.writeUuid(player);
       buf.writeDouble(pos.x);
@@ -75,7 +80,7 @@ public class SoundPacketHandler {
       Vec3d pos = new Vec3d(buf.readDouble(), buf.readDouble(), buf.readDouble());
       String soundIdentifier = buf.readString();
       float pitch = buf.readFloat();
-      return new PlayerSoundPacket(player, pos,soundIdentifier,pitch);
+      return new PlayerSoundPacket(player, pos, soundIdentifier, pitch);
     }
   }
 
@@ -85,20 +90,23 @@ public class SoundPacketHandler {
     public float pitch;
 
     /* Packet originating from player */
-    public NoPlayerSoundPacket(UUID player, Vec3d pos,String soundIdentifier,float pitch) {
+    public NoPlayerSoundPacket(UUID player, Vec3d pos, String soundIdentifier, float pitch) {
       this.pos = pos;
       this.soundIdentifier = soundIdentifier;
       this.pitch = pitch;
     }
+
     /* Packet originating from server */
-    public NoPlayerSoundPacket(Vec3d pos,String soundIdentifier,float pitch) {
+    public NoPlayerSoundPacket(Vec3d pos, String soundIdentifier, float pitch) {
       this.pos = pos;
       this.soundIdentifier = soundIdentifier;
       this.pitch = pitch;
     }
-    public NoPlayerSoundPacket(BlockPos pos, SoundEvent soundEvent,float pitch) {
-      this(pos.toCenterPos(),soundEvent.getId().toString(),pitch);
+
+    public NoPlayerSoundPacket(BlockPos pos, SoundEvent soundEvent, float pitch) {
+      this(pos.toCenterPos(), soundEvent.getId().toString(), pitch);
     }
+
     public void write(PacketByteBuf buf) {
       buf.writeDouble(pos.x);
       buf.writeDouble(pos.y);
@@ -106,11 +114,12 @@ public class SoundPacketHandler {
       buf.writeString(soundIdentifier);
       buf.writeFloat(pitch);
     }
+
     public static NoPlayerSoundPacket read(PacketByteBuf buf) {
       Vec3d pos = new Vec3d(buf.readDouble(), buf.readDouble(), buf.readDouble());
       String soundIdentifier = buf.readString();
       float pitch = buf.readFloat();
-      return new NoPlayerSoundPacket(pos,soundIdentifier,pitch);
+      return new NoPlayerSoundPacket(pos, soundIdentifier, pitch);
     }
   }
 }

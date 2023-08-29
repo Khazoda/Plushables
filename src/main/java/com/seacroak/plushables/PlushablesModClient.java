@@ -14,6 +14,7 @@ import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.particle.ParticleEffect;
 import net.minecraft.sound.SoundEvent;
+import net.minecraft.text.Text;
 import net.minecraft.util.math.BlockPos;
 
 public final class PlushablesModClient implements ClientModInitializer {
@@ -76,7 +77,6 @@ public final class PlushablesModClient implements ClientModInitializer {
         if (client.world == null)
           return;
         PlushablesNetworking.playSoundOnClient(decodedSoundEvent, client.world, BlockPos.ofFloored(packet.pos), 1f, packet.pitch);
-
       });
     }));
 
