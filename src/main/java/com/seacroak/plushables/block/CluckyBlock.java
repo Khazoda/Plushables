@@ -1,8 +1,8 @@
 package com.seacroak.plushables.block;
 
 import com.seacroak.plushables.block.tile.CluckyTileEntity;
-import com.seacroak.plushables.registry.SoundRegistry;
-import com.seacroak.plushables.registry.TileRegistry;
+import com.seacroak.plushables.registry.assets.SoundRegistry;
+import com.seacroak.plushables.registry.uncommon.TileRegistry;
 import com.seacroak.plushables.networking.AnimationPacketHandler;
 import com.seacroak.plushables.networking.PlushablesNetworking;
 import com.seacroak.plushables.networking.SoundPacketHandler;

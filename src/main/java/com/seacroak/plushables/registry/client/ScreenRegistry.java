@@ -1,4 +1,4 @@
-package com.seacroak.plushables.registry;
+package com.seacroak.plushables.registry.client;
 
 import com.seacroak.plushables.block.screen.BuilderScreen;
 import com.seacroak.plushables.block.screen.BuilderScreenHandler;

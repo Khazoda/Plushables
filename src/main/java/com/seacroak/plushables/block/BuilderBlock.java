@@ -1,7 +1,7 @@
 package com.seacroak.plushables.block;
 
 import com.seacroak.plushables.block.tile.BuilderTileEntity;
-import com.seacroak.plushables.registry.TileRegistry;
+import com.seacroak.plushables.registry.uncommon.TileRegistry;
 import com.seacroak.plushables.util.HorizontalDirectionalBaseEntityBlock;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.BlockRenderType;

@@ -1,4 +1,4 @@
-package com.seacroak.plushables.registry;
+package com.seacroak.plushables.registry.uncommon;
 
 import com.seacroak.plushables.recipe.BuilderRecipe;
 import com.seacroak.plushables.util.GenericUtils;

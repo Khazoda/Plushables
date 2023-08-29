@@ -1,6 +1,6 @@
 package com.seacroak.plushables.block.screen;
 
-import com.seacroak.plushables.registry.ScreenRegistry;
+import com.seacroak.plushables.registry.client.ScreenRegistry;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.Inventory;

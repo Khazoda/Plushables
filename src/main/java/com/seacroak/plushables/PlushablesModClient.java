@@ -2,10 +2,10 @@ package com.seacroak.plushables;
 
 import com.seacroak.plushables.config.ConfigPacketHandler;
 import com.seacroak.plushables.networking.*;
-import com.seacroak.plushables.registry.EntityRendererRegistry;
+import com.seacroak.plushables.registry.client.EntityRendererRegistry;
 import com.seacroak.plushables.registry.MainRegistry;
-import com.seacroak.plushables.registry.ScreenRegistry;
-import com.seacroak.plushables.registry.TileRegistryClient;
+import com.seacroak.plushables.registry.client.ScreenRegistry;
+import com.seacroak.plushables.registry.client.TileRegistryClient;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -14,7 +14,6 @@ import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.particle.ParticleEffect;
 import net.minecraft.sound.SoundEvent;
-import net.minecraft.text.Text;
 import net.minecraft.util.math.BlockPos;
 
 public final class PlushablesModClient implements ClientModInitializer {

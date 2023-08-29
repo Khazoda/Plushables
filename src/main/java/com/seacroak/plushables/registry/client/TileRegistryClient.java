@@ -1,6 +1,7 @@
-package com.seacroak.plushables.registry;
+package com.seacroak.plushables.registry.client;
 
 import com.seacroak.plushables.client.renderer.tile.*;
+import com.seacroak.plushables.registry.uncommon.TileRegistry;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.render.block.entity.BlockEntityRendererFactories;

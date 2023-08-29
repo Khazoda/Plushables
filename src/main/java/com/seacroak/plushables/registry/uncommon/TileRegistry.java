@@ -1,8 +1,9 @@
-package com.seacroak.plushables.registry;
+package com.seacroak.plushables.registry.uncommon;
 
 import com.seacroak.plushables.PlushablesMod;
 import com.seacroak.plushables.block.tile.*;
 
+import com.seacroak.plushables.registry.MainRegistry;
 import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.registry.Registries;

@@ -1,6 +1,6 @@
 package com.seacroak.plushables.networking;
 
-import com.seacroak.plushables.registry.SoundRegistry;
+import com.seacroak.plushables.registry.assets.SoundRegistry;
 import net.minecraft.particle.ParticleEffect;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.sound.SoundEvent;

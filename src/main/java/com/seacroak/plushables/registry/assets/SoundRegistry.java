@@ -1,4 +1,4 @@
-package com.seacroak.plushables.registry;
+package com.seacroak.plushables.registry.assets;
 
 import com.seacroak.plushables.util.GenericUtils;
 import net.minecraft.registry.Registries;

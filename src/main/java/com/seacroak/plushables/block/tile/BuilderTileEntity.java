@@ -5,8 +5,8 @@ import java.util.Optional;
 import com.seacroak.plushables.block.screen.BuilderInventory;
 import com.seacroak.plushables.block.screen.BuilderScreenHandler;
 import com.seacroak.plushables.recipe.BuilderRecipe;
-import com.seacroak.plushables.registry.SoundRegistry;
-import com.seacroak.plushables.registry.TileRegistry;
+import com.seacroak.plushables.registry.assets.SoundRegistry;
+import com.seacroak.plushables.registry.uncommon.TileRegistry;
 
 import com.seacroak.plushables.networking.SoundPacketHandler;
 import net.minecraft.block.BlockState;

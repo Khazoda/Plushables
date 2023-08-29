@@ -1,6 +1,6 @@
 package com.seacroak.plushables.block;
 
-import com.seacroak.plushables.registry.SoundRegistry;
+import com.seacroak.plushables.registry.assets.SoundRegistry;
 import com.seacroak.plushables.util.VoxelShapeUtils;
 import com.seacroak.plushables.networking.ParticlePacketHandler;
 import com.seacroak.plushables.networking.PlushablesNetworking;

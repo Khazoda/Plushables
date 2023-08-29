@@ -1,7 +1,13 @@
 package com.seacroak.plushables;
 
 import com.seacroak.plushables.config.PlushablesConfig;
-import com.seacroak.plushables.registry.*;
+import com.seacroak.plushables.registry.assets.ResourcePackRegistry;
+import com.seacroak.plushables.registry.assets.SoundRegistry;
+import com.seacroak.plushables.registry.client.ScreenRegistry;
+import com.seacroak.plushables.registry.ItemGroupRegistry;
+import com.seacroak.plushables.registry.MainRegistry;
+import com.seacroak.plushables.registry.uncommon.RecipeRegistry;
+import com.seacroak.plushables.registry.uncommon.TileRegistry;
 import com.seacroak.plushables.util.GenericUtils;
 import com.seacroak.plushables.networking.PlushablesNetworking;
 import eu.midnightdust.lib.config.MidnightConfig;
@@ -10,7 +16,6 @@ import net.fabricmc.api.ModInitializer;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
-import net.minecraft.text.Text;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import software.bernie.geckolib.GeckoLib;

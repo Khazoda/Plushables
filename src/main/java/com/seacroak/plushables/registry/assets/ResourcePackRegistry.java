@@ -1,4 +1,4 @@
-package com.seacroak.plushables.registry;
+package com.seacroak.plushables.registry.assets;
 
 import com.seacroak.plushables.PlushablesMod;
 import com.seacroak.plushables.util.GenericUtils;

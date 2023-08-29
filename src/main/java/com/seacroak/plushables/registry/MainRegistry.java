@@ -2,6 +2,7 @@ package com.seacroak.plushables.registry;
 
 import com.seacroak.plushables.block.*;
 import com.seacroak.plushables.item.*;
+import com.seacroak.plushables.util.RegistryHelper;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.minecraft.block.Block;
 import net.minecraft.entity.EquipmentSlot;
