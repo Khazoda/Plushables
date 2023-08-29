@@ -2,6 +2,7 @@ package com.seacroak.plushables.networking;
 
 import com.seacroak.plushables.util.GenericUtils;
 import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
+import net.fabricmc.fabric.api.networking.v1.PlayerLookup;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.network.PacketByteBuf;
@@ -17,7 +18,9 @@ public class ParticlePacketHandler {
 
   /* Particle Packet*/
   public static void sendPacketToClients(ServerWorld world, ParticlePacketHandler.ParticlePacket packet) {
-    world.getPlayers().forEach(player -> {
+    BlockPos builderPos = new BlockPos((int) packet.pos.x, (int) packet.pos.y, (int) packet.pos.z);
+    /* Iterate through players that can see sound event emitter */
+    PlayerLookup.tracking(world, builderPos).forEach(player -> {
       if (player.getUuid() == packet.player)
         return;
       var buf = PacketByteBufs.create();

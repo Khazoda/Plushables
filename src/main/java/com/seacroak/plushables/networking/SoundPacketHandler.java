@@ -20,7 +20,9 @@ public class SoundPacketHandler {
   public static final Identifier PACKET_ID_NO_PLAYER = GenericUtils.ID("plushable_sound_packet_without_player");
 
   public static void sendPlayerPacketToClients(ServerWorld world, PlayerSoundPacket packet) {
-    world.getPlayers().forEach(player -> {
+    BlockPos builderPos = new BlockPos((int) packet.pos.x, (int) packet.pos.y, (int) packet.pos.z);
+    /* Iterate through players that can see sound event emitter */
+    PlayerLookup.tracking(world, builderPos).forEach(player -> {
       if (player.getUuid() == packet.player)
         return;
       var buf = PacketByteBufs.create();
@@ -31,9 +33,8 @@ public class SoundPacketHandler {
 
   public static void sendNoPlayerPacketToClients(ServerWorld world, NoPlayerSoundPacket packet) {
     BlockPos builderPos = new BlockPos((int) packet.pos.x, (int) packet.pos.y, (int) packet.pos.z);
-    /* Iterate through players that can see the builder block */
+    /* Iterate through players that can see sound event emitter */
     PlayerLookup.tracking(world, builderPos).forEach(player -> {
-      player.sendMessage(Text.literal(packet.pos.x+ " woo"));
       var buf = PacketByteBufs.create();
       packet.write(buf);
       ServerPlayNetworking.send(player, PACKET_ID_NO_PLAYER, buf);
