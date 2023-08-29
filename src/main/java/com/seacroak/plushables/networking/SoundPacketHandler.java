@@ -2,6 +2,7 @@ package com.seacroak.plushables.networking;
 
 import com.seacroak.plushables.util.GenericUtils;
 import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
+import net.fabricmc.fabric.api.networking.v1.PlayerLookup;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.network.PacketByteBuf;
@@ -29,13 +30,13 @@ public class SoundPacketHandler {
   }
 
   public static void sendNoPlayerPacketToClients(ServerWorld world, NoPlayerSoundPacket packet) {
-    world.getPlayers().forEach(player -> {
-      /* If player is within 16 blocks of builder block entity position */
-      if (Math.sqrt((Math.pow(packet.pos.getX() - player.getX(), 2) + Math.pow(packet.pos.getZ() - player.getZ(), 2) + Math.pow(packet.pos.getY() - player.getY(), 2))) <= 16) {
-        var buf = PacketByteBufs.create();
-        packet.write(buf);
-        ServerPlayNetworking.send(player, PACKET_ID_NO_PLAYER, buf);
-      }
+    BlockPos builderPos = new BlockPos((int) packet.pos.x, (int) packet.pos.y, (int) packet.pos.z);
+    /* Iterate through players that can see the builder block */
+    PlayerLookup.tracking(world, builderPos).forEach(player -> {
+      player.sendMessage(Text.literal(packet.pos.x+ " woo"));
+      var buf = PacketByteBufs.create();
+      packet.write(buf);
+      ServerPlayNetworking.send(player, PACKET_ID_NO_PLAYER, buf);
     });
   }
 

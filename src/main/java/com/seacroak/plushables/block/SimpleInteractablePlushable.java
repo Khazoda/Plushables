@@ -46,7 +46,6 @@ public abstract class SimpleInteractablePlushable extends HorizontalFacingBlock 
   // Shift Right Click pickup code
   @Override
   public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
-    if (player.shouldCancelInteraction()) return ActionResult.PASS;
     if (!player.isSneaking()) {
       if (state.get(ON_COOLDOWN)) return ActionResult.CONSUME;
       this.startCooldown(state, world, pos);

@@ -1,5 +1,7 @@
 package com.seacroak.plushables.block;
 
+import com.seacroak.plushables.block.tile.BasketBlockEntity;
+import com.seacroak.plushables.block.tile.PoweredBlockEntity;
 import com.seacroak.plushables.registry.assets.SoundRegistry;
 import com.seacroak.plushables.util.VoxelShapeUtils;
 import com.seacroak.plushables.networking.ParticlePacketHandler;
@@ -18,6 +20,7 @@ import net.minecraft.sound.SoundEvents;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.DirectionProperty;
 import net.minecraft.state.property.Properties;
+import net.minecraft.text.Text;
 import net.minecraft.util.*;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.hit.BlockHitResult;
@@ -56,7 +59,7 @@ public abstract class PoweredPlushable extends BlockWithEntity {
   public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
 
     if (player.isSneaking()) {
-      if(!player.canModifyBlocks()) return ActionResult.CONSUME;
+      if (!player.canModifyBlocks()) return ActionResult.CONSUME;
       /* Serverside */
       if (world instanceof ServerWorld serverWorld) {
         SoundPacketHandler.sendPlayerPacketToClients(serverWorld, new SoundPacketHandler.PlayerSoundPacket(player, pos, SoundRegistry.PLUSHABLE_POP, 1f));
@@ -75,6 +78,7 @@ public abstract class PoweredPlushable extends BlockWithEntity {
         PlushablesNetworking.playSoundOnClient(SoundEvents.BLOCK_WOOL_HIT, world, pos, 1f, 1f);
         PlushablesNetworking.spawnParticlesOnClient(ParticleTypes.POOF, world, pos, 5, new Vec3d(0, 0, 0), 0.05f);
         PlushablesNetworking.spawnParticlesOnClient(ParticleTypes.GLOW, world, pos, 5, new Vec3d(0, 0, 0), 0.05f);
+        return ActionResult.SUCCESS;
       }
     }
     return ActionResult.PASS;
