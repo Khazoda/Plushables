@@ -13,7 +13,7 @@ import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.World;
 
-public class GoldfishBlock extends SimpleInteractablePlushable {
+public class GoldfishBlock extends BaseInteractablePlushable {
   public GoldfishBlock() {
     super();
   }

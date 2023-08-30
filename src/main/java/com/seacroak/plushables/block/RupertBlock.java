@@ -20,7 +20,7 @@ import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib.core.animation.AnimationController;
 
-public class RupertBlock extends PoweredPlushable {
+public class RupertBlock extends BasePoweredPlushable {
 
   public RupertBlock() {
     super();

@@ -2,7 +2,7 @@ package com.seacroak.plushables.block;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 
-public class RaptorBlock extends SimplePlushable {
+public class RaptorBlock extends BasePlushable {
   public RaptorBlock() {
     super();
   }

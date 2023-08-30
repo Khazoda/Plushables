@@ -20,7 +20,7 @@ import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib.core.animation.AnimationController;
 
-public class CluckyBlock extends PoweredPlushable {
+public class CluckyBlock extends BasePoweredPlushable {
 
   public CluckyBlock() {
     super();

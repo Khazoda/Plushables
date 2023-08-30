@@ -3,7 +3,7 @@ package com.seacroak.plushables.block;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 
-public class BigIrritaterBlock extends SimplePlushable {
+public class BigIrritaterBlock extends BasePlushable {
   public BigIrritaterBlock() {
     super();
   }

@@ -3,7 +3,7 @@ package com.seacroak.plushables.block;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 
-public class FoxBlock extends SimplePlushable {
+public class FoxBlock extends BasePlushable {
   public FoxBlock() {
     super();
   }

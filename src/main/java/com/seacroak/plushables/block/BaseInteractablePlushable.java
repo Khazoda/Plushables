@@ -33,14 +33,11 @@ import net.minecraft.world.event.GameEvent;
 
 import java.util.Random;
 
-public abstract class SimpleInteractablePlushable extends HorizontalFacingBlock {
-  public static Random rand;
+public abstract class BaseInteractablePlushable extends BasePlushable {
 
   //  Constructor
-  public SimpleInteractablePlushable() {
-    super(FabricBlockSettings.create().sounds(BlockSoundGroup.WOOL).strength(0.7f).nonOpaque());
+  public BaseInteractablePlushable() {
     setDefaultState(this.stateManager.getDefaultState().with(Properties.HORIZONTAL_FACING, Direction.NORTH).with(ON_COOLDOWN, false));
-    rand = new Random();
   }
 
   // Shift Right Click pickup code
@@ -79,36 +76,6 @@ public abstract class SimpleInteractablePlushable extends HorizontalFacingBlock 
     return ActionResult.PASS;
   }
 
-  // Custom breaking particle code
-  @Override
-  public void onBreak(World world, BlockPos pos, BlockState state, PlayerEntity player) {
-    if (world.isClient) {
-      for (int i = 0; i < 5; i++) {
-        world.addParticle(ParticleTypes.POOF, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, rand.nextFloat(-0.05f, 0.05f), rand.nextFloat(-0.05f, 0.05f), rand.nextFloat(-0.05f, 0.05f));
-        world.addParticle(ParticleTypes.GLOW, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, rand.nextFloat(-0.05f, 0.05f), rand.nextFloat(-0.05f, 0.05f), rand.nextFloat(-0.05f, 0.05f));
-      }
-    }
-    world.addParticle(ParticleTypes.FIREWORK, true, pos.getX(), pos.getY(), pos.getZ(), 0.1, 0.1, 0.1);
-    super.onBreak(world, pos, state, player);
-  }
-
-  // VoxelShape
-  //  Default Shape
-  public VoxelShape getShape() {
-    VoxelShape shape = VoxelShapes.empty();
-    shape = VoxelShapes.union(shape, VoxelShapes.cuboid(0, 0, 0, 0.8, 0.8, 0.8));
-    return shape;
-  }
-
-  final VoxelShape blockShape = getShape();
-  final VoxelShape[] blockShapes = VoxelShapeUtils.calculateBlockShapes(blockShape);
-
-  @Override
-  public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
-    Direction direction = state.get(FACING);
-    return VoxelShapeUtils.getSidedOutlineShape(direction, blockShape, blockShapes);
-  }
-
   /* Interactivity */
   public static final BooleanProperty ON_COOLDOWN = BooleanProperty.of("on_cooldown");
 
@@ -141,20 +108,6 @@ public abstract class SimpleInteractablePlushable extends HorizontalFacingBlock 
     PlushablesNetworking.playSoundOnClient(SoundRegistry.BUILDER_DING, world, pos, 1f, 1f);
     PlushablesNetworking.spawnParticlesOnClient(ParticleTypes.POOF, world, pos, 1, new Vec3d(0, 0.5, 0), 0);
     return ActionResult.SUCCESS;
-  }
-
-
-  // Render Type
-  @Override
-  public BlockRenderType getRenderType(BlockState state) {
-    return BlockRenderType.MODEL;
-  }
-
-  // Initial state upon placing
-  @Override
-  public BlockState getPlacementState(ItemPlacementContext context) {
-    return this.getDefaultState().with(Properties.HORIZONTAL_FACING, context.getHorizontalPlayerFacing().getOpposite());
-
   }
 
   // Append initial properties

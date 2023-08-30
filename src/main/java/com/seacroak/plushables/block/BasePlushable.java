@@ -31,11 +31,11 @@ import net.minecraft.world.World;
 
 import java.util.Random;
 
-public abstract class SimplePlushable extends HorizontalFacingBlock {
+public abstract class BasePlushable extends HorizontalFacingBlock {
   public static Random rand;
 
   //  Constructor
-  public SimplePlushable() {
+  public BasePlushable() {
     super(FabricBlockSettings.create().sounds(BlockSoundGroup.WOOL).strength(0.7f).nonOpaque());
     setDefaultState(this.stateManager.getDefaultState().with(Properties.HORIZONTAL_FACING, Direction.NORTH));
     rand = new Random();
@@ -101,6 +101,7 @@ public abstract class SimplePlushable extends HorizontalFacingBlock {
     Direction direction = state.get(FACING);
     return VoxelShapeUtils.getSidedOutlineShape(direction, blockShape, blockShapes);
   }
+
 
   // Render Type
   @Override

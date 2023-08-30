@@ -2,7 +2,7 @@ package com.seacroak.plushables.block;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 
-public class WhelplingBlock extends SimplePlushable {
+public class WhelplingBlock extends BasePlushable {
   public WhelplingBlock() {
     super();
   }

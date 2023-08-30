@@ -3,7 +3,7 @@ package com.seacroak.plushables.block;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 
-public class DjungelskogBlock extends SimplePlushable {
+public class DjungelskogBlock extends BasePlushable {
   public DjungelskogBlock() {
     super();
   }

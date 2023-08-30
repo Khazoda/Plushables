@@ -15,7 +15,7 @@ import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.World;
 
 
-public class WizardBlock extends SimpleInteractablePlushable {
+public class WizardBlock extends BaseInteractablePlushable {
 
   public WizardBlock() {
     super();

@@ -3,7 +3,7 @@ package com.seacroak.plushables.block;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 
-public class PenguinBlock extends SimplePlushable {
+public class PenguinBlock extends BasePlushable {
 	public PenguinBlock() {
 		super();
 	}

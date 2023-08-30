@@ -20,7 +20,7 @@ import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib.core.animation.AnimationController;
 
-public class DragonBlock extends PoweredPlushable {
+public class DragonBlock extends BasePoweredPlushable {
 
   public DragonBlock() {
     super();
