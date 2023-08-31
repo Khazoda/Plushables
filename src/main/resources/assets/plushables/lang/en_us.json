@@ -35,6 +35,11 @@
   "block.plushables.capybara_plushable": "Plushable §6§lCapybara",
   "block.plushables.animatronic_plushable": "Plushable §9§lAnimatronic",
   "block.plushables.moobloom_plushable": "Plushable §e§lMoobloom",
+  "block.plushables.froge_plushable": "Plushable §e§lFroge",
+
+  "block.plushables.trater.tooltip": "§6A trousered tater is not to be feared, but idolized.§r",
+  "block.plushables.froge.tooltip": "§eDelightful...§r",
+
 
   "item.plushables.cap_froglin": "§2§lFroglin§r Cap",
   "item.plushables.cap_fox": "§6§lFox§r Cap",
@@ -47,7 +52,7 @@
   "block.plushables.basket.tooltip.line_2": "§6Use & sneak with empty hand:§7 Take plush from basket§r",
   "block.plushables.basket.tooltip.line_3": "§6Attack:§7 Take all plushies from basket§r",
   "block.plushables.basket.tooltip.experimental_enabled": "§aExperimental features enabled. Stay safe!§r",
-  "block.plushables.trater.tooltip": "§6A trousered tater is not to be feared, but idolized.§r",
+
 
   "emi.category.plushables.plushable_builder": "Plushable Builder",
 

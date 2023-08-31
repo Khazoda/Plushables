@@ -1,10 +1,10 @@
 package com.seacroak.plushables.block;
 
-import com.seacroak.plushables.registry.assets.SoundRegistry;
-import com.seacroak.plushables.util.VoxelShapeUtils;
 import com.seacroak.plushables.networking.ParticlePacketHandler;
 import com.seacroak.plushables.networking.PlushablesNetworking;
 import com.seacroak.plushables.networking.SoundPacketHandler;
+import com.seacroak.plushables.registry.assets.SoundRegistry;
+import com.seacroak.plushables.util.VoxelShapeUtils;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.*;
 import net.minecraft.entity.player.PlayerEntity;
@@ -33,10 +33,16 @@ import java.util.Random;
 
 public abstract class BasePlushable extends HorizontalFacingBlock {
   public static Random rand;
+  public static final Settings defaultSettings = FabricBlockSettings.create().sounds(BlockSoundGroup.WOOL).strength(0.7f).nonOpaque();
 
-  //  Constructor
+  //  Constructors
+  public BasePlushable(Settings settings) {
+    super(settings);
+    setDefaultState(this.stateManager.getDefaultState().with(Properties.HORIZONTAL_FACING, Direction.NORTH));
+    rand = new Random();
+  }
   public BasePlushable() {
-    super(FabricBlockSettings.create().sounds(BlockSoundGroup.WOOL).strength(0.7f).nonOpaque());
+    super(defaultSettings);
     setDefaultState(this.stateManager.getDefaultState().with(Properties.HORIZONTAL_FACING, Direction.NORTH));
     rand = new Random();
   }

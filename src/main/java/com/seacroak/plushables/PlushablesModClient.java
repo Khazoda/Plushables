@@ -2,8 +2,8 @@ package com.seacroak.plushables;
 
 import com.seacroak.plushables.config.ConfigPacketHandler;
 import com.seacroak.plushables.networking.*;
-import com.seacroak.plushables.registry.client.EntityRendererRegistry;
 import com.seacroak.plushables.registry.MainRegistry;
+import com.seacroak.plushables.registry.client.EntityRendererRegistry;
 import com.seacroak.plushables.registry.client.ScreenRegistry;
 import com.seacroak.plushables.registry.client.TileRegistryClient;
 import net.fabricmc.api.ClientModInitializer;
@@ -42,6 +42,7 @@ public final class PlushablesModClient implements ClientModInitializer {
     BlockRenderLayerMap.INSTANCE.putBlock(MainRegistry.WHALE_PLUSHABLE, RenderLayer.getCutout());
     BlockRenderLayerMap.INSTANCE.putBlock(MainRegistry.GOLDFISH_PLUSHABLE, RenderLayer.getCutout());
     BlockRenderLayerMap.INSTANCE.putBlock(MainRegistry.TRATER_PLUSHABLE, RenderLayer.getCutout());
+    BlockRenderLayerMap.INSTANCE.putBlock(MainRegistry.FROGE_PLUSHABLE, RenderLayer.getCutout());
 
     /* Complex Plushables */
     BlockRenderLayerMap.INSTANCE.putBlock(MainRegistry.RUPERT_BLOCK, RenderLayer.getCutout());
