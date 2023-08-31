@@ -1,11 +1,11 @@
 package com.seacroak.plushables.block;
 
 import com.seacroak.plushables.block.tile.OrangutanTileEntity;
-import com.seacroak.plushables.registry.assets.SoundRegistry;
-import com.seacroak.plushables.registry.uncommon.TileRegistry;
 import com.seacroak.plushables.networking.AnimationPacketHandler;
 import com.seacroak.plushables.networking.PlushablesNetworking;
 import com.seacroak.plushables.networking.SoundPacketHandler;
+import com.seacroak.plushables.registry.assets.SoundRegistry;
+import com.seacroak.plushables.registry.uncommon.TileRegistry;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -28,35 +28,31 @@ public class OrangutanBlock extends BasePoweredPlushable {
 
   // Shift Right Click pickup code
   @Override
-  public ActionResult onUse(BlockState state, World world, BlockPos pos,
-                            PlayerEntity player, Hand hand, BlockHitResult hit) {
-    super.onUse(state, world, pos, player, hand, hit);
-    float randomPitch = 0.7f + randPitch.nextFloat() / 2;
-    // Send packets to server
+  public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
     if (!player.isSneaking()) {
+      float randomPitch = 0.7f + randPitch.nextFloat() / 2;
       BlockEntity blockEntity = world.getBlockEntity(pos);
+
       if (world instanceof ServerWorld serverWorld) {
-        /* Server: Send sound packet to clients*/
+        if (!(blockEntity instanceof OrangutanTileEntity)) return ActionResult.CONSUME;
+        /* Server: Send sound & animation packets to clients*/
         SoundPacketHandler.sendPlayerPacketToClients(serverWorld, new SoundPacketHandler.PlayerSoundPacket(player, pos, SoundRegistry.ORANGUTAN, randomPitch));
-        /* Server: Send animation packet to clients*/
-        if (blockEntity instanceof OrangutanTileEntity) {
-          AnimationPacketHandler.sendPacketToClients(serverWorld, new AnimationPacketHandler.AnimationPacket(player, pos, true, "interaction"));
-        }
+        AnimationPacketHandler.sendPacketToClients(serverWorld, new AnimationPacketHandler.AnimationPacket(player, pos, true, "interaction"));
         return ActionResult.CONSUME;
+
       } else if (world.isClient) {
-        if (blockEntity instanceof OrangutanTileEntity) {
-          /* Client: Play animation */
-          PlushablesNetworking.playAnimationOnClient(true, world, pos, "interaction");
-          OrangutanTileEntity orangutanEntity = (OrangutanTileEntity) blockEntity;
-          if (orangutanEntity.shouldAnimate()
-              && orangutanEntity.interactionController.getAnimationState() == AnimationController.State.STOPPED) {
-            PlushablesNetworking.playSoundOnClient(SoundRegistry.ORANGUTAN, world, pos, 1f, randomPitch);
-          }
-          return ActionResult.SUCCESS;
+        if (!(blockEntity instanceof OrangutanTileEntity)) return ActionResult.CONSUME;
+        OrangutanTileEntity orangutanEntity = (OrangutanTileEntity) blockEntity;
+        /* Client: Play animation */
+        PlushablesNetworking.playAnimationOnClient(true, world, pos, "interaction");
+        if (orangutanEntity.shouldAnimate()
+            && orangutanEntity.interactionController.getAnimationState() == AnimationController.State.STOPPED) {
+          PlushablesNetworking.playSoundOnClient(SoundRegistry.ORANGUTAN, world, pos, 1f, randomPitch);
         }
+        return ActionResult.SUCCESS;
       }
     }
-    return ActionResult.PASS;
+    return super.onUse(state, world, pos, player, hand, hit);
   }
 
   public VoxelShape getShape() {

@@ -1,11 +1,11 @@
 package com.seacroak.plushables.block;
 
 import com.seacroak.plushables.block.tile.RupertTileEntity;
-import com.seacroak.plushables.registry.assets.SoundRegistry;
-import com.seacroak.plushables.registry.uncommon.TileRegistry;
 import com.seacroak.plushables.networking.AnimationPacketHandler;
 import com.seacroak.plushables.networking.PlushablesNetworking;
 import com.seacroak.plushables.networking.SoundPacketHandler;
+import com.seacroak.plushables.registry.assets.SoundRegistry;
+import com.seacroak.plushables.registry.uncommon.TileRegistry;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -28,34 +28,30 @@ public class RupertBlock extends BasePoweredPlushable {
 
   // Shift Right Click pickup code
   @Override
-  public ActionResult onUse(BlockState state, World world, BlockPos pos,
-                            PlayerEntity player, Hand hand, BlockHitResult hit) {
-    // Injects superclass method
-    super.onUse(state, world, pos, player, hand, hit);
+  public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
     if (!player.isSneaking()) {
       BlockEntity blockEntity = world.getBlockEntity(pos);
+
       if (world instanceof ServerWorld serverWorld) {
-        /* Server: Send sound packet to clients*/
+        if (!(blockEntity instanceof RupertTileEntity)) return ActionResult.CONSUME;
+        /* Server: Send sound & animation packets to clients*/
         SoundPacketHandler.sendPlayerPacketToClients(serverWorld, new SoundPacketHandler.PlayerSoundPacket(player, pos, SoundRegistry.RUPERT_PURR, 1f));
-        /* Server: Send animation packet to clients*/
-        if (blockEntity instanceof RupertTileEntity) {
-          AnimationPacketHandler.sendPacketToClients(serverWorld, new AnimationPacketHandler.AnimationPacket(player, pos, true, "interaction"));
-        }
+        AnimationPacketHandler.sendPacketToClients(serverWorld, new AnimationPacketHandler.AnimationPacket(player, pos, true, "interaction"));
         return ActionResult.CONSUME;
+
       } else if (world.isClient) {
-        if (blockEntity instanceof RupertTileEntity) {
-          /* Client: Play animation */
-          PlushablesNetworking.playAnimationOnClient(true, world, pos, "interaction");
-          RupertTileEntity rupertEntity = (RupertTileEntity) blockEntity;
-          if (rupertEntity.shouldAnimate()
-              && rupertEntity.interactionController.getAnimationState() == AnimationController.State.STOPPED) {
-            PlushablesNetworking.playSoundOnClient(SoundRegistry.RUPERT_PURR, world, pos, 1f, 0.7f + randPitch.nextFloat() / 2);
-          }
-          return ActionResult.SUCCESS;
+        if (!(blockEntity instanceof RupertTileEntity)) return ActionResult.CONSUME;
+        RupertTileEntity rupertEntity = (RupertTileEntity) blockEntity;
+        /* Client: Play animation */
+        PlushablesNetworking.playAnimationOnClient(true, world, pos, "interaction");
+        if (rupertEntity.shouldAnimate()
+            && rupertEntity.interactionController.getAnimationState() == AnimationController.State.STOPPED) {
+          PlushablesNetworking.playSoundOnClient(SoundRegistry.RUPERT_PURR, world, pos, 1f, 0.7f + randPitch.nextFloat() / 2);
         }
+        return ActionResult.SUCCESS;
       }
     }
-    return ActionResult.PASS;
+    return super.onUse(state, world, pos, player, hand, hit);
   }
 
   @Override

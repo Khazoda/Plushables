@@ -1,11 +1,11 @@
 package com.seacroak.plushables.block;
 
 import com.seacroak.plushables.block.tile.DragonTileEntity;
-import com.seacroak.plushables.registry.assets.SoundRegistry;
-import com.seacroak.plushables.registry.uncommon.TileRegistry;
 import com.seacroak.plushables.networking.AnimationPacketHandler;
 import com.seacroak.plushables.networking.PlushablesNetworking;
 import com.seacroak.plushables.networking.SoundPacketHandler;
+import com.seacroak.plushables.registry.assets.SoundRegistry;
+import com.seacroak.plushables.registry.uncommon.TileRegistry;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -29,32 +29,30 @@ public class DragonBlock extends BasePoweredPlushable {
   // Shift Right Click pickup code
   @Override
   public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
-    super.onUse(state, world, pos, player, hand, hit);
-
     if (!player.isSneaking()) {
       BlockEntity blockEntity = world.getBlockEntity(pos);
+
       if (world instanceof ServerWorld serverWorld) {
-        /* Server: Send sound packet to clients*/
+        if (!(blockEntity instanceof DragonTileEntity)) return ActionResult.CONSUME;
+        /* Server: Send sound & animation packets to clients*/
         SoundPacketHandler.sendPlayerPacketToClients(serverWorld, new SoundPacketHandler.PlayerSoundPacket(player, pos, SoundRegistry.LIGHTFURY, 1f));
-       /* Server: Send animation packet to clients*/
-        if (blockEntity instanceof DragonTileEntity) {
-          AnimationPacketHandler.sendPacketToClients(serverWorld, new AnimationPacketHandler.AnimationPacket(player, pos, true, "interaction"));
-        }
+        AnimationPacketHandler.sendPacketToClients(serverWorld, new AnimationPacketHandler.AnimationPacket(player, pos, true, "interaction"));
         return ActionResult.CONSUME;
+
       } else if (world.isClient) {
-        if (blockEntity instanceof DragonTileEntity) {
-          /* Client: Play animation */
-          PlushablesNetworking.playAnimationOnClient(true, world, pos, "interaction");
-          DragonTileEntity dragonEntity = (DragonTileEntity) blockEntity;
-          if (dragonEntity.shouldAnimate()
-              && dragonEntity.interactionController.getAnimationState() == AnimationController.State.STOPPED) {
-            PlushablesNetworking.playSoundOnClient(SoundRegistry.LIGHTFURY, world, pos, 1f, 1f);
-          }
-          return ActionResult.SUCCESS;
+        if (!(blockEntity instanceof DragonTileEntity)) return ActionResult.CONSUME;
+        DragonTileEntity dragonEntity = (DragonTileEntity) blockEntity;
+        /* Client: Play animation */
+        PlushablesNetworking.playAnimationOnClient(true, world, pos, "interaction");
+        if (dragonEntity.shouldAnimate()
+            && dragonEntity.interactionController.getAnimationState() == AnimationController.State.STOPPED) {
+          PlushablesNetworking.playSoundOnClient(SoundRegistry.LIGHTFURY, world, pos, 1f, 1f);
         }
+        return ActionResult.SUCCESS;
       }
     }
-    return ActionResult.PASS;
+    /* Run base plushable shift click behaviour */
+    return super.onUse(state, world, pos, player, hand, hit);
   }
 
   public VoxelShape getShape() {
