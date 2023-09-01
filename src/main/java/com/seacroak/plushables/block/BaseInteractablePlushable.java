@@ -26,6 +26,7 @@ import net.minecraft.world.World;
 import net.minecraft.world.event.GameEvent;
 
 public abstract class BaseInteractablePlushable extends BasePlushable {
+  protected int cooldownPeriod = 60;
 
   //  Constructors
   public BaseInteractablePlushable(Settings settings) {
@@ -80,7 +81,7 @@ public abstract class BaseInteractablePlushable extends BasePlushable {
   public void startCooldown(BlockState state, World world, BlockPos pos) {
     world.setBlockState(pos, state.with(ON_COOLDOWN, true), 3);
     this.updateNeighbors(state, world, pos);
-    world.scheduleBlockTick(pos, this, 60);
+    world.scheduleBlockTick(pos, this, cooldownPeriod);
   }
 
   public void scheduledTick(BlockState state, ServerWorld world, BlockPos

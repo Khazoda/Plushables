@@ -12,6 +12,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.BlockSoundGroup;
+import net.minecraft.sound.SoundEvents;
 import net.minecraft.text.Text;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.math.BlockPos;
@@ -29,6 +30,7 @@ public class FrogeBlock extends BaseInteractablePlushable {
 
   public FrogeBlock() {
     super(FabricBlockSettings.create().sounds(BlockSoundGroup.WOOL).strength(0.7f).nonOpaque().luminance(8));
+    this.cooldownPeriod = 30;
   }
   @Override
   public VoxelShape getShape() {
@@ -45,17 +47,14 @@ public class FrogeBlock extends BaseInteractablePlushable {
   protected ActionResult serverSendEffectPackets(ServerWorld serverWorld, PlayerEntity player, BlockPos pos) {
     SoundPacketHandler.sendPlayerPacketToClients(serverWorld, new SoundPacketHandler.PlayerSoundPacket(player, pos, SoundRegistry.SWMG, 1f));
     ParticlePacketHandler.sendPacketToClients(serverWorld, new ParticlePacketHandler.ParticlePacket
-        (player, pos, "minecraft:note", 1, new Vec3d(0, 0.5, 0), 0f));
-    ParticlePacketHandler.sendPacketToClients(serverWorld, new ParticlePacketHandler.ParticlePacket
-        (player, pos, "minecraft:glow", 5, new Vec3d(0, 0, 0), 0.05f));
+        (player, pos, "minecraft:wax_on", 5, new Vec3d(0, 0, 0), 5f));
     return ActionResult.CONSUME;
   }
 
   @Override
   protected ActionResult clientRunEffects(World world, BlockPos pos) {
-    PlushablesNetworking.playSoundOnClient(SoundRegistry.SWMG, world, pos, 1f, 1f);
-    PlushablesNetworking.spawnParticlesOnClient(ParticleTypes.NOTE, world, pos, 1, new Vec3d(0, 0.5, 0), 0);
-    PlushablesNetworking.spawnParticlesOnClient(ParticleTypes.GLOW, world, pos, 5, new Vec3d(0, 0, 0), 0.05f);
+    PlushablesNetworking.playSoundOnClient(SoundEvents.ENTITY_FROG_AMBIENT, world, pos, 1f, 1f);
+    PlushablesNetworking.spawnParticlesOnClient(ParticleTypes.WAX_ON, world, pos, 5, new Vec3d(0, 0, 0), 5f);
     return ActionResult.SUCCESS;
   }
 

@@ -42,6 +42,8 @@ public class PacketDecoder {
       case "minecraft:poof": returnValue = ParticleTypes.POOF; break;
       case "minecraft:dolphin": returnValue = ParticleTypes.DOLPHIN; break;
       case "minecraft:fishing": returnValue = ParticleTypes.FISHING; break;
+      case "minecraft:mycelium": returnValue = ParticleTypes.MYCELIUM; break;
+      case "minecraft:wax_on": returnValue = ParticleTypes.WAX_ON; break;
 
       default: returnValue = ParticleTypes.SCULK_SOUL;
     }
