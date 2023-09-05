@@ -41,6 +41,9 @@
     ],
     "emi": [
       "com.seacroak.plushables.compat.emi.PlushablesEMIPlugin"
+    ],
+    "fabric-datagen": [
+      "com.seacroak.plushables.datagen.DataGenerator"
     ]
   },
   "mixins": [
