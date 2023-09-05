@@ -1,0 +1,18 @@
+{
+  "type": "plushables:builder",
+  "ingredients": [
+    {
+      "item": "minecraft:glow_berries"
+    },
+    {
+      "item": "minecraft:brown_wool"
+    },
+    {
+      "item": "plushables:powered_heart"
+    }
+  ],
+  "output": {
+    "item": "plushables:owl_plushable",
+    "count": 1
+  }
+}

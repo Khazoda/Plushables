@@ -24,13 +24,15 @@ public final class MainRegistry {
   public static final Item POWERED_HEART = registerItem("powered_heart");
 
   /* Complex Plushables */
-  public static final CluckyBlock CLUCKY_BLOCK = registerPlushable("clucky_plushable", new CluckyBlock(),
+  public static final CluckyBlock CLUCKY_PLUSHABLE = registerPlushable("clucky_plushable", new CluckyBlock(),
       plushableItemSettings);
-  public static final RupertBlock RUPERT_BLOCK = registerPlushable("rupert_plushable", new RupertBlock(),
+  public static final RupertBlock RUPERT_PLUSHABLE = registerPlushable("rupert_plushable", new RupertBlock(),
       plushableItemSettings);
-  public static final DragonBlock DRAGON_BLOCK = registerPlushable("dragon_plushable", new DragonBlock(),
+  public static final DragonBlock DRAGON_PLUSHABLE = registerPlushable("dragon_plushable", new DragonBlock(),
       plushableItemSettings);
-  public static final OrangutanBlock ORANGUTAN_BLOCK = registerPlushable("orangutan_plushable", new OrangutanBlock(),
+  public static final OrangutanBlock ORANGUTAN_PLUSHABLE = registerPlushable("orangutan_plushable", new OrangutanBlock(),
+      plushableItemSettings);
+  public static final OwlBlock OWL_PLUSHABLE = registerPlushable("owl_plushable", new OwlBlock(),
       plushableItemSettings);
 
   /* Simple Plushables */
@@ -87,7 +89,7 @@ public final class MainRegistry {
   public static final AnimatronicBlock ANIMATRONIC_PLUSHABLE = registerPlushable("animatronic_plushable", new AnimatronicBlock(),
       plushableItemSettings);
   public static final MoobloomBlock MOOBLOOM_PLUSHABLE = registerPlushable("moobloom_plushable", new MoobloomBlock(),
-            plushableItemSettings);
+      plushableItemSettings);
   public static final FrogeBlock FROGE_PLUSHABLE = registerPlushable("froge_plushable", new FrogeBlock(),
       plushableItemSettings);
 

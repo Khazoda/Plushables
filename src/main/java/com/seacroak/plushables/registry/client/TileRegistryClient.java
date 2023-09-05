@@ -20,5 +20,7 @@ public final class TileRegistryClient {
       (BlockEntityRendererFactory.Context rendererDispatcherIn) -> new DragonTileRenderer());
 		BlockEntityRendererFactories.register(TileRegistry.ORANGUTAN_TILE,
 				(BlockEntityRendererFactory.Context rendererDispatcherIn) -> new OrangutanTileRenderer());
+		BlockEntityRendererFactories.register(TileRegistry.OWL_TILE,
+				(BlockEntityRendererFactory.Context rendererDispatcherIn) -> new OwlTileRenderer());
 	}
 }
