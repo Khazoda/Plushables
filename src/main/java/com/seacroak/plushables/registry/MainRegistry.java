@@ -94,6 +94,9 @@ public final class MainRegistry {
       plushableItemSettings);
   public static final HampterBlock HAMPTER_PLUSHABLE = registerPlushable("hampter_plushable", new HampterBlock(),
       plushableItemSettings);
+  public static final DormouseBlock DORMOUSE_PLUSHABLE = registerPlushable("dormouse_plushable", new DormouseBlock(),
+      plushableItemSettings);
+
 
   /* Caps */
   public static final Item FROGLIN_CAP = registerCap("cap_froglin", new FroglinCap());

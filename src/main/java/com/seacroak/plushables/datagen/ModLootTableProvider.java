@@ -11,6 +11,9 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
 
   @Override
   public void generate() {
+    addDrop(MainRegistry.BASKET_BLOCK);
+    addDrop(MainRegistry.BUILDER_BLOCK);
+
     addDrop(MainRegistry.PENGUIN_PLUSHABLE);
     addDrop(MainRegistry.FOX_PLUSHABLE);
     addDrop(MainRegistry.FROGLIN_PLUSHABLE);
@@ -45,6 +48,7 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
     addDrop(MainRegistry.FROGE_PLUSHABLE);
     addDrop(MainRegistry.OWL_PLUSHABLE);
     addDrop(MainRegistry.HAMPTER_PLUSHABLE);
+    addDrop(MainRegistry.DORMOUSE_PLUSHABLE);
 
   }
 }
