@@ -43,7 +43,6 @@
   "block.plushables.trater.tooltip": "§6A trousered tater is not to be feared, but idolized.§r",
   "block.plushables.froge.tooltip": "§eDelightful!§r",
 
-
   "item.plushables.cap_froglin": "§2Froglin§r Cap",
   "item.plushables.cap_fox": "§6Fox§r Cap",
   "item.plushables.cap_unicorn": "§cU§6n§ei§ac§bo§9r§5n§r Cap",
@@ -56,6 +55,16 @@
   "block.plushables.basket.tooltip.line_3": "§6Attack:§7 Take all plushies from basket§r",
   "block.plushables.basket.tooltip.experimental_enabled": "§aExperimental features enabled. Stay safe!§r",
 
+  "item.plushables.codex": "§cP§6l§eu§as§bh§9a§5b§cl§6e§es §cC§6o§ed§ae§bx",
+
+  "advancement.plushables.root.title": "Plushables",
+  "advancement.plushables.root.description": "Live, Laugh, Plush",
+  "advancement.plushables.got_copper_ingot.title": "Cop a Builder",
+  "advancement.plushables.got_copper_ingot.description": "Copper ingots have a new use!",
+  "advancement.plushables.got_builder.title": "Don't Craft, Build!",
+  "advancement.plushables.got_builder.description": "Obtain the backbone of every plush enjoyer's toolset",
+  "advancement.plushables.got_heart.title": "A Hearty Selection",
+  "advancement.plushables.got_heart.description": "You might want to make a bee farm..",
 
   "emi.category.plushables.plushable_builder": "Plushable Builder",
 

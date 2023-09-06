@@ -4,8 +4,8 @@ import com.seacroak.plushables.registry.MainRegistry;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootTableProvider;
 
-public class ModLootTableProvider extends FabricBlockLootTableProvider {
-  public ModLootTableProvider(FabricDataOutput dataOutput) {
+public class DataLootTableProvider extends FabricBlockLootTableProvider {
+  public DataLootTableProvider(FabricDataOutput dataOutput) {
     super(dataOutput);
   }
 

@@ -1,0 +1,44 @@
+{
+  "parent": "minecraft:plushables/got_copper_ingot",
+  "criteria": {
+    "got_builder": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "plushables:builder_block"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancement.plushables.got_builder.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "plushables:builder_block"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancement.plushables.got_builder.title"
+    }
+  },
+  "requirements": [
+    [
+      "got_builder"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "plushables:heart_of_gold",
+      "plushables:powered_heart"
+    ]
+  },
+  "sends_telemetry_event": true
+}
