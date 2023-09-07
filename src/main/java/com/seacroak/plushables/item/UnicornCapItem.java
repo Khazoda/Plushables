@@ -1,7 +1,6 @@
 package com.seacroak.plushables.item;
 
-
-import com.seacroak.plushables.client.renderer.item.TrufflesCapRenderer;
+import com.seacroak.plushables.client.renderer.item.UnicornCapRenderer;
 import net.minecraft.client.render.entity.model.BipedEntityModel;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
@@ -12,8 +11,8 @@ import software.bernie.geckolib.renderer.GeoArmorRenderer;
 
 import java.util.function.Consumer;
 
-public class TrufflesCap extends CapArmorItem{
-  public TrufflesCap() {
+public class UnicornCapItem extends CapArmorItem{
+  public UnicornCapItem() {
     super(ArmorMaterials.LEATHER, Type.HELMET);
   }
 
@@ -25,11 +24,11 @@ public class TrufflesCap extends CapArmorItem{
       @Override
       public BipedEntityModel<LivingEntity> getHumanoidArmorModel(LivingEntity livingEntity, ItemStack itemStack, EquipmentSlot equipmentSlot, BipedEntityModel<LivingEntity> original) {
         if (this.renderer == null)
-          this.renderer = new TrufflesCapRenderer();
+          this.renderer = new UnicornCapRenderer();
         this.renderer.prepForRender(livingEntity, itemStack, equipmentSlot, original);
-
         return this.renderer;
       }
     });
   }
+
 }

@@ -61,7 +61,7 @@ public class PlushablesAdvancements implements Consumer<Consumer<Advancement>> {
         // The first string used in criterion is the name referenced by other advancements when they want to have 'requirements'
         .criterion("got_builder", InventoryChangedCriterion.Conditions.items(MainRegistry.BUILDER_BLOCK))
         .rewards(AdvancementRewards.Builder.recipe(GenericUtils.ID("heart_of_gold")).addRecipe(GenericUtils.ID("powered_heart")))
-        .rewards(AdvancementRewards.Builder.loot(new Identifier("plushables:grant_book_on_first_join")))
+        .rewards(AdvancementRewards.Builder.loot(new Identifier("plushables:grant_plushables_codex")))
         .build(advancementConsumer, "plushables" + "/got_builder");
 
     Advancement gotHeartAdvancement = Advancement.Builder.create().parent(gotBuilderAdvancement)

@@ -1,9 +1,11 @@
 package com.seacroak.plushables.item;
 
-import com.seacroak.plushables.client.renderer.item.UnicornCapRenderer;
+
+import com.seacroak.plushables.client.renderer.item.FoxCapRenderer;
 import net.minecraft.client.render.entity.model.BipedEntityModel;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.item.ArmorItem;
 import net.minecraft.item.ArmorMaterials;
 import net.minecraft.item.ItemStack;
 import software.bernie.geckolib.animatable.client.RenderProvider;
@@ -11,9 +13,9 @@ import software.bernie.geckolib.renderer.GeoArmorRenderer;
 
 import java.util.function.Consumer;
 
-public class UnicornCap extends CapArmorItem{
-  public UnicornCap() {
-    super(ArmorMaterials.LEATHER, Type.HELMET);
+public class FoxCapItem extends CapArmorItem{
+  public FoxCapItem() {
+    super(ArmorMaterials.LEATHER, ArmorItem.Type.HELMET);
   }
 
   @Override
@@ -24,11 +26,11 @@ public class UnicornCap extends CapArmorItem{
       @Override
       public BipedEntityModel<LivingEntity> getHumanoidArmorModel(LivingEntity livingEntity, ItemStack itemStack, EquipmentSlot equipmentSlot, BipedEntityModel<LivingEntity> original) {
         if (this.renderer == null)
-          this.renderer = new UnicornCapRenderer();
+          this.renderer = new FoxCapRenderer();
         this.renderer.prepForRender(livingEntity, itemStack, equipmentSlot, original);
+
         return this.renderer;
       }
     });
   }
-
 }

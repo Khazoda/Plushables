@@ -36,7 +36,7 @@
   ],
   "rewards": {
     "loot": [
-      "plushables:grant_book_on_first_join"
+      "plushables:grant_plushables_codex"
     ]
   },
   "sends_telemetry_event": true

@@ -11,6 +11,7 @@ public class ItemGroupRegistry {
         .icon(() -> new ItemStack(MainRegistry.PENGUIN_PLUSHABLE))
         .displayName(Text.translatable("itemGroup.plushables.itemGroup"))
         .entries((displayContext, entries) -> {
+          entries.add(new ItemStack(MainRegistry.CODEX_ITEM));
           entries.add(new ItemStack(MainRegistry.BASKET_BLOCK));
           entries.add(new ItemStack(MainRegistry.BUILDER_BLOCK));
           entries.add(new ItemStack(MainRegistry.HEART_OF_GOLD));

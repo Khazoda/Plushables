@@ -11,6 +11,7 @@ public class DataLootTableProvider extends FabricBlockLootTableProvider {
 
   @Override
   public void generate() {
+    addDrop(MainRegistry.CODEX_BLOCK);
     addDrop(MainRegistry.BASKET_BLOCK);
     addDrop(MainRegistry.BUILDER_BLOCK);
 
