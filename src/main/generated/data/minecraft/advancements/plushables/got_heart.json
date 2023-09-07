@@ -34,10 +34,5 @@
       "got_heart"
     ]
   ],
-  "rewards": {
-    "loot": [
-      "plushables:grant_book_on_first_join"
-    ]
-  },
   "sends_telemetry_event": true
 }

@@ -35,9 +35,8 @@
     ]
   ],
   "rewards": {
-    "recipes": [
-      "plushables:heart_of_gold",
-      "plushables:powered_heart"
+    "loot": [
+      "plushables:grant_book_on_first_join"
     ]
   },
   "sends_telemetry_event": true
