@@ -8,6 +8,8 @@ import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.item.ItemStack;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.BlockSoundGroup;
+import net.minecraft.sound.SoundCategory;
+import net.minecraft.sound.SoundEvents;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.ActionResult;
@@ -25,7 +27,7 @@ import net.minecraft.world.World;
 public class CodexBlock extends HorizontalFacingBlock {
 
   public CodexBlock() {
-    super(FabricBlockSettings.create().sounds(BlockSoundGroup.WOOL).strength(0.5f).nonOpaque());
+    super(FabricBlockSettings.create().sounds(BlockSoundGroup.CHISELED_BOOKSHELF).strength(0.25f).nonOpaque());
     setDefaultState(this.stateManager.getDefaultState().with(Properties.HORIZONTAL_FACING, Direction.NORTH));
   }
 
@@ -37,6 +39,7 @@ public class CodexBlock extends HorizontalFacingBlock {
       world.removeBlock(pos, false);
       return ActionResult.CONSUME;
     } else if (world.isClient) {
+      world.playSound(player,pos, SoundEvents.BLOCK_CHISELED_BOOKSHELF_PICKUP, SoundCategory.BLOCKS,1f,1f);
       return ActionResult.SUCCESS;
     }
     return ActionResult.PASS;
