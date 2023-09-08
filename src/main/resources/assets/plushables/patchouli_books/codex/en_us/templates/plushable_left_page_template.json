@@ -20,7 +20,7 @@
     },
     {
       "type": "patchouli:text",
-      "text": "$(8)ID:$() $(bold)#id#$() $(br)$(8)Creator:$() #creator->capital# $(br)$(8)Creation Date:$() #created# $(br2)$(8)Special Features:$() #features->capital# $(br2)$(8)Trivia:$() #trivia#",
+      "text": "$(8)ID:$() $(bold)#id#$() $(br)$(8)Creator:$() #creator->capital# $(br)$(8)Creation Date:$() #created# $(br2)$(8)Special Features:$() #features# $(br2)$(8)Trivia:$() #trivia#",
       "x": 0,
       "y": 20
     }
