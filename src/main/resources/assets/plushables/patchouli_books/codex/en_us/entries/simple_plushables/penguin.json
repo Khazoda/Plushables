@@ -1,19 +1,24 @@
 {
-  "sortnum": 0,
   "name": "Penguin",
   "icon": "plushables:penguin_plushable",
   "category": "plushables:simple_plushables_category",
   "pages": [
     {
-      "type": "patchouli:spotlight",
+      "type": "plushables:plushable_left_page_template",
+      "title": "block.plushables.penguin_plushable",
       "item": "plushables:penguin_plushable",
-      "text": "Woo! Penguin"
+      "id": "1",
+      "creator": "khazoda",
+      "created": "21st March 2019",
+      "features": "none",
+      "trivia": "As the oldest plushable, the penguin has had many different models through the years."
     },
     {
-      "type": "plushables:builder_recipe_template",
+      "type": "plushables:plushable_right_page_template",
+      "plush_name": "penguin",
+      "wool": "minecraft:gray_wool",
       "item": "minecraft:snowball",
       "heart": "plushables:heart_of_gold",
-      "wool": "minecraft:gray_wool",
       "output": "plushables:penguin_plushable"
     }
   ]

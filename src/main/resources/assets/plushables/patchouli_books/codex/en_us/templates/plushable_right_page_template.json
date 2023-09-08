@@ -1,0 +1,21 @@
+{
+  "include": [
+    {
+      "template": "plushables:builder_recipe_template",
+      "as": "builder_recipe_incl",
+      "using": {
+        "wool": "#wool",
+        "item": "#item",
+        "heart": "#heart",
+        "output": "#output"
+      }
+    }
+  ],
+  "components": [
+    {
+      "type": "patchouli:text",
+      "text": "#plush_name->capital# Recipe"
+    }
+  ]
+
+}
