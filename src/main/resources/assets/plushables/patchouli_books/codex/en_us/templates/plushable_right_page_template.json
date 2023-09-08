@@ -13,8 +13,22 @@
   ],
   "components": [
     {
-      "type": "patchouli:text",
-      "text": "#plush_name->capital# Recipe"
+      "type": "patchouli:item",
+      "item": "plushables:builder_block",
+      "x": 3,
+      "y": -5
+    },
+    {
+      "type": "patchouli:header",
+      "text": "#plush_name->capital# Recipe",
+      "x": -1,
+      "y": -1,
+      "scale": 0.8
+    },
+    {
+      "type": "patchouli:separator",
+      "x": -1,
+      "y": -1
     }
   ]
 

@@ -18,8 +18,7 @@
       "plush_name": "penguin",
       "wool": "minecraft:gray_wool",
       "item": "minecraft:snowball",
-      "heart": "plushables:heart_of_gold",
-      "output": "plushables:penguin_plushable"
+      "heart": "plushables:heart_of_gold"
     }
   ]
 }
