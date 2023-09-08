@@ -1,0 +1,20 @@
+{
+  "sortnum": 0,
+  "name": "Penguin",
+  "icon": "plushables:penguin_plushable",
+  "category": "plushables:simple_plushables_category",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "plushables:penguin_plushable",
+      "text": "Woo! Penguin"
+    },
+    {
+      "type": "plushables:builder_recipe_template",
+      "item": "minecraft:snowball",
+      "heart": "plushables:heart_of_gold",
+      "wool": "minecraft:gray_wool",
+      "output": "plushables:penguin_plushable"
+    }
+  ]
+}

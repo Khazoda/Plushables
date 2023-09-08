@@ -1,7 +1,7 @@
 {
   "name": "item.plushables.codex.name",
   "landing_text": "item.plushables.codex.landing_text",
-  "version": 6,
+  "version": 1,
   "show_progress": false,
   "dont_generate_book": true,
   "custom_book_item": "plushables:codex",

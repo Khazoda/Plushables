@@ -1,0 +1,29 @@
+{
+  "components": [
+    {
+      "type": "patchouli:item",
+      "item": "#item",
+      "x": 30,
+      "y": 30
+    },
+    {
+      "type": "patchouli:item",
+      "item": "#heart",
+      "x": 30,
+      "y": 50
+    },
+    {
+      "type": "patchouli:item",
+      "item": "#wool",
+      "x": 30,
+      "y": 70
+    },
+    {
+      "type": "patchouli:item",
+      "item": "#output",
+      "link_recipe": "true",
+      "x": 30,
+      "y": 90
+    }
+  ]
+}
