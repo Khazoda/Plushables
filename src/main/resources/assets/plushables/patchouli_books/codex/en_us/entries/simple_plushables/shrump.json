@@ -1,22 +1,22 @@
 {
-  "name": "Beaux",
-  "icon": "plushables:beaux_plushable",
+  "name": "Shrump",
+  "icon": "plushables:shrump_plushable",
   "category": "plushables:simple_plushables_category",
   "pages": [
     {
       "type": "plushables:plushable_left_page_template",
-      "title": "block.plushables.beaux_plushable",
-      "item": "plushables:beaux_plushable",
-      "id": "16",
+      "title": "block.plushables.shrump_plushable",
+      "item": "plushables:shrump_plushable",
+      "id": "21",
       "creator": "$(l:https://twitter.com/BumbleSculpts)@BumbleSculpts$()",
-      "created": "18th June 2023",
+      "created": "29th July 2023",
       "features": "none",
-      "trivia": "This plushable is based off a real french bulldog."
+      "trivia": "Shrump and the goblin are good friends."
     },
     {
       "type": "plushables:plushable_right_page_template",
-      "wool": "minecraft:gray_wool",
-      "item": "minecraft:bone",
+      "wool": "minecraft:white_wool",
+      "item": "minecraft:red_mushroom",
       "heart": "plushables:heart_of_gold"
     }
   ]
