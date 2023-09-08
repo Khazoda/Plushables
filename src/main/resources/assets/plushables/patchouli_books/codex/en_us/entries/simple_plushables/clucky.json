@@ -15,7 +15,6 @@
     },
     {
       "type": "plushables:plushable_right_page_template",
-      "plush_name": "clucky",
       "wool": "minecraft:white_wool",
       "item": "minecraft:egg",
       "heart": "plushables:powered_heart"
