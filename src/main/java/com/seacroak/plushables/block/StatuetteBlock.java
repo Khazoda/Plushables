@@ -57,7 +57,7 @@ public class StatuetteBlock extends BasePoweredPlushable {
 
   public VoxelShape getShape() {
     VoxelShape shape = VoxelShapes.empty();
-    shape = VoxelShapes.union(shape, VoxelShapes.cuboid(0.375, 0, 0.375, 0.625, 0.53125, 0.5625));
+    shape = VoxelShapes.union(shape, VoxelShapes.cuboid(0.25, 0, 0.25, 0.75, 0.8125, 0.625));
     return shape;
   }
 

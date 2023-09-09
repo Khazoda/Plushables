@@ -5,20 +5,38 @@
 			"loop": true,
 			"animation_length": 24,
 			"bones": {
-				"body": {
+				"head": {
 					"rotation": {
-						"5.2917": {
+						"6.3333": {
 							"vector": [0, 0, 0]
 						},
-						"6.75": {
+						"7.7917": {
 							"vector": [0, 25, 0],
 							"easing": "easeInOutCubic"
 						},
-						"8.2083": {
+						"9.25": {
 							"vector": [0, -15, 0],
 							"easing": "easeInOutCubic"
 						},
-						"9.2917": {
+						"10.3333": {
+							"vector": [0, 0, 0]
+						}
+					}
+				},
+				"body": {
+					"rotation": {
+						"6.3333": {
+							"vector": [0, 0, 0]
+						},
+						"7.7917": {
+							"vector": [0, 5, 0],
+							"easing": "easeInOutCubic"
+						},
+						"9.25": {
+							"vector": [0, -3, 0],
+							"easing": "easeInOutCubic"
+						},
+						"10.3333": {
 							"vector": [0, 0, 0]
 						}
 					}
