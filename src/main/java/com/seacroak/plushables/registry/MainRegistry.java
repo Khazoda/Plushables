@@ -2,16 +2,12 @@ package com.seacroak.plushables.registry;
 
 import com.seacroak.plushables.block.*;
 import com.seacroak.plushables.item.*;
-import com.seacroak.plushables.util.GenericUtils;
 import com.seacroak.plushables.util.RegistryHelper;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
-import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.Block;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
-import net.minecraft.registry.Registries;
-import net.minecraft.registry.Registry;
 
 public final class MainRegistry {
   /* Item Settings */
@@ -70,6 +66,7 @@ public final class MainRegistry {
   public static final FrogeBlock FROGE_PLUSHABLE = registerPlushable("froge_plushable", new FrogeBlock(), plushableItemSettings);
   public static final HampterBlock HAMPTER_PLUSHABLE = registerPlushable("hampter_plushable", new HampterBlock(), plushableItemSettings);
   public static final DormouseBlock DORMOUSE_PLUSHABLE = registerPlushable("dormouse_plushable", new DormouseBlock(), plushableItemSettings);
+  public static final SeaBunnyBlock SEA_BUNNY_PLUSHABLE = registerPlushable("sea_bunny_plushable", new SeaBunnyBlock(), plushableItemSettings);
 
 
   /* Caps */

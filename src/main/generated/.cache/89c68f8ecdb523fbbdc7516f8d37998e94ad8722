@@ -1,4 +1,4 @@
-// 1.20.1	2023-09-07T22:29:40.2383307	Plushables/Block Loot Tables
+// 1.20.1	2023-09-09T07:52:09.8724343	Plushables/Block Loot Tables
 439aedde262bbf604799292a05f2800d5b7087cb data\plushables\loot_tables\blocks\basket_block.json
 f5682b9d1b1c19532fb4b4173308ebaea959ca8f data\plushables\loot_tables\blocks\dragon_plushable.json
 e706fc9f674ed095f5fdd20b92afa77e531aed55 data\plushables\loot_tables\blocks\triceratops_plushable.json
@@ -6,8 +6,8 @@ e706fc9f674ed095f5fdd20b92afa77e531aed55 data\plushables\loot_tables\blocks\tric
 84037c4cf4effc7f3a343d367d348911d2f9f00e data\plushables\loot_tables\blocks\animatronic_plushable.json
 f784000e859b332885aad44ff60d66a284f4cdc6 data\plushables\loot_tables\blocks\big_irritater_plushable.json
 6c613464c4a96c549a9555d34e6a7991415e230d data\plushables\loot_tables\blocks\wizard_plushable.json
-f0fd616aa51c76bbcb804bc6d497cb74d79f6c86 data\plushables\loot_tables\blocks\trater_plushable.json
 382e1f86b50add9dee21d991dc72bc50a127d14a data\plushables\loot_tables\blocks\conductor_plushable.json
+f0fd616aa51c76bbcb804bc6d497cb74d79f6c86 data\plushables\loot_tables\blocks\trater_plushable.json
 ba749124d55eddc18944c87645cb0f1adbbdc9a9 data\plushables\loot_tables\blocks\goldfish_plushable.json
 8fcd91b1c4bb7c9eed98ad0a51bf5baeb9bc83d9 data\plushables\loot_tables\blocks\beaux_plushable.json
 e02df6aa19009dfa7c444640863552e8521d7b37 data\plushables\loot_tables\blocks\hampter_plushable.json
@@ -35,5 +35,6 @@ d50103f91e2aad6262b0416568eb3e935c66acdd data\plushables\loot_tables\blocks\oran
 80279e5e9c48306a188b23e96a59cff87614daf8 data\plushables\loot_tables\blocks\froge_plushable.json
 794e06f6bdfd80da302f12bb42e29d33411a3a26 data\plushables\loot_tables\blocks\big_tater_plushable.json
 0d3a96c363a305c920459ef85d5f3f528480efa1 data\plushables\loot_tables\blocks\rupert_plushable.json
+280b677e26880b0aa50fe7534dc5b5261dcb8dd8 data\plushables\loot_tables\blocks\sea_bunny_plushable.json
 9187a2a9e6b46b1c6b0b29d63dc6595d59237625 data\plushables\loot_tables\blocks\whale_plushable.json
 235f1f7b8a5c2570e528b0b64f37c63b5e2b51c3 data\plushables\loot_tables\blocks\rattiam_plushable.json
