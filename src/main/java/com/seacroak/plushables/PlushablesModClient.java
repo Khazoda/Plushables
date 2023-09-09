@@ -43,6 +43,7 @@ public final class PlushablesModClient implements ClientModInitializer {
     BlockRenderLayerMap.INSTANCE.putBlock(MainRegistry.GOLDFISH_PLUSHABLE, RenderLayer.getCutout());
     BlockRenderLayerMap.INSTANCE.putBlock(MainRegistry.TRATER_PLUSHABLE, RenderLayer.getCutout());
     BlockRenderLayerMap.INSTANCE.putBlock(MainRegistry.FROGE_PLUSHABLE, RenderLayer.getCutout());
+    BlockRenderLayerMap.INSTANCE.putBlock(MainRegistry.MAMMOTH_PLUSHABLE, RenderLayer.getCutout());
 
     /* Complex Plushables */
     BlockRenderLayerMap.INSTANCE.putBlock(MainRegistry.RUPERT_PLUSHABLE, RenderLayer.getCutout());

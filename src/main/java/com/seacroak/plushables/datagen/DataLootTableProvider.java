@@ -52,6 +52,7 @@ public class DataLootTableProvider extends FabricBlockLootTableProvider {
     addDrop(MainRegistry.DORMOUSE_PLUSHABLE);
     addDrop(MainRegistry.SEA_BUNNY_PLUSHABLE);
     addDrop(MainRegistry.STATUETTE_PLUSHABLE);
+    addDrop(MainRegistry.MAMMOTH_PLUSHABLE);
 
   }
 }

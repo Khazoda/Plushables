@@ -53,6 +53,7 @@ public class ItemGroupRegistry {
           entries.add(new ItemStack(MainRegistry.DORMOUSE_PLUSHABLE));
           entries.add(new ItemStack(MainRegistry.SEA_BUNNY_PLUSHABLE));
           entries.add(new ItemStack(MainRegistry.STATUETTE_PLUSHABLE));
+          entries.add(new ItemStack(MainRegistry.MAMMOTH_PLUSHABLE));
 
 
           // Caps
