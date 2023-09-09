@@ -44,4 +44,9 @@ public final class TileRegistry {
 			Registries.BLOCK_ENTITY_TYPE, PlushablesMod.MOD_ID + ":owl_block_entity",
 			FabricBlockEntityTypeBuilder.create(OwlTileEntity::new,
 					MainRegistry.OWL_PLUSHABLE).build(null));
+
+	public static final BlockEntityType<StatuetteTileEntity> STATUETTE_TILE = Registry.register(
+			Registries.BLOCK_ENTITY_TYPE, PlushablesMod.MOD_ID + ":statuette_block_entity",
+			FabricBlockEntityTypeBuilder.create(StatuetteTileEntity::new,
+					MainRegistry.STATUETTE_PLUSHABLE).build(null));
 }

@@ -47,6 +47,7 @@ public final class PlushablesModClient implements ClientModInitializer {
     /* Complex Plushables */
     BlockRenderLayerMap.INSTANCE.putBlock(MainRegistry.RUPERT_PLUSHABLE, RenderLayer.getCutout());
     BlockRenderLayerMap.INSTANCE.putBlock(MainRegistry.OWL_PLUSHABLE, RenderLayer.getCutout());
+    BlockRenderLayerMap.INSTANCE.putBlock(MainRegistry.STATUETTE_PLUSHABLE, RenderLayer.getCutout());
 
     /* Config Sync Networking Packet Client Receipt */
     ClientPlayNetworking.registerGlobalReceiver(ConfigPacketHandler.PACKET_ID, ((client, handler, buf, responseSender) -> {
