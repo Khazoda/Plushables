@@ -5,10 +5,10 @@
   "pages": [
     {
       "type": "plushables:plushable_left_page_template",
-      "title": "block.plushables.moobloom_plushable",
+      "title": "Plushable Moobloom",
       "item": "plushables:moobloom_plushable",
       "id": "31",
-      "creator": "MerchantPug & Khazoda",
+      "creator": "MerchantPug",
       "created": "19th August 2023",
       "features": "none",
       "trivia": "Bring real mooblooms into your minecraft world with the $(l:https://modrinth.com/mod/bovines-and-buttercups)Bovines and Buttercups$() mod! (Then check your resourcepacks for a secret)"

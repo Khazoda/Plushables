@@ -5,7 +5,7 @@
   "pages": [
     {
       "type": "plushables:plushable_left_page_template",
-      "title": "block.plushables.froge_plushable",
+      "title": "Plushable Froge",
       "item": "plushables:froge_plushable",
       "id": "32",
       "creator": "Khazoda",
