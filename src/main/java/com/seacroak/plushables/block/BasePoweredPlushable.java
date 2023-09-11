@@ -75,25 +75,36 @@ public abstract class BasePoweredPlushable<T extends PoweredBlockEntity> extends
       @SuppressWarnings("unchecked")
       T typedBlockEntity = (T) blockEntity;
       if (world instanceof ServerWorld serverWorld) {
-        if (state.get(ON_COOLDOWN)) return ActionResult.CONSUME;
-        this.startCooldown(state, world, pos);
-        world.emitGameEvent(player, GameEvent.BLOCK_ACTIVATE, pos);
-        if (!typedBlockEntity.shouldAnimate()) {
-          /* Server: Send sound & animation packets to clients*/
-          SoundPacketHandler.sendPlayerPacketToClients(serverWorld, new SoundPacketHandler.PlayerSoundPacket(player, pos, soundEffect, pitch));
-          AnimationPacketHandler.sendPacketToClients(serverWorld, new AnimationPacketHandler.AnimationPacket(player, pos, true, "interaction"));
+        /* ToDo remove try/catch once this code has been deemed safe */
+        try {
+          if (state.get(ON_COOLDOWN)) return ActionResult.CONSUME;
+          this.startCooldown(state, world, pos);
+          world.emitGameEvent(player, GameEvent.BLOCK_ACTIVATE, pos);
+          if (!typedBlockEntity.shouldAnimate()) {
+            /* Server: Send sound & animation packets to clients*/
+            SoundPacketHandler.sendPlayerPacketToClients(serverWorld, new SoundPacketHandler.PlayerSoundPacket(player, pos, soundEffect, pitch));
+            AnimationPacketHandler.sendPacketToClients(serverWorld, new AnimationPacketHandler.AnimationPacket(player, pos, true, "interaction"));
+          }
+          return ActionResult.CONSUME;
+        } catch (Exception e) {
+          System.out.println("An error has occurred (SE-000), please report this to the mod author if you have time :)");
         }
-        return ActionResult.CONSUME;
       }
       if (world.isClient) {
-        if (!state.get(ON_COOLDOWN) && typedBlockEntity.interactionController.getAnimationState() == AnimationController.State.STOPPED) {
-          typedBlockEntity.shouldAnimate(true);
-          /* Client: Play animation & sound */
-          PlushablesNetworking.playAnimationOnClient(true, world, pos, "interaction");
-          PlushablesNetworking.playSoundOnClient(soundEffect, world, pos, 1f, pitch);
-          return ActionResult.SUCCESS;
+        /* ToDo remove try/catch once this code has been deemed safe */
+        try {
+          if (!state.get(ON_COOLDOWN) && typedBlockEntity.interactionController.getAnimationState() == AnimationController.State.STOPPED) {
+            typedBlockEntity.shouldAnimate(true);
+            /* Client: Play animation & sound */
+            PlushablesNetworking.playAnimationOnClient(true, world, pos, "interaction");
+            PlushablesNetworking.playSoundOnClient(soundEffect, world, pos, 1f, pitch);
+            return ActionResult.SUCCESS;
+          }
+          return ActionResult.CONSUME;
+
+        } catch (Exception e) {
+          System.out.println("An error has occurred (CE-000), please report this to the mod author if you have time :)");
         }
-        return ActionResult.CONSUME;
       }
     }
     return super.onUse(state, world, pos, player, hand, hit);
