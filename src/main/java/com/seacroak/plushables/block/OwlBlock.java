@@ -19,13 +19,15 @@ import net.minecraft.util.math.Direction;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.World;
+import net.minecraft.world.event.GameEvent;
 import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib.core.animation.AnimationController;
 
-public class OwlBlock extends BasePoweredPlushable {
+public class OwlBlock extends BasePoweredPlushable<OwlTileEntity> {
 
   public OwlBlock() {
-    super();
+    super(OwlTileEntity.class,SoundRegistry.OWL);
+    this.cooldownPeriod = 130;
   }
 
   // Shift Right Click pickup code
@@ -34,8 +36,11 @@ public class OwlBlock extends BasePoweredPlushable {
     if (!player.isSneaking()) {
       BlockEntity blockEntity = world.getBlockEntity(pos);
 
+      if (!(blockEntity instanceof OwlTileEntity)) return ActionResult.CONSUME;
       if (world instanceof ServerWorld serverWorld) {
-        if (!(blockEntity instanceof OwlTileEntity)) return ActionResult.CONSUME;
+        if (state.get(ON_COOLDOWN)) return ActionResult.CONSUME;
+        this.startCooldown(state, world, pos);
+        world.emitGameEvent(player, GameEvent.BLOCK_ACTIVATE, pos);
         Direction hitSide = hit.getSide();
         Direction beFacing = state.get(Properties.HORIZONTAL_FACING);
         /* Server: Send sound & animation packets to clients*/
@@ -47,7 +52,6 @@ public class OwlBlock extends BasePoweredPlushable {
           return ActionResult.PASS;
         }
       } else if (world.isClient) {
-        if (!(blockEntity instanceof OwlTileEntity)) return ActionResult.CONSUME;
         OwlTileEntity owlEntity = (OwlTileEntity) blockEntity;
         /* Owl Special -> Only play animation of back of owl is right clicked */
         Direction hitSide = hit.getSide();

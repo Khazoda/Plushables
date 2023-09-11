@@ -88,7 +88,6 @@ public abstract class BaseInteractablePlushable extends BasePlushable {
       pos, net.minecraft.util.math.random.Random random) {
     world.setBlockState(pos, state.with(ON_COOLDOWN, false), 3);
     this.updateNeighbors(state, world, pos);
-
   }
 
   private void updateNeighbors(BlockState state, World world, BlockPos pos) {
