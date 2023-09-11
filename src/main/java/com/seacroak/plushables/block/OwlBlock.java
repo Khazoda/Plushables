@@ -26,8 +26,8 @@ import software.bernie.geckolib.core.animation.AnimationController;
 public class OwlBlock extends BasePoweredPlushable<OwlTileEntity> {
 
   public OwlBlock() {
-    super(OwlTileEntity.class,SoundRegistry.OWL);
-    this.cooldownPeriod = 130;
+    super(OwlTileEntity.class,SoundRegistry.OWL,1f);
+    this.cooldownPeriod = 170;
   }
 
   // Shift Right Click pickup code
@@ -52,6 +52,7 @@ public class OwlBlock extends BasePoweredPlushable<OwlTileEntity> {
           return ActionResult.PASS;
         }
       } else if (world.isClient) {
+        if (state.get(ON_COOLDOWN)) return ActionResult.CONSUME;
         OwlTileEntity owlEntity = (OwlTileEntity) blockEntity;
         /* Owl Special -> Only play animation of back of owl is right clicked */
         Direction hitSide = hit.getSide();

@@ -75,7 +75,7 @@ public abstract class BasePoweredPlushable<T extends PoweredBlockEntity> extends
       @SuppressWarnings("unchecked")
       T typedBlockEntity = (T) blockEntity;
       if (world instanceof ServerWorld serverWorld) {
-        /* ToDo remove try/catch once this code has been deemed safe */
+        /* ToDo remove try/catch once this code has been deemed totally safe */
         try {
           if (state.get(ON_COOLDOWN)) return ActionResult.CONSUME;
           this.startCooldown(state, world, pos);
@@ -91,7 +91,7 @@ public abstract class BasePoweredPlushable<T extends PoweredBlockEntity> extends
         }
       }
       if (world.isClient) {
-        /* ToDo remove try/catch once this code has been deemed safe */
+        /* ToDo remove try/catch once this code has been deemed totally safe */
         try {
           if (!state.get(ON_COOLDOWN) && typedBlockEntity.interactionController.getAnimationState() == AnimationController.State.STOPPED) {
             typedBlockEntity.shouldAnimate(true);
@@ -121,7 +121,6 @@ public abstract class BasePoweredPlushable<T extends PoweredBlockEntity> extends
   public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
     return null;
   }
-
 
   /* Interactivity */
   public static final BooleanProperty ON_COOLDOWN = BooleanProperty.of("on_cooldown");

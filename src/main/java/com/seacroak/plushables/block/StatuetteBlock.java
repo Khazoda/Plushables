@@ -13,7 +13,7 @@ import org.jetbrains.annotations.Nullable;
 public class StatuetteBlock extends BasePoweredPlushable<StatuetteTileEntity> {
 
   public StatuetteBlock() {
-    super(StatuetteTileEntity.class,SoundRegistry.STATUETTE);
+    super(StatuetteTileEntity.class,SoundRegistry.STATUETTE,1f);
     this.cooldownPeriod = 70;  }
 
 
