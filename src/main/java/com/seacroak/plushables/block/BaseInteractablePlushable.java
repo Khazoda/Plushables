@@ -31,12 +31,12 @@ public abstract class BaseInteractablePlushable extends BasePlushable {
   //  Constructors
   public BaseInteractablePlushable(Settings settings) {
     super(settings);
-    setDefaultState(this.stateManager.getDefaultState().with(Properties.HORIZONTAL_FACING, Direction.NORTH).with(ON_COOLDOWN, false));
+    setDefaultState(this.stateManager.getDefaultState().with(Properties.HORIZONTAL_FACING, Direction.NORTH).with(WATERLOGGED,false).with(ON_COOLDOWN, false));
   }
 
   public BaseInteractablePlushable() {
     super();
-    setDefaultState(this.stateManager.getDefaultState().with(Properties.HORIZONTAL_FACING, Direction.NORTH).with(ON_COOLDOWN, false));
+    setDefaultState(this.stateManager.getDefaultState().with(Properties.HORIZONTAL_FACING, Direction.NORTH).with(WATERLOGGED,false).with(ON_COOLDOWN, false));
   }
 
   // Shift Right Click pickup code
@@ -112,6 +112,6 @@ public abstract class BaseInteractablePlushable extends BasePlushable {
   // Append initial properties
   @Override
   protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
-    builder.add(ON_COOLDOWN).add(FACING);
+    builder.add(ON_COOLDOWN).add(FACING).add(WATERLOGGED);
   }
 }
