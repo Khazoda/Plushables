@@ -37,11 +37,16 @@ public class OwlBlock extends BasePoweredPlushable {
 
       if (world instanceof ServerWorld serverWorld) {
         if (!(blockEntity instanceof OwlTileEntity)) return ActionResult.CONSUME;
+        Direction hitSide = hit.getSide();
+        Direction beFacing = state.get(Properties.HORIZONTAL_FACING);
         /* Server: Send sound & animation packets to clients*/
-        SoundPacketHandler.sendPlayerPacketToClients(serverWorld, new SoundPacketHandler.PlayerSoundPacket(player, pos, SoundRegistry.ORANGUTAN, randomPitch));
-        AnimationPacketHandler.sendPacketToClients(serverWorld, new AnimationPacketHandler.AnimationPacket(player, pos, true, "interaction"));
-        return ActionResult.CONSUME;
-
+        if (hitSide == beFacing.getOpposite()) {
+          SoundPacketHandler.sendPlayerPacketToClients(serverWorld, new SoundPacketHandler.PlayerSoundPacket(player, pos, SoundRegistry.ORANGUTAN, randomPitch));
+          AnimationPacketHandler.sendPacketToClients(serverWorld, new AnimationPacketHandler.AnimationPacket(player, pos, true, "interaction"));
+          return ActionResult.CONSUME;
+        } else {
+          return ActionResult.PASS;
+        }
       } else if (world.isClient) {
         if (!(blockEntity instanceof OwlTileEntity)) return ActionResult.CONSUME;
         OwlTileEntity owlEntity = (OwlTileEntity) blockEntity;
