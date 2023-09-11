@@ -35,6 +35,10 @@
   "statuette": {
     "sounds": ["plushables:statuette"]
   },
+  "owl": {
+    "sounds": ["plushables:owl"]
+  },
+
   "opencodex": {
     "sounds": ["plushables:opencodex"]
   },

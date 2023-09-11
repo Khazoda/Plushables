@@ -32,7 +32,6 @@ public class OwlBlock extends BasePoweredPlushable {
   @Override
   public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
     if (!player.isSneaking()) {
-      float randomPitch = 0.7f + randPitch.nextFloat() / 2;
       BlockEntity blockEntity = world.getBlockEntity(pos);
 
       if (world instanceof ServerWorld serverWorld) {
@@ -41,7 +40,7 @@ public class OwlBlock extends BasePoweredPlushable {
         Direction beFacing = state.get(Properties.HORIZONTAL_FACING);
         /* Server: Send sound & animation packets to clients*/
         if (hitSide == beFacing.getOpposite()) {
-          SoundPacketHandler.sendPlayerPacketToClients(serverWorld, new SoundPacketHandler.PlayerSoundPacket(player, pos, SoundRegistry.ORANGUTAN, randomPitch));
+          SoundPacketHandler.sendPlayerPacketToClients(serverWorld, new SoundPacketHandler.PlayerSoundPacket(player, pos, SoundRegistry.OWL, 1f));
           AnimationPacketHandler.sendPacketToClients(serverWorld, new AnimationPacketHandler.AnimationPacket(player, pos, true, "interaction"));
           return ActionResult.CONSUME;
         } else {
@@ -58,7 +57,7 @@ public class OwlBlock extends BasePoweredPlushable {
           PlushablesNetworking.playAnimationOnClient(true, world, pos, "interaction");
           if (owlEntity.shouldAnimate()
               && owlEntity.interactionController.getAnimationState() == AnimationController.State.STOPPED) {
-            PlushablesNetworking.playSoundOnClient(SoundRegistry.ORANGUTAN, world, pos, 1f, randomPitch);
+            PlushablesNetworking.playSoundOnClient(SoundRegistry.OWL, world, pos, 1f, 1f);
           }
           return ActionResult.SUCCESS;
         } else {
