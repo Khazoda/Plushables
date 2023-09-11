@@ -36,7 +36,7 @@ public class StatuetteBlock extends BasePoweredPlushable {
       if (world instanceof ServerWorld serverWorld) {
         if (!(blockEntity instanceof StatuetteTileEntity)) return ActionResult.CONSUME;
         /* Server: Send sound & animation packets to clients*/
-        SoundPacketHandler.sendPlayerPacketToClients(serverWorld, new SoundPacketHandler.PlayerSoundPacket(player, pos, SoundRegistry.CLUCKY_CLUCK, 1f));
+        SoundPacketHandler.sendPlayerPacketToClients(serverWorld, new SoundPacketHandler.PlayerSoundPacket(player, pos, SoundRegistry.STATUETTE, 1f));
         AnimationPacketHandler.sendPacketToClients(serverWorld, new AnimationPacketHandler.AnimationPacket(player, pos, true, "interaction"));
         return ActionResult.CONSUME;
 
@@ -47,7 +47,7 @@ public class StatuetteBlock extends BasePoweredPlushable {
         PlushablesNetworking.playAnimationOnClient(true, world, pos, "interaction");
         if (statuetteEntity.shouldAnimate()
             && statuetteEntity.interactionController.getAnimationState() == AnimationController.State.STOPPED) {
-          PlushablesNetworking.playSoundOnClient(SoundRegistry.CLUCKY_CLUCK, world, pos, 1f, 1f);
+          PlushablesNetworking.playSoundOnClient(SoundRegistry.STATUETTE, world, pos, 1f, 1f);
         }
         return ActionResult.SUCCESS;
       }

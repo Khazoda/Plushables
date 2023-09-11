@@ -31,5 +31,8 @@
   },
   "basket_attack": {
     "sounds": ["plushables:basket_attack"]
+  },
+  "statuette": {
+    "sounds": ["plushables:statuette"]
   }
 }

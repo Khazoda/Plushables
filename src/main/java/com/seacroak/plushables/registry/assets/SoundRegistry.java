@@ -17,6 +17,7 @@ public final class SoundRegistry {
 	public static final SoundEvent BASKET_IN = register("basket_in");
 	public static final SoundEvent BASKET_OUT = register("basket_out");
 	public static final SoundEvent BASKET_ATTACK = register("basket_attack");
+	public static final SoundEvent STATUETTE = register("statuette");
 
 	public static void init() {
 	}
