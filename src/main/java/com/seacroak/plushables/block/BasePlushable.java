@@ -7,6 +7,7 @@ import com.seacroak.plushables.registry.assets.SoundRegistry;
 import com.seacroak.plushables.util.VoxelShapeUtils;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.*;
+import net.minecraft.block.piston.PistonBehavior;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
@@ -37,7 +38,7 @@ import java.util.Random;
 
 public abstract class BasePlushable extends HorizontalFacingBlock implements Waterloggable {
   public static Random rand;
-  public static final Settings defaultSettings = FabricBlockSettings.create().sounds(BlockSoundGroup.WOOL).strength(0.7f).nonOpaque();
+  public static final Settings defaultSettings = FabricBlockSettings.create().sounds(BlockSoundGroup.WOOL).strength(0.7f).nonOpaque().pistonBehavior(PistonBehavior.DESTROY);
   public static final BooleanProperty WATERLOGGED = Properties.WATERLOGGED;
 
   //  Constructors

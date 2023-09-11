@@ -6,6 +6,7 @@ import com.seacroak.plushables.networking.PlushablesNetworking;
 import com.seacroak.plushables.networking.SoundPacketHandler;
 import com.seacroak.plushables.registry.assets.SoundRegistry;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
+import net.minecraft.block.piston.PistonBehavior;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
@@ -29,7 +30,7 @@ import java.util.List;
 public class FrogeBlock extends BaseInteractablePlushable {
 
   public FrogeBlock() {
-    super(FabricBlockSettings.create().sounds(BlockSoundGroup.WOOL).strength(0.7f).nonOpaque().luminance(8));
+    super(FabricBlockSettings.create().sounds(BlockSoundGroup.WOOL).strength(0.7f).nonOpaque().luminance(8).pistonBehavior(PistonBehavior.DESTROY));
     this.cooldownPeriod = 30;
   }
   @Override
