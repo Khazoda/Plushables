@@ -1,4 +1,4 @@
-// 1.20.1	2023-09-11T01:44:34.675102	Plushables/Block Loot Tables
+// 1.20.1	2023-09-11T11:19:07.2480235	Plushables/Block Loot Tables
 bbb62eef393b69c4787cd4732718266d7e86bb1f data\plushables\loot_tables\blocks\mammoth_plushable.json
 439aedde262bbf604799292a05f2800d5b7087cb data\plushables\loot_tables\blocks\basket_block.json
 f5682b9d1b1c19532fb4b4173308ebaea959ca8f data\plushables\loot_tables\blocks\dragon_plushable.json
@@ -10,8 +10,8 @@ f784000e859b332885aad44ff60d66a284f4cdc6 data\plushables\loot_tables\blocks\big_
 6c613464c4a96c549a9555d34e6a7991415e230d data\plushables\loot_tables\blocks\wizard_plushable.json
 f0fd616aa51c76bbcb804bc6d497cb74d79f6c86 data\plushables\loot_tables\blocks\trater_plushable.json
 382e1f86b50add9dee21d991dc72bc50a127d14a data\plushables\loot_tables\blocks\conductor_plushable.json
-ba749124d55eddc18944c87645cb0f1adbbdc9a9 data\plushables\loot_tables\blocks\goldfish_plushable.json
 8fcd91b1c4bb7c9eed98ad0a51bf5baeb9bc83d9 data\plushables\loot_tables\blocks\beaux_plushable.json
+ba749124d55eddc18944c87645cb0f1adbbdc9a9 data\plushables\loot_tables\blocks\goldfish_plushable.json
 e02df6aa19009dfa7c444640863552e8521d7b37 data\plushables\loot_tables\blocks\hampter_plushable.json
 310e6757557f3e44550ae48e443f589f19e362ce data\plushables\loot_tables\blocks\goblin_plushable.json
 23fbd102808fc7d15524069b426162e27ce200c6 data\plushables\loot_tables\blocks\clucky_plushable.json

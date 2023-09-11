@@ -15,7 +15,7 @@
     },
     {
       "type": "plushables:plushable_right_page_template",
-      "wool": "minecraft:white_wool",
+      "wool": "minecraft:cyan_wool",
       "item": "minecraft:seagrass",
       "heart": "plushables:heart_of_gold"
     }
