@@ -1,4 +1,4 @@
-// 1.20.1	2023-09-09T19:13:35.8517993	Plushables/Block Loot Tables
+// 1.20.1	2023-09-11T01:44:34.675102	Plushables/Block Loot Tables
 bbb62eef393b69c4787cd4732718266d7e86bb1f data\plushables\loot_tables\blocks\mammoth_plushable.json
 439aedde262bbf604799292a05f2800d5b7087cb data\plushables\loot_tables\blocks\basket_block.json
 f5682b9d1b1c19532fb4b4173308ebaea959ca8f data\plushables\loot_tables\blocks\dragon_plushable.json
@@ -24,6 +24,7 @@ bea48e17755900f565b4445a1aded3aa04e71dd3 data\plushables\loot_tables\blocks\octo
 a29eea070e587573544125d2413af85e5e67ce48 data\plushables\loot_tables\blocks\raptor_plushable.json
 c11d28dfa39676b321e76e1bb9911d0824778e00 data\plushables\loot_tables\blocks\froglin_plushable.json
 8b8e23e29c0f66c3cbf928e2eb6fa2819cecd5e2 data\plushables\loot_tables\blocks\moobloom_plushable.json
+299ecd0eaab98b6ec2f16ec4fd3368fcf0437ce3 data\plushables\loot_tables\blocks\tiger_plushable.json
 e533a287fd53d1d3e1678f377a6013413060658a data\plushables\loot_tables\blocks\owl_plushable.json
 d0abfcd0860570b59752cd549b20800f68398933 data\plushables\loot_tables\blocks\unicorn_plushable.json
 c1af050c22a148f1c8cdf41893006911a51f4d27 data\plushables\loot_tables\blocks\snail_plushable.json

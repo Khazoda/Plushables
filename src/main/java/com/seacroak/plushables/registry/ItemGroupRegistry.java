@@ -54,6 +54,7 @@ public class ItemGroupRegistry {
           entries.add(new ItemStack(MainRegistry.SEA_BUNNY_PLUSHABLE));
           entries.add(new ItemStack(MainRegistry.STATUETTE_PLUSHABLE));
           entries.add(new ItemStack(MainRegistry.MAMMOTH_PLUSHABLE));
+          entries.add(new ItemStack(MainRegistry.TIGER_PLUSHABLE));
 
 
           // Caps
