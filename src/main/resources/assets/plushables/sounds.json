@@ -34,5 +34,11 @@
   },
   "statuette": {
     "sounds": ["plushables:statuette"]
+  },
+  "opencodex": {
+    "sounds": ["plushables:opencodex"]
+  },
+  "flipcodex": {
+    "sounds": ["plushables:flipcodex"]
   }
 }

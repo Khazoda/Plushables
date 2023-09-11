@@ -18,6 +18,8 @@ public final class SoundRegistry {
 	public static final SoundEvent BASKET_OUT = register("basket_out");
 	public static final SoundEvent BASKET_ATTACK = register("basket_attack");
 	public static final SoundEvent STATUETTE = register("statuette");
+	public static final SoundEvent PATCHOULI_OPEN_SOUND = register("opencodex");
+	public static final SoundEvent PATCHOULI_FLIP_SOUND = register("flipcodex");
 
 	public static void init() {
 	}
