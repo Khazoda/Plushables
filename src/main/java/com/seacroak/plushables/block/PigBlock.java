@@ -4,7 +4,7 @@ import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 
 
-public class PigBlock extends SimplePlushable {
+public class PigBlock extends BasePlushable {
 
   public PigBlock() {
     super();

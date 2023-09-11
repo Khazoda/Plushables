@@ -3,7 +3,7 @@ package com.seacroak.plushables.block;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 
-public class ConductorBlock extends SimplePlushable {
+public class ConductorBlock extends BasePlushable {
   public ConductorBlock() {
     super();
   }

@@ -2,7 +2,7 @@ package com.seacroak.plushables.block;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 
-public class UnicornBlock extends SimplePlushable {
+public class UnicornBlock extends BasePlushable {
   public UnicornBlock() {
     super();
   }

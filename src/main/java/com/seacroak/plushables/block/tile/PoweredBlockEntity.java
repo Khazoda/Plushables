@@ -14,7 +14,7 @@ import software.bernie.geckolib.core.animation.RawAnimation;
 import software.bernie.geckolib.core.object.PlayState;
 import software.bernie.geckolib.util.GeckoLibUtil;
 
-public class PoweredBlockEntity extends BlockEntity implements GeoBlockEntity {
+public abstract class PoweredBlockEntity extends BlockEntity implements GeoBlockEntity {
   public boolean shouldAnimate;
   public AnimationController<?> interactionController;
   public String animationName;

@@ -55,6 +55,4 @@ public class VoxelShapeUtils {
         return blockShape;
     }
   }
-
-
 }

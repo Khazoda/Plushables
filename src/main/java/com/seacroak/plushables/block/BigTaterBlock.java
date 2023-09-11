@@ -3,7 +3,7 @@ package com.seacroak.plushables.block;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 
-public class BigTaterBlock extends SimplePlushable {
+public class BigTaterBlock extends BasePlushable {
   public BigTaterBlock() {
     super();
   }

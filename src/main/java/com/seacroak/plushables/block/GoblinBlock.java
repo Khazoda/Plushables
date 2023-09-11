@@ -2,7 +2,7 @@ package com.seacroak.plushables.block;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 
-public class GoblinBlock extends SimplePlushable {
+public class GoblinBlock extends BasePlushable {
   public GoblinBlock() {
     super();
   }

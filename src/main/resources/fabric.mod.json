@@ -1,23 +1,22 @@
 {
   "schemaVersion": 1,
   "id": "plushables",
-  "version": "1.1.2",
+  "version": "1.1.3",
   "name": "Plushables",
   "description": "Craft cute plushies for your home",
   "authors": [
-    "Khazoda/June"
+    "Khazoda | June"
   ],
+  "custom": {
+    "modmenu": {
+      "update_checker": true
+    }
+  },
   "contributors": [
-    {
-      "name": "BumbleSculpts (Artist)",
-      "contact": {
-        "homepage": "https://twitter.com/BumbleSculpts"
-      }
-    },
-    "Luke (Artist)",
-    "glisco (Contributor)",
-    " ",
-    "With thanks to: Sammy, Hugman_76, Create SnR Team"
+    "Art - BumbleSculpts",
+    "Art - Luke",
+    "Code - glisco",
+    "Art - MerchantPug"
   ],
   "contact": {
     "homepage": "https://www.seacroak.com/projects/plushables",
@@ -42,6 +41,9 @@
     ],
     "emi": [
       "com.seacroak.plushables.compat.emi.PlushablesEMIPlugin"
+    ],
+    "fabric-datagen": [
+      "com.seacroak.plushables.datagen.DataGenerator"
     ]
   },
   "mixins": [
@@ -52,7 +54,8 @@
     "fabric": "*",
     "minecraft": "~1.20",
     "java": ">=17",
-    "geckolib": ">=4.2"
+    "geckolib": ">=4.2.2",
+    "patchouli": ">=1.20.1-81-FABRIC"
   },
   "suggests": {
     "another-mod": "*"

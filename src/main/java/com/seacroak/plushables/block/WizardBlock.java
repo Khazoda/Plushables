@@ -1,6 +1,6 @@
 package com.seacroak.plushables.block;
 
-import com.seacroak.plushables.registry.SoundRegistry;
+import com.seacroak.plushables.registry.assets.SoundRegistry;
 import com.seacroak.plushables.networking.ParticlePacketHandler;
 import com.seacroak.plushables.networking.PlushablesNetworking;
 import com.seacroak.plushables.networking.SoundPacketHandler;
@@ -15,7 +15,7 @@ import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.World;
 
 
-public class WizardBlock extends SimpleInteractablePlushable {
+public class WizardBlock extends BaseInteractablePlushable {
 
   public WizardBlock() {
     super();

@@ -5,8 +5,8 @@ import java.util.Optional;
 import com.seacroak.plushables.block.screen.BuilderInventory;
 import com.seacroak.plushables.block.screen.BuilderScreenHandler;
 import com.seacroak.plushables.recipe.BuilderRecipe;
-import com.seacroak.plushables.registry.SoundRegistry;
-import com.seacroak.plushables.registry.TileRegistry;
+import com.seacroak.plushables.registry.assets.SoundRegistry;
+import com.seacroak.plushables.registry.uncommon.TileRegistry;
 
 import com.seacroak.plushables.networking.SoundPacketHandler;
 import net.minecraft.block.BlockState;
@@ -159,6 +159,7 @@ public class BuilderTileEntity extends BlockEntity
 
 
       if (world instanceof ServerWorld serverWorld) {
+//        Todo fix builder ding serverwide sounds
         SoundPacketHandler.sendNoPlayerPacketToClients(serverWorld, new SoundPacketHandler.NoPlayerSoundPacket(entity.getPos(), SoundRegistry.BUILDER_DING, 1f));
         SoundPacketHandler.sendNoPlayerPacketToClients(serverWorld, new SoundPacketHandler.NoPlayerSoundPacket(entity.getPos(), SoundEvents.BLOCK_MOSS_PLACE, 1f));
       }

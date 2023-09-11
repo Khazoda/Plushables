@@ -2,7 +2,7 @@ package com.seacroak.plushables.block;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 
-public class BeauxBlock extends SimplePlushable {
+public class BeauxBlock extends BasePlushable {
   public BeauxBlock() {
     super();
   }

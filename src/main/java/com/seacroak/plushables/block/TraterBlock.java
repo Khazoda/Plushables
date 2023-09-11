@@ -11,7 +11,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public class TraterBlock extends SimplePlushable {
+public class TraterBlock extends BasePlushable {
   public TraterBlock() {
     super();
   }

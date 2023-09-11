@@ -1,7 +1,7 @@
 package com.seacroak.plushables.compat.rei;
 
 import com.seacroak.plushables.block.screen.BuilderScreenHandler;
-import com.seacroak.plushables.registry.RegistryHelper;
+import com.seacroak.plushables.util.RegistryHelper;
 import me.shedaniel.rei.api.common.category.CategoryIdentifier;
 import me.shedaniel.rei.api.common.display.DisplaySerializerRegistry;
 import me.shedaniel.rei.api.common.plugins.REIServerPlugin;

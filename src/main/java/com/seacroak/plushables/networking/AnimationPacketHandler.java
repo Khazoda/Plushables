@@ -2,6 +2,7 @@ package com.seacroak.plushables.networking;
 
 import com.seacroak.plushables.util.GenericUtils;
 import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
+import net.fabricmc.fabric.api.networking.v1.PlayerLookup;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.network.PacketByteBuf;
@@ -17,7 +18,9 @@ public class AnimationPacketHandler {
 
   /* Animation Packet*/
   public static void sendPacketToClients(ServerWorld world, AnimationPacketHandler.AnimationPacket packet) {
-    world.getPlayers().forEach(player -> {
+    BlockPos builderPos = new BlockPos((int) packet.pos.x, (int) packet.pos.y, (int) packet.pos.z);
+    /* Iterate through players that can see sound event emitter */
+    PlayerLookup.tracking(world, builderPos).forEach(player -> {
       if (player.getUuid() == packet.player)
         return;
       var buf = PacketByteBufs.create();
@@ -57,7 +60,7 @@ public class AnimationPacketHandler {
       Vec3d pos = new Vec3d(buf.readDouble(), buf.readDouble(), buf.readDouble());
       boolean shouldAnimate = buf.readBoolean();
       String animationName = buf.readString();
-      return new AnimationPacketHandler.AnimationPacket(player, pos, shouldAnimate,animationName);
+      return new AnimationPacketHandler.AnimationPacket(player, pos, shouldAnimate, animationName);
     }
   }
 }

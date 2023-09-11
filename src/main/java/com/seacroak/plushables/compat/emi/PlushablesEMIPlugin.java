@@ -2,7 +2,7 @@ package com.seacroak.plushables.compat.emi;
 
 import com.seacroak.plushables.recipe.BuilderRecipe;
 import com.seacroak.plushables.registry.MainRegistry;
-import com.seacroak.plushables.registry.ScreenRegistry;
+import com.seacroak.plushables.registry.client.ScreenRegistry;
 import com.seacroak.plushables.util.GenericUtils;
 import dev.emi.emi.api.EmiPlugin;
 import dev.emi.emi.api.EmiRegistry;

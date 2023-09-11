@@ -3,7 +3,7 @@ package com.seacroak.plushables.block;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 
-public class ShrumpBlock extends SimplePlushable {
+public class ShrumpBlock extends BasePlushable {
   public ShrumpBlock() {
     super();
   }

@@ -1,0 +1,18 @@
+{
+  "type": "plushables:builder",
+  "ingredients": [
+    {
+      "item": "minecraft:terracotta"
+    },
+    {
+      "item": "minecraft:brown_wool"
+    },
+    {
+      "item": "plushables:powered_heart"
+    }
+  ],
+  "output": {
+    "item": "plushables:statuette_plushable",
+    "count": 1
+  }
+}

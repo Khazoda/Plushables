@@ -1,7 +1,7 @@
 package com.seacroak.plushables.block;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
-public class RattiamBlock extends SimplePlushable {
+public class RattiamBlock extends BasePlushable {
   public RattiamBlock() {
     super();
   }

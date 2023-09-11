@@ -1,0 +1,19 @@
+{
+  "type": "plushables:builder",
+  "ingredients": [
+    {
+      "item": "minecraft:lily_pad"
+    },
+    {
+      "item": "minecraft:yellow_wool"
+    },
+    {
+      "item": "plushables:powered_heart"
+    }
+  ],
+  "output": {
+    "item": "plushables:froge_plushable",
+    "count": 1
+  }
+}
+

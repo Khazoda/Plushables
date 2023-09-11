@@ -1,5 +1,5 @@
 package com.seacroak.plushables.block;
-import com.seacroak.plushables.registry.SoundRegistry;
+import com.seacroak.plushables.registry.assets.SoundRegistry;
 import com.seacroak.plushables.networking.ParticlePacketHandler;
 import com.seacroak.plushables.networking.PlushablesNetworking;
 import com.seacroak.plushables.networking.SoundPacketHandler;
@@ -13,7 +13,7 @@ import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.World;
 
-public class GoldfishBlock extends SimpleInteractablePlushable {
+public class GoldfishBlock extends BaseInteractablePlushable {
   public GoldfishBlock() {
     super();
   }
