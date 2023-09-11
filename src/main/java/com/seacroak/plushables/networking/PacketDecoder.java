@@ -18,6 +18,10 @@ public class PacketDecoder {
       case "plushables:lightfury": returnValue = SoundRegistry.LIGHTFURY; break;
       case "plushables:orangutan": returnValue = SoundRegistry.ORANGUTAN; break;
       case "plushables:goldfish": returnValue = SoundRegistry.GOLDFISH; break;
+      case "minecraft:entity.frog.ambient": returnValue = SoundEvents.ENTITY_FROG_AMBIENT; break;
+      case "plushables:statuette": returnValue = SoundRegistry.STATUETTE; break;
+      case "plushables:owl": returnValue = SoundRegistry.OWL; break;
+
       case "plushables:basket_in": returnValue = SoundRegistry.BASKET_IN; break;
       case "plushables:basket_out": returnValue = SoundRegistry.BASKET_OUT; break;
       case "plushables:basket_attack": returnValue = SoundRegistry.BASKET_ATTACK; break;
