@@ -1,9 +1,9 @@
 package com.seacroak.plushables.block;
 
-import net.minecraft.block.*;
+import net.minecraft.block.BlockEntityProvider;
+import net.minecraft.block.BlockRenderType;
+import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
-import net.minecraft.state.property.DirectionProperty;
-import net.minecraft.state.property.Properties;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.random.LocalRandom;
 import org.jetbrains.annotations.Nullable;
@@ -12,7 +12,6 @@ public abstract class BasePoweredPlushable extends BasePlushable implements Bloc
   //  Fields
   public static LocalRandom randPitch;
   public BlockEntity blockEntityReference;
-  public static final DirectionProperty FACING = Properties.HORIZONTAL_FACING;
 
   //  Constructor
   public BasePoweredPlushable() {
