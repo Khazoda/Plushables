@@ -1,17 +1,5 @@
-__Required__:
-[Fabric API](https://www.modrinth.com/mod/fabric-api/versions) **OR**
-[Quilted Fabric API](https://modrinth.com/mod/qsl/versions)
+# Plushables Web Assets Repository
 
-__Required__:
-[GeckoLib](https://www.modrinth.com/mod/geckolib/versions)
+### The assets hosted on this repository may be used, modified and shared. If hosting these assets yourself, even when modified, you must include this license as well as a hyperlink to this repository. Thank you.
 
-__Optional__:
-[Roughly Enough Items](https://www.modrinth.com/mod/rei/versions),
-[EMI](https://modrinth.com/mod/emi/versions)
-
-</p>
-<div style="min-width:100%; display:block;">
-<img src="https://raw.githubusercontent.com/Khazoda/Plushables/1.20.1-FABRIC/web_assets/info_1.1.2.png" alt="Plushables Information" />
-<img src="https://raw.githubusercontent.com/Khazoda/Plushables/1.20.1-FABRIC/web_assets/description_1.1.2.rv0.png" alt="Plushables Description" />
-</div>
-</div>
+<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br />The image assets on this branch (https://github.com/Khazoda/Plushables/tree/Web-Assets) are licensed under a permissive <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
