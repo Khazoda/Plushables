@@ -35,8 +35,9 @@
     ]
   ],
   "rewards": {
-    "loot": [
-      "plushables:grant_plushables_codex"
+    "recipes": [
+      "plushables:heart_of_gold",
+      "plushables:powered_heart"
     ]
   },
   "sends_telemetry_event": true

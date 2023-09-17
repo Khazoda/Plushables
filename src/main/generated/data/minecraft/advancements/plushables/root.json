@@ -2,9 +2,9 @@
   "criteria": {
     "root": {
       "conditions": {
-        "recipe": "minecraft:crafting_table"
+        "block": "minecraft:air"
       },
-      "trigger": "minecraft:recipe_unlocked"
+      "trigger": "minecraft:enter_block"
     }
   },
   "display": {
@@ -28,5 +28,10 @@
       "root"
     ]
   ],
+  "rewards": {
+    "loot": [
+      "plushables:grant_plushables_codex"
+    ]
+  },
   "sends_telemetry_event": true
 }

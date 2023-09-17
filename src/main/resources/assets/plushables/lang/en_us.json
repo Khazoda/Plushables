@@ -66,12 +66,12 @@
 
   "advancement.plushables.root.title": "Plushables",
   "advancement.plushables.root.description": "Live, Laugh, Plush",
-  "advancement.plushables.got_copper_ingot.title": "Cop a Builder",
+  "advancement.plushables.got_copper_ingot.title": "Got Copper",
   "advancement.plushables.got_copper_ingot.description": "Copper ingots have a new use!",
-  "advancement.plushables.got_builder.title": "Don't Craft, Build!",
-  "advancement.plushables.got_builder.description": "Obtain the backbone of every plush enjoyer's toolset",
-  "advancement.plushables.got_heart.title": "A Hearty Selection",
-  "advancement.plushables.got_heart.description": "You might want to make a bee farm..",
+  "advancement.plushables.got_builder.title": "Plushable Builder",
+  "advancement.plushables.got_builder.description": "Begin your plushable journey",
+  "advancement.plushables.got_heart.title": "A Hearty Collection",
+  "advancement.plushables.got_heart.description": "Your codex has been updated with many recipes!",
 
   "emi.category.plushables.plushable_builder": "Plushable Builder",
 

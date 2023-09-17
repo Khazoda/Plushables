@@ -5,8 +5,9 @@ import com.seacroak.plushables.util.GenericUtils;
 import net.minecraft.advancement.Advancement;
 import net.minecraft.advancement.AdvancementFrame;
 import net.minecraft.advancement.AdvancementRewards;
+import net.minecraft.advancement.criterion.EnterBlockCriterion;
 import net.minecraft.advancement.criterion.InventoryChangedCriterion;
-import net.minecraft.advancement.criterion.RecipeUnlockedCriterion;
+import net.minecraft.block.Blocks;
 import net.minecraft.item.Items;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
@@ -28,7 +29,9 @@ public class PlushablesAdvancements implements Consumer<Consumer<Advancement>> {
             false // Hidden in the advancement tab
         )
         // The first string used in criterion is the name referenced by other advancements when they want to have 'requirements'
-        .criterion("root", RecipeUnlockedCriterion.create(new Identifier("minecraft:crafting_table")))
+        .criterion("root", EnterBlockCriterion.Conditions.block(Blocks.AIR))
+        .rewards(AdvancementRewards.Builder.recipe(GenericUtils.ID("builder_block")))
+        .rewards(AdvancementRewards.Builder.loot(new Identifier("plushables:grant_plushables_codex")))
         .build(advancementConsumer, "plushables" + "/root");
 
     Advancement gotCopperIngotAdvancement = Advancement.Builder.create().parent(rootAdvancement)
@@ -44,7 +47,6 @@ public class PlushablesAdvancements implements Consumer<Consumer<Advancement>> {
         )
         // The first string used in criterion is the name referenced by other advancements when they want to have 'requirements'
         .criterion("got_copper_ingot", InventoryChangedCriterion.Conditions.items(Items.COPPER_INGOT))
-        .rewards(AdvancementRewards.Builder.recipe(GenericUtils.ID("builder_block")))
         .build(advancementConsumer, "plushables" + "/got_copper_ingot");
 
     Advancement gotBuilderAdvancement = Advancement.Builder.create().parent(gotCopperIngotAdvancement)
@@ -61,7 +63,6 @@ public class PlushablesAdvancements implements Consumer<Consumer<Advancement>> {
         // The first string used in criterion is the name referenced by other advancements when they want to have 'requirements'
         .criterion("got_builder", InventoryChangedCriterion.Conditions.items(MainRegistry.BUILDER_BLOCK))
         .rewards(AdvancementRewards.Builder.recipe(GenericUtils.ID("heart_of_gold")).addRecipe(GenericUtils.ID("powered_heart")))
-        .rewards(AdvancementRewards.Builder.loot(new Identifier("plushables:grant_plushables_codex")))
         .build(advancementConsumer, "plushables" + "/got_builder");
 
     Advancement gotHeartAdvancement = Advancement.Builder.create().parent(gotBuilderAdvancement)

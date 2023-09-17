@@ -34,10 +34,5 @@
       "got_copper_ingot"
     ]
   ],
-  "rewards": {
-    "recipes": [
-      "plushables:builder_block"
-    ]
-  },
   "sends_telemetry_event": true
 }
