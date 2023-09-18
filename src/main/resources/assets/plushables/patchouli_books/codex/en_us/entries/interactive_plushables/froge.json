@@ -1,6 +1,7 @@
 {
   "name": "Froge",
   "icon": "plushables:froge_plushable",
+  "advancement": "minecraft:plushables/got_builder",
   "category": "plushables:interactive_plushables_category",
   "pages": [
     {

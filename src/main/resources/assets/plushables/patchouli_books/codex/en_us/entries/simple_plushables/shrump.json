@@ -1,6 +1,7 @@
 {
   "name": "Shrump",
   "icon": "plushables:shrump_plushable",
+  "advancement": "minecraft:plushables/got_builder",
   "category": "plushables:simple_plushables_category",
   "pages": [
     {

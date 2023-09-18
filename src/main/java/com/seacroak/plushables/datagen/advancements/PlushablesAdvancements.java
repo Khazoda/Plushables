@@ -56,7 +56,7 @@ public class PlushablesAdvancements implements Consumer<Consumer<Advancement>> {
             Text.translatable("advancement.plushables.got_builder.description"),
             null,
             AdvancementFrame.TASK, // Options: TASK, CHALLENGE, GOAL
-            true, // Show toast top right
+            false, // Show toast top right
             true, // Announce to chat
             false // Hidden in the advancement tab
         )

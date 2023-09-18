@@ -1,6 +1,7 @@
 {
   "name": "Walrus",
   "icon": "plushables:walrus_plushable",
+  "advancement": "minecraft:plushables/got_builder",
   "category": "plushables:simple_plushables_category",
   "pages": [
     {

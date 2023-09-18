@@ -1,6 +1,7 @@
 {
   "name": "Clucky",
   "icon": "plushables:clucky_plushable",
+  "advancement": "minecraft:plushables/got_builder",
   "category": "plushables:powered_plushables_category",
   "pages": [
     {

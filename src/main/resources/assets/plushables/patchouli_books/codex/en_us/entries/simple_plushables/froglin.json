@@ -1,6 +1,7 @@
 {
   "name": "Froglin",
   "icon": "plushables:froglin_plushable",
+  "advancement": "minecraft:plushables/got_builder",
   "category": "plushables:simple_plushables_category",
   "pages": [
     {
