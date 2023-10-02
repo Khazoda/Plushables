@@ -20,7 +20,7 @@
     },
     {
       "type": "patchouli:text",
-      "text": "$(8)ID:$() $(bold)#id#$() $(br)$(8)Creator:$() #creator->capital# $(br)$(8)Created:$() #created# $(br2)$(8)Special Features:$() #features# $(br2)$(8)Trivia:$() #trivia#",
+      "text": "$(8)ID：$() $(bold)#id#$() $(br)$(8)创建者：$() #creator->capital# $(br)$(8)创建时间：$() #created# $(br2)$(8)特殊功能：$() #features# $(br2)$(8)琐事：$() #trivia#",
       "x": 0,
       "y": 20
     }
