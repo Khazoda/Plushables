@@ -20,7 +20,7 @@
     },
     {
       "type": "patchouli:header",
-      "text": "Builder Recipe",
+      "text": "构建方法",
       "x": -1,
       "y": -1,
       "scale": 0.8
