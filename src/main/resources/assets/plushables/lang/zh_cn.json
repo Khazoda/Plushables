@@ -1,7 +1,7 @@
 {
   "itemGroup.plushables.itemGroup": "§c毛§6§e绒§a§b玩§9§5具§c§6§e",
   "block.plushables.basket_block": "毛绒玩具篮子",
-  "block.plushables.builder_block": "毛绒玩具制造台",
+  "block.plushables.builder_block": "毛绒玩具构建台",
   "item.plushables.heart_of_gold": "§6黄金之心",
   "item.plushables.powered_heart": "§c充能的§6黄金之心",
   "block.plushables.codex": "§c毛§6§e绒§a§b玩§9§5具§c§6§e§c法§6§e§a§b典",
@@ -66,12 +66,12 @@
 
   "advancement.plushables.root.title": "毛绒玩具",
   "advancement.plushables.root.description": "生活，笑声，毛绒绒",
-  "advancement.plushables.got_copper_ingot.title": "“铜”一个建造者",
+  "advancement.plushables.got_copper_ingot.title": "“铜”一个构建台",
   "advancement.plushables.got_copper_ingot.description": "铜锭的新用途！",
-  "advancement.plushables.got_builder.title": "不要制造，打造！",
+  "advancement.plushables.got_builder.title": "不用手工，只用动手！",
   "advancement.plushables.got_builder.description": "获得支撑每个毛绒玩具爱好者的工具包",
-  "advancement.plushables.got_heart.title": "A Hearty Selection",
-  "advancement.plushables.got_heart.description": "You might want to make a bee farm..",
+  "advancement.plushables.got_heart.title": "“心”的选择",
+  "advancement.plushables.got_heart.description": "你可能想建一个养蜂场。。",
 
   "emi.category.plushables.plushable_builder": "Plushable Builder",
 
