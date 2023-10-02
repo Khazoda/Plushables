@@ -1,0 +1,16 @@
+{
+  "name": "Mushroom Cap",
+  "icon": "plushables:cap_mushroom",
+  "category": "plushables:accessories_category",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "plushables:cap_mushroom",
+      "link_recipe": true
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "plushables:cap_mushroom"
+    }
+  ]
+}
