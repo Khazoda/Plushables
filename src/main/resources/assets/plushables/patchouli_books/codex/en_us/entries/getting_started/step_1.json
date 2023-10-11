@@ -18,6 +18,7 @@
     {
       "type": "patchouli:spotlight",
       "item": "plushables:builder_block",
+      "link_recipe": false,
       "text": "A plushable builder is crafted with 4 copper ingots, red and yellow dye, 2 redstone dust and a loom.$(br2)This block is used to create every single plushable.$(br)Once you've crafted one, every plushable recipe will be unlocked in this codex."
     },
     {
