@@ -47,7 +47,7 @@ public class CodexBlock extends HorizontalFacingBlock {
 
     public VoxelShape getShape () {
       VoxelShape shape = VoxelShapes.empty();
-      shape = VoxelShapes.union(shape, VoxelShapes.cuboid(0.296875, 0, 0.25, 0.765625, 0.125, 0.78125));
+      shape = VoxelShapes.union(shape, VoxelShapes.cuboid(0.28125, 0, 0.25, 0.8, 0.172, 0.8));
       return shape;
     }
 
