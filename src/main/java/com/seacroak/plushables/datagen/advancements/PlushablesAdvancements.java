@@ -3,6 +3,7 @@ package com.seacroak.plushables.datagen.advancements;
 import com.seacroak.plushables.registry.MainRegistry;
 import com.seacroak.plushables.util.GenericUtils;
 import net.minecraft.advancement.Advancement;
+import net.minecraft.advancement.AdvancementEntry;
 import net.minecraft.advancement.AdvancementFrame;
 import net.minecraft.advancement.AdvancementRewards;
 import net.minecraft.advancement.criterion.EnterBlockCriterion;
@@ -14,10 +15,10 @@ import net.minecraft.util.Identifier;
 
 import java.util.function.Consumer;
 
-public class PlushablesAdvancements implements Consumer<Consumer<Advancement>> {
+public class PlushablesAdvancements implements Consumer<Consumer<AdvancementEntry>> {
   @Override
-  public void accept(Consumer<Advancement> advancementConsumer) {
-    Advancement rootAdvancement = Advancement.Builder.create()
+  public void accept(Consumer<AdvancementEntry> advancementConsumer) {
+    AdvancementEntry rootAdvancement = Advancement.Builder.create()
         .display(
             MainRegistry.PENGUIN_PLUSHABLE,
             Text.translatable("advancement.plushables.root.title"),
@@ -33,7 +34,7 @@ public class PlushablesAdvancements implements Consumer<Consumer<Advancement>> {
         .rewards(AdvancementRewards.Builder.loot(new Identifier("plushables:grant_plushables_codex")))
         .build(advancementConsumer, "plushables" + "/root");
 
-    Advancement gotCopperIngotAdvancement = Advancement.Builder.create().parent(rootAdvancement)
+    AdvancementEntry gotCopperIngotAdvancement = Advancement.Builder.create().parent(rootAdvancement)
         .display(
             Items.COPPER_INGOT,
             Text.translatable("advancement.plushables.got_copper_ingot.title"),
@@ -49,7 +50,7 @@ public class PlushablesAdvancements implements Consumer<Consumer<Advancement>> {
         .rewards(AdvancementRewards.Builder.recipe(GenericUtils.ID("builder_block")))
         .build(advancementConsumer, "plushables" + "/got_copper_ingot");
 
-    Advancement gotBuilderAdvancement = Advancement.Builder.create().parent(gotCopperIngotAdvancement)
+    AdvancementEntry gotBuilderAdvancement = Advancement.Builder.create().parent(gotCopperIngotAdvancement)
         .display(
             MainRegistry.BUILDER_BLOCK,
             Text.translatable("advancement.plushables.got_builder.title"),
@@ -65,7 +66,7 @@ public class PlushablesAdvancements implements Consumer<Consumer<Advancement>> {
         .rewards(AdvancementRewards.Builder.recipe(GenericUtils.ID("heart_of_gold")).addRecipe(GenericUtils.ID("powered_heart")))
         .build(advancementConsumer, "plushables" + "/got_builder");
 
-    Advancement gotHeartAdvancement = Advancement.Builder.create().parent(gotBuilderAdvancement)
+    AdvancementEntry gotHeartAdvancement = Advancement.Builder.create().parent(gotBuilderAdvancement)
         .display(
             MainRegistry.HEART_OF_GOLD,
             Text.translatable("advancement.plushables.got_heart.title"),

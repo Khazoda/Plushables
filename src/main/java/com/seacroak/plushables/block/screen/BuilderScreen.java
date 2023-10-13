@@ -45,7 +45,7 @@ public class BuilderScreen extends HandledScreen<BuilderScreenHandler> {
     public void render(DrawContext context, int mouseX, int mouseY, float delta) {
         context.drawText( textRenderer, Text.translatable("block.plushables.builder_block"), x + 4,y - 8, 0xffffff, true );
 
-        renderBackground(context);
+        renderBackground(context,mouseX,mouseY,delta);
         super.render(context, mouseX, mouseY, delta);
         drawMouseoverTooltip(context, mouseX, mouseY);
     }

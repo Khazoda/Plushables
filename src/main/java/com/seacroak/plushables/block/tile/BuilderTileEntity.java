@@ -14,6 +14,7 @@ import net.minecraft.inventory.Inventories;
 import net.minecraft.inventory.SimpleInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
+import net.minecraft.recipe.RecipeEntry;
 import net.minecraft.screen.NamedScreenHandlerFactory;
 import net.minecraft.screen.PropertyDelegate;
 import net.minecraft.screen.ScreenHandler;
@@ -131,12 +132,12 @@ public class BuilderTileEntity extends BlockEntity
 
     }
 
-    Optional<BuilderRecipe> match = world.getRecipeManager()
+    Optional<RecipeEntry<BuilderRecipe>> match = world.getRecipeManager()
         .getFirstMatch(BuilderRecipe.Type.INSTANCE, inventory, world);
 
     return match.isPresent()
         && canInsertAmountIntoOutputSlot(inventory)
-        && canInsertItemIntoOutputSlot(inventory, match.get().getResult(entity.world.getRegistryManager()));
+        && canInsertItemIntoOutputSlot(inventory, match.get().value().getResult(entity.world.getRegistryManager()));
   }
 
   private static void craftItem(BuilderTileEntity entity) {
@@ -146,7 +147,7 @@ public class BuilderTileEntity extends BlockEntity
       inventory.setStack(i, entity.getStack(i));
     }
 
-    Optional<BuilderRecipe> match = world.getRecipeManager()
+    Optional<RecipeEntry<BuilderRecipe>> match = world.getRecipeManager()
         .getFirstMatch(BuilderRecipe.Type.INSTANCE, inventory, world);
 
     if (match.isPresent()) {

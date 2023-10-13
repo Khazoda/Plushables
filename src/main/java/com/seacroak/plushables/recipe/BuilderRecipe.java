@@ -2,6 +2,7 @@ package com.seacroak.plushables.recipe;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
+import com.mojang.serialization.Codec;
 import net.minecraft.inventory.SimpleInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.PacketByteBuf;
@@ -12,14 +13,12 @@ import net.minecraft.util.JsonHelper;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.world.World;
 
-public class BuilderRecipe implements Recipe<SimpleInventory> {
+public class BuilderRecipe implements Recipe<SimpleInventory>  {
 
-  private final Identifier id;
   private final ItemStack output;
   private final DefaultedList<Ingredient> recipeItems;
 
-  public BuilderRecipe(Identifier id, ItemStack output, DefaultedList<Ingredient> recipeItems) {
-    this.id = id;
+  public BuilderRecipe(ItemStack output, DefaultedList<Ingredient> recipeItems) {
     this.output = output;
     this.recipeItems = recipeItems;
   }
@@ -52,11 +51,6 @@ public class BuilderRecipe implements Recipe<SimpleInventory> {
   @Override
   public ItemStack getResult(DynamicRegistryManager drm) {
     return output.copy();
-  }
-
-  @Override
-  public Identifier getId() {
-    return id;
   }
 
   @Override
@@ -105,6 +99,16 @@ public class BuilderRecipe implements Recipe<SimpleInventory> {
       }
       ItemStack output = buf.readItemStack();
       return new BuilderRecipe(id, output, inputs);
+    }
+
+    @Override
+    public Codec<BuilderRecipe> codec() {
+      return null;
+    }
+
+    @Override
+    public BuilderRecipe read(PacketByteBuf buf) {
+      return null;
     }
 
     @Override
