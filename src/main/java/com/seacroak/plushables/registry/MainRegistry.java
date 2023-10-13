@@ -71,6 +71,7 @@ public final class MainRegistry {
   public static final MammothBlock MAMMOTH_PLUSHABLE = registerPlushable("mammoth_plushable", new MammothBlock(), plushableItemSettings);
   public static final TigerBlock TIGER_PLUSHABLE = registerPlushable("tiger_plushable", new TigerBlock(), plushableItemSettings);
   public static final WalrusBlock WALRUS_PLUSHABLE = registerPlushable("walrus_plushable", new WalrusBlock(), plushableItemSettings);
+  public static final BlahajBlock BLAHAJ_PLUSHABLE = registerPlushable("blahaj_plushable", new BlahajBlock(), plushableItemSettings);
 
 
   /* Caps */

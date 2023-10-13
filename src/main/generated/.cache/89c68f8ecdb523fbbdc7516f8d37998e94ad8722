@@ -1,4 +1,4 @@
-// 1.20.1	2023-10-11T15:51:12.6204078	Plushables/Block Loot Tables
+// 1.20.1	2023-10-13T17:38:52.2366183	Plushables/Block Loot Tables
 bbb62eef393b69c4787cd4732718266d7e86bb1f data\plushables\loot_tables\blocks\mammoth_plushable.json
 d0c350e5c2a819e4ba0c7ffe981b11f64304c070 data\plushables\loot_tables\blocks\walrus_plushable.json
 439aedde262bbf604799292a05f2800d5b7087cb data\plushables\loot_tables\blocks\basket_block.json
@@ -21,6 +21,7 @@ b789bf685b1cefd9f1125e7578e592d9a500f1ef data\plushables\loot_tables\blocks\whel
 dd5efbf6c3d8138f75062c7dfb623c3c1ccbcdf4 data\plushables\loot_tables\blocks\builder_block.json
 bea48e17755900f565b4445a1aded3aa04e71dd3 data\plushables\loot_tables\blocks\octoplush_plushable.json
 12817a1bc07f48a675f74382211c4eb0ab251f2f data\plushables\loot_tables\blocks\capybara_plushable.json
+d1316ec41c61754db040f5273082faa29e57f4d1 data\plushables\loot_tables\blocks\blahaj_plushable.json
 6383697331f2d5931610d746390ba9c1f29e2b3d data\plushables\loot_tables\blocks\djungelskog_plushable.json
 a29eea070e587573544125d2413af85e5e67ce48 data\plushables\loot_tables\blocks\raptor_plushable.json
 c11d28dfa39676b321e76e1bb9911d0824778e00 data\plushables\loot_tables\blocks\froglin_plushable.json
