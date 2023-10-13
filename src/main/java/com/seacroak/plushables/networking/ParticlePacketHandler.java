@@ -17,7 +17,7 @@ public class ParticlePacketHandler {
   public static final Identifier PACKET_ID = GenericUtils.ID("plushable_particle_packet");
 
   /* Particle Packet*/
-  public static void sendPacketToClients(ServerWorld world, ParticlePacketHandler.ParticlePacket packet) {
+  public static void sendPacketToClients(ServerWorld world, ParticlePacket packet) {
     BlockPos builderPos = new BlockPos((int) packet.pos.x, (int) packet.pos.y, (int) packet.pos.z);
     /* Iterate through players that can see sound event emitter */
     PlayerLookup.tracking(world, builderPos).forEach(player -> {
@@ -63,14 +63,14 @@ public class ParticlePacketHandler {
       buf.writeFloat(spread);
     }
 
-    public static ParticlePacketHandler.ParticlePacket read(PacketByteBuf buf) {
+    public static ParticlePacket read(PacketByteBuf buf) {
       UUID player = buf.readUuid();
       Vec3d pos = new Vec3d(buf.readDouble(), buf.readDouble(), buf.readDouble());
       String particleIdentifier = buf.readString();
       int particleCount = buf.readInt();
       Vec3d offset = new Vec3d(buf.readDouble(), buf.readDouble(), buf.readDouble());
       float spread = buf.readFloat();
-      return new ParticlePacketHandler.ParticlePacket(player, pos, particleIdentifier, particleCount, offset, spread);
+      return new ParticlePacket(player, pos, particleIdentifier, particleCount, offset, spread);
     }
   }
 }

@@ -20,7 +20,7 @@ import java.util.UUID;
 public class ConfigPacketHandler {
   public static final Identifier PACKET_ID = GenericUtils.ID("plushable_config_packet");
 
-  public static void sendConfigPacketToClient(ServerPlayerEntity player, ConfigPacketHandler.ConfigPacket packet) {
+  public static void sendConfigPacketToClient(ServerPlayerEntity player, ConfigPacket packet) {
       var buf = PacketByteBufs.create();
       packet.write(buf);
       ServerPlayNetworking.send(player, PACKET_ID, buf);
@@ -50,7 +50,7 @@ public class ConfigPacketHandler {
     }
 
 
-    public static ConfigPacketHandler.ConfigPacket read(PacketByteBuf buf) {
+    public static ConfigPacket read(PacketByteBuf buf) {
       UUID player_to_sync = buf.readUuid();
       boolean enableBasket = buf.readBoolean();
       boolean allowBlockItems = buf.readBoolean();

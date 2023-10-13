@@ -1,14 +1,11 @@
 package com.seacroak.plushables.block.tile;
 
-import java.util.Optional;
-
 import com.seacroak.plushables.block.screen.BuilderInventory;
 import com.seacroak.plushables.block.screen.BuilderScreenHandler;
+import com.seacroak.plushables.networking.SoundPacketHandler;
 import com.seacroak.plushables.recipe.BuilderRecipe;
 import com.seacroak.plushables.registry.assets.SoundRegistry;
 import com.seacroak.plushables.registry.uncommon.TileRegistry;
-
-import com.seacroak.plushables.networking.SoundPacketHandler;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -38,6 +35,8 @@ import software.bernie.geckolib.core.animation.AnimationState;
 import software.bernie.geckolib.core.animation.RawAnimation;
 import software.bernie.geckolib.core.object.PlayState;
 import software.bernie.geckolib.util.GeckoLibUtil;
+
+import java.util.Optional;
 
 public class BuilderTileEntity extends BlockEntity
     implements GeoBlockEntity, NamedScreenHandlerFactory, BuilderInventory {
@@ -137,7 +136,7 @@ public class BuilderTileEntity extends BlockEntity
 
     return match.isPresent()
         && canInsertAmountIntoOutputSlot(inventory)
-        && canInsertItemIntoOutputSlot(inventory, match.get().getOutput(entity.world.getRegistryManager()));
+        && canInsertItemIntoOutputSlot(inventory, match.get().getResult(entity.world.getRegistryManager()));
   }
 
   private static void craftItem(BuilderTileEntity entity) {
@@ -154,7 +153,7 @@ public class BuilderTileEntity extends BlockEntity
       entity.removeStack(0, 1);
       entity.removeStack(1, 1);
       entity.removeStack(2, 1);
-      entity.setStack(3, new ItemStack(match.get().getOutput(entity.world.getRegistryManager()).getItem(),
+      entity.setStack(3, new ItemStack(match.get().getResult(entity.world.getRegistryManager()).getItem(),
           entity.getStack(3).getCount() + 1));
 
 

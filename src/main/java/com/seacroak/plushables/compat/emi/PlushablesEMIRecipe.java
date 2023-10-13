@@ -30,7 +30,7 @@ public class PlushablesEMIRecipe implements EmiRecipe {
     this.inputs.add(EmiIngredient.of(recipe.getRecipeItems().get(0)));
     this.inputs.add(EmiIngredient.of(recipe.getRecipeItems().get(1)));
     this.inputs.add(EmiIngredient.of(recipe.getRecipeItems().get(2)));
-    this.outputs.add(EmiStack.of(recipe.getOutput(null)));
+    this.outputs.add(EmiStack.of(recipe.getResult(null)));
   }
 
   @Override

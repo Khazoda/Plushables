@@ -25,7 +25,7 @@ public class BuilderScreenHandler extends ScreenHandler {
                               Inventory inventory, PropertyDelegate delegate) {
     super(ScreenRegistry.BUILDER_SCREEN_HANDLER, syncId);
     this.inventory = inventory;
-    this.world = playerInventory.player.getWorld();
+    this.world = playerInventory.player.method_48926();
     this.propertyDelegate = delegate;
 
     checkSize(inventory, 4);

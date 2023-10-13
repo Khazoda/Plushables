@@ -17,7 +17,7 @@ public record BuilderDisplay(List<EntryIngredient> inputs, List<EntryIngredient>
     public BuilderDisplay(BuilderRecipe recipe) {
         this(
                 recipe.getRecipeItems().stream().map(EntryIngredients::ofIngredient).toList(),
-                List.of(EntryIngredients.of(recipe.getOutput(null)))
+                List.of(EntryIngredients.of(recipe.getResult(null)))
         );
     }
 

@@ -17,7 +17,7 @@ public class AnimationPacketHandler {
   public static final Identifier PACKET_ID = GenericUtils.ID("plushable_animation_packet");
 
   /* Animation Packet*/
-  public static void sendPacketToClients(ServerWorld world, AnimationPacketHandler.AnimationPacket packet) {
+  public static void sendPacketToClients(ServerWorld world, AnimationPacket packet) {
     BlockPos builderPos = new BlockPos((int) packet.pos.x, (int) packet.pos.y, (int) packet.pos.z);
     /* Iterate through players that can see sound event emitter */
     PlayerLookup.tracking(world, builderPos).forEach(player -> {
@@ -55,12 +55,12 @@ public class AnimationPacketHandler {
       buf.writeString(animationName);
     }
 
-    public static AnimationPacketHandler.AnimationPacket read(PacketByteBuf buf) {
+    public static AnimationPacket read(PacketByteBuf buf) {
       UUID player = buf.readUuid();
       Vec3d pos = new Vec3d(buf.readDouble(), buf.readDouble(), buf.readDouble());
       boolean shouldAnimate = buf.readBoolean();
       String animationName = buf.readString();
-      return new AnimationPacketHandler.AnimationPacket(player, pos, shouldAnimate, animationName);
+      return new AnimationPacket(player, pos, shouldAnimate, animationName);
     }
   }
 }

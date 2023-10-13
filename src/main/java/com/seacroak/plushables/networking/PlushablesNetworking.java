@@ -3,6 +3,10 @@ package com.seacroak.plushables.networking;
 import com.seacroak.plushables.block.tile.PoweredBlockEntity;
 import com.seacroak.plushables.config.ClientConfigValues;
 import com.seacroak.plushables.config.ConfigPacketHandler;
+import com.seacroak.plushables.networking.AnimationPacketHandler.AnimationPacket;
+import com.seacroak.plushables.networking.ParticlePacketHandler.ParticlePacket;
+import com.seacroak.plushables.networking.SoundPacketHandler.NoPlayerSoundPacket;
+import com.seacroak.plushables.networking.SoundPacketHandler.PlayerSoundPacket;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayConnectionEvents;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.minecraft.block.entity.BlockEntity;
@@ -76,7 +80,7 @@ public class PlushablesNetworking {
   public static void registerGlobalSoundPacketReceiverWithPlayer() {
     /* Registers global packet receiver in MainRegistry.class */
     ServerPlayNetworking.registerGlobalReceiver(SoundPacketHandler.PACKET_ID_PLAYER, ((server, player, handler, buf, responseSender) -> {
-      var packet = SoundPacketHandler.PlayerSoundPacket.read(buf);
+      var packet = PlayerSoundPacket.read(buf);
       if (packet.player == player.getUuid())
         return;
       server.execute(() -> {
@@ -89,7 +93,7 @@ public class PlushablesNetworking {
   public static void registerGlobalSoundPacketReceiverWithoutPlayer() {
     /* Registers global packet receiver in MainRegistry.class */
     ServerPlayNetworking.registerGlobalReceiver(SoundPacketHandler.PACKET_ID_NO_PLAYER, ((server, player, handler, buf, responseSender) -> {
-      var packet = SoundPacketHandler.NoPlayerSoundPacket.read(buf);
+      var packet = NoPlayerSoundPacket.read(buf);
       server.execute(() -> {
         SoundPacketHandler.sendNoPlayerPacketToClients(player.getServerWorld(), packet);
       });
@@ -99,7 +103,7 @@ public class PlushablesNetworking {
   public static void registerGlobalParticlePacketReceiver() {
     /* Registers global packet receiver in MainRegistry.class */
     ServerPlayNetworking.registerGlobalReceiver(ParticlePacketHandler.PACKET_ID, ((server, player, handler, buf, responseSender) -> {
-      var packet = ParticlePacketHandler.ParticlePacket.read(buf);
+      var packet = ParticlePacket.read(buf);
       if (packet.player == player.getUuid())
         return;
       server.execute(() -> {
@@ -111,7 +115,7 @@ public class PlushablesNetworking {
   public static void registerGlobalAnimationPacketReceiver() {
     /* Registers global packet receiver in MainRegistry.class */
     ServerPlayNetworking.registerGlobalReceiver(AnimationPacketHandler.PACKET_ID, ((server, player, handler, buf, responseSender) -> {
-      var packet = AnimationPacketHandler.AnimationPacket.read(buf);
+      var packet = AnimationPacket.read(buf);
       if (packet.player == player.getUuid())
         return;
       server.execute(() -> {

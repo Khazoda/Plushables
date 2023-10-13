@@ -4,10 +4,10 @@ import com.seacroak.plushables.PlushablesMod;
 import com.seacroak.plushables.block.tile.BasketBlockEntity;
 import com.seacroak.plushables.config.ClientConfigValues;
 import com.seacroak.plushables.item.PlushableBlockItem;
-import com.seacroak.plushables.registry.assets.SoundRegistry;
-import com.seacroak.plushables.registry.uncommon.TileRegistry;
 import com.seacroak.plushables.networking.PlushablesNetworking;
 import com.seacroak.plushables.networking.SoundPacketHandler;
+import com.seacroak.plushables.registry.assets.SoundRegistry;
+import com.seacroak.plushables.registry.uncommon.TileRegistry;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
@@ -52,7 +52,7 @@ public class BasketBlock extends BlockWithEntity {
   @Nullable
   @Override
   public <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
-    return checkType(type, TileRegistry.BASKET_TILE, BasketBlockEntity::tick);
+    return validateTicker(type, TileRegistry.BASKET_TILE, BasketBlockEntity::tick);
   }
 
   @Override
