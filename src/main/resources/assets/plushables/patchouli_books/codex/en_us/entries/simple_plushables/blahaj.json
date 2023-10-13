@@ -1,23 +1,23 @@
 {
   "name": "Blåhaj",
-  "icon": "plushables:walrus_plushable",
+  "icon": "plushables:blahaj_plushable",
   "advancement": "minecraft:plushables/got_builder",
   "category": "plushables:simple_plushables_category",
   "pages": [
     {
       "type": "plushables:plushable_left_page_template",
-      "title": "block.plushables.walrus_plushable",
-      "item": "plushables:walrus_plushable",
-      "id": "40",
-      "creator": "$(l:https://twitter.com/BumbleSculpts)@BumbleSculpts$()",
-      "created": "11th September 2023",
+      "title": "block.plushables.blahaj_plushable",
+      "item": "plushables:blahaj_plushable",
+      "id": "41",
+      "creator": "$(l:https://modrinth.com/user/hibi)Hibi$()",
+      "created": "9th August 2022",
       "features": "none",
-      "trivia": "From late winter until early spring, walruses sometimes start making many strange noises. They've been observed 'singing' for up to 65 hours!"
+      "trivia": "Hibi is the brilliant developer behind the original Blåhaj mod. Sadly they've archived most of their mods as of Sept. 6th '23. Hibi's wonderful Blåhaj model is now in Plushables thanks to the license on their work."
     },
     {
       "type": "plushables:plushable_right_page_template",
-      "wool": "minecraft:brown_wool",
-      "item": "minecraft:sea_pickle",
+      "wool": "minecraft:light_blue_wool",
+      "item": "minecraft:pink_petals",
       "heart": "plushables:heart_of_gold"
     }
   ]
