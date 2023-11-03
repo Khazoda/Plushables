@@ -1,0 +1,16 @@
+{
+  "name": "Froglin Cap",
+  "icon": "plushables:cap_froglin",
+  "category": "plushables:accessories_category",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "plushables:cap_froglin",
+      "link_recipe": true
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "plushables:cap_froglin"
+    }
+  ]
+}

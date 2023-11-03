@@ -1,0 +1,28 @@
+{
+  "components": [
+    {
+      "type": "patchouli:item",
+      "item": "#item",
+      "link_recipe": true,
+      "x": 0,
+      "y": -5
+    },
+    {
+      "type": "patchouli:header",
+      "text": "#title",
+      "x": 65,
+      "y": -1,
+      "scale": 0.8
+    },
+    {
+      "type": "patchouli:separator",
+      "y": -1
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(8)ID：$() $(bold)#id#$() $(br)$(8)创建者：$() #creator->capital# $(br)$(8)创建时间：$() #created# $(br2)$(8)特殊功能：$() #features# $(br2)$(8)琐事：$() #trivia#",
+      "x": 0,
+      "y": 20
+    }
+  ]
+}

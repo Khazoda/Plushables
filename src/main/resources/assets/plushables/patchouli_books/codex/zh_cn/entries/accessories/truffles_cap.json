@@ -1,0 +1,16 @@
+{
+  "name": "Truffles Cap",
+  "icon": "plushables:cap_truffles",
+  "category": "plushables:accessories_category",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "plushables:cap_truffles",
+      "link_recipe": true
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "plushables:cap_truffles"
+    }
+  ]
+}
