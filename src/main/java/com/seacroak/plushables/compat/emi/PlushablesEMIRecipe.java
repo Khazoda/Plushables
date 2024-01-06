@@ -8,6 +8,7 @@ import dev.emi.emi.api.render.EmiTexture;
 import dev.emi.emi.api.stack.EmiIngredient;
 import dev.emi.emi.api.stack.EmiStack;
 import dev.emi.emi.api.widget.WidgetHolder;
+import net.minecraft.recipe.RecipeEntry;
 import net.minecraft.util.Identifier;
 import org.jetbrains.annotations.Nullable;
 
@@ -25,12 +26,12 @@ public class PlushablesEMIRecipe implements EmiRecipe {
   private final List<EmiIngredient> inputs = new ArrayList<>();
   private final List<EmiStack> outputs = new ArrayList<>();
 
-  public PlushablesEMIRecipe(BuilderRecipe recipe) {
-    this.id = recipe.getId();
-    this.inputs.add(EmiIngredient.of(recipe.getRecipeItems().get(0)));
-    this.inputs.add(EmiIngredient.of(recipe.getRecipeItems().get(1)));
-    this.inputs.add(EmiIngredient.of(recipe.getRecipeItems().get(2)));
-    this.outputs.add(EmiStack.of(recipe.getResult(null)));
+  public PlushablesEMIRecipe(RecipeEntry<BuilderRecipe> recipeEntry) {
+    this.id = recipeEntry.id();
+    this.inputs.add(EmiIngredient.of(recipeEntry.value().getRecipeItems().get(0)));
+    this.inputs.add(EmiIngredient.of(recipeEntry.value().getRecipeItems().get(1)));
+    this.inputs.add(EmiIngredient.of(recipeEntry.value().getRecipeItems().get(2)));
+    this.outputs.add(EmiStack.of(recipeEntry.value().getResult(null)));
   }
 
   @Override

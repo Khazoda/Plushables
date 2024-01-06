@@ -22,7 +22,7 @@ public class PlushablesEMIPlugin implements EmiPlugin {
     registry.addWorkstation(BUILDER_CATEGORY, BUILDER_BLOCK);
 
     for (RecipeEntry<BuilderRecipe> recipe : registry.getRecipeManager().listAllOfType(BuilderRecipe.Type.INSTANCE)) {
-      registry.addRecipe(new PlushablesEMIRecipe(recipe.value()));
+      registry.addRecipe(new PlushablesEMIRecipe(recipe));
     }
 
     registry.addRecipeHandler(ScreenRegistry.BUILDER_SCREEN_HANDLER, new BuilderEMIRecipeHandler());
