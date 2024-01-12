@@ -1,0 +1,88 @@
+<owo-ui xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/wisp-forest/owo-lib/1.20.3/owo-ui.xsd">
+    <templates>
+        <template name="builder-recipe">
+            <flow-layout direction="vertical">
+                <children>
+                    <stack-layout>
+                        <children>
+                            <stack-layout id="title-anchor"/>
+
+                            <item>
+                                <stack>plushables:builder_block</stack>
+                                <set-tooltip-from-stack>true</set-tooltip-from-stack>
+
+                                <sizing>
+                                    <horizontal method="fixed">12</horizontal>
+                                    <vertical method="fixed">12</vertical>
+                                </sizing>
+
+                                <margins>
+                                    <left>2</left>
+                                    <top>1</top>
+                                </margins>
+                            </item>
+                        </children>
+
+                        <horizontal-alignment>right</horizontal-alignment>
+                    </stack-layout>
+
+                    <stack-layout>
+                        <children>
+                            <texture texture="plushables:textures/lavender/builder_recipe_background.png"
+                                     texture-width="128"
+                                     texture-height="128"
+                                     region-width="69"
+                                     region-height="119">
+                                <blend>true</blend>
+                            </texture>
+
+                            <lavender.ingredient id="top-input">
+                                <positioning type="absolute">12,12</positioning>
+                            </lavender.ingredient>
+
+                            <lavender.ingredient id="bottom-input">
+                                <positioning type="absolute">12,42</positioning>
+                            </lavender.ingredient>
+
+                            <lavender.ingredient id="heart-input">
+                                <positioning type="absolute">42,27</positioning>
+                            </lavender.ingredient>
+
+                            <item id="result">
+                                <positioning type="absolute">27,98</positioning>
+                                <set-tooltip-from-stack>true</set-tooltip-from-stack>
+                            </item>
+                        </children>
+                    </stack-layout>
+                </children>
+
+                <horizontal-alignment>center</horizontal-alignment>
+            </flow-layout>
+        </template>
+
+        <template name="jeb_">
+            <stack-layout>
+                <children>
+                    <template name="fit-image-background@lavender:book_components"/>
+                    <entity type="minecraft:sheep" nbt='{CustomName:"{\"text\":\"jeb_\"}"}'>
+                        <scale-to-fit>true</scale-to-fit>
+                        <mouse-rotation>true</mouse-rotation>
+
+                        <sizing>
+                            <horizontal method="fixed">80</horizontal>
+                            <vertical method="fixed">80</vertical>
+                        </sizing>
+                    </entity>
+                </children>
+
+                <vertical-alignment>center</vertical-alignment>
+                <horizontal-alignment>center</horizontal-alignment>
+
+                <sizing>
+                    <horizontal method="fill">100</horizontal>
+                </sizing>
+            </stack-layout>
+        </template>
+    </templates>
+</owo-ui>

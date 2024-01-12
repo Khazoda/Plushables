@@ -1,6 +1,0 @@
-{
-  "sortnum": 2,
-  "name": "Interactive Plushables",
-  "description": "Interactive plushables have some sort of user interaction, but no animations.$(br2)They are all crafted with a $(c)powered heart$(), coloured wool block and a unique ingredient.$(br2)Start typing to search for a specific plushable, or click an entry on the right.",
-  "icon": "plushables:wizard_plushable"
-}
