@@ -7,6 +7,7 @@ import net.minecraft.advancement.criterion.Criteria;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemUsageContext;
 import net.minecraft.server.network.ServerPlayerEntity;
+import net.minecraft.sound.SoundCategory;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Identifier;
 import net.minecraft.world.event.GameEvent;
@@ -29,6 +30,15 @@ public class CodexItem extends LavenderBookItem {
 
     world.setBlockState(placePos, newState, Block.REDRAW_ON_MAIN_THREAD | Block.NO_REDRAW | Block.NOTIFY_NEIGHBORS);
     world.emitGameEvent(context.getPlayer(), GameEvent.BLOCK_PLACE, context.getBlockPos());
+
+    world.playSound(
+            context.getPlayer(),
+            placePos,
+            newState.getSoundGroup().getPlaceSound(),
+            SoundCategory.BLOCKS,
+            (newState.getSoundGroup().getVolume() + 1f) / 2f,
+            newState.getSoundGroup().getPitch() * .8f
+    );
 
     if (context.getPlayer() instanceof ServerPlayerEntity player) {
       Criteria.PLACED_BLOCK.trigger(player, placePos, context.getStack());
