@@ -154,7 +154,7 @@ public class BuilderTileEntity extends BlockEntity
       entity.removeStack(0, 1);
       entity.removeStack(1, 1);
       entity.removeStack(2, 1);
-      entity.setStack(3, new ItemStack(match.get().getResult(entity.world.getRegistryManager()).getItem(),
+      entity.setStack(3, new ItemStack(match.get().value().getResult(entity.world.getRegistryManager()).getItem(),
           entity.getStack(3).getCount() + 1));
 
 

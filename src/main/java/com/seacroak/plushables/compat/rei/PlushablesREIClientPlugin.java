@@ -14,7 +14,7 @@ public class PlushablesREIClientPlugin implements REIClientPlugin {
 
     @Override
     public void registerDisplays(DisplayRegistry registry) {
-        registry.registerFiller(BuilderRecipe.class, BuilderDisplay::new);
+        registry.registerRecipeFiller(BuilderRecipe.class, BuilderRecipe.Type.INSTANCE, BuilderDisplay::new);
     }
 
     @Override

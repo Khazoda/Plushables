@@ -7,19 +7,31 @@ import com.seacroak.plushables.networking.AnimationPacketHandler.AnimationPacket
 import com.seacroak.plushables.networking.ParticlePacketHandler.ParticlePacket;
 import com.seacroak.plushables.networking.SoundPacketHandler.NoPlayerSoundPacket;
 import com.seacroak.plushables.networking.SoundPacketHandler.PlayerSoundPacket;
+import com.seacroak.plushables.recipe.BuilderRecipe;
 import com.seacroak.plushables.registry.MainRegistry;
 import com.seacroak.plushables.registry.client.EntityRendererRegistry;
 import com.seacroak.plushables.registry.client.ScreenRegistry;
 import com.seacroak.plushables.registry.client.TileRegistryClient;
+import io.wispforest.lavender.client.LavenderBookScreen;
+import io.wispforest.lavender.md.features.RecipeFeature;
+import io.wispforest.owo.ui.component.ItemComponent;
+import io.wispforest.owo.ui.container.FlowLayout;
+import io.wispforest.owo.ui.container.StackLayout;
+import io.wispforest.owo.ui.core.ParentComponent;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
+import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.particle.ParticleEffect;
 import net.minecraft.sound.SoundEvent;
+import net.minecraft.text.Text;
+import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
+
+import java.util.Map;
 
 public final class PlushablesModClient implements ClientModInitializer {
   public static boolean onServer = false;
@@ -121,5 +133,18 @@ public final class PlushablesModClient implements ClientModInitializer {
 
       });
     }));
+
+    LavenderBookScreen.registerRecipePreviewBuilder(new Identifier("plushables:codex"), BuilderRecipe.Type.INSTANCE, (componentSource, recipeEntry) -> {
+      var preview = componentSource.template(new Identifier("plushables:codex"), ParentComponent.class, "builder-recipe", Map.of());
+
+      preview.childById(StackLayout.class, "title-anchor").child(componentSource.builtinTemplate(FlowLayout.class, "page-title", Map.of("title", Text.translatable("item.plushables.codex.builder_recipe").getString())));
+
+      preview.childById(RecipeFeature.IngredientComponent.class, "top-input").ingredient(recipeEntry.value().getRecipeItems().get(0));
+      preview.childById(RecipeFeature.IngredientComponent.class, "bottom-input").ingredient(recipeEntry.value().getRecipeItems().get(1));
+      preview.childById(RecipeFeature.IngredientComponent.class, "heart-input").ingredient(recipeEntry.value().getRecipeItems().get(2));
+      preview.childById(ItemComponent.class, "result").stack(recipeEntry.value().getResult(MinecraftClient.getInstance().world.getRegistryManager()));
+
+      return preview;
+    });
   }
 }

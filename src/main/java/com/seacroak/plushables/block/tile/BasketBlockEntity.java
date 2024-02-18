@@ -71,7 +71,7 @@ public class BasketBlockEntity extends BlockEntity {
     return true;
   }
 
-  public ItemStack[] popAll(PlayerEntity player) {
+  public ItemStack[] popAll() {
     ItemStack[] poppedItems = Arrays.copyOf(plushStack, 8);
     /* Reset plush stack to empty values */
     Arrays.fill(plushStack, ItemStack.EMPTY);
