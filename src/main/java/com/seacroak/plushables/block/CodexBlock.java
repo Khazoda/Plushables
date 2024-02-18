@@ -1,5 +1,6 @@
 package com.seacroak.plushables.block;
 
+import com.seacroak.plushables.registry.MainRegistry;
 import com.seacroak.plushables.util.VoxelShapeUtils;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.*;
@@ -34,7 +35,7 @@ public class CodexBlock extends HorizontalFacingBlock {
   @Override
   public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
     if (world instanceof ServerWorld serverWorld) {
-      ItemScatterer.spawn(world, pos, DefaultedList.ofSize(1, new ItemStack(this)));
+      ItemScatterer.spawn(world, pos, DefaultedList.ofSize(1, new ItemStack(MainRegistry.CODEX_ITEM)));
       world.updateComparators(pos, this);
       world.removeBlock(pos, false);
       return ActionResult.CONSUME;
