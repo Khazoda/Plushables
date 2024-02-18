@@ -5,7 +5,6 @@ import com.seacroak.plushables.client.renderer.item.FoxCapRenderer;
 import net.minecraft.client.render.entity.model.BipedEntityModel;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.item.ArmorItem;
 import net.minecraft.item.ArmorMaterials;
 import net.minecraft.item.ItemStack;
 import software.bernie.geckolib.animatable.client.RenderProvider;
@@ -15,7 +14,7 @@ import java.util.function.Consumer;
 
 public class FoxCapItem extends CapArmorItem{
   public FoxCapItem() {
-    super(ArmorMaterials.LEATHER, ArmorItem.Type.HELMET);
+    super(ArmorMaterials.LEATHER, Type.HELMET);
   }
 
   @Override

@@ -60,7 +60,7 @@ public class BuilderBlock extends HorizontalDirectionalBaseEntityBlock {
   @Override
   public <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state,
                                                                 BlockEntityType<T> type) {
-    return checkType(type, TileRegistry.BUILDER_TILE, BuilderTileEntity::tick);
+    return validateTicker(type, TileRegistry.BUILDER_TILE, BuilderTileEntity::tick);
   }
 
   @Override

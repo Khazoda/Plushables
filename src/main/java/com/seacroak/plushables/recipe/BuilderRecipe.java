@@ -2,29 +2,31 @@ package com.seacroak.plushables.recipe;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
-
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.inventory.SimpleInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.PacketByteBuf;
-import net.minecraft.recipe.Ingredient;
-import net.minecraft.recipe.Recipe;
-import net.minecraft.recipe.RecipeSerializer;
-import net.minecraft.recipe.RecipeType;
-import net.minecraft.recipe.ShapedRecipe;
+import net.minecraft.recipe.*;
 import net.minecraft.registry.DynamicRegistryManager;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.JsonHelper;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.world.World;
 
-public class BuilderRecipe implements Recipe<SimpleInventory> {
+import java.util.function.Function;
 
-  private final Identifier id;
+public class BuilderRecipe implements Recipe<SimpleInventory>  {
+
+  public static final Codec<BuilderRecipe> CODEC = RecordCodecBuilder.create(instance -> instance.group(
+          RecipeCodecs.CRAFTING_RESULT.fieldOf("output").forGetter(recipe -> recipe.output),
+          Ingredient.DISALLOW_EMPTY_CODEC.listOf().xmap(ingredients -> DefaultedList.copyOf(Ingredient.EMPTY, ingredients.toArray(Ingredient[]::new)), Function.identity()).fieldOf("ingredients").forGetter(recipe -> recipe.recipeItems)
+  ).apply(instance, BuilderRecipe::new));
+
   private final ItemStack output;
   private final DefaultedList<Ingredient> recipeItems;
 
-  public BuilderRecipe(Identifier id, ItemStack output, DefaultedList<Ingredient> recipeItems) {
-    this.id = id;
+  public BuilderRecipe(ItemStack output, DefaultedList<Ingredient> recipeItems) {
     this.output = output;
     this.recipeItems = recipeItems;
   }
@@ -55,13 +57,8 @@ public class BuilderRecipe implements Recipe<SimpleInventory> {
   }
 
   @Override
-  public ItemStack getOutput(DynamicRegistryManager drm) {
+  public ItemStack getResult(DynamicRegistryManager drm) {
     return output.copy();
-  }
-
-  @Override
-  public Identifier getId() {
-    return id;
   }
 
   @Override
@@ -75,8 +72,7 @@ public class BuilderRecipe implements Recipe<SimpleInventory> {
   }
 
   public static class Type implements RecipeType<BuilderRecipe> {
-    private Type() {
-    }
+    private Type() {}
 
     public static final Type INSTANCE = new Type();
     public static final String ID = "builder";
@@ -88,33 +84,23 @@ public class BuilderRecipe implements Recipe<SimpleInventory> {
     // this is the name given in the json file
 
     @Override
-    public BuilderRecipe read(Identifier id, JsonObject json) {
-      ItemStack output = ShapedRecipe.outputFromJson(JsonHelper.getObject(json, "output"));
-
-      JsonArray ingredients = JsonHelper.getArray(json, "ingredients");
-      DefaultedList<Ingredient> inputs = DefaultedList.ofSize(3, Ingredient.EMPTY);
-
-      for (int i = 0; i < inputs.size(); i++) {
-        inputs.set(i, Ingredient.fromJson(ingredients.get(i)));
-      }
-
-      return new BuilderRecipe(id, output, inputs);
+    public Codec<BuilderRecipe> codec() {
+      return BuilderRecipe.CODEC;
     }
 
     @Override
-    public BuilderRecipe read(Identifier id, PacketByteBuf buf) {
+    public BuilderRecipe read(PacketByteBuf buf) {
       DefaultedList<Ingredient> inputs = DefaultedList.ofSize(buf.readInt(), Ingredient.EMPTY);
 
       for (int i = 0; i < inputs.size(); i++) {
         inputs.set(i, Ingredient.fromPacket(buf));
       }
       ItemStack output = buf.readItemStack();
-      return new BuilderRecipe(id, output, inputs);
+      return new BuilderRecipe(output, inputs);
     }
 
     @Override
     public void write(PacketByteBuf buf, BuilderRecipe recipe) {
-
       buf.writeInt(recipe.getRecipeItems().size());
       for (Ingredient ing : recipe.getRecipeItems()) {
         ing.write(buf);

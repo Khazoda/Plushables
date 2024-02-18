@@ -3,6 +3,7 @@ package com.seacroak.plushables.registry;
 import com.seacroak.plushables.block.*;
 import com.seacroak.plushables.item.*;
 import com.seacroak.plushables.util.RegistryHelper;
+import io.wispforest.lavender.book.LavenderBookItem;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.minecraft.block.Block;
 import net.minecraft.entity.EquipmentSlot;
@@ -25,7 +26,7 @@ public final class MainRegistry {
 
   /* Plushables Codex */
   public static final Block CODEX_BLOCK = registerBlockOnly("codex", new CodexBlock());
-  public static final BlockItem CODEX_ITEM = registerBlockItem("codex", new CodexItem(CODEX_BLOCK,unstackableItemSettings));
+  public static final Item CODEX_ITEM = RegistryHelper.registerItem("codex", new CodexItem(unstackableItemSettings));
 
 
   /* Complex Plushables */
@@ -71,6 +72,7 @@ public final class MainRegistry {
   public static final MammothBlock MAMMOTH_PLUSHABLE = registerPlushable("mammoth_plushable", new MammothBlock(), plushableItemSettings);
   public static final TigerBlock TIGER_PLUSHABLE = registerPlushable("tiger_plushable", new TigerBlock(), plushableItemSettings);
   public static final WalrusBlock WALRUS_PLUSHABLE = registerPlushable("walrus_plushable", new WalrusBlock(), plushableItemSettings);
+  public static final BlahajBlock BLAHAJ_PLUSHABLE = registerPlushable("blahaj_plushable", new BlahajBlock(), plushableItemSettings);
 
 
   /* Caps */

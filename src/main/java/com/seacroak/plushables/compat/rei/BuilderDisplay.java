@@ -9,15 +9,16 @@ import me.shedaniel.rei.api.common.util.EntryIngredients;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.nbt.NbtElement;
 import net.minecraft.nbt.NbtList;
+import net.minecraft.recipe.RecipeEntry;
 
 import java.util.List;
 
 public record BuilderDisplay(List<EntryIngredient> inputs, List<EntryIngredient> output) implements Display {
 
-    public BuilderDisplay(BuilderRecipe recipe) {
+    public BuilderDisplay(RecipeEntry<BuilderRecipe> recipe) {
         this(
-                recipe.getRecipeItems().stream().map(EntryIngredients::ofIngredient).toList(),
-                List.of(EntryIngredients.of(recipe.getOutput(null)))
+                recipe.value().getRecipeItems().stream().map(EntryIngredients::ofIngredient).toList(),
+                List.of(EntryIngredients.of(recipe.value().getResult(null)))
         );
     }
 

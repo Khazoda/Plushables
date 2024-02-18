@@ -8,6 +8,7 @@ import dev.emi.emi.api.EmiPlugin;
 import dev.emi.emi.api.EmiRegistry;
 import dev.emi.emi.api.recipe.EmiRecipeCategory;
 import dev.emi.emi.api.stack.EmiStack;
+import net.minecraft.recipe.RecipeEntry;
 import net.minecraft.util.Identifier;
 
 public class PlushablesEMIPlugin implements EmiPlugin {
@@ -20,7 +21,7 @@ public class PlushablesEMIPlugin implements EmiPlugin {
     registry.addCategory(BUILDER_CATEGORY);
     registry.addWorkstation(BUILDER_CATEGORY, BUILDER_BLOCK);
 
-    for (BuilderRecipe recipe : registry.getRecipeManager().listAllOfType(BuilderRecipe.Type.INSTANCE)) {
+    for (RecipeEntry<BuilderRecipe> recipe : registry.getRecipeManager().listAllOfType(BuilderRecipe.Type.INSTANCE)) {
       registry.addRecipe(new PlushablesEMIRecipe(recipe));
     }
 
