@@ -1,4 +1,4 @@
-![Plushables Banner](https://github.com/Khazoda/Plushables/blob/Web-Assets/description_common/banner.png?raw=true)
+![Plushables Banner](https://github.com/Khazoda/Plushables/blob/Web-Assets/description_common/banner_2024_0_dark.png?raw=true)
 
 # Important 🐻
 
