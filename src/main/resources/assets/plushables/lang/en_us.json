@@ -63,6 +63,7 @@
   "block.plushables.basket.tooltip.experimental_enabled": "§aExperimental features enabled. Stay safe!§r",
 
   "item.plushables.codex": "§cP§6l§eu§as§bh§9a§5b§cl§6e§es §cC§6o§ed§ae§bx",
+  "item.plushables.codex.tooltip": "§7Can be placed in bookshelves & on the ground",
   "item.plushables.codex.builder_recipe": "Builder Recipe",
 
   "advancement.plushables.root.title": "Plushables",

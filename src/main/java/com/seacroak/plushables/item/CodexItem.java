@@ -1,16 +1,24 @@
 package com.seacroak.plushables.item;
 
+import com.seacroak.plushables.PlushablesMod;
 import com.seacroak.plushables.registry.MainRegistry;
 import io.wispforest.lavender.book.LavenderBookItem;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.minecraft.advancement.criterion.Criteria;
 import net.minecraft.block.Block;
+import net.minecraft.client.item.TooltipContext;
+import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemUsageContext;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.sound.SoundCategory;
+import net.minecraft.text.Text;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Identifier;
+import net.minecraft.world.World;
 import net.minecraft.world.event.GameEvent;
+import org.jetbrains.annotations.Nullable;
+
+import java.util.List;
 
 public class CodexItem extends LavenderBookItem {
 
@@ -49,5 +57,11 @@ public class CodexItem extends LavenderBookItem {
     }
 
     return ActionResult.success(world.isClient);
+  }
+
+  @Override
+  public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
+    tooltip.add(Text.translatable("item." + PlushablesMod.MOD_ID + ".codex.tooltip"));
+    super.appendTooltip(stack, world, tooltip, context);
   }
 }
