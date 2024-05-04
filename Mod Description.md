@@ -2,10 +2,19 @@
 
 # Important 🐻
 
-Plushables is a mod that works with *Fabric* and *Quilt*. You will *need* to download the following:  
-| Using Fabric | [Fabric API](https://legacy.curseforge.com/minecraft/mc-mods/fabric-api) | [GeckoLib](https://legacy.curseforge.com/minecraft/mc-mods/geckolib) | [Patchouli](https://legacy.curseforge.com/minecraft/mc-mods/patchouli-fabric) |
-| ----- | ----- | ----- | ----- |
-| Using Quilt | [Quilted Fabric API](https://legacy.curseforge.com/minecraft/mc-mods/qsl) | [GeckoLib](https://legacy.curseforge.com/minecraft/mc-mods/geckolib) | [Patchouli](https://legacy.curseforge.com/minecraft/mc-mods/patchouli-fabric) |
+Plushables is a mod that works with *Fabric* and *Quilt*. You will *need* to download the following:
+
+### 1.20.1
+
+| Using Fabric | [Fabric API](https://modrinth.com/mod/fabric-api)  | [GeckoLib](https://modrinth.com/mod/geckolib) | [Patchouli](https://modrinth.com/mod/patchouli) |
+| ------------ | -------------------------------------------------- | --------------------------------------------- | ----------------------------------------------- |
+| Using Quilt  | [Quilted Fabric API](https://modrinth.com/mod/qsl) | [GeckoLib](https://modrinth.com/mod/geckolib) | [Patchouli](https://modrinth.com/mod/patchouli) |
+
+### 1.20.2
+
+| Using Fabric | [Fabric API](https://modrinth.com/mod/fabric-api)  | [GeckoLib](https://modrinth.com/mod/geckolib) | [owo-lib](https://modrinth.com/mod/owo-lib) |
+| ------------ | -------------------------------------------------- | --------------------------------------------- | ------------------------------------------- |
+| Using Quilt  | [Quilted Fabric API](https://modrinth.com/mod/qsl) | [GeckoLib](https://modrinth.com/mod/geckolib) | [owo-lib](https://modrinth.com/mod/owo-lib) |
 
 # About 🦣
 
@@ -15,9 +24,9 @@ These 'plushables' can have sound and particle effects on interaction, as well a
 
 # Getting Started 📖
 
-- Pick up a copper ingot to unlock the recipe for the Plushable Builder in your recipe book, a block that is used to craft every plushable.
-- Once you've crafted the builder you will be granted the Plushable Codex, a book item that details the recipes of every plush.
-- Every plushable needs either a Heart of Gold or a Powered Heart of Gold. Both recipes can be found in your recipe book at the same time you unlock the builder recipe.
+- Open the Plushable Codex to view the recipe for a Plushable Builder, a block that is used to craft every plushable.
+- Once you've crafted the builder, check your codex again for every plush's recipe.
+- Every plushable needs either a Heart of Gold or a Powered Heart of Gold. Both recipes can be found in your codex.
   ![Crafting recipe](https://github.com/Khazoda/Plushables/blob/Web-Assets/description_common/crafting.png?raw=true)
 
 # Optional Mods 🌻
@@ -30,7 +39,7 @@ Plushables has optional features that you may want to use. To unlock everything 
 # Frequently Asked Questions (FAQ) 🧡
 
 - Is there a forge version?  
-  _`Currently there is no forge version. It is planned, but don't expect it any time soon.`_
+  _`Currently there is no forge version. Porting and maintaining both fabric/quilt and forge versions is unfortunately too time intensive`_
 - Can you backport the mod to Minecraft 1.X.X?  
   _`Unfortunately I don't have the time to backport Plushables to earlier versions. The mod will however support each new version of Minecraft.`_
 - I found a bug / my game crashed  
