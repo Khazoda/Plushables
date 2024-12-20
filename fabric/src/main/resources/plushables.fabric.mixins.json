@@ -2,7 +2,8 @@
   "required": true,
   "minVersion": "0.8",
   "package": "com.khazoda.plushables.mixin",
-  "compatibilityLevel": "JAVA_18",
+  "refmap": "${mod_id}.refmap.json",
+  "compatibilityLevel": "JAVA_21",
   "mixins": [],
   "client": [
     "MixinTitleScreen"
@@ -12,3 +13,4 @@
     "defaultRequire": 1
   }
 }
+  

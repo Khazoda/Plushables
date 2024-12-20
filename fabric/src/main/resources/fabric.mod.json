@@ -1,6 +1,6 @@
 {
     "schemaVersion": 1,
-    "id": "${mod_id}",
+    "id": "plushables",
     "version": "${version}",
     "name": "${mod_name}",
     "description": "${description}",
@@ -12,16 +12,16 @@
         "sources": "https://github.com/FabricMC/fabric-example-mod"
     },
     "license": "${license}",
-    "icon": "${mod_id}.png",
+    "icon": "mod_icon.png",
     "environment": "*",
     "entrypoints": {
         "main": [
-            "com.example.examplemod.ExampleMod"
+            "com.khazoda.plushables.ExampleMod"
         ]
     },
     "mixins": [
-        "${mod_id}.mixins.json",
-        "${mod_id}.fabric.mixins.json"
+        "plushables.mixins.json",
+        "plushables.fabric.mixins.json"
     ],
     "depends": {
         "fabricloader": ">=${fabric_loader_version}",
