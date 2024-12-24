@@ -1,4 +1,4 @@
 {
-  "parent": "plushables:block/clucky_plushable",
+  "parent": "plushables:block/plushable_clucky",
   "gui_light": "front"
 }

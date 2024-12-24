@@ -1,4 +1,4 @@
 {
-  "parent": "plushables:block/sea_bunny_plushable",
+  "parent": "plushables:block/plushable_sea_bunny",
   "gui_light": "front"
 }

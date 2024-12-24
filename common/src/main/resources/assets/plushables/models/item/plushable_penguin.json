@@ -1,4 +1,4 @@
 {
-  "parent": "plushables:block/penguin_plushable",
+  "parent": "plushables:block/plushable_penguin",
   "gui_light": "front"
 }

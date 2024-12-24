@@ -1,4 +1,4 @@
 {
-  "parent": "plushables:block/rupert_plushable",
+  "parent": "plushables:block/plushable_rupert",
   "gui_light": "front"
 }

@@ -1,4 +1,4 @@
 {
-  "parent": "plushables:block/octoplush_plushable",
+  "parent": "plushables:block/plushable_octoplush",
   "gui_light": "front"
 }

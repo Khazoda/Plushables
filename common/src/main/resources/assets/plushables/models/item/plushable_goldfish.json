@@ -1,4 +1,4 @@
 {
-  "parent": "plushables:block/goldfish_plushable",
+  "parent": "plushables:block/plushable_goldfish",
   "gui_light": "front"
 }

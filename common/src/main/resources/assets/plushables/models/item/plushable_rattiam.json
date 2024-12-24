@@ -1,4 +1,4 @@
 {
-  "parent": "plushables:block/rattiam_plushable",
+  "parent": "plushables:block/plushable_rattiam",
   "gui_light": "front"
 }

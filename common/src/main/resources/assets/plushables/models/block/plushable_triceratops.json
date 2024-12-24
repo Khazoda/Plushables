@@ -5,7 +5,7 @@
     64
   ],
   "textures": {
-    "0": "plushables:block/triceratops_texture",
+    "0": "plushables:block/plushable_triceratops",
     "particle": "plushables:block/blank"
   },
   "elements": [

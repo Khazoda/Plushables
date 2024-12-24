@@ -1,4 +1,4 @@
 {
-  "parent": "plushables:block/triceratops_plushable",
+  "parent": "plushables:block/plushable_triceratops",
   "gui_light": "front"
 }

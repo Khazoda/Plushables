@@ -5,7 +5,7 @@
     64
   ],
   "textures": {
-    "1": "plushables:block/penguin_texture",
+    "1": "plushables:block/plushable_penguin",
     "particle": "plushables:block/blank"
   },
   "elements": [

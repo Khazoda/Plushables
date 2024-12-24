@@ -5,7 +5,7 @@
     8
   ],
   "textures": {
-    "0": "plushables:block/froglin_texture",
+    "0": "plushables:block/plushable_froglin",
     "particle": "plushables:block/blank"
   },
   "elements": [

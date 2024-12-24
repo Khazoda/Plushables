@@ -1,4 +1,4 @@
 {
-  "parent": "plushables:block/big_tater_plushable",
+  "parent": "plushables:block/plushable_big_tater",
   "gui_light": "front"
 }

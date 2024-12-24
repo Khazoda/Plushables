@@ -5,7 +5,7 @@
     64
   ],
   "textures": {
-    "2": "plushables:block/conductor_texture",
+    "2": "plushables:block/plushable_conductor",
     "particle": "plushables:block/blank"
   },
   "elements": [

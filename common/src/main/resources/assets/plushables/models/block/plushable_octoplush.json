@@ -1,7 +1,7 @@
 {
   "credit": "Made with Blockbench",
   "textures": {
-    "4": "plushables:block/octoplush_texture",
+    "4": "plushables:block/plushable_octoplush",
     "particle": "plushables:block/blank"
   },
   "elements": [

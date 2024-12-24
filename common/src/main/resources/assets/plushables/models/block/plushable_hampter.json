@@ -5,7 +5,7 @@
     32
   ],
   "textures": {
-    "0": "plushables:block/hampter_texture",
+    "0": "plushables:block/plushable_hampter",
     "particle": "plushables:block/blank"
   },
   "elements": [

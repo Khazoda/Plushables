@@ -5,7 +5,7 @@
     32
   ],
   "textures": {
-    "2": "plushables:block/pig_texture",
+    "2": "plushables:block/plushable_pig",
     "particle": "plushables:block/blank"
   },
   "elements": [

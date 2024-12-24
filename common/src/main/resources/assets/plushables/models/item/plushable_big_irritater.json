@@ -1,4 +1,4 @@
 {
-  "parent": "plushables:block/big_irritater_plushable",
+  "parent": "plushables:block/plushable_big_irritater",
   "gui_light": "front"
 }

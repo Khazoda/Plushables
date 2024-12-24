@@ -5,7 +5,7 @@
     32
   ],
   "textures": {
-    "0": "plushables:block/big_tater_texture",
+    "0": "plushables:block/plushable_big_tater",
     "particle": "plushables:block/blank"
   },
   "elements": [

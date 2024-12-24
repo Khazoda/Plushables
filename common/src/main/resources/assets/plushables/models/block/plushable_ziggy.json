@@ -5,7 +5,7 @@
     64
   ],
   "textures": {
-    "2": "plushables:block/ziggy_texture",
+    "2": "plushables:block/plushable_ziggy",
     "particle": "plushables:block/blank"
   },
   "elements": [

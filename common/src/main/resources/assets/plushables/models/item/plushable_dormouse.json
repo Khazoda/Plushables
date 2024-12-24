@@ -1,4 +1,4 @@
 {
-  "parent": "plushables:block/dormouse_plushable",
+  "parent": "plushables:block/plushable_dormouse",
   "gui_light": "front"
 }

@@ -5,7 +5,7 @@
     32
   ],
   "textures": {
-    "0": "plushables:block/moobloom_texture",
+    "0": "plushables:block/plushable_moobloom",
     "particle": "plushables:block/blank"
   },
   "elements": [

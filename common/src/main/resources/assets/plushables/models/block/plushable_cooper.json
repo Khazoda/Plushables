@@ -5,7 +5,7 @@
     64
   ],
   "textures": {
-    "0": "plushables:block/cooper_texture",
+    "0": "plushables:block/plushable_cooper",
     "particle": "plushables:block/blank"
   },
   "elements": [

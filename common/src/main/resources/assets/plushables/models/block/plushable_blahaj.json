@@ -5,7 +5,7 @@
     32
   ],
   "textures": {
-    "1": "plushables:block/blahaj_texture",
+    "1": "plushables:block/plushable_blahaj",
     "particle": "plushables:block/blank"
   },
   "elements": [

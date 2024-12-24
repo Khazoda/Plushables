@@ -1,7 +1,7 @@
 {
   "credit": "Made with Blockbench",
   "textures": {
-    "1": "plushables:block/raptor_texture",
+    "1": "plushables:block/plushable_raptor",
     "particle": "plushables:block/blank"
   },
   "elements": [

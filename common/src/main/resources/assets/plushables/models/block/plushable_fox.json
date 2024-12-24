@@ -5,7 +5,7 @@
     32
   ],
   "textures": {
-    "0": "plushables:block/fox_texture",
+    "0": "plushables:block/plushable_fox",
     "particle": "plushables:block/blank"
   },
   "elements": [

@@ -5,7 +5,7 @@
     32
   ],
   "textures": {
-    "0": "plushables:block/goldfish_texture",
+    "0": "plushables:block/plushable_goldfish",
     "particle": "plushables:block/blank"
   },
   "elements": [

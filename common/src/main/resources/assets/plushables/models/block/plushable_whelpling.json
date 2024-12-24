@@ -5,7 +5,7 @@
     32
   ],
   "textures": {
-    "2": "plushables:block/whelpling_texture",
+    "2": "plushables:block/plushable_whelpling",
     "particle": "plushables:block/blank"
   },
   "elements": [

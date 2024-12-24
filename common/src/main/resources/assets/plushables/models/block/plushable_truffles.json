@@ -5,7 +5,7 @@
     32
   ],
   "textures": {
-    "0": "plushables:block/truffles_texture",
+    "0": "plushables:block/plushable_truffles",
     "particle": "plushables:block/blank"
   },
   "elements": [

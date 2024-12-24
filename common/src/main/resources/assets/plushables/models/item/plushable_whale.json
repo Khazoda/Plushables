@@ -1,4 +1,4 @@
 {
-  "parent": "plushables:block/whale_plushable",
+  "parent": "plushables:block/plushable_whale",
   "gui_light": "front"
 }

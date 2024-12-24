@@ -1,4 +1,4 @@
 {
-  "parent": "plushables:block/raptor_plushable",
+  "parent": "plushables:block/plushable_raptor",
   "gui_light": "front"
 }
