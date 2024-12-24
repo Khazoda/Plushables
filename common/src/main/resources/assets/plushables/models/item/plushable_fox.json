@@ -1,0 +1,4 @@
+{
+  "parent": "plushables:block/fox_plushable",
+  "gui_light": "front"
+}

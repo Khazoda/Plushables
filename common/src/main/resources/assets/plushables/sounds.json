@@ -1,0 +1,42 @@
+{
+  "plushable_clucky": {
+    "sounds": [
+      "plushables:plushable_clucky"
+    ]
+  },
+  "plushable_rupert": {
+    "sounds": [
+      "plushables:plushable_rupert"
+    ]
+  },
+  "plushable_wizard": {
+    "sounds": [
+      "plushables:plushable_wizard"
+    ]
+  },
+  "plushable_dragon": {
+    "sounds": [
+      "plushables:plushable_dragon"
+    ]
+  },
+  "plushable_orangutan": {
+    "sounds": [
+      "plushables:plushable_orangutan"
+    ]
+  },
+  "plushable_goldfish": {
+    "sounds": [
+      "plushables:plushable_goldfish"
+    ]
+  },
+  "plushable_statuette": {
+    "sounds": [
+      "plushables:plushable_statuette"
+    ]
+  },
+  "plushable_owl": {
+    "sounds": [
+      "plushables:plushable_owl"
+    ]
+  }
+}

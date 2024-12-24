@@ -1,0 +1,4 @@
+{
+  "parent": "plushables:block/walrus_plushable",
+  "gui_light": "front"
+}

@@ -1,0 +1,6 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "plushables:item/heart_of_gold_texture"
+  }
+}

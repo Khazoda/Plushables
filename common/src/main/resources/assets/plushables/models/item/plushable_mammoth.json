@@ -1,0 +1,4 @@
+{
+  "parent": "plushables:block/mammoth_plushable",
+  "gui_light": "front"
+}

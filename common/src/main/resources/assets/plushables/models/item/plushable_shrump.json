@@ -1,0 +1,4 @@
+{
+  "parent": "plushables:block/shrump_plushable",
+  "gui_light": "front"
+}
