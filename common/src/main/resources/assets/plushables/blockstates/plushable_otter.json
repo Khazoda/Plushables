@@ -2,19 +2,19 @@
   "variants": {
     "facing=north": {
       "y": 0,
-      "model": "plushables:block/otter_plushable"
+      "model": "plushables:block/plushable_otter"
     },
     "facing=south": {
       "y": 180,
-      "model": "plushables:block/otter_plushable"
+      "model": "plushables:block/plushable_otter"
     },
     "facing=east": {
       "y": 90,
-      "model": "plushables:block/otter_plushable"
+      "model": "plushables:block/plushable_otter"
     },
     "facing=west": {
       "y": 270,
-      "model": "plushables:block/otter_plushable"
+      "model": "plushables:block/plushable_otter"
     }
   }
 }

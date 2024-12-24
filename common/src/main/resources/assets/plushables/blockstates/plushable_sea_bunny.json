@@ -2,19 +2,19 @@
   "variants": {
     "facing=north": {
       "y": 0,
-      "model": "plushables:block/sea_bunny_plushable"
+      "model": "plushables:block/plushable_sea_bunny"
     },
     "facing=south": {
       "y": 180,
-      "model": "plushables:block/sea_bunny_plushable"
+      "model": "plushables:block/plushable_sea_bunny"
     },
     "facing=east": {
       "y": 90,
-      "model": "plushables:block/sea_bunny_plushable"
+      "model": "plushables:block/plushable_sea_bunny"
     },
     "facing=west": {
       "y": 270,
-      "model": "plushables:block/sea_bunny_plushable"
+      "model": "plushables:block/plushable_sea_bunny"
     }
   }
 }
