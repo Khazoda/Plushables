@@ -20,9 +20,14 @@ public class PlushableFoxBlock extends BasePlushable {
   @Override
   public VoxelShape getShape() {
     VoxelShape shape = Shapes.empty();
-    shape = Shapes.or(shape, Shapes.create(0.375, 0, 0, 0.625, 0.25, 0.5625));
-    shape = Shapes.or(shape, Shapes.create(0.4375, 0.0625, 0.5625, 0.5625, 0.1875, 1));
-    shape = Shapes.or(shape, Shapes.create(0.40625, 0.03125, 0.5625, 0.59375, 0.21875, 0.6875));
+    shape = Shapes.or(shape, Shapes.create(0.34375, 0, 0.3125, 0.65625, 0.3125, 0.625));
+    shape = Shapes.or(shape, Shapes.create(0.34375, 0.3125, 0.375, 0.46875, 0.375, 0.4375));
+    shape = Shapes.or(shape, Shapes.create(0.53125, 0.3125, 0.375, 0.65625, 0.375, 0.4375));
+    shape = Shapes.or(shape, Shapes.create(0.40625, 0.125, 0.25, 0.59375, 0.1875, 0.3125));
+    shape = Shapes.or(shape, Shapes.create(0.28125, 0, 0.3125, 0.34375, 0.0625, 0.4375));
+    shape = Shapes.or(shape, Shapes.create(0.65625, 0, 0.3125, 0.71875, 0.0625, 0.4375));
+    shape = Shapes.or(shape, Shapes.create(0.28125, 0, 0.5625, 0.34375, 0.0625, 0.6875));
+    shape = Shapes.or(shape, Shapes.create(0.65625, 0, 0.5625, 0.71875, 0.0625, 0.6875));
     return shape;
   }
 
