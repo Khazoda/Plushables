@@ -12,10 +12,10 @@ import java.util.function.Supplier;
 
 public class MainRegistry {
   private static final Reggie<Block> BLOCK_REGISTRAR = PlushablesCommon.REGISTRARS.get(Registries.BLOCK);
+  private static final Reggie<Item> ITEM_REGISTRAR = PlushablesCommon.REGISTRARS.get(Registries.ITEM);
+
   /* ==========[ Block Registration ]========== */
   public static final Supplier<BasePlushable> PLUSHABLE_ANIMATRONIC_BLOCK = BLOCK_REGISTRAR.register("plushable_animatronic", PlushableAnimatronicBlock::new);
-
-  /* ==========[ Item Registration ]========== */
   public static final Supplier<BasePlushable> PLUSHABLE_BEAUX_BLOCK = BLOCK_REGISTRAR.register("plushable_beaux", PlushableBeauxBlock::new);
   public static final Supplier<BasePlushable> PLUSHABLE_BIG_IRRITATER_BLOCK = BLOCK_REGISTRAR.register("plushable_big_irritater", PlushableBigIrritaterBlock::new);
   public static final Supplier<BasePlushable> PLUSHABLE_BIG_TATER_BLOCK = BLOCK_REGISTRAR.register("plushable_big_tater", PlushableBigTaterBlock::new);
@@ -59,7 +59,7 @@ public class MainRegistry {
   public static final Supplier<BasePlushable> PLUSHABLE_WISP_BLOCK = BLOCK_REGISTRAR.register("plushable_wisp", PlushableWispBlock::new);
   public static final Supplier<BasePlushable> PLUSHABLE_WIZARD_BLOCK = BLOCK_REGISTRAR.register("plushable_wizard", PlushableWizardBlock::new);
   public static final Supplier<BasePlushable> PLUSHABLE_ZIGGY_BLOCK = BLOCK_REGISTRAR.register("plushable_ziggy", PlushableZiggyBlock::new);
-  private static final Reggie<Item> ITEM_REGISTRAR = PlushablesCommon.REGISTRARS.get(Registries.ITEM);
+
   /* ==========[ BlockItem Registration ]========== */
   public static final Supplier<PlushableBlockItem> PLUSHABLE_ANIMATRONIC_ITEM = register("plushable_animatronic", PLUSHABLE_ANIMATRONIC_BLOCK);
   public static final Supplier<PlushableBlockItem> PLUSHABLE_BEAUX_ITEM = register("plushable_beaux", PLUSHABLE_BEAUX_BLOCK);
@@ -105,6 +105,8 @@ public class MainRegistry {
   public static final Supplier<PlushableBlockItem> PLUSHABLE_WISP_ITEM = register("plushable_wisp", PLUSHABLE_WISP_BLOCK);
   public static final Supplier<PlushableBlockItem> PLUSHABLE_WIZARD_ITEM = register("plushable_wizard", PLUSHABLE_WIZARD_BLOCK);
   public static final Supplier<PlushableBlockItem> PLUSHABLE_ZIGGY_ITEM = register("plushable_ziggy", PLUSHABLE_ZIGGY_BLOCK);
+
+  /* ==========[ Item Registration ]========== */
 
   public static void init() {
   }
