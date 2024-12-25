@@ -82,6 +82,7 @@ jar {
 }
 
 processResources {
+
     var expandProps = [
             'version'                      : version,
             'group'       : project.group,
