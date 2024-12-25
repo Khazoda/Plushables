@@ -1,49 +1,52 @@
 {
-    "schemaVersion": 1,
-    "id": "plushables",
-    "version": "${version}",
-    "name": "${mod_name}",
-    "description": "${description}",
-    "authors": [
-        "${mod_author}"
+  "schemaVersion": 1,
+  "id": "plushables",
+  "version": "${version}",
+  "name": "${mod_name}",
+  "description": "${description}",
+  "authors": [
+    "${mod_author}"
+  ],
+  "contributors": [
+    "Art - BumbleSculpts",
+    "Art - Luke",
+    "Art - MerchantPug"
+  ],
+  "contact": {
+    "homepage": "https://khazoda.com#plushables",
+    "sources": "https://github.com/Khazoda/Plushables",
+    "issues": "https://github.com/Khazoda/Plushables/issues"
+  },
+  "license": "${license}",
+  "icon": "plushables.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "com.khazoda.plushables.PlushablesFabric"
     ],
-    "contributors": [
-        "Art - BumbleSculpts",
-        "Art - Luke",
-        "Art - MerchantPug"
-    ],
-    "contact": {
-        "homepage": "https://khazoda.com#plushables",
-        "sources": "https://github.com/Khazoda/Plushables",
-        "issues": "https://github.com/Khazoda/Plushables/issues"
-    },
-    "license": "${license}",
-    "icon": "plushables.png",
-    "environment": "*",
-    "entrypoints": {
-        "main": [
-            "com.khazoda.plushables.PlushablesFabric"
-        ]
-    },
-    "mixins": [
-        "plushables.mixins.json",
-        "plushables.fabric.mixins.json"
-    ],
-    "custom": {
-        "modmenu": {
-            "links": {
-                "modmenu.discord": "https://discord.com/invite/vEZUkSxwR9"
-            }
-        }
-    },
-    "depends": {
-        "fabricloader": ">=${fabric_loader_version}",
-        "fabric-api": "*",
-        "minecraft": "${minecraft_version}",
-        "java": ">=${java_version}"
-    },
-    "suggests": {
-        "another-mod": "*"
+    "client": [
+      "com.khazoda.plushables.PlushablesFabricClient"
+    ]
+  },
+  "mixins": [
+    "plushables.mixins.json",
+    "plushables.fabric.mixins.json"
+  ],
+  "custom": {
+    "modmenu": {
+      "links": {
+        "modmenu.discord": "https://discord.com/invite/vEZUkSxwR9"
+      }
     }
+  },
+  "depends": {
+    "fabricloader": ">=${fabric_loader_version}",
+    "fabric-api": "*",
+    "minecraft": "${minecraft_version}",
+    "java": ">=${java_version}"
+  },
+  "suggests": {
+    "another-mod": "*"
+  }
 }
   
