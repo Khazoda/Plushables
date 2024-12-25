@@ -91,4 +91,5 @@ public abstract class BasePlushable extends HorizontalDirectionalBlock implement
     if (state.getValue(WATERLOGGED)) level.scheduleTick(pos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
     return super.updateShape(state, direction, neighborState, level, pos, neighborPos);
   }
+
 }

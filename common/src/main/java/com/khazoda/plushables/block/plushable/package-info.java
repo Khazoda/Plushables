@@ -1,6 +1,6 @@
 @ParametersAreNonnullByDefault
 @MethodsReturnNonnullByDefault
-package com.khazoda.plushables.block.plushables;
+package com.khazoda.plushables.block.plushable;
 
 import net.minecraft.MethodsReturnNonnullByDefault;
 

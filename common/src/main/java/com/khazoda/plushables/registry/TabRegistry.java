@@ -14,6 +14,8 @@ public class TabRegistry {
           .icon(() -> MainRegistry.PLUSHABLE_PENGUIN_ITEM.get().getDefaultInstance())
           .displayItems((parameters, output) -> {
             output.accept(MainRegistry.PLUSHABLE_PENGUIN_ITEM.get());
+            output.accept(MainRegistry.PLUSHABLE_BLAHAJ_ITEM.get());
+            output.accept(MainRegistry.PLUSHABLE_ANIMATRONIC_ITEM.get());
           })
           .build());
 

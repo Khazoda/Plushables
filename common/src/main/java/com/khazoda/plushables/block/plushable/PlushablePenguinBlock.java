@@ -1,10 +1,8 @@
-package com.khazoda.plushables.block.plushables;
+package com.khazoda.plushables.block.plushable;
 
 import com.khazoda.plushables.block.BasePlushable;
 import com.mojang.serialization.MapCodec;
-import net.minecraft.core.Direction;
 import net.minecraft.world.level.block.HorizontalDirectionalBlock;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
@@ -17,17 +15,14 @@ public class PlushablePenguinBlock extends BasePlushable {
 
   public PlushablePenguinBlock(Properties settings) {
     super(settings);
-    registerDefaultState(this.stateDefinition.any().setValue(BlockStateProperties.HORIZONTAL_FACING, Direction.NORTH).setValue(WATERLOGGED, false));
   }
 
   @Override
   public VoxelShape getShape() {
     VoxelShape shape = Shapes.empty();
-    shape = Shapes.or(shape, Shapes.create(0.125, 0, 0.25, 0.875, 0.875, 0.625));
-    shape = Shapes.or(shape, Shapes.create(0.75, 0.6875, 0.1875, 0.875, 0.8125, 0.25));
-    shape = Shapes.or(shape, Shapes.create(0.125, 0.6875, 0.1875, 0.25, 0.8125, 0.25));
-    shape = Shapes.or(shape, Shapes.create(0.375, 0.625, 0.125, 0.625, 0.75, 0.25));
-    shape = Shapes.or(shape, Shapes.create(0.1875, 0.0625, 0.625, 0.8125, 0.8125, 0.6875));
+    shape = Shapes.or(shape, Shapes.create(0.375, 0, 0, 0.625, 0.25, 0.5625));
+    shape = Shapes.or(shape, Shapes.create(0.4375, 0.0625, 0.5625, 0.5625, 0.1875, 1));
+    shape = Shapes.or(shape, Shapes.create(0.40625, 0.03125, 0.5625, 0.59375, 0.21875, 0.6875));
     return shape;
   }
 
