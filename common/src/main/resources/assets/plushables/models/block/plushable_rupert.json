@@ -1,4 +1,5 @@
 {
+  "render_type": "minecraft:cutout",
   "credit": "Made with Blockbench",
   "textures": {
     "1": "plushables:block/plushable_rupert",
