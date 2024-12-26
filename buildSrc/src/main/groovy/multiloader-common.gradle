@@ -90,6 +90,7 @@ jar {
 }
 
 processResources {
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
 
     var expandProps = [
             'version'                      : version,
