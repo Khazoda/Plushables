@@ -7,7 +7,7 @@
   ],
   "textures": {
     "texture": "plushables:block/plushable_ribbit",
-    "particle": "block/lime_wool"
+    "particle": "plushables:block/particle/plushable_ribbit"
   },
   "elements": [
     {

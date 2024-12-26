@@ -8,7 +8,7 @@
 	"textures": {
 		"0": "plushables:block/plushable_snowie",
 		"1": "item/stick",
-		"particle": "block/white_wool"
+		"particle": "plushables:block/particle/plushable_snowie"
 	},
 	"elements": [
 		{

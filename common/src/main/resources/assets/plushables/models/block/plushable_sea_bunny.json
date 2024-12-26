@@ -6,7 +6,7 @@
   ],
   "textures": {
     "0": "plushables:block/plushable_sea_bunny",
-    "particle": "plushables:block/blank"
+    "particle": "plushables:block/particle/plushable_sea_bunny"
   },
   "elements": [
     {

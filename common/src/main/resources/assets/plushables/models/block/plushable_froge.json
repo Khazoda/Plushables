@@ -7,7 +7,7 @@
   ],
   "textures": {
     "0": "plushables:block/plushable_froge",
-    "particle": "plushables:block/blank"
+    "particle": "plushables:block/particle/plushable_froge"
   },
   "elements": [
     {

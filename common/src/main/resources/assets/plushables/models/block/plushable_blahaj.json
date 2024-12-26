@@ -1,5 +1,5 @@
 {
-  "render_type": "minecraft:cutout",
+  "parent": "plushables:block/cutout_parent",
   "credit": "Made with Blockbench",
   "texture_size": [
     32,
@@ -7,7 +7,7 @@
   ],
   "textures": {
     "1": "plushables:block/plushable_blahaj",
-    "particle": "block/white_wool"
+    "particle": "plushables:block/particle/plushable_blahaj"
   },
   "elements": [
     {
