@@ -14,6 +14,9 @@ public class MainRegistry {
   private static final Reggie<Block> BLOCK_REGISTRAR = PlushablesCommon.REGISTRARS.get(Registries.BLOCK);
   private static final Reggie<Item> ITEM_REGISTRAR = PlushablesCommon.REGISTRARS.get(Registries.ITEM);
 
+  /* ==========[ Item Registration ]========== */
+  public static final Supplier<Item> HEART_OF_GOLD_ITEM = ITEM_REGISTRAR.register("heart_of_gold", () -> new Item(new Item.Properties()));
+
   /* ==========[ Block Registration ]========== */
   public static final Supplier<BasePlushable> PLUSHABLE_ANIMATRONIC_BLOCK = BLOCK_REGISTRAR.register("plushable_animatronic", PlushableAnimatronicBlock::new);
   public static final Supplier<BasePlushable> PLUSHABLE_BEAUX_BLOCK = BLOCK_REGISTRAR.register("plushable_beaux", PlushableBeauxBlock::new);
@@ -110,7 +113,6 @@ public class MainRegistry {
   public static final Supplier<PlushableBlockItem> PLUSHABLE_SNOWIE_ITEM = register("plushable_snowie", PLUSHABLE_SNOWIE_BLOCK);
   public static final Supplier<PlushableBlockItem> PLUSHABLE_RIBBIT_ITEM = register("plushable_ribbit", PLUSHABLE_RIBBIT_BLOCK);
 
-  /* ==========[ Item Registration ]========== */
 
   public static void init() {
   }

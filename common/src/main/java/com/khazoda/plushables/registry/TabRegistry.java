@@ -15,6 +15,7 @@ public class TabRegistry {
           .title(Component.translatable("itemGroup.plushables.itemGroup"))
           .icon(() -> MainRegistry.PLUSHABLE_PENGUIN_ITEM.get().getDefaultInstance())
           .displayItems((parameters, output) -> {
+            output.accept(MainRegistry.HEART_OF_GOLD_ITEM.get());
             output.accept(MainRegistry.PLUSHABLE_ANIMATRONIC_ITEM.get());
             output.accept(MainRegistry.PLUSHABLE_BEAUX_ITEM.get());
             output.accept(MainRegistry.PLUSHABLE_BIG_IRRITATER_ITEM.get());
