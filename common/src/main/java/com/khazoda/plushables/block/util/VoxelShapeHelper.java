@@ -16,15 +16,17 @@ public class VoxelShapeHelper {
    * Rotates a VoxelShape from one direction to another.
    * This method performs the mathematical transformation needed to rotate a shape
    * around the Y axis.
+   * <p>
+   * NOTE: This operation is computationally expensive. Results should be cached
+   * at
+   * block initialization rather than being calculated every frame.
    *
    * @param from  The initial Direction the shape is facing
    * @param to    The target Direction to rotate the shape to
    * @param shape The VoxelShape to rotate
    * @return A new VoxelShape that has been rotated to the target direction
    *
-   * @apiNote This operation is computationally expensive. Results should be
-   *          cached
-   *          at block initialization rather than being calculated every frame.
+   * 
    */
   public static VoxelShape rotateShape(Direction from, Direction to, VoxelShape shape) {
     VoxelShape[] buffer = new VoxelShape[]{shape, Shapes.empty()};
@@ -45,10 +47,10 @@ public class VoxelShapeHelper {
    *
    * @param blockShape The base VoxelShape to generate rotations from
    * @return An array of VoxelShapes containing the original and rotated shapes
-   * Index 0: North (original)
-   * Index 1: East
-   * Index 2: South
-   * Index 3: West
+   *         Index 0: North (original)
+   *         Index 1: East
+   *         Index 2: South
+   *         Index 3: West
    */
   public static VoxelShape[] calculateBlockShapes(VoxelShape blockShape) {
     return new VoxelShape[] {
