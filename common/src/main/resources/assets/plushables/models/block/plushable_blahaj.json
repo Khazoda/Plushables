@@ -7,7 +7,7 @@
   ],
   "textures": {
     "1": "plushables:block/plushable_blahaj",
-    "particle": "plushables:block/blank"
+    "particle": "block/white_wool"
   },
   "elements": [
     {

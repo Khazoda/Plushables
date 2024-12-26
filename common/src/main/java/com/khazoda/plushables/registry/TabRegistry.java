@@ -60,6 +60,8 @@ public class TabRegistry {
             output.accept(MainRegistry.PLUSHABLE_WIZARD_ITEM.get());
             output.accept(MainRegistry.PLUSHABLE_ZIGGY_ITEM.get());
             output.accept(MainRegistry.PLUSHABLE_SNOWIE_ITEM.get());
+            output.accept(MainRegistry.PLUSHABLE_RIBBIT_ITEM.get());
+
           })
           .build());
 
