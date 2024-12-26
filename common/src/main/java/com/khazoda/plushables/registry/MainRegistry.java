@@ -59,6 +59,7 @@ public class MainRegistry {
   public static final Supplier<BasePlushable> PLUSHABLE_WISP_BLOCK = BLOCK_REGISTRAR.register("plushable_wisp", PlushableWispBlock::new);
   public static final Supplier<BasePlushable> PLUSHABLE_WIZARD_BLOCK = BLOCK_REGISTRAR.register("plushable_wizard", PlushableWizardBlock::new);
   public static final Supplier<BasePlushable> PLUSHABLE_ZIGGY_BLOCK = BLOCK_REGISTRAR.register("plushable_ziggy", PlushableZiggyBlock::new);
+  public static final Supplier<BasePlushable> PLUSHABLE_SNOWIE_BLOCK = BLOCK_REGISTRAR.register("plushable_snowie", PlushableSnowieBlock::new);
 
   /* ==========[ BlockItem Registration ]========== */
   public static final Supplier<PlushableBlockItem> PLUSHABLE_ANIMATRONIC_ITEM = register("plushable_animatronic", PLUSHABLE_ANIMATRONIC_BLOCK);
@@ -105,6 +106,7 @@ public class MainRegistry {
   public static final Supplier<PlushableBlockItem> PLUSHABLE_WISP_ITEM = register("plushable_wisp", PLUSHABLE_WISP_BLOCK);
   public static final Supplier<PlushableBlockItem> PLUSHABLE_WIZARD_ITEM = register("plushable_wizard", PLUSHABLE_WIZARD_BLOCK);
   public static final Supplier<PlushableBlockItem> PLUSHABLE_ZIGGY_ITEM = register("plushable_ziggy", PLUSHABLE_ZIGGY_BLOCK);
+  public static final Supplier<PlushableBlockItem> PLUSHABLE_SNOWIE_ITEM = register("plushable_snowie", PLUSHABLE_SNOWIE_BLOCK);
 
   /* ==========[ Item Registration ]========== */
 
