@@ -19,7 +19,7 @@ public class PlushableSnowieBlock extends BasePlushable {
   }
 
   @Override
-  public VoxelShape getShape() {
+  public VoxelShape useShape() {
     VoxelShape shape = Shapes.empty();
     shape = Shapes.join(shape, Shapes.box(0.234375, 0, 0.234375, 0.765625, 0.375, 0.765625), BooleanOp.OR);
     shape = Shapes.join(shape, Shapes.box(0.296875, 0.375, 0.296875, 0.703125, 0.765625, 0.703125), BooleanOp.OR);

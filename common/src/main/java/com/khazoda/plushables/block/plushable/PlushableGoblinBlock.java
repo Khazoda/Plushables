@@ -18,7 +18,7 @@ public class PlushableGoblinBlock extends BasePlushable {
   }
 
   @Override
-  public VoxelShape getShape() {
+  public VoxelShape useShape() {
     VoxelShape shape = Shapes.empty();
     shape = Shapes.or(shape, Shapes.create(0.375, 0, 0.375, 0.625, 0.375, 0.625));
     shape = Shapes.or(shape, Shapes.create(0.3125, 0.375, 0.3125, 0.6875, 0.6875, 0.6875));

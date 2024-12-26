@@ -18,7 +18,7 @@ public class PlushableStatuetteBlock extends BasePlushable {
   }
 
   @Override
-  public VoxelShape getShape() {
+  public VoxelShape useShape() {
     VoxelShape shape = Shapes.empty();
     shape = Shapes.or(shape, Shapes.create(0.5, 0, 0.40625, 0.59375, 0.28125, 0.5));
     shape = Shapes.or(shape, Shapes.create(0.40625, 0.28125, 0.3828, 0.59375, 0.5625, 0.5234));

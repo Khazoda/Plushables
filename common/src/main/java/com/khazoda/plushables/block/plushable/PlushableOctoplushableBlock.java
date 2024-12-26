@@ -18,7 +18,7 @@ public class PlushableOctoplushableBlock extends BasePlushable {
   }
 
   @Override
-  public VoxelShape getShape() {
+  public VoxelShape useShape() {
     VoxelShape shape = Shapes.empty();
     shape = Shapes.or(shape, Shapes.create(0.28125, 0.015625, 0.28125, 0.71875, 0.46875, 0.71875));
     return shape;

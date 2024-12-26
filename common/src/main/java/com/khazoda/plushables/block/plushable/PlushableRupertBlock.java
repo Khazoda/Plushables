@@ -18,7 +18,7 @@ public class PlushableRupertBlock extends BasePlushable {
   }
 
   @Override
-  public VoxelShape getShape() {
+  public VoxelShape useShape() {
     VoxelShape shape = Shapes.empty();
     shape = Shapes.or(shape, Shapes.create(0.3438, 0.1094, 0.25, 0.5938, 0.3594, 0.75));
     shape = Shapes.or(shape, Shapes.create(0.3281, 0.2656, 0.1094, 0.6094, 0.5156, 0.3906));

@@ -18,7 +18,7 @@ public class PlushableCooperBlock extends BasePlushable {
   }
 
   @Override
-  public VoxelShape getShape() {
+  public VoxelShape useShape() {
     VoxelShape shape = Shapes.empty();
     shape = Shapes.or(shape, Shapes.create(0.296875, 0, 0.125, 0.6875, 0.625, 0.875));
     shape = Shapes.or(shape, Shapes.create(0.4375, 0.3640625, 0.05, 0.55, 0.4765625, 0.125));

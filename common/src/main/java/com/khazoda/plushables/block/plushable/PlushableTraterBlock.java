@@ -18,7 +18,7 @@ public class PlushableTraterBlock extends BasePlushable {
   }
 
   @Override
-  public VoxelShape getShape() {
+  public VoxelShape useShape() {
     VoxelShape shape = Shapes.empty();
     shape = Shapes.or(shape, Shapes.create(0.5625, 0, 0.4375, 0.79375, 0.3125, 0.6875));
     shape = Shapes.or(shape, Shapes.create(0.2078125, 0.3125, 0.26875, 0.7953125, 1.0625, 0.803125));

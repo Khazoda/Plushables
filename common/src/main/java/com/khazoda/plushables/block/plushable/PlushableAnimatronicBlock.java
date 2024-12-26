@@ -18,7 +18,7 @@ public class PlushableAnimatronicBlock extends BasePlushable {
   }
 
   @Override
-  public VoxelShape getShape() {
+  public VoxelShape useShape() {
     VoxelShape shape = Shapes.empty();
     shape = Shapes.or(shape, Shapes.create(0.34375, 0.390625, 0.375, 0.65625, 0.703125, 0.6875));
     shape = Shapes.or(shape, Shapes.create(0.40625, 0, 0.46875, 0.59375, 0.421875, 0.59375));

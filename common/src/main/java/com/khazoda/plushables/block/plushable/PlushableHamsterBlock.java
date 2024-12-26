@@ -18,7 +18,7 @@ public class PlushableHamsterBlock extends BasePlushable {
   }
 
   @Override
-  public VoxelShape getShape() {
+  public VoxelShape useShape() {
     VoxelShape shape = Shapes.empty();
     shape = Shapes.or(shape, Shapes.create(0.25, 0.1875, 0.3125, 0.75, 0.625, 0.75));
     shape = Shapes.or(shape, Shapes.create(0.3125, 0.4375, 0.1875, 0.6875, 0.8125, 0.5625));

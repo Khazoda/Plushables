@@ -18,7 +18,7 @@ public class PlushableSeaBunnyBlock extends BasePlushable {
   }
 
   @Override
-  public VoxelShape getShape() {
+  public VoxelShape useShape() {
     VoxelShape shape = Shapes.empty();
     shape = Shapes.or(shape, Shapes.create(0.25, 0, 0.25, 0.75, 0.5, 0.75));
     shape = Shapes.or(shape, Shapes.create(0.25, 0.5, 0.25, 0.375, 0.75, 0.375));

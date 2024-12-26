@@ -18,7 +18,7 @@ public class PlushableWalrusBlock extends BasePlushable {
   }
 
   @Override
-  public VoxelShape getShape() {
+  public VoxelShape useShape() {
     VoxelShape shape = Shapes.empty();
     shape = Shapes.or(shape, Shapes.create(0.315625, 0.0625, 0.40625, 0.684375, 0.46875, 0.71875));
     shape = Shapes.or(shape, Shapes.create(0.30625, 0.40625, 0.0625, 0.69375, 0.78125, 0.375));

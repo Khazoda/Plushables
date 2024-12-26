@@ -18,7 +18,7 @@ public class PlushableDragonBlock extends BasePlushable {
   }
 
   @Override
-  public VoxelShape getShape() {
+  public VoxelShape useShape() {
     VoxelShape shape = Shapes.empty();
     shape = Shapes.or(shape, Shapes.create(0.3125, 0, 0.1875, 0.40625, 0.125, 0.3125));
     shape = Shapes.or(shape, Shapes.create(0.5, 0, 0.1875, 0.59375, 0.125, 0.3125));

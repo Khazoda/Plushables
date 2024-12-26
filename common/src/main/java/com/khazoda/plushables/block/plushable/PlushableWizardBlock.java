@@ -18,7 +18,7 @@ public class PlushableWizardBlock extends BasePlushable {
   }
 
   @Override
-  public VoxelShape getShape() {
+  public VoxelShape useShape() {
     VoxelShape shape = Shapes.empty();
     shape = Shapes.or(shape, Shapes.create(0.25, 0, 0.25, 0.75, 0.640625, 0.625));
     shape = Shapes.or(shape, Shapes.create(0.375, 0.9375, 0.15625, 0.625, 1, 0.5));

@@ -18,7 +18,7 @@ public class PlushableRattiamBlock extends BasePlushable {
   }
 
   @Override
-  public VoxelShape getShape() {
+  public VoxelShape useShape() {
     VoxelShape shape = Shapes.empty();
     shape = Shapes.or(shape, Shapes.create(0.359375, 0.59375, 0.0625, 0.640625, 0.78125, 0.25));
     shape = Shapes.or(shape, Shapes.create(0.40625, 0.59375, -0.0625, 0.59375, 0.71875, 0.0625));

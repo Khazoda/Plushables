@@ -18,7 +18,7 @@ public class PlushableWhelplingBlock extends BasePlushable {
   }
 
   @Override
-  public VoxelShape getShape() {
+  public VoxelShape useShape() {
     VoxelShape shape = Shapes.empty();
     shape = Shapes.or(shape, Shapes.create(0.3375, 0, 0.271875, 0.6703125, 0.1890625, 0.690625));
 

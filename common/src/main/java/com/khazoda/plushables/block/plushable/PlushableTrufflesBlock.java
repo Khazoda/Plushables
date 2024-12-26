@@ -18,7 +18,7 @@ public class PlushableTrufflesBlock extends BasePlushable {
   }
 
   @Override
-  public VoxelShape getShape() {
+  public VoxelShape useShape() {
     VoxelShape shape = Shapes.empty();
     shape = Shapes.or(shape, Shapes.create(0.1875, 0, 0.25, 0.8125, 0.5, 0.75));
     shape = Shapes.or(shape, Shapes.create(0.25, 0, 0.0625, 0.3125, 0.0625, 0.125));

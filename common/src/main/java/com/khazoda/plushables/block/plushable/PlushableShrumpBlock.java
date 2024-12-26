@@ -18,7 +18,7 @@ public class PlushableShrumpBlock extends BasePlushable {
   }
 
   @Override
-  public VoxelShape getShape() {
+  public VoxelShape useShape() {
     VoxelShape shape = Shapes.empty();
     shape = Shapes.or(shape, Shapes.create(0.375, 0, 0.375, 0.625, 0.375, 0.625));
     shape = Shapes.or(shape, Shapes.create(0.359375, 0, 0.359375, 0.640625, 0.171875, 0.640625));

@@ -18,7 +18,7 @@ public class PlushableUnicornBlock extends BasePlushable {
   }
 
   @Override
-  public VoxelShape getShape() {
+  public VoxelShape useShape() {
     VoxelShape shape = Shapes.empty();
     shape = Shapes.or(shape, Shapes.create(0.359375, 0, 0.3125, 0.609375, 0.3125, 0.625));
     shape = Shapes.or(shape, Shapes.create(0.359375, 0.3125, 0.1875, 0.609375, 0.5625, 0.5));

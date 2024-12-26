@@ -18,7 +18,7 @@ public class PlushableDjungelskogBlock extends BasePlushable {
   }
 
   @Override
-  public VoxelShape getShape() {
+  public VoxelShape useShape() {
     VoxelShape shape = Shapes.empty();
     shape = Shapes.or(shape, Shapes.create(0.1875, 0, 0.0625, 0.3125, 0.125, 0.25));
     shape = Shapes.or(shape, Shapes.create(0.6875, 0, 0.0625, 0.8125, 0.125, 0.25));

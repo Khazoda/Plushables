@@ -19,7 +19,7 @@ public class PlushableRibbitBlock extends BasePlushable {
   }
 
   @Override
-  public VoxelShape getShape() {
+  public VoxelShape useShape() {
     VoxelShape shape = Shapes.empty();
     shape = Shapes.join(shape, Shapes.box(0.25, 0.125, 0.25, 0.75, 0.625, 0.6875), BooleanOp.OR);
     shape = Shapes.join(shape, Shapes.box(0.5625, 0.5, 0.375, 0.8125, 0.75, 0.5625), BooleanOp.OR);

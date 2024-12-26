@@ -18,7 +18,7 @@ public class PlushableZiggyBlock extends BasePlushable {
   }
 
   @Override
-  public VoxelShape getShape() {
+  public VoxelShape useShape() {
     VoxelShape shape = Shapes.empty();
     shape = Shapes.or(shape, Shapes.create(0.125, 0, 0.5, 0.75, 0.25, 0.8125));
     shape = Shapes.or(shape, Shapes.create(0.5, 0.0625, 0.8125, 0.5625, 0.125, 0.875));

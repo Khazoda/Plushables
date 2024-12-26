@@ -18,7 +18,7 @@ public class PlushablePotsyBlock extends BasePlushable {
   }
 
   @Override
-  public VoxelShape getShape() {
+  public VoxelShape useShape() {
     VoxelShape shape = Shapes.empty();
     shape = Shapes.or(shape, Shapes.create(0.125, 0, 0.125, 0.875, 0.6875, 0.875));
     shape = Shapes.or(shape, Shapes.create(0.1875, 0.6875, 0.1875, 0.8125, 0.75, 0.8125));
