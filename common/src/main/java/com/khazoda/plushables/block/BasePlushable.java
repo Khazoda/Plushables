@@ -26,7 +26,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.List;
 
 public abstract class BasePlushable extends HorizontalDirectionalBlock implements SimpleWaterloggedBlock {
-  public static final Properties defaultSettings = Properties.of().sound(SoundType.WOOL).strength(0.7f).noOcclusion().pushReaction(PushReaction.DESTROY);
+  public static final Properties defaultSettings = Properties.of().sound(SoundType.WOOL).strength(0.1f).noOcclusion().pushReaction(PushReaction.DESTROY);
   public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
   /* ==========[  Default Block Shape Definition  ]========== */
   final VoxelShape blockShape = getShape(); // Empty 12x12 voxel box
