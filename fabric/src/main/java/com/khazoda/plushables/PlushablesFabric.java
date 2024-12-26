@@ -10,7 +10,5 @@ public class PlushablesFabric implements ModInitializer {
         PlushablesCommon.init();
         PlushablesCommon.postInit();
         PlushablesCommon.REGISTRARS.registerAll();
-
-        Constants.LOG.info("+ Plushables Fabric Loaded +");
     }
 }

@@ -10,12 +10,9 @@ import net.neoforged.neoforge.registries.RegisterEvent;
 public class PlushablesNorge {
 
     public PlushablesNorge(IEventBus eventBus) {
-
         PlushablesCommon.init();
         eventBus.addListener(this::onInit);
         eventBus.addListener(this::onRegister);
-
-        Constants.LOG.info("+ Plushables NeoForge Loaded +");
     }
 
     private void onInit(FMLCommonSetupEvent event) {
