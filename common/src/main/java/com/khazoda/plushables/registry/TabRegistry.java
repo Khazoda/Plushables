@@ -7,6 +7,7 @@ import net.minecraft.world.item.CreativeModeTab;
 
 import java.util.function.Supplier;
 
+@SuppressWarnings("unused")
 public class TabRegistry {
   public static final Supplier<CreativeModeTab> PLUSHABLES_TAB = PlushablesCommon.REGISTRARS
       .get(Registries.CREATIVE_MODE_TAB)
