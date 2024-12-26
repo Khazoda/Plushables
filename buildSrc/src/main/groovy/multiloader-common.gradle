@@ -3,8 +3,16 @@ plugins {
     id 'maven-publish'
 }
 
+sourceSets {
+    main {
+        resources {
+            srcDir 'src/main/generated'
+        }
+    }
+}
+
 base {
-    archivesName = "${mod_id}-${project.name}-${minecraft_version}"
+    archivesName = "${mod_id}-${project.name}"
 }
 
 java {
@@ -85,16 +93,17 @@ processResources {
 
     var expandProps = [
             'version'                      : version,
-            'group'       : project.group,
+            'group'                        : project.group,
             'minecraft_version'            : minecraft_version,
             'minecraft_version_range'      : minecraft_version_range,
             'fabric_version'               : fabric_version,
             'fabric_loader_version'        : fabric_loader_version,
+            'fabric_loader_minimum_version': fabric_loader_minimum_version,
             'mod_name'                     : mod_name,
             'mod_author'                   : mod_author,
             'mod_id'                       : mod_id,
-            'mod_homepage': mod_homepage,
-            'mod_issues'  : mod_issues,
+            'mod_homepage'                 : mod_homepage,
+            'mod_issues'                   : mod_issues,
             'license'                      : license,
             'description'                  : project.description,
             'neoforge_version'             : neoforge_version,
