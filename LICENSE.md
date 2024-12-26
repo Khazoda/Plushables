@@ -26,6 +26,7 @@ The following plushie designs are created by other talented creators and are inc
 - **Animatronic** by [Sammie](https://modrinth.com/user/Sammy)
 - **Moobloom** by [MerchantPug](https://modrinth.com/user/pug)
 - **Blåhaj** by [hibi](https://modrinth.com/user/hibi)
+- **Ribbit** by [Joosh](https://modrinth.com/user/Joo5h)
 
 If you wish to use any third-party designs, please reach out to their respective creators for permission.
 
