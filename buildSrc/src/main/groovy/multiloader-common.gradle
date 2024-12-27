@@ -66,6 +66,7 @@ repositories {
 }
 
 sourcesJar {
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
     from(rootProject.file('LICENSE')) {
         rename { "${it}_${mod_name}" }
     }
