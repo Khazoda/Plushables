@@ -70,7 +70,7 @@ public abstract class BasePlushable extends HorizontalDirectionalBlock implement
   }
 
   /**
-   * {@link #useWithoutItem}, {@link #playInteractionEffects} & {@link #startCooldown}
+   * {@link #useWithoutItem}, {@link #playInteractionEffects} and {@link #startCooldown}
    * all work together to play interaction sounds and effects at a set cooldown.
    */
   protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hitResult) {
