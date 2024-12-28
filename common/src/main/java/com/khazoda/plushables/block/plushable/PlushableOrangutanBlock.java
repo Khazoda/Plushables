@@ -1,6 +1,7 @@
 package com.khazoda.plushables.block.plushable;
 
 import com.khazoda.plushables.block.BasePlushable;
+import com.khazoda.plushables.block.interaction.InteractionEffectBuilder;
 import com.khazoda.plushables.registry.SoundRegistry;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.world.level.block.HorizontalDirectionalBlock;
@@ -15,9 +16,10 @@ public class PlushableOrangutanBlock extends BasePlushable {
   }
 
   public PlushableOrangutanBlock(Properties settings) {
-    super(settings);
-    this.interactionSound = SoundRegistry.PLUSHABLE_ORANGUTAN.get();
-    this.cooldownPeriod = 80;
+    super(settings, InteractionEffectBuilder.create()
+        .cooldown(80)
+        .sound(SoundRegistry.PLUSHABLE_ORANGUTAN)
+        .build());
   }
 
   @Override
