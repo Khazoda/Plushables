@@ -3,6 +3,7 @@ package com.khazoda.plushables.block.plushable;
 import com.khazoda.plushables.block.BasePlushable;
 import com.khazoda.plushables.block.interaction.InteractionEffectBuilder;
 import com.mojang.serialization.MapCodec;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.level.block.HorizontalDirectionalBlock;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
@@ -15,7 +16,10 @@ public class PlushableFrogeBlock extends BasePlushable {
   }
 
   public PlushableFrogeBlock(Properties settings) {
-    super(settings, new InteractionEffectBuilder().lightLevel(8).build());
+    super(settings, new InteractionEffectBuilder()
+        .lightLevel(8)
+        .sound(SoundEvents.FROG_AMBIENT)
+        .build());
   }
 
   @Override
