@@ -1,12 +1,11 @@
 package com.khazoda.plushables.block;
 
+import com.khazoda.plushables.block.interaction.InteractionEffectData;
 import com.khazoda.plushables.block.util.VoxelShapeHelper;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionResult;
@@ -51,9 +50,7 @@ public abstract class BasePlushable extends HorizontalDirectionalBlock implement
   final VoxelShape blockShape = useShape(); // Empty 12x12 voxel box
   final VoxelShape[] blockShapes = VoxelShapeHelper.calculateBlockShapes(blockShape); // Cache all shape directions
 
-  /* These fields can be overwritten by child classes */
-  protected SoundEvent interactionSound = SoundEvents.WOOL_HIT;
-  protected int cooldownPeriod = 10;
+  protected final InteractionEffectData effectData;
 
   /* ==========[ Constructors ]========== */
   public BasePlushable() {
@@ -61,14 +58,19 @@ public abstract class BasePlushable extends HorizontalDirectionalBlock implement
   }
 
   public BasePlushable(Properties settings) {
-    super(settings);
+    this(settings, InteractionEffectData.DEFAULT);
+  }
+
+  public BasePlushable(Properties settings, InteractionEffectData effectData) {
+    super(settings.lightLevel((blockState) -> effectData.lightLevel()));
+    this.effectData = effectData;
     registerDefaultState(this.stateDefinition.any().setValue(ON_COOLDOWN, false)
         .setValue(BlockStateProperties.HORIZONTAL_FACING, Direction.NORTH)
         .setValue(WATERLOGGED, false));
   }
 
   /**
-   * {@link #useWithoutItem}, {@link #playInteractionEffects} & {@link #startCooldown}
+   * {@link #useWithoutItem}, {@link #playInteractionEffects} and {@link #startCooldown}
    * all work together to play interaction sounds and effects at a set cooldown.
    */
   protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hitResult) {
@@ -78,8 +80,27 @@ public abstract class BasePlushable extends HorizontalDirectionalBlock implement
 
   public boolean playInteractionEffects(Level level, BlockState state, BlockHitResult hitResult, Entity entity) {
     BlockPos blockPos = hitResult.getBlockPos();
+
+    /* Play Sound */
+    level.playSound(null, blockPos,
+        effectData.soundEvent(),
+        SoundSource.BLOCKS,
+        effectData.soundVolume(),
+        effectData.soundPitch());
+
+    /* Spawn Particles */
+    if (level.isClientSide && effectData.particleEffect() != null) {
+      RandomSource random = level.getRandom();
+      for (int i = 0; i < effectData.particleCount(); i++) {
+        double spread = effectData.particleSpread();
+        double x = blockPos.getX() + 0.5 + (random.nextDouble() - 0.5) * spread;
+        double y = blockPos.getY() + 0.75 + (random.nextDouble() - 0.5) * spread;
+        double z = blockPos.getZ() + 0.5 + (random.nextDouble() - 0.5) * spread;
+        level.addParticle(effectData.particleEffect(), x, y, z, 0, 0, 0);
+      }
+    }
+
     this.startCooldown(state, level, blockPos);
-    level.playSound(null, blockPos, interactionSound, SoundSource.BLOCKS, 2.0F, 1.0F);
     level.gameEvent(entity, GameEvent.BLOCK_ACTIVATE, blockPos);
     return true;
   }
@@ -87,7 +108,7 @@ public abstract class BasePlushable extends HorizontalDirectionalBlock implement
   public void startCooldown(BlockState state, Level level, BlockPos pos) {
     level.setBlock(pos, state.setValue(ON_COOLDOWN, true), 3);
     level.updateNeighborsAt(pos, this);
-    level.scheduleTick(pos, this, cooldownPeriod);
+    level.scheduleTick(pos, this, effectData.cooldownPeriod());
   }
 
   @Override

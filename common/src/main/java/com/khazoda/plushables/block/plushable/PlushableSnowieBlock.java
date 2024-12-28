@@ -1,7 +1,9 @@
 package com.khazoda.plushables.block.plushable;
 
 import com.khazoda.plushables.block.BasePlushable;
+import com.khazoda.plushables.block.interaction.InteractionEffectBuilder;
 import com.mojang.serialization.MapCodec;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.level.block.HorizontalDirectionalBlock;
 import net.minecraft.world.phys.shapes.BooleanOp;
 import net.minecraft.world.phys.shapes.Shapes;
@@ -15,7 +17,12 @@ public class PlushableSnowieBlock extends BasePlushable {
   }
 
   public PlushableSnowieBlock(Properties settings) {
-    super(settings);
+    super(settings, new InteractionEffectBuilder()
+        .cooldown(40)
+        .sound(SoundEvents.SNOW_PLACE)
+        .volume(0.75f)
+        .pitch(1.15f)
+        .build());
   }
 
   @Override

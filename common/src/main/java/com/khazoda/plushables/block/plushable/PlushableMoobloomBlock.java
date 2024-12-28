@@ -1,7 +1,9 @@
 package com.khazoda.plushables.block.plushable;
 
 import com.khazoda.plushables.block.BasePlushable;
+import com.khazoda.plushables.block.interaction.InteractionEffectBuilder;
 import com.mojang.serialization.MapCodec;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.level.block.HorizontalDirectionalBlock;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
@@ -14,7 +16,11 @@ public class PlushableMoobloomBlock extends BasePlushable {
   }
 
   public PlushableMoobloomBlock(Properties settings) {
-    super(settings);
+    super(settings, new InteractionEffectBuilder()
+        .sound(SoundEvents.COW_AMBIENT)
+        .volume(0.35f)
+        .pitch(2.5f)
+        .build());
   }
 
   @Override

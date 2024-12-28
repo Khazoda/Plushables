@@ -1,6 +1,8 @@
 package com.khazoda.plushables.block.plushable;
 
 import com.khazoda.plushables.block.BasePlushable;
+import com.khazoda.plushables.block.interaction.InteractionEffectBuilder;
+import com.khazoda.plushables.registry.SoundRegistry;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.world.level.block.HorizontalDirectionalBlock;
 import net.minecraft.world.phys.shapes.Shapes;
@@ -14,7 +16,11 @@ public class PlushableRupertBlock extends BasePlushable {
   }
 
   public PlushableRupertBlock(Properties settings) {
-    super(settings);
+    super(settings, InteractionEffectBuilder.create()
+        .cooldown(70)
+        .sound(SoundRegistry.PLUSHABLE_RUPERT)
+        .volume(4f)
+        .build());
   }
 
   @Override

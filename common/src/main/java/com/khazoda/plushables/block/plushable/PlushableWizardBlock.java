@@ -1,7 +1,10 @@
 package com.khazoda.plushables.block.plushable;
 
 import com.khazoda.plushables.block.BasePlushable;
+import com.khazoda.plushables.block.interaction.InteractionEffectBuilder;
+import com.khazoda.plushables.registry.SoundRegistry;
 import com.mojang.serialization.MapCodec;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.world.level.block.HorizontalDirectionalBlock;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
@@ -14,7 +17,13 @@ public class PlushableWizardBlock extends BasePlushable {
   }
 
   public PlushableWizardBlock(Properties settings) {
-    super(settings);
+    super(settings, InteractionEffectBuilder.create()
+        .cooldown(80)
+        .sound(SoundRegistry.PLUSHABLE_WIZARD)
+        .particle(ParticleTypes.NOTE)
+        .particleCount(2)
+        .particleSpread(1.1)
+        .build());
   }
 
   @Override

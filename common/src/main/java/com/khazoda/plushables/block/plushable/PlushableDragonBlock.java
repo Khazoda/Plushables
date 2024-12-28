@@ -1,7 +1,10 @@
 package com.khazoda.plushables.block.plushable;
 
 import com.khazoda.plushables.block.BasePlushable;
+import com.khazoda.plushables.block.interaction.InteractionEffectBuilder;
+import com.khazoda.plushables.registry.SoundRegistry;
 import com.mojang.serialization.MapCodec;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.world.level.block.HorizontalDirectionalBlock;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
@@ -14,7 +17,13 @@ public class PlushableDragonBlock extends BasePlushable {
   }
 
   public PlushableDragonBlock(Properties settings) {
-    super(settings);
+    super(settings, InteractionEffectBuilder.create()
+        .cooldown(30)
+        .sound(SoundRegistry.PLUSHABLE_DRAGON)
+        .particle(ParticleTypes.SOUL_FIRE_FLAME)
+        .particleCount(3)
+        .particleYOffset(-0.3f)
+        .build());
   }
 
   @Override
