@@ -12,7 +12,7 @@ public class TabRegistry {
   public static final Supplier<CreativeModeTab> PLUSHABLES_TAB = PlushablesCommon.REGISTRARS
       .get(Registries.CREATIVE_MODE_TAB)
       .register("main", () -> CreativeModeTab.builder(CreativeModeTab.Row.TOP, 0)
-          .title(Component.translatable("itemGroup.plushables.itemGroup"))
+          .title(Component.translatable("itemGroup.plushables.main"))
           .icon(() -> MainRegistry.PLUSHABLE_PENGUIN_ITEM.get().getDefaultInstance())
           .displayItems((parameters, output) -> {
             output.accept(MainRegistry.HEART_OF_GOLD_ITEM.get());
