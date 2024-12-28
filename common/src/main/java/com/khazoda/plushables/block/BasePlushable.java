@@ -18,6 +18,7 @@ import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.level.material.PushReaction;
+import net.minecraft.world.level.pathfinder.PathComputationType;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
@@ -33,13 +34,8 @@ import java.util.List;
  * implements SimpleWaterloggedBlock for waterlogging support.
  */
 public abstract class BasePlushable extends HorizontalDirectionalBlock implements SimpleWaterloggedBlock {
-  public static final Properties defaultSettings = Properties.of()
-      .sound(SoundType.WOOL)
-      .strength(0.1f)
-      .noOcclusion()
-      .pushReaction(PushReaction.DESTROY);
+  public static final Properties defaultSettings = Properties.of().sound(SoundType.WOOL).strength(0.1f).noOcclusion().pushReaction(PushReaction.DESTROY);
   public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
-  /* ==========[ Default Block Shape Definition ]========== */
   final VoxelShape blockShape = useShape(); // Empty 12x12 voxel box
   final VoxelShape[] blockShapes = VoxelShapeHelper.calculateBlockShapes(blockShape); // Cache all shape directions
 
@@ -50,14 +46,12 @@ public abstract class BasePlushable extends HorizontalDirectionalBlock implement
 
   public BasePlushable(Properties settings) {
     super(settings);
-    registerDefaultState(this.stateDefinition.any()
-        .setValue(BlockStateProperties.HORIZONTAL_FACING, Direction.NORTH)
-        .setValue(WATERLOGGED, false));
+    registerDefaultState(this.stateDefinition.any().setValue(BlockStateProperties.HORIZONTAL_FACING, Direction.NORTH).setValue(WATERLOGGED, false));
   }
 
+
   @Override
-  public void appendHoverText(ItemStack stack, Item.TooltipContext context, List<Component> tooltipComponents,
-                              TooltipFlag tooltipFlag) {
+  public void appendHoverText(ItemStack stack, Item.TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
     super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
   }
 
@@ -105,9 +99,7 @@ public abstract class BasePlushable extends HorizontalDirectionalBlock implement
   @Nullable
   @Override
   public BlockState getStateForPlacement(BlockPlaceContext context) {
-    return this.defaultBlockState()
-        .setValue(BlockStateProperties.HORIZONTAL_FACING, context.getHorizontalDirection().getOpposite())
-        .setValue(WATERLOGGED, context.getLevel().getFluidState(context.getClickedPos()).is(Fluids.WATER));
+    return this.defaultBlockState().setValue(BlockStateProperties.HORIZONTAL_FACING, context.getHorizontalDirection().getOpposite()).setValue(WATERLOGGED, context.getLevel().getFluidState(context.getClickedPos()).is(Fluids.WATER));
   }
 
   /**
@@ -123,10 +115,26 @@ public abstract class BasePlushable extends HorizontalDirectionalBlock implement
    * Handles waterlogging state updates.
    */
   @Override
-  protected BlockState updateShape(BlockState state, Direction direction, BlockState neighborState, LevelAccessor level,
-                                   BlockPos pos, BlockPos neighborPos) {
-    if (state.getValue(WATERLOGGED))
-      level.scheduleTick(pos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
+  protected BlockState updateShape(BlockState state, Direction direction, BlockState neighborState, LevelAccessor level, BlockPos pos, BlockPos neighborPos) {
+    if (state.getValue(WATERLOGGED)) level.scheduleTick(pos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
     return super.updateShape(state, direction, neighborState, level, pos, neighborPos);
+  }
+
+  /**
+   * Standard Method Overrides
+   */
+  @Override
+  protected BlockState rotate(BlockState state, Rotation rot) {
+    return state.setValue(FACING, rot.rotate(state.getValue(FACING)));
+  }
+
+  @Override
+  protected BlockState mirror(BlockState state, Mirror mirror) {
+    return state.rotate(mirror.getRotation(state.getValue(FACING)));
+  }
+
+  @Override
+  protected boolean isPathfindable(BlockState state, PathComputationType pathComputationType) {
+    return false;
   }
 }
