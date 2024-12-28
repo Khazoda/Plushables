@@ -7,7 +7,8 @@ import org.jetbrains.annotations.Nullable;
 
 public record InteractionEffectData(SoundEvent soundEvent, float soundVolume, float soundPitch,
                                     @Nullable ParticleOptions particleEffect, int particleCount, double particleSpread,
-                                    int cooldownPeriod) {
+                                    float particleYOffset,
+                                    int cooldownPeriod, int lightLevel) {
   public static final InteractionEffectData DEFAULT =
       new InteractionEffectData(SoundEvents.WOOL_HIT,
           2.0F,
@@ -15,5 +16,7 @@ public record InteractionEffectData(SoundEvent soundEvent, float soundVolume, fl
           null,
           0,
           0.5,
-          10);
+          0,
+          10,
+          0);
 }

@@ -62,7 +62,7 @@ public abstract class BasePlushable extends HorizontalDirectionalBlock implement
   }
 
   public BasePlushable(Properties settings, InteractionEffectData effectData) {
-    super(settings);
+    super(settings.lightLevel((blockState) -> effectData.lightLevel()));
     this.effectData = effectData;
     registerDefaultState(this.stateDefinition.any().setValue(ON_COOLDOWN, false)
         .setValue(BlockStateProperties.HORIZONTAL_FACING, Direction.NORTH)
@@ -94,7 +94,7 @@ public abstract class BasePlushable extends HorizontalDirectionalBlock implement
       for (int i = 0; i < effectData.particleCount(); i++) {
         double spread = effectData.particleSpread();
         double x = blockPos.getX() + 0.5 + (random.nextDouble() - 0.5) * spread;
-        double y = blockPos.getY() + 0.5 + (random.nextDouble() - 0.5) * spread;
+        double y = blockPos.getY() + 0.75 + (random.nextDouble() - 0.5) * spread;
         double z = blockPos.getZ() + 0.5 + (random.nextDouble() - 0.5) * spread;
         level.addParticle(effectData.particleEffect(), x, y, z, 0, 0, 0);
       }

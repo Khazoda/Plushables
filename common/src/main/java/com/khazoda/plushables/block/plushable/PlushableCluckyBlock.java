@@ -21,7 +21,7 @@ public class PlushableCluckyBlock extends BasePlushable {
         .cooldown(75)
         .sound(SoundRegistry.PLUSHABLE_CLUCKY)
         .particle(ParticleTypes.HEART)
-        .count(2)
+        .particleCount(2)
         .build());
   }
 

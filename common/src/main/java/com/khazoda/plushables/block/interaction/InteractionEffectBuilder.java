@@ -12,7 +12,9 @@ public class InteractionEffectBuilder {
   private ParticleOptions particleEffect = InteractionEffectData.DEFAULT.particleEffect();
   private int particleCount = InteractionEffectData.DEFAULT.particleCount();
   private double particleSpread = InteractionEffectData.DEFAULT.particleSpread();
+  private float particleYOffset = InteractionEffectData.DEFAULT.particleYOffset();
   private int cooldownPeriod = InteractionEffectData.DEFAULT.cooldownPeriod();
+  private int lightLevel = InteractionEffectData.DEFAULT.lightLevel();
 
   public static InteractionEffectBuilder create() {
     return new InteractionEffectBuilder();
@@ -38,13 +40,18 @@ public class InteractionEffectBuilder {
     return this;
   }
 
-  public InteractionEffectBuilder count(int count) {
+  public InteractionEffectBuilder particleCount(int count) {
     particleCount = count;
     return this;
   }
 
-  public InteractionEffectBuilder spread(double spread) {
+  public InteractionEffectBuilder particleSpread(double spread) {
     particleSpread = spread;
+    return this;
+  }
+
+  public InteractionEffectBuilder particleYOffset(float Yoffset) {
+    particleYOffset = Yoffset;
     return this;
   }
 
@@ -53,7 +60,12 @@ public class InteractionEffectBuilder {
     return this;
   }
 
+  public InteractionEffectBuilder lightLevel(int level) {
+    lightLevel = level;
+    return this;
+  }
+
   public InteractionEffectData build() {
-    return new InteractionEffectData(soundEvent, soundVolume, soundPitch, particleEffect, particleCount, particleSpread, cooldownPeriod);
+    return new InteractionEffectData(soundEvent, soundVolume, soundPitch, particleEffect, particleCount, particleSpread, particleYOffset, cooldownPeriod, lightLevel);
   }
 }

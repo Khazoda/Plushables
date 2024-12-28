@@ -21,7 +21,8 @@ public class PlushableDragonBlock extends BasePlushable {
         .cooldown(30)
         .sound(SoundRegistry.PLUSHABLE_DRAGON)
         .particle(ParticleTypes.SOUL_FIRE_FLAME)
-        .count(3)
+        .particleCount(3)
+        .particleYOffset(-0.3f)
         .build());
   }
 

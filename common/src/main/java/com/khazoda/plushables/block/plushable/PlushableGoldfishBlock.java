@@ -20,8 +20,9 @@ public class PlushableGoldfishBlock extends BasePlushable {
     super(settings, InteractionEffectBuilder.create()
         .cooldown(65)
         .sound(SoundRegistry.PLUSHABLE_GOLDFISH)
-        .particle(ParticleTypes.BUBBLE)
-        .count(5)
+        .particle(ParticleTypes.FISHING)
+        .particleCount(5)
+        .particleSpread(1.25)
         .build());
   }
 
