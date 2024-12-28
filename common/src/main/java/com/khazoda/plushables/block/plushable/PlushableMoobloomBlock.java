@@ -18,7 +18,7 @@ public class PlushableMoobloomBlock extends BasePlushable {
   public PlushableMoobloomBlock(Properties settings) {
     super(settings, new InteractionEffectBuilder()
         .sound(SoundEvents.COW_AMBIENT)
-        .volume(0.6f)
+        .volume(0.35f)
         .pitch(2.5f)
         .build());
   }

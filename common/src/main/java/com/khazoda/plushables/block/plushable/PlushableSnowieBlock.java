@@ -18,6 +18,7 @@ public class PlushableSnowieBlock extends BasePlushable {
 
   public PlushableSnowieBlock(Properties settings) {
     super(settings, new InteractionEffectBuilder()
+        .cooldown(40)
         .sound(SoundEvents.SNOW_PLACE)
         .volume(0.75f)
         .pitch(1.15f)
