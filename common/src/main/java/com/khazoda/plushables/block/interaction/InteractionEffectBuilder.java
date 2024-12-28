@@ -20,8 +20,13 @@ public class InteractionEffectBuilder {
     return new InteractionEffectBuilder();
   }
 
-  public InteractionEffectBuilder sound(Supplier<SoundEvent> event) {
-    soundEvent = event.get();
+  public InteractionEffectBuilder sound(Supplier<SoundEvent> supplier) {
+    soundEvent = supplier.get();
+    return this;
+  }
+
+  public InteractionEffectBuilder sound(SoundEvent event) {
+    soundEvent = event;
     return this;
   }
 
