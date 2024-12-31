@@ -1,6 +1,8 @@
-package com.khazoda.plushables.registry;
+package com.khazoda.plushables.registry.helper;
 
 import com.khazoda.plushables.Constants;
+import com.khazoda.plushables.registry.MainRegistry;
+import com.khazoda.plushables.registry.TabRegistry;
 import it.unimi.dsi.fastutil.objects.Object2ObjectLinkedOpenHashMap;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;

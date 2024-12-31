@@ -7,9 +7,9 @@ import net.minecraft.core.HolderLookup;
 
 import java.util.concurrent.CompletableFuture;
 
-public class PlushablesLootTableProvider extends FabricBlockLootTableProvider {
-  public PlushablesLootTableProvider(FabricDataOutput dataOutput,
-                                     CompletableFuture<HolderLookup.Provider> registryLookup) {
+public class PlushablesBlockLootTableProvider extends FabricBlockLootTableProvider {
+  public PlushablesBlockLootTableProvider(FabricDataOutput dataOutput,
+                                          CompletableFuture<HolderLookup.Provider> registryLookup) {
     super(dataOutput, registryLookup);
   }
 

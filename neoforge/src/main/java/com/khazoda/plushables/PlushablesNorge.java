@@ -9,17 +9,17 @@ import net.neoforged.neoforge.registries.RegisterEvent;
 @Mod(Constants.MOD_ID)
 public class PlushablesNorge {
 
-    public PlushablesNorge(IEventBus eventBus) {
-        PlushablesCommon.init();
-        eventBus.addListener(this::onInit);
-        eventBus.addListener(this::onRegister);
-    }
+  public PlushablesNorge(IEventBus eventBus) {
+    PlushablesCommon.init();
+    eventBus.addListener(this::onInit);
+    eventBus.addListener(this::onRegister);
+  }
 
-    private void onInit(FMLCommonSetupEvent event) {
-        event.enqueueWork(PlushablesCommon::postInit);
-    }
+  private void onInit(FMLCommonSetupEvent event) {
+    event.enqueueWork(PlushablesCommon::postInit);
+  }
 
-    private void onRegister(RegisterEvent event) {
-        PlushablesCommon.REGISTRARS.register(event.getRegistry());
-    }
+  private void onRegister(RegisterEvent event) {
+    PlushablesCommon.REGISTRARS.register(event.getRegistry());
+  }
 }

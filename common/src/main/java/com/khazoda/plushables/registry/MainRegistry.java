@@ -4,15 +4,21 @@ import com.khazoda.plushables.PlushablesCommon;
 import com.khazoda.plushables.block.BasePlushable;
 import com.khazoda.plushables.block.plushable.*;
 import com.khazoda.plushables.item.PlushableBlockItem;
+import com.khazoda.plushables.registry.helper.Reggie;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.function.Supplier;
 
 public class MainRegistry {
   private static final Reggie<Block> BLOCK_REGISTRAR = PlushablesCommon.REGISTRARS.get(Registries.BLOCK);
   private static final Reggie<Item> ITEM_REGISTRAR = PlushablesCommon.REGISTRARS.get(Registries.ITEM);
+
+  /* ==========[  List of All Plushables (used in loot table iteration)  ]========== */
+  public static final List<Supplier<PlushableBlockItem>> PLUSHABLE_LIST = new ArrayList<>();
 
   /* ==========[ Item Registration ]========== */
   public static final Supplier<Item> HEART_OF_GOLD_ITEM = ITEM_REGISTRAR.register("heart_of_gold", () -> new Item(new Item.Properties()));
@@ -118,6 +124,8 @@ public class MainRegistry {
   }
 
   private static Supplier<PlushableBlockItem> register(String name, Supplier<BasePlushable> block) {
-    return ITEM_REGISTRAR.register(name, () -> new PlushableBlockItem(block.get(), new Item.Properties()));
+    Supplier<PlushableBlockItem> plushSupplier = ITEM_REGISTRAR.register(name, () -> new PlushableBlockItem(block.get(), new Item.Properties().stacksTo(1)));
+    PLUSHABLE_LIST.add(plushSupplier);
+    return plushSupplier;
   }
 }

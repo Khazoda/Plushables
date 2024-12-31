@@ -1,6 +1,7 @@
 package com.khazoda.plushables.registry;
 
 import com.khazoda.plushables.PlushablesCommon;
+import com.khazoda.plushables.registry.helper.Reggie;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.sounds.SoundEvent;
 
@@ -14,7 +15,6 @@ public class SoundRegistry {
   public static final Supplier<SoundEvent> PLUSHABLE_CLUCKY = SOUND_REGISTRAR.register("plushable_clucky", () -> SoundEvent.createVariableRangeEvent(ID("plushable_clucky")));
   public static final Supplier<SoundEvent> PLUSHABLE_DRAGON = SOUND_REGISTRAR.register("plushable_dragon", () -> SoundEvent.createVariableRangeEvent(ID("plushable_dragon")));
   public static final Supplier<SoundEvent> PLUSHABLE_GOLDFISH = SOUND_REGISTRAR.register("plushable_goldfish", () -> SoundEvent.createVariableRangeEvent(ID("plushable_goldfish")));
-  public static final Supplier<SoundEvent> PLUSHABLE_ORANGUTAN = SOUND_REGISTRAR.register("plushable_orangutan", () -> SoundEvent.createVariableRangeEvent(ID("plushable_orangutan")));
   public static final Supplier<SoundEvent> PLUSHABLE_OWL = SOUND_REGISTRAR.register("plushable_owl", () -> SoundEvent.createVariableRangeEvent(ID("plushable_owl")));
   public static final Supplier<SoundEvent> PLUSHABLE_RUPERT = SOUND_REGISTRAR.register("plushable_rupert", () -> SoundEvent.createVariableRangeEvent(ID("plushable_rupert")));
   public static final Supplier<SoundEvent> PLUSHABLE_STATUETTE = SOUND_REGISTRAR.register("plushable_statuette", () -> SoundEvent.createVariableRangeEvent(ID("plushable_statuette")));

@@ -1,5 +1,6 @@
-package com.khazoda.plushables.registry;
+package com.khazoda.plushables.registry.helper;
 
+import com.khazoda.plushables.registry.MainRegistry;
 import it.unimi.dsi.fastutil.objects.Object2ObjectLinkedOpenHashMap;
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceKey;
