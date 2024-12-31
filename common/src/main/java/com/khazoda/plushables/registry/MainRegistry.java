@@ -118,6 +118,6 @@ public class MainRegistry {
   }
 
   private static Supplier<PlushableBlockItem> register(String name, Supplier<BasePlushable> block) {
-    return ITEM_REGISTRAR.register(name, () -> new PlushableBlockItem(block.get(), new Item.Properties()));
+    return ITEM_REGISTRAR.register(name, () -> new PlushableBlockItem(block.get(), new Item.Properties().stacksTo(1)));
   }
 }
