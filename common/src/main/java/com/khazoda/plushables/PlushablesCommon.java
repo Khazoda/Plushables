@@ -2,8 +2,8 @@ package com.khazoda.plushables;
 
 import com.khazoda.plushables.platform.Services;
 import com.khazoda.plushables.registry.MainRegistry;
-import com.khazoda.plushables.registry.Reginald;
 import com.khazoda.plushables.registry.TabRegistry;
+import com.khazoda.plushables.registry.helper.Reginald;
 
 
 public class PlushablesCommon {

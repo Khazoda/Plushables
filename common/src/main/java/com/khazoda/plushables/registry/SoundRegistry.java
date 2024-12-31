@@ -1,6 +1,7 @@
 package com.khazoda.plushables.registry;
 
 import com.khazoda.plushables.PlushablesCommon;
+import com.khazoda.plushables.registry.helper.Reggie;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.sounds.SoundEvent;
 

@@ -4,6 +4,7 @@ import com.khazoda.plushables.PlushablesCommon;
 import com.khazoda.plushables.block.BasePlushable;
 import com.khazoda.plushables.block.plushable.*;
 import com.khazoda.plushables.item.PlushableBlockItem;
+import com.khazoda.plushables.registry.helper.Reggie;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
