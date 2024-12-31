@@ -5,10 +5,16 @@ import com.khazoda.plushables.block.BasePlushable;
 import com.khazoda.plushables.block.plushable.*;
 import com.khazoda.plushables.item.PlushableBlockItem;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.world.entity.EquipmentSlotGroup;
+import net.minecraft.world.entity.ai.attributes.AttributeModifier;
+import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.component.ItemAttributeModifiers;
 import net.minecraft.world.level.block.Block;
 
 import java.util.function.Supplier;
+
+import static com.khazoda.plushables.Constants.ID;
 
 public class MainRegistry {
   private static final Reggie<Block> BLOCK_REGISTRAR = PlushablesCommon.REGISTRARS.get(Registries.BLOCK);
@@ -118,6 +124,6 @@ public class MainRegistry {
   }
 
   private static Supplier<PlushableBlockItem> register(String name, Supplier<BasePlushable> block) {
-    return ITEM_REGISTRAR.register(name, () -> new PlushableBlockItem(block.get(), new Item.Properties()));
+    return ITEM_REGISTRAR.register(name, () -> new PlushableBlockItem(block.get(), new Item.Properties().attributes(ItemAttributeModifiers.builder().add(Attributes.ARMOR, new AttributeModifier(ID("plushie_head_wearable"), 1.0D, AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.HEAD).build())));
   }
 }
