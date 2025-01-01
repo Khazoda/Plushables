@@ -1,9 +1,13 @@
 package com.khazoda.plushables.block;
 
 import com.khazoda.plushables.block.interaction.InteractionEffectData;
+import com.khazoda.plushables.block.tooltip.TooltipData;
 import com.khazoda.plushables.block.util.VoxelShapeHelper;
+import net.minecraft.ChatFormatting;
+import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.network.chat.CommonComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundSource;
@@ -51,6 +55,7 @@ public abstract class BasePlushable extends HorizontalDirectionalBlock implement
   final VoxelShape[] blockShapes = VoxelShapeHelper.calculateBlockShapes(blockShape); // Cache all shape directions
 
   protected final InteractionEffectData effectData;
+  protected final TooltipData tooltipData;
 
   /* ==========[ Constructors ]========== */
   public BasePlushable() {
@@ -58,12 +63,21 @@ public abstract class BasePlushable extends HorizontalDirectionalBlock implement
   }
 
   public BasePlushable(Properties settings) {
-    this(settings, InteractionEffectData.DEFAULT);
+    this(settings, InteractionEffectData.DEFAULT, TooltipData.DEFAULT);
   }
 
   public BasePlushable(Properties settings, InteractionEffectData effectData) {
+    this(settings, effectData, TooltipData.DEFAULT);
+  }
+
+  public BasePlushable(Properties settings, TooltipData tooltipData) {
+    this(settings, InteractionEffectData.DEFAULT, tooltipData);
+  }
+
+  public BasePlushable(Properties settings, InteractionEffectData effectData, TooltipData tooltipData) {
     super(settings.lightLevel((blockState) -> effectData.lightLevel()));
     this.effectData = effectData;
+    this.tooltipData = tooltipData;
     registerDefaultState(this.stateDefinition.any().setValue(ON_COOLDOWN, false)
         .setValue(BlockStateProperties.HORIZONTAL_FACING, Direction.NORTH)
         .setValue(WATERLOGGED, false));
@@ -123,6 +137,17 @@ public abstract class BasePlushable extends HorizontalDirectionalBlock implement
   @Override
   public void appendHoverText(ItemStack stack, Item.TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
     super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
+    if (Screen.hasControlDown()) {
+      tooltipComponents.add(Component.literal(tooltipData.number()).withStyle(ChatFormatting.YELLOW));
+      tooltipComponents.add(Component.literal("Artist: " + tooltipData.artist()).withStyle(ChatFormatting.GREEN));
+      tooltipComponents.add(Component.literal("Created: " + tooltipData.creationDate()).withStyle(ChatFormatting.DARK_GREEN));
+      if (tooltipData.trivia() != null) {
+        tooltipComponents.add(CommonComponents.EMPTY);
+        tooltipComponents.add(Component.literal("Trivia: " + tooltipData.trivia()).withStyle(ChatFormatting.WHITE));
+      }
+    } else {
+      tooltipComponents.add(Component.literal("Hold CTRL For Lore").withStyle(ChatFormatting.GRAY));
+    }
   }
 
   /**
