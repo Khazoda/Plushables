@@ -4,12 +4,14 @@ import com.khazoda.plushables.block.interaction.InteractionEffectData;
 import com.khazoda.plushables.block.tooltip.TooltipData;
 import com.khazoda.plushables.block.util.VoxelShapeHelper;
 import net.minecraft.ChatFormatting;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.CommonComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionResult;
@@ -57,6 +59,8 @@ public abstract class BasePlushable extends HorizontalDirectionalBlock implement
   protected final InteractionEffectData effectData;
   protected final TooltipData tooltipData;
 
+  private boolean wasControlDown = false;  // Used for tooltip sound logic
+
   /* ==========[ Constructors ]========== */
   public BasePlushable() {
     this(defaultSettings);
@@ -78,9 +82,7 @@ public abstract class BasePlushable extends HorizontalDirectionalBlock implement
     super(settings.lightLevel((blockState) -> effectData.lightLevel()));
     this.effectData = effectData;
     this.tooltipData = tooltipData;
-    registerDefaultState(this.stateDefinition.any().setValue(ON_COOLDOWN, false)
-        .setValue(BlockStateProperties.HORIZONTAL_FACING, Direction.NORTH)
-        .setValue(WATERLOGGED, false));
+    registerDefaultState(this.stateDefinition.any().setValue(ON_COOLDOWN, false).setValue(BlockStateProperties.HORIZONTAL_FACING, Direction.NORTH).setValue(WATERLOGGED, false));
   }
 
   /**
@@ -88,19 +90,14 @@ public abstract class BasePlushable extends HorizontalDirectionalBlock implement
    * all work together to play interaction sounds and effects at a set cooldown.
    */
   protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hitResult) {
-    return state.getValue(ON_COOLDOWN) ? InteractionResult.CONSUME :
-        this.playInteractionEffects(level, state, hitResult, player) ? InteractionResult.sidedSuccess(level.isClientSide) : InteractionResult.PASS;
+    return state.getValue(ON_COOLDOWN) ? InteractionResult.CONSUME : this.playInteractionEffects(level, state, hitResult, player) ? InteractionResult.sidedSuccess(level.isClientSide) : InteractionResult.PASS;
   }
 
   public boolean playInteractionEffects(Level level, BlockState state, BlockHitResult hitResult, Entity entity) {
     BlockPos blockPos = hitResult.getBlockPos();
 
     /* Play Sound */
-    level.playSound(null, blockPos,
-        effectData.soundEvent(),
-        SoundSource.BLOCKS,
-        effectData.soundVolume(),
-        effectData.soundPitch());
+    level.playSound(null, blockPos, effectData.soundEvent(), SoundSource.BLOCKS, effectData.soundVolume(), effectData.soundPitch());
 
     /* Spawn Particles */
     if (level.isClientSide && effectData.particleEffect() != null) {
@@ -137,13 +134,36 @@ public abstract class BasePlushable extends HorizontalDirectionalBlock implement
   @Override
   public void appendHoverText(ItemStack stack, Item.TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
     super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
-    if (Screen.hasControlDown()) {
+    boolean isControlDown = Screen.hasControlDown();
+
+    // Play sound effect when CTRL is initially pressed
+    if (isControlDown && !wasControlDown) {
+      Minecraft minecraft = Minecraft.getInstance();
+      if (minecraft.player != null) {
+        minecraft.player.playSound(SoundEvents.CAKE_ADD_CANDLE, 4.0F, 1.0F);
+      }
+    }
+    wasControlDown = isControlDown; // Update state so sound effect doesn't play again
+
+    if (isControlDown) {
       tooltipComponents.add(Component.literal(tooltipData.number()).withStyle(ChatFormatting.YELLOW));
-      tooltipComponents.add(Component.literal("Artist: " + tooltipData.artist()).withStyle(ChatFormatting.GREEN));
-      tooltipComponents.add(Component.literal("Created: " + tooltipData.creationDate()).withStyle(ChatFormatting.DARK_GREEN));
+      tooltipComponents.add(Component.literal("Made by " + tooltipData.artist()).withStyle(ChatFormatting.GREEN));
+      tooltipComponents.add(Component.literal("Created on " + tooltipData.creationDate()).withStyle(ChatFormatting.DARK_GREEN));
       if (tooltipData.trivia() != null) {
         tooltipComponents.add(CommonComponents.EMPTY);
-        tooltipComponents.add(Component.literal("Trivia: " + tooltipData.trivia()).withStyle(ChatFormatting.WHITE));
+        // Wraps trivia string input so the tooltip doesn't go on one line forever
+        String[] words = tooltipData.trivia().split(" ");
+        StringBuilder currentLine = new StringBuilder();
+        for (String word : words) {
+          if (currentLine.length() + word.length() > 35) {  // 35 characters per line
+            tooltipComponents.add(Component.literal(currentLine.toString().trim()).withStyle(ChatFormatting.WHITE));
+            currentLine = new StringBuilder();
+          }
+          currentLine.append(word).append(" ");
+        }
+        if (!currentLine.isEmpty()) {
+          tooltipComponents.add(Component.literal(currentLine.toString().trim()).withStyle(ChatFormatting.WHITE));
+        }
       }
     } else {
       tooltipComponents.add(Component.literal("Hold CTRL For Lore").withStyle(ChatFormatting.GRAY));
@@ -194,9 +214,7 @@ public abstract class BasePlushable extends HorizontalDirectionalBlock implement
   @Nullable
   @Override
   public BlockState getStateForPlacement(BlockPlaceContext context) {
-    return this.defaultBlockState().setValue(ON_COOLDOWN, false)
-        .setValue(BlockStateProperties.HORIZONTAL_FACING, context.getHorizontalDirection().getOpposite())
-        .setValue(WATERLOGGED, context.getLevel().getFluidState(context.getClickedPos()).is(Fluids.WATER));
+    return this.defaultBlockState().setValue(ON_COOLDOWN, false).setValue(BlockStateProperties.HORIZONTAL_FACING, context.getHorizontalDirection().getOpposite()).setValue(WATERLOGGED, context.getLevel().getFluidState(context.getClickedPos()).is(Fluids.WATER));
   }
 
   /**
