@@ -140,7 +140,7 @@ public abstract class BasePlushable extends HorizontalDirectionalBlock implement
     if (isControlDown && !wasControlDown) {
       Minecraft minecraft = Minecraft.getInstance();
       if (minecraft.player != null) {
-        minecraft.player.playSound(SoundEvents.CAKE_ADD_CANDLE, 4.0F, 1.0F);
+        minecraft.player.playSound(SoundEvents.CAKE_ADD_CANDLE, 1.0F, 1.0F);
       }
     }
     wasControlDown = isControlDown; // Update state so sound effect doesn't play again
