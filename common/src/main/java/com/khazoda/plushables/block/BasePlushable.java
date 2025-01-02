@@ -147,8 +147,8 @@ public abstract class BasePlushable extends HorizontalDirectionalBlock implement
 
     if (isControlDown) {
       tooltipComponents.add(Component.literal(tooltipData.number()).withStyle(ChatFormatting.YELLOW));
-      tooltipComponents.add(Component.literal("Made by " + tooltipData.artist()).withStyle(ChatFormatting.GREEN));
-      tooltipComponents.add(Component.literal("Created on " + tooltipData.creationDate()).withStyle(ChatFormatting.DARK_GREEN));
+      tooltipComponents.add(Component.translatable("tooltip.plushables.artist").append(" · " + tooltipData.artist()).withStyle(ChatFormatting.GREEN));
+      tooltipComponents.add(Component.translatable("tooltip.plushables.created").append(" · " + tooltipData.localizeDate(Minecraft.getInstance().getLanguageManager().getSelected())).withStyle(ChatFormatting.DARK_GREEN));
       if (tooltipData.trivia() != null) {
         tooltipComponents.add(CommonComponents.EMPTY);
         // Wraps trivia string input so the tooltip doesn't go on one line forever
@@ -156,17 +156,17 @@ public abstract class BasePlushable extends HorizontalDirectionalBlock implement
         StringBuilder currentLine = new StringBuilder();
         for (String word : words) {
           if (currentLine.length() + word.length() > 35) {  // 35 characters per line
-            tooltipComponents.add(Component.literal(currentLine.toString().trim()).withStyle(ChatFormatting.WHITE));
+            tooltipComponents.add(Component.literal(currentLine.toString().trim()).withStyle(ChatFormatting.GRAY));
             currentLine = new StringBuilder();
           }
           currentLine.append(word).append(" ");
         }
         if (!currentLine.isEmpty()) {
-          tooltipComponents.add(Component.literal(currentLine.toString().trim()).withStyle(ChatFormatting.WHITE));
+          tooltipComponents.add(Component.literal(currentLine.toString().trim()).withStyle(ChatFormatting.GRAY));
         }
       }
     } else {
-      tooltipComponents.add(Component.literal("Hold CTRL For Lore").withStyle(ChatFormatting.GRAY));
+      tooltipComponents.add(Component.translatable("tooltip.plushables.holdctrl").withStyle(ChatFormatting.GRAY));
     }
   }
 

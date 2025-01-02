@@ -19,7 +19,7 @@ public class PlushableRibbitBlock extends BasePlushable {
     super(settings, TooltipDataBuilder.create()
         .number(46)
         .artist("Joosh")
-        .creationDate("~5th May 2022")
+        .creationDate("5th May 2022")
         .trivia("You can find entire villages of these guys with the Ribbits mod")
         .build());
   }

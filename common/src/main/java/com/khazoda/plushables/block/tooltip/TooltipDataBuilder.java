@@ -2,12 +2,15 @@ package com.khazoda.plushables.block.tooltip;
 
 import org.jetbrains.annotations.Nullable;
 
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
+
 public class TooltipDataBuilder {
   private String number = TooltipData.DEFAULT.number();
   private String artist = TooltipData.DEFAULT.artist();
-  private String creationDate = TooltipData.DEFAULT.creationDate();
+  private long creationTimestamp = TooltipData.DEFAULT.creationTimestamp();
   private String trivia = TooltipData.DEFAULT.trivia();
-
 
   public static TooltipDataBuilder create() {
     return new TooltipDataBuilder();
@@ -24,7 +27,9 @@ public class TooltipDataBuilder {
   }
 
   public TooltipDataBuilder creationDate(String creationDate) {
-    this.creationDate = creationDate;
+    DateTimeFormatter inputFormatter = DateTimeFormatter.ofPattern("d['st']['nd']['rd']['th'] MMMM yyyy");
+    LocalDate parsedDate = LocalDate.parse(creationDate, inputFormatter);
+    this.creationTimestamp = parsedDate.atStartOfDay(ZoneId.systemDefault()).toInstant().toEpochMilli();
     return this;
   }
 
@@ -34,6 +39,6 @@ public class TooltipDataBuilder {
   }
 
   public TooltipData build() {
-    return new TooltipData(number, artist, creationDate, trivia);
+    return new TooltipData(number, artist, creationTimestamp, trivia);
   }
 }
