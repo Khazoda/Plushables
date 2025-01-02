@@ -16,7 +16,7 @@ public class PlushableFroglinBlock extends BasePlushable {
 
   public PlushableFroglinBlock(Properties settings) {
     super(settings, TooltipDataBuilder.create()
-        .number(3)
+        .number(2)
         .artist("Khazoda")
         .creationDate("13th June 2022")
         .build());

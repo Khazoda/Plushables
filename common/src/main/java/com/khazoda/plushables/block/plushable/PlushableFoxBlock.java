@@ -16,7 +16,7 @@ public class PlushableFoxBlock extends BasePlushable {
 
   public PlushableFoxBlock(Properties settings) {
     super(settings, TooltipDataBuilder.create()
-        .number(2)
+        .number(3)
         .artist("Khazoda")
         .creationDate("14th June 2022")
         .build());
