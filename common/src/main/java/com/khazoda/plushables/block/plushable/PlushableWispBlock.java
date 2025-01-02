@@ -1,6 +1,7 @@
 package com.khazoda.plushables.block.plushable;
 
 import com.khazoda.plushables.block.BasePlushable;
+import com.khazoda.plushables.block.tooltip.TooltipDataBuilder;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.world.level.block.HorizontalDirectionalBlock;
 import net.minecraft.world.phys.shapes.Shapes;
@@ -14,7 +15,11 @@ public class PlushableWispBlock extends BasePlushable {
   }
 
   public PlushableWispBlock(Properties settings) {
-    super(settings);
+    super(settings, TooltipDataBuilder.create()
+        .number(41)
+        .artist("Khazoda")
+        .creationDate("13th April 2024")
+        .build());
   }
 
   @Override

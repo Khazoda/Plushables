@@ -2,6 +2,7 @@ package com.khazoda.plushables.block.plushable;
 
 import com.khazoda.plushables.block.BasePlushable;
 import com.khazoda.plushables.block.interaction.InteractionEffectBuilder;
+import com.khazoda.plushables.block.tooltip.TooltipDataBuilder;
 import com.khazoda.plushables.registry.SoundRegistry;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.core.particles.ParticleTypes;
@@ -17,12 +18,18 @@ public class PlushableRupertBlock extends BasePlushable {
   }
 
   public PlushableRupertBlock(Properties settings) {
-    super(settings, InteractionEffectBuilder.create()
-        .cooldown(50)
-        .sound(SoundRegistry.PLUSHABLE_RUPERT)
-        .particle(ParticleTypes.HEART)
-        .particleCount(1)
-        .build());
+    super(settings,
+        TooltipDataBuilder.create()
+            .number(13)
+            .artist("Luke")
+            .creationDate("14th June 2023")
+            .build(),
+        InteractionEffectBuilder.create()
+            .cooldown(50)
+            .sound(SoundRegistry.PLUSHABLE_RUPERT)
+            .particle(ParticleTypes.HEART)
+            .particleCount(1)
+            .build());
   }
 
   @Override

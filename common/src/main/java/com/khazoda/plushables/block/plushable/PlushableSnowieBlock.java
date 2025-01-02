@@ -2,6 +2,7 @@ package com.khazoda.plushables.block.plushable;
 
 import com.khazoda.plushables.block.BasePlushable;
 import com.khazoda.plushables.block.interaction.InteractionEffectBuilder;
+import com.khazoda.plushables.block.tooltip.TooltipDataBuilder;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.level.block.HorizontalDirectionalBlock;
@@ -17,12 +18,18 @@ public class PlushableSnowieBlock extends BasePlushable {
   }
 
   public PlushableSnowieBlock(Properties settings) {
-    super(settings, new InteractionEffectBuilder()
-        .cooldown(40)
-        .sound(SoundEvents.SNOW_PLACE)
-        .volume(0.75f)
-        .pitch(1.15f)
-        .build());
+    super(settings,
+        TooltipDataBuilder.create()
+            .number(45)
+            .artist("Khazoda")
+            .creationDate("25th December 2024")
+            .build(),
+        InteractionEffectBuilder.create()
+            .cooldown(40)
+            .sound(SoundEvents.SNOW_PLACE)
+            .volume(0.75f)
+            .pitch(1.15f)
+            .build());
   }
 
   @Override

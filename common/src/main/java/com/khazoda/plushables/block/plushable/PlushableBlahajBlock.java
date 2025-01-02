@@ -1,6 +1,7 @@
 package com.khazoda.plushables.block.plushable;
 
 import com.khazoda.plushables.block.BasePlushable;
+import com.khazoda.plushables.block.tooltip.TooltipDataBuilder;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.world.level.block.HorizontalDirectionalBlock;
 import net.minecraft.world.phys.shapes.Shapes;
@@ -14,7 +15,12 @@ public class PlushableBlahajBlock extends BasePlushable {
   }
 
   public PlushableBlahajBlock(Properties settings) {
-    super(settings);
+    super(settings, TooltipDataBuilder.create()
+        .number(40)
+        .artist("hibi")
+        .creationDate("9th August 2022")
+        .trivia("The way you're able to carry plushables is inspired by hibi's original Blåhaj mod")
+        .build());
   }
 
   @Override

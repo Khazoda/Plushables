@@ -2,6 +2,7 @@ package com.khazoda.plushables.block.plushable;
 
 import com.khazoda.plushables.block.BasePlushable;
 import com.khazoda.plushables.block.interaction.InteractionEffectBuilder;
+import com.khazoda.plushables.block.tooltip.TooltipDataBuilder;
 import com.khazoda.plushables.registry.SoundRegistry;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.world.level.block.HorizontalDirectionalBlock;
@@ -16,10 +17,16 @@ public class PlushableOwlBlock extends BasePlushable {
   }
 
   public PlushableOwlBlock(Properties settings) {
-    super(settings, InteractionEffectBuilder.create()
-        .cooldown(80)
-        .sound(SoundRegistry.PLUSHABLE_OWL)
-        .build());
+    super(settings,
+        TooltipDataBuilder.create()
+            .number(32)
+            .artist("Khazoda")
+            .creationDate("5th September 2023")
+            .build(),
+        InteractionEffectBuilder.create()
+            .cooldown(80)
+            .sound(SoundRegistry.PLUSHABLE_OWL)
+            .build());
   }
 
   @Override

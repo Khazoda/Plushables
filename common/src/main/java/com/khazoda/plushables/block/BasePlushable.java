@@ -67,18 +67,18 @@ public abstract class BasePlushable extends HorizontalDirectionalBlock implement
   }
 
   public BasePlushable(Properties settings) {
-    this(settings, InteractionEffectData.DEFAULT, TooltipData.DEFAULT);
+    this(settings, TooltipData.DEFAULT, InteractionEffectData.DEFAULT);
   }
 
   public BasePlushable(Properties settings, InteractionEffectData effectData) {
-    this(settings, effectData, TooltipData.DEFAULT);
+    this(settings, TooltipData.DEFAULT, effectData);
   }
 
   public BasePlushable(Properties settings, TooltipData tooltipData) {
-    this(settings, InteractionEffectData.DEFAULT, tooltipData);
+    this(settings, tooltipData, InteractionEffectData.DEFAULT);
   }
 
-  public BasePlushable(Properties settings, InteractionEffectData effectData, TooltipData tooltipData) {
+  public BasePlushable(Properties settings, TooltipData tooltipData, InteractionEffectData effectData) {
     super(settings.lightLevel((blockState) -> effectData.lightLevel()));
     this.effectData = effectData;
     this.tooltipData = tooltipData;

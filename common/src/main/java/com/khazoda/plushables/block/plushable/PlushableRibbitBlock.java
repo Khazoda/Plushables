@@ -1,6 +1,7 @@
 package com.khazoda.plushables.block.plushable;
 
 import com.khazoda.plushables.block.BasePlushable;
+import com.khazoda.plushables.block.tooltip.TooltipDataBuilder;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.world.level.block.HorizontalDirectionalBlock;
 import net.minecraft.world.phys.shapes.BooleanOp;
@@ -15,7 +16,12 @@ public class PlushableRibbitBlock extends BasePlushable {
   }
 
   public PlushableRibbitBlock(Properties settings) {
-    super(settings);
+    super(settings, TooltipDataBuilder.create()
+        .number(46)
+        .artist("Joosh")
+        .creationDate("~5th May 2022")
+        .trivia("You can find entire villages of these guys with the Ribbits mod")
+        .build());
   }
 
   @Override

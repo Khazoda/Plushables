@@ -1,6 +1,7 @@
 package com.khazoda.plushables.block.plushable;
 
 import com.khazoda.plushables.block.BasePlushable;
+import com.khazoda.plushables.block.tooltip.TooltipDataBuilder;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.world.level.block.HorizontalDirectionalBlock;
 import net.minecraft.world.phys.shapes.Shapes;
@@ -14,7 +15,11 @@ public class PlushableOctoplushableBlock extends BasePlushable {
   }
 
   public PlushableOctoplushableBlock(Properties settings) {
-    super(settings);
+    super(settings, TooltipDataBuilder.create()
+        .number(22)
+        .artist("Luke")
+        .creationDate("31st July 2023")
+        .build());
   }
 
   @Override
