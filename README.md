@@ -9,4 +9,4 @@ The assets in this repository are under the [CC BY-NC-SA 4.0 License](https://gi
 
 Issues and pull requests are welcome, but please contribute translations via the POEditor platform [here](https://poeditor.com/join/project/2zBD4jyzJj).
 
-![Plushables mod banner](https://github.com/Khazoda/plushables/blob/Web-Assets/description_common/banner.png?raw=true)
+![Plushables mod banner](https://github.com/Khazoda/plushables/blob/Web-Assets/description_common/banner_2024_2.png?raw=true)
