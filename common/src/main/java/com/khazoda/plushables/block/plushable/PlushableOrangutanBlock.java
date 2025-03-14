@@ -2,6 +2,7 @@ package com.khazoda.plushables.block.plushable;
 
 import com.khazoda.plushables.block.BasePlushable;
 import com.khazoda.plushables.block.interaction.InteractionEffectBuilder;
+import com.khazoda.plushables.block.tooltip.TooltipDataBuilder;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.world.level.block.HorizontalDirectionalBlock;
@@ -16,10 +17,16 @@ public class PlushableOrangutanBlock extends BasePlushable {
   }
 
   public PlushableOrangutanBlock(Properties settings) {
-    super(settings, InteractionEffectBuilder.create()
-        .particle(ParticleTypes.HEART)
-        .particleCount(1)
-        .build());
+    super(settings,
+        TooltipDataBuilder.create()
+            .number(25)
+            .artist("Khazoda")
+            .creationDate("2nd August 2023")
+            .build(),
+        InteractionEffectBuilder.create()
+            .particle(ParticleTypes.HEART)
+            .particleCount(1)
+            .build());
   }
 
   @Override

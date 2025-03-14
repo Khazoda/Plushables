@@ -2,6 +2,7 @@ package com.khazoda.plushables.block.plushable;
 
 import com.khazoda.plushables.block.BasePlushable;
 import com.khazoda.plushables.block.interaction.InteractionEffectBuilder;
+import com.khazoda.plushables.block.tooltip.TooltipDataBuilder;
 import com.khazoda.plushables.registry.SoundRegistry;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.core.particles.ParticleTypes;
@@ -17,12 +18,19 @@ public class PlushableStatuetteBlock extends BasePlushable {
   }
 
   public PlushableStatuetteBlock(Properties settings) {
-    super(settings, InteractionEffectBuilder.create()
-        .cooldown(65)
-        .sound(SoundRegistry.PLUSHABLE_STATUETTE)
-        .particle(ParticleTypes.HEART)
-        .particleCount(5)
-        .build());
+    super(settings,
+        TooltipDataBuilder.create()
+            .number(36)
+            .artist("Khazoda")
+            .creationDate("9th September 2023")
+            .trivia("The Terracotta Knights mod lets you command armies of these warriors")
+            .build(),
+        InteractionEffectBuilder.create()
+            .cooldown(65)
+            .sound(SoundRegistry.PLUSHABLE_STATUETTE)
+            .particle(ParticleTypes.HEART)
+            .particleCount(5)
+            .build());
   }
 
   @Override

@@ -2,6 +2,7 @@ package com.khazoda.plushables.block.plushable;
 
 import com.khazoda.plushables.block.BasePlushable;
 import com.khazoda.plushables.block.interaction.InteractionEffectBuilder;
+import com.khazoda.plushables.block.tooltip.TooltipDataBuilder;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.level.block.HorizontalDirectionalBlock;
@@ -16,11 +17,17 @@ public class PlushablePigBlock extends BasePlushable {
   }
 
   public PlushablePigBlock(Properties settings) {
-    super(settings, new InteractionEffectBuilder()
-        .sound(SoundEvents.PIG_AMBIENT)
-        .volume(0.6f)
-        .pitch(1.1f)
-        .build());
+    super(settings,
+        TooltipDataBuilder.create()
+            .number(5)
+            .artist("Khazoda")
+            .creationDate("21st October 2022")
+            .build(),
+        InteractionEffectBuilder.create()
+            .sound(SoundEvents.PIG_AMBIENT)
+            .volume(0.6f)
+            .pitch(1.1f)
+            .build());
   }
 
   @Override

@@ -2,6 +2,7 @@ package com.khazoda.plushables.block.plushable;
 
 import com.khazoda.plushables.block.BasePlushable;
 import com.khazoda.plushables.block.interaction.InteractionEffectBuilder;
+import com.khazoda.plushables.block.tooltip.TooltipDataBuilder;
 import com.khazoda.plushables.registry.SoundRegistry;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.core.particles.ParticleTypes;
@@ -17,13 +18,19 @@ public class PlushableWizardBlock extends BasePlushable {
   }
 
   public PlushableWizardBlock(Properties settings) {
-    super(settings, InteractionEffectBuilder.create()
-        .cooldown(80)
-        .sound(SoundRegistry.PLUSHABLE_WIZARD)
-        .particle(ParticleTypes.NOTE)
-        .particleCount(2)
-        .particleSpread(1.1)
-        .build());
+    super(settings,
+        TooltipDataBuilder.create()
+            .number(15)
+            .artist("@BumbleSculpts")
+            .creationDate("16th June 2023")
+            .build(),
+        InteractionEffectBuilder.create()
+            .cooldown(80)
+            .sound(SoundRegistry.PLUSHABLE_WIZARD)
+            .particle(ParticleTypes.NOTE)
+            .particleCount(2)
+            .particleSpread(1.1)
+            .build());
   }
 
   @Override

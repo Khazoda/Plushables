@@ -2,6 +2,7 @@ package com.khazoda.plushables.block.plushable;
 
 import com.khazoda.plushables.block.BasePlushable;
 import com.khazoda.plushables.block.interaction.InteractionEffectBuilder;
+import com.khazoda.plushables.block.tooltip.TooltipDataBuilder;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.level.block.HorizontalDirectionalBlock;
@@ -16,10 +17,18 @@ public class PlushableFrogeBlock extends BasePlushable {
   }
 
   public PlushableFrogeBlock(Properties settings) {
-    super(settings, new InteractionEffectBuilder()
-        .lightLevel(8)
-        .sound(SoundEvents.FROG_AMBIENT)
-        .build());
+    super(settings,
+        TooltipDataBuilder.create()
+            .number(31)
+            .artist("Khazoda")
+            .creationDate("31st August 2023")
+            .trivia("This little fellow can light up your world in the Delightful Froge mod too")
+            .build(),
+        InteractionEffectBuilder.create()
+            .lightLevel(8)
+            .sound(SoundEvents.FROG_AMBIENT)
+            .build()
+    );
   }
 
   @Override

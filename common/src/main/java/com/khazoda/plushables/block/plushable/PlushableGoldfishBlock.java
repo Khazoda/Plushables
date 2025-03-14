@@ -2,6 +2,7 @@ package com.khazoda.plushables.block.plushable;
 
 import com.khazoda.plushables.block.BasePlushable;
 import com.khazoda.plushables.block.interaction.InteractionEffectBuilder;
+import com.khazoda.plushables.block.tooltip.TooltipDataBuilder;
 import com.khazoda.plushables.registry.SoundRegistry;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.core.particles.ParticleTypes;
@@ -17,13 +18,20 @@ public class PlushableGoldfishBlock extends BasePlushable {
   }
 
   public PlushableGoldfishBlock(Properties settings) {
-    super(settings, InteractionEffectBuilder.create()
-        .cooldown(65)
-        .sound(SoundRegistry.PLUSHABLE_GOLDFISH)
-        .particle(ParticleTypes.FISHING)
-        .particleCount(5)
-        .particleSpread(1.25)
-        .build());
+    super(settings,
+        TooltipDataBuilder.create()
+            .number(26)
+            .artist("Khazoda")
+            .creationDate("8th August 2023")
+            .build(),
+        InteractionEffectBuilder.create()
+            .cooldown(65)
+            .sound(SoundRegistry.PLUSHABLE_GOLDFISH)
+            .particle(ParticleTypes.FISHING)
+            .particleCount(5)
+            .particleSpread(1.25)
+            .build()
+    );
   }
 
   @Override

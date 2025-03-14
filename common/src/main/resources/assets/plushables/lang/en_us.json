@@ -47,5 +47,9 @@
   "block.plushables.plushable_potsy": "Plushable §8Potsy",
   "block.plushables.plushable_snowie": "Plushable Snowie",
   "block.plushables.plushable_ribbit": "Plushable §aRibbit",
-  "command.plushables.root": "You are using Plushables 2.0"
+  "block.plushables.plushable_creaky": "Plushable §dCreaky",
+  "command.plushables.root": "You are using Plushables 2.0",
+  "tooltip.plushables.holdctrl": "Hold CTRL For Lore",
+  "tooltip.plushables.artist": "Artist",
+  "tooltip.plushables.created": "Created"
 }

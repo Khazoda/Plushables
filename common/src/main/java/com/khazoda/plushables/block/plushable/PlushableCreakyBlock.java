@@ -7,26 +7,29 @@ import net.minecraft.world.level.block.HorizontalDirectionalBlock;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
-public class PlushableTigerBlock extends BasePlushable {
-  public static final MapCodec<PlushableTigerBlock> CODEC = simpleCodec(PlushableTigerBlock::new);
+public class PlushableCreakyBlock extends BasePlushable {
+  public static final MapCodec<PlushableCreakyBlock> CODEC = simpleCodec(PlushableCreakyBlock::new);
 
-  public PlushableTigerBlock() {
+  public PlushableCreakyBlock() {
     this(BasePlushable.defaultSettings);
   }
 
-  public PlushableTigerBlock(Properties settings) {
+  public PlushableCreakyBlock(Properties settings) {
     super(settings, TooltipDataBuilder.create()
-        .number(38)
-        .artist("Khazoda")
-        .creationDate("11th September 2023")
+        .number(47)
+        .artist("Omasumi")
+        .creationDate("14th March 2025")
         .build());
   }
 
   @Override
   public VoxelShape useShape() {
     VoxelShape shape = Shapes.empty();
-    shape = Shapes.or(shape, Shapes.create(0.359375, 0, 0.28125, 0.65625, 0.3125, 0.71875));
-    shape = Shapes.or(shape, Shapes.create(0.40625, 0.3125, 0.28125, 0.59375, 0.5, 0.5));
+
+    shape = Shapes.or(shape, Shapes.box(0.4375, 0, 0.5, 0.59375, 0.25, 0.5625));
+    shape = Shapes.or(shape, Shapes.box(0.546875, 0, 0.25, 0.609375, 0.0625, 0.5));
+    shape = Shapes.or(shape, Shapes.box(0.453125, 0, 0.25, 0.515625, 0.0625, 0.5));
+
     return shape;
   }
 

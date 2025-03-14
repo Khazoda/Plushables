@@ -1,10 +1,8 @@
 package com.khazoda.plushables.block.plushable;
 
 import com.khazoda.plushables.block.BasePlushable;
-import com.khazoda.plushables.block.interaction.InteractionEffectBuilder;
-import com.khazoda.plushables.registry.SoundRegistry;
+import com.khazoda.plushables.block.tooltip.TooltipDataBuilder;
 import com.mojang.serialization.MapCodec;
-import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.world.level.block.HorizontalDirectionalBlock;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
@@ -17,11 +15,10 @@ public class PlushableCluckyBlock extends BasePlushable {
   }
 
   public PlushableCluckyBlock(Properties settings) {
-    super(settings, InteractionEffectBuilder.create()
-        .cooldown(75)
-        .sound(SoundRegistry.PLUSHABLE_CLUCKY)
-        .particle(ParticleTypes.HEART)
-        .particleCount(2)
+    super(settings, TooltipDataBuilder.create()
+        .number(4)
+        .artist("@BumbleSculpts")
+        .creationDate("22nd June 2022")
         .build());
   }
 
