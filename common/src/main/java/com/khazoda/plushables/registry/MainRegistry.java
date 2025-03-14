@@ -70,6 +70,7 @@ public class MainRegistry {
   public static final Supplier<BasePlushable> PLUSHABLE_POTSY_BLOCK = BLOCK_REGISTRAR.register("plushable_potsy", PlushablePotsyBlock::new);
   public static final Supplier<BasePlushable> PLUSHABLE_SNOWIE_BLOCK = BLOCK_REGISTRAR.register("plushable_snowie", PlushableSnowieBlock::new);
   public static final Supplier<BasePlushable> PLUSHABLE_RIBBIT_BLOCK = BLOCK_REGISTRAR.register("plushable_ribbit", PlushableRibbitBlock::new);
+  public static final Supplier<BasePlushable> PLUSHABLE_CREAKY_BLOCK = BLOCK_REGISTRAR.register("plushable_creaky", PlushableCreakyBlock::new);
 
   /* ==========[ BlockItem Registration ]========== */
   public static final Supplier<PlushableBlockItem> PLUSHABLE_PENGUIN_ITEM = register("plushable_penguin", PLUSHABLE_PENGUIN_BLOCK);
@@ -118,6 +119,7 @@ public class MainRegistry {
   public static final Supplier<PlushableBlockItem> PLUSHABLE_POTSY_ITEM = register("plushable_potsy", PLUSHABLE_POTSY_BLOCK);
   public static final Supplier<PlushableBlockItem> PLUSHABLE_SNOWIE_ITEM = register("plushable_snowie", PLUSHABLE_SNOWIE_BLOCK);
   public static final Supplier<PlushableBlockItem> PLUSHABLE_RIBBIT_ITEM = register("plushable_ribbit", PLUSHABLE_RIBBIT_BLOCK);
+  public static final Supplier<PlushableBlockItem> PLUSHABLE_CREAKY_ITEM = register("plushable_creaky", PLUSHABLE_CREAKY_BLOCK);
 
   public static void init() {
   }

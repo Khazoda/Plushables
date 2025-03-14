@@ -147,8 +147,8 @@ public abstract class BasePlushable extends HorizontalDirectionalBlock implement
 
     if (isControlDown) {
       tooltipComponents.add(Component.literal(tooltipData.number()).withStyle(ChatFormatting.YELLOW));
-      tooltipComponents.add(Component.translatable("tooltip.plushables.artist").append(" · " + tooltipData.artist()).withStyle(ChatFormatting.GREEN));
-      tooltipComponents.add(Component.translatable("tooltip.plushables.created").append(" · " + tooltipData.localizeDate(Minecraft.getInstance().getLanguageManager().getSelected())).withStyle(ChatFormatting.DARK_GREEN));
+      tooltipComponents.add(Component.translatable("tooltip.plushables.artist").append(" \u00B7 " + tooltipData.artist()).withStyle(ChatFormatting.GREEN));
+      tooltipComponents.add(Component.translatable("tooltip.plushables.created").append(" \u00B7 " + tooltipData.localizeDate(Minecraft.getInstance().getLanguageManager().getSelected())).withStyle(ChatFormatting.DARK_GREEN));
       if (tooltipData.trivia() != null) {
         tooltipComponents.add(CommonComponents.EMPTY);
         // Wraps trivia string input so the tooltip doesn't go on one line forever
