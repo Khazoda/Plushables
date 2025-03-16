@@ -33,4 +33,9 @@ public interface IPlatformHelper {
 
         return isDevelopmentEnvironment() ? "development" : "production";
     }
+
+    /**
+     * @return true if the code is running on the client, false otherwise
+     */
+    boolean isClientSide();
 }
