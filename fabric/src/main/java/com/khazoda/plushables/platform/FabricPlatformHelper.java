@@ -1,24 +1,30 @@
 package com.khazoda.plushables.platform;
 
 import com.khazoda.plushables.platform.services.IPlatformHelper;
+import net.fabricmc.api.EnvType;
 import net.fabricmc.loader.api.FabricLoader;
 
 public class FabricPlatformHelper implements IPlatformHelper {
 
-    @Override
-    public String getPlatformName() {
-        return "Fabric";
-    }
+  @Override
+  public String getPlatformName() {
+    return "Fabric";
+  }
 
-    @Override
-    public boolean isModLoaded(String modId) {
+  @Override
+  public boolean isModLoaded(String modId) {
 
-        return FabricLoader.getInstance().isModLoaded(modId);
-    }
+    return FabricLoader.getInstance().isModLoaded(modId);
+  }
 
-    @Override
-    public boolean isDevelopmentEnvironment() {
+  @Override
+  public boolean isDevelopmentEnvironment() {
 
-        return FabricLoader.getInstance().isDevelopmentEnvironment();
-    }
+    return FabricLoader.getInstance().isDevelopmentEnvironment();
+  }
+
+  @Override
+  public boolean isClientSide() {
+    return FabricLoader.getInstance().getEnvironmentType() == EnvType.CLIENT;
+  }
 }

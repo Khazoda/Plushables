@@ -2,6 +2,7 @@ package com.khazoda.plushables.platform;
 
 import com.khazoda.plushables.platform.services.IPlatformHelper;
 import net.neoforged.fml.ModList;
+import net.neoforged.fml.loading.FMLEnvironment;
 import net.neoforged.fml.loading.FMLLoader;
 
 public class NorgePlatformHelper implements IPlatformHelper {
@@ -22,5 +23,10 @@ public class NorgePlatformHelper implements IPlatformHelper {
     public boolean isDevelopmentEnvironment() {
 
         return !FMLLoader.isProduction();
+    }
+
+    @Override
+    public boolean isClientSide() {
+        return FMLEnvironment.dist.isClient();
     }
 }

@@ -3,6 +3,7 @@ package com.khazoda.plushables.block;
 import com.khazoda.plushables.block.interaction.InteractionEffectData;
 import com.khazoda.plushables.block.tooltip.TooltipData;
 import com.khazoda.plushables.block.util.VoxelShapeHelper;
+import com.khazoda.plushables.platform.Services;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.Screen;
@@ -134,8 +135,10 @@ public abstract class BasePlushable extends HorizontalDirectionalBlock implement
   @Override
   public void appendHoverText(ItemStack stack, Item.TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
     super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
-    boolean isControlDown = Screen.hasControlDown();
+    // Only call tooltip code on client
+    if (!Services.PLATFORM.isClientSide()) return;
 
+    boolean isControlDown = Screen.hasControlDown();
     // Play sound effect when CTRL is initially pressed
     if (isControlDown && !wasControlDown) {
       Minecraft minecraft = Minecraft.getInstance();
