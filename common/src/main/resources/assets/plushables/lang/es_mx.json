@@ -3,7 +3,7 @@
   "item.plushables.heart_of_gold": "§6Corazón de Oro",
   "block.plushables.plushable_penguin": "Peluche §7Pingüino§r",
   "block.plushables.plushable_fox": "Peluche §6Zorro§r",
-  "block.plushables.plushable_froglin": "Peluche §2Froglin§r",
+  "block.plushables.plushable_froglin": "Peluche §2Ranita§r",
   "block.plushables.plushable_clucky": "Peluche Clucky",
   "block.plushables.plushable_pig": "Peluche §cCerdo",
   "block.plushables.plushable_truffles": "Peluche §cTrufas",
@@ -31,7 +31,7 @@
   "block.plushables.plushable_conductor": "Peluche §7Conductor",
   "block.plushables.plushable_animatronic": "Peluche §9Animatrónico",
   "block.plushables.plushable_moobloom": "Peluche §eMoobloom",
-  "block.plushables.plushable_froge": "Peluche §eFroge",
+  "block.plushables.plushable_froge": "Peluche §eRana",
   "block.plushables.plushable_owl": "Peluche §6Búho",
   "block.plushables.plushable_hamster": "Peluche §6Hámster",
   "block.plushables.plushable_dormouse": "Peluche §cLirón",
@@ -47,5 +47,9 @@
   "block.plushables.plushable_potsy": "Peluche §8Potsy",
   "block.plushables.plushable_snowie": "Peluche Snowie",
   "block.plushables.plushable_ribbit": "Peluche §aRibbit",
-  "command.plushables.root": "Estás usando Plushables 2.0"
+  "block.plushables.plushable_creaky": "Peluche §dCreaky",
+  "command.plushables.root": "Estás usando Plushables 2.0",
+  "tooltip.plushables.holdctrl": "Mantén CTRL para ver detalles",
+  "tooltip.plushables.artist": "Artista",
+  "tooltip.plushables.created": "Creado"
 }
