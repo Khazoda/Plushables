@@ -12,7 +12,6 @@ import net.minecraft.core.Direction;
 import net.minecraft.network.chat.CommonComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionResult;
@@ -135,41 +134,44 @@ public abstract class BasePlushable extends HorizontalDirectionalBlock implement
   @Override
   public void appendHoverText(ItemStack stack, Item.TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
     super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
-    // Only call tooltip code on client
+
     if (!Services.PLATFORM.isClientSide()) return;
-
-    boolean isControlDown = Screen.hasControlDown();
-    // Play sound effect when CTRL is initially pressed
-    if (isControlDown && !wasControlDown) {
-      Minecraft minecraft = Minecraft.getInstance();
-      if (minecraft.player != null) {
-        minecraft.player.playSound(SoundEvents.CAKE_ADD_CANDLE, 1.0F, 1.0F);
-      }
-    }
-    wasControlDown = isControlDown; // Update state so sound effect doesn't play again
-
-    if (isControlDown) {
-      tooltipComponents.add(Component.literal(tooltipData.number()).withStyle(ChatFormatting.YELLOW));
-      tooltipComponents.add(Component.translatable("tooltip.plushables.artist").append(" \u00B7 " + tooltipData.artist()).withStyle(ChatFormatting.GREEN));
-      tooltipComponents.add(Component.translatable("tooltip.plushables.created").append(" \u00B7 " + tooltipData.localizeDate(Minecraft.getInstance().getLanguageManager().getSelected())).withStyle(ChatFormatting.DARK_GREEN));
-      if (tooltipData.trivia() != null) {
-        tooltipComponents.add(CommonComponents.EMPTY);
-        // Wraps trivia string input so the tooltip doesn't go on one line forever
-        String[] words = tooltipData.trivia().split(" ");
-        StringBuilder currentLine = new StringBuilder();
-        for (String word : words) {
-          if (currentLine.length() + word.length() > 35) {  // 35 characters per line
-            tooltipComponents.add(Component.literal(currentLine.toString().trim()).withStyle(ChatFormatting.GRAY));
-            currentLine = new StringBuilder();
-          }
-          currentLine.append(word).append(" ");
-        }
-        if (!currentLine.isEmpty()) {
-          tooltipComponents.add(Component.literal(currentLine.toString().trim()).withStyle(ChatFormatting.GRAY));
-        }
-      }
-    } else {
+    if (!Screen.hasControlDown()) {
       tooltipComponents.add(Component.translatable("tooltip.plushables.holdctrl").withStyle(ChatFormatting.GRAY));
+      return;
+    }
+
+    // Add basic info
+    tooltipComponents.add(Component.literal(tooltipData.number()).withStyle(ChatFormatting.YELLOW));
+    tooltipComponents.add(Component.translatable("tooltip.plushables.artist")
+        .append(" \u00B7 " + tooltipData.artist())
+        .withStyle(ChatFormatting.GREEN));
+    tooltipComponents.add(Component.translatable("tooltip.plushables.created")
+        .append(" \u00B7 " + tooltipData.localizeDate(Minecraft.getInstance().getLanguageManager().getSelected()))
+        .withStyle(ChatFormatting.DARK_GREEN));
+
+    // Add trivia if available
+    if (tooltipData.trivia() != null) {
+      tooltipComponents.add(CommonComponents.EMPTY);
+      addTrivia(tooltipComponents, tooltipData.trivia());
+    }
+  }
+
+  private void addTrivia(List<Component> tooltipComponents, String trivia) {
+    String[] words = trivia.split(" ");
+    StringBuilder currentLine = new StringBuilder();
+
+    for (String word : words) {
+      if (currentLine.length() + word.length() > 35) {
+        tooltipComponents.add(Component.literal(currentLine.toString().trim())
+            .withStyle(ChatFormatting.GRAY));
+        currentLine.setLength(0);
+      }
+      currentLine.append(word).append(" ");
+    }
+    if (!currentLine.isEmpty()) {
+      tooltipComponents.add(Component.literal(currentLine.toString().trim())
+          .withStyle(ChatFormatting.GRAY));
     }
   }
 
