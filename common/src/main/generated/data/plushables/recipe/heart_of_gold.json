@@ -2,15 +2,9 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "#": {
-      "item": "minecraft:gold_nugget"
-    },
-    "X": {
-      "tag": "minecraft:flowers"
-    },
-    "^": {
-      "item": "minecraft:honey_bottle"
-    }
+    "#": "minecraft:gold_nugget",
+    "X": "#minecraft:flowers",
+    "^": "minecraft:honey_bottle"
   },
   "pattern": [
     "X#X",

@@ -2,15 +2,9 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    {
-      "item": "minecraft:pumpkin"
-    },
-    {
-      "item": "minecraft:orange_wool"
-    },
-    {
-      "item": "plushables:heart_of_gold"
-    }
+    "minecraft:pumpkin",
+    "minecraft:orange_wool",
+    "plushables:heart_of_gold"
   ],
   "result": {
     "count": 1,

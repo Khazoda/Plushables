@@ -2,15 +2,9 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    {
-      "item": "minecraft:oak_leaves"
-    },
-    {
-      "item": "minecraft:brown_wool"
-    },
-    {
-      "item": "plushables:heart_of_gold"
-    }
+    "minecraft:oak_leaves",
+    "minecraft:brown_wool",
+    "plushables:heart_of_gold"
   ],
   "result": {
     "count": 1,

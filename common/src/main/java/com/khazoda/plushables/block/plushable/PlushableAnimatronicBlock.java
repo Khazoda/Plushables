@@ -10,10 +10,6 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 public class PlushableAnimatronicBlock extends BasePlushable {
   public static final MapCodec<PlushableAnimatronicBlock> CODEC = simpleCodec(PlushableAnimatronicBlock::new);
 
-  public PlushableAnimatronicBlock() {
-    this(BasePlushable.defaultSettings);
-  }
-
   public PlushableAnimatronicBlock(Properties settings) {
     super(settings, TooltipDataBuilder.create()
         .number(29)

@@ -2,15 +2,9 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    {
-      "item": "minecraft:poisonous_potato"
-    },
-    {
-      "item": "minecraft:cyan_wool"
-    },
-    {
-      "item": "plushables:heart_of_gold"
-    }
+    "minecraft:poisonous_potato",
+    "minecraft:cyan_wool",
+    "plushables:heart_of_gold"
   ],
   "result": {
     "count": 1,

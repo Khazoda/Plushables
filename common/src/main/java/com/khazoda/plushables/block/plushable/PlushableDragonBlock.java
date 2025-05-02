@@ -10,10 +10,6 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 public class PlushableDragonBlock extends BasePlushable {
   public static final MapCodec<PlushableDragonBlock> CODEC = simpleCodec(PlushableDragonBlock::new);
 
-  public PlushableDragonBlock() {
-    this(BasePlushable.defaultSettings);
-  }
-
   public PlushableDragonBlock(Properties settings) {
     super(settings, TooltipDataBuilder.create()
         .number(14)

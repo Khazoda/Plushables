@@ -13,10 +13,6 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 public class PlushableWizardBlock extends BasePlushable {
   public static final MapCodec<PlushableWizardBlock> CODEC = simpleCodec(PlushableWizardBlock::new);
 
-  public PlushableWizardBlock() {
-    this(BasePlushable.defaultSettings);
-  }
-
   public PlushableWizardBlock(Properties settings) {
     super(settings,
         TooltipDataBuilder.create()

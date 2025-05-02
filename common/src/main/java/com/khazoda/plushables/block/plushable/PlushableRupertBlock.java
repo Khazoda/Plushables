@@ -13,10 +13,6 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 public class PlushableRupertBlock extends BasePlushable {
   public static final MapCodec<PlushableRupertBlock> CODEC = simpleCodec(PlushableRupertBlock::new);
 
-  public PlushableRupertBlock() {
-    this(BasePlushable.defaultSettings);
-  }
-
   public PlushableRupertBlock(Properties settings) {
     super(settings,
         TooltipDataBuilder.create()

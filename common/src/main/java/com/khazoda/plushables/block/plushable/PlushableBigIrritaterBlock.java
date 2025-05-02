@@ -10,10 +10,6 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 public class PlushableBigIrritaterBlock extends BasePlushable {
   public static final MapCodec<PlushableBigIrritaterBlock> CODEC = simpleCodec(PlushableBigIrritaterBlock::new);
 
-  public PlushableBigIrritaterBlock() {
-    this(BasePlushable.defaultSettings);
-  }
-
   public PlushableBigIrritaterBlock(Properties settings) {
     super(settings, TooltipDataBuilder.create()
         .number(19)

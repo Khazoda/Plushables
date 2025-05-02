@@ -10,10 +10,6 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 public class PlushableDjungelskogBlock extends BasePlushable {
   public static final MapCodec<PlushableDjungelskogBlock> CODEC = simpleCodec(PlushableDjungelskogBlock::new);
 
-  public PlushableDjungelskogBlock() {
-    this(BasePlushable.defaultSettings);
-  }
-
   public PlushableDjungelskogBlock(Properties settings) {
     super(settings, TooltipDataBuilder.create()
         .number(7)

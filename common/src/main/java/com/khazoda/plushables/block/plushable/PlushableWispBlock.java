@@ -10,10 +10,6 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 public class PlushableWispBlock extends BasePlushable {
   public static final MapCodec<PlushableWispBlock> CODEC = simpleCodec(PlushableWispBlock::new);
 
-  public PlushableWispBlock() {
-    this(BasePlushable.defaultSettings);
-  }
-
   public PlushableWispBlock(Properties settings) {
     super(settings, TooltipDataBuilder.create()
         .number(41)

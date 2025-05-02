@@ -10,10 +10,6 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 public class PlushableGoblinBlock extends BasePlushable {
   public static final MapCodec<PlushableGoblinBlock> CODEC = simpleCodec(PlushableGoblinBlock::new);
 
-  public PlushableGoblinBlock() {
-    this(BasePlushable.defaultSettings);
-  }
-
   public PlushableGoblinBlock(Properties settings) {
     super(settings, TooltipDataBuilder.create()
         .number(17)

@@ -2,15 +2,9 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    {
-      "item": "minecraft:terracotta"
-    },
-    {
-      "item": "minecraft:brown_wool"
-    },
-    {
-      "item": "plushables:heart_of_gold"
-    }
+    "minecraft:terracotta",
+    "minecraft:brown_wool",
+    "plushables:heart_of_gold"
   ],
   "result": {
     "count": 1,

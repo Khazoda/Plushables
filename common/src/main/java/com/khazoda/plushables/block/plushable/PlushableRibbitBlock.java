@@ -11,10 +11,6 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 public class PlushableRibbitBlock extends BasePlushable {
   public static final MapCodec<PlushableRibbitBlock> CODEC = simpleCodec(PlushableRibbitBlock::new);
 
-  public PlushableRibbitBlock() {
-    this(BasePlushable.defaultSettings);
-  }
-
   public PlushableRibbitBlock(Properties settings) {
     super(settings, TooltipDataBuilder.create()
         .number(46)

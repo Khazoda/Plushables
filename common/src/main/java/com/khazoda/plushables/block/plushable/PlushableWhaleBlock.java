@@ -10,10 +10,6 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 public class PlushableWhaleBlock extends BasePlushable {
   public static final MapCodec<PlushableWhaleBlock> CODEC = simpleCodec(PlushableWhaleBlock::new);
 
-  public PlushableWhaleBlock() {
-    this(BasePlushable.defaultSettings);
-  }
-
   public PlushableWhaleBlock(Properties settings) {
     super(settings, TooltipDataBuilder.create()
         .number(24)

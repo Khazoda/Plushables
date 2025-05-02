@@ -10,10 +10,6 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 public class PlushableHamsterBlock extends BasePlushable {
   public static final MapCodec<PlushableHamsterBlock> CODEC = simpleCodec(PlushableHamsterBlock::new);
 
-  public PlushableHamsterBlock() {
-    this(BasePlushable.defaultSettings);
-  }
-
   public PlushableHamsterBlock(Properties settings) {
     super(settings, TooltipDataBuilder.create()
         .number(33)

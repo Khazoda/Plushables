@@ -12,10 +12,6 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 public class PlushableMoobloomBlock extends BasePlushable {
   public static final MapCodec<PlushableMoobloomBlock> CODEC = simpleCodec(PlushableMoobloomBlock::new);
 
-  public PlushableMoobloomBlock() {
-    this(BasePlushable.defaultSettings);
-  }
-
   public PlushableMoobloomBlock(Properties settings) {
     super(settings,
         TooltipDataBuilder.create()

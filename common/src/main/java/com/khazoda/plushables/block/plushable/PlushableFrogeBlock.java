@@ -12,10 +12,6 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 public class PlushableFrogeBlock extends BasePlushable {
   public static final MapCodec<PlushableFrogeBlock> CODEC = simpleCodec(PlushableFrogeBlock::new);
 
-  public PlushableFrogeBlock() {
-    this(BasePlushable.defaultSettings);
-  }
-
   public PlushableFrogeBlock(Properties settings) {
     super(settings,
         TooltipDataBuilder.create()

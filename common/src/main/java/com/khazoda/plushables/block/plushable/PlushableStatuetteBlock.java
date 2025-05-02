@@ -13,10 +13,6 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 public class PlushableStatuetteBlock extends BasePlushable {
   public static final MapCodec<PlushableStatuetteBlock> CODEC = simpleCodec(PlushableStatuetteBlock::new);
 
-  public PlushableStatuetteBlock() {
-    this(BasePlushable.defaultSettings);
-  }
-
   public PlushableStatuetteBlock(Properties settings) {
     super(settings,
         TooltipDataBuilder.create()

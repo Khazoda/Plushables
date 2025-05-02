@@ -10,10 +10,6 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 public class PlushableMammothBlock extends BasePlushable {
   public static final MapCodec<PlushableMammothBlock> CODEC = simpleCodec(PlushableMammothBlock::new);
 
-  public PlushableMammothBlock() {
-    this(BasePlushable.defaultSettings);
-  }
-
   public PlushableMammothBlock(Properties settings) {
     super(settings, TooltipDataBuilder.create()
         .number(37)

@@ -2,15 +2,9 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    {
-      "item": "minecraft:echo_shard"
-    },
-    {
-      "item": "minecraft:light_blue_wool"
-    },
-    {
-      "item": "plushables:heart_of_gold"
-    }
+    "minecraft:echo_shard",
+    "minecraft:light_blue_wool",
+    "plushables:heart_of_gold"
   ],
   "result": {
     "count": 1,

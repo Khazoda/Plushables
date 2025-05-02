@@ -1,9 +1,10 @@
 package com.khazoda.plushables.mixin;
 
+import com.khazoda.plushables.duck.IHumanoidRenderState;
 import com.khazoda.plushables.item.PlushableBlockItem;
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.client.renderer.entity.state.HumanoidRenderState;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -12,14 +13,12 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 /**
- * == This mixin works in tandem with {@link PlayerRendererMixin} ==
- * <br/>
  * Mixin for modifying humanoid model arm poses when holding plushables.
  * Adjusts arm positions to create a cradling pose when holding plushable
  * items.
  */
 @Mixin(HumanoidModel.class)
-public class HumanoidModelMixin {
+public class HumanoidModelMixin<T extends HumanoidRenderState> {
   /**
    * Reference to the player model's right arm
    */
@@ -36,13 +35,13 @@ public class HumanoidModelMixin {
    * Injects into both poseRightArm and poseLeftArm methods to create a cradling
    * pose.
    *
-   * @param entity The player entity whose arms are being posed
+   * @param renderState The player renderState whose arms are being posed
    * @param ci     Callback info that can be used to cancel the original method
    */
   @Inject(method = {"poseRightArm", "poseLeftArm"}, at = @At("HEAD"), cancellable = true)
-  public void poseArms(LivingEntity entity, CallbackInfo ci) {
-    if (entity.getMainHandItem().getItem() instanceof PlushableBlockItem ||
-        entity.getOffhandItem().getItem() instanceof PlushableBlockItem) {
+  public void poseArms(T renderState, HumanoidModel.ArmPose pose, CallbackInfo ci) {
+    if (((IHumanoidRenderState)renderState).plushables$getMainHandItem().getItem() instanceof PlushableBlockItem ||
+        ((IHumanoidRenderState)renderState).plushables$getOffHandItem().getItem() instanceof PlushableBlockItem) {
       this.rightArm.xRot = -0.90F;
       this.rightArm.yRot = (float) (-Math.PI / 8);
       this.leftArm.xRot = -0.90F;

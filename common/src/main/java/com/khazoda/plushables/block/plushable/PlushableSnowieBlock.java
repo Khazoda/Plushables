@@ -13,10 +13,6 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 public class PlushableSnowieBlock extends BasePlushable {
   public static final MapCodec<PlushableSnowieBlock> CODEC = simpleCodec(PlushableSnowieBlock::new);
 
-  public PlushableSnowieBlock() {
-    this(BasePlushable.defaultSettings);
-  }
-
   public PlushableSnowieBlock(Properties settings) {
     super(settings,
         TooltipDataBuilder.create()

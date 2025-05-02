@@ -10,10 +10,6 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 public class PlushableSeaBunnyBlock extends BasePlushable {
   public static final MapCodec<PlushableSeaBunnyBlock> CODEC = simpleCodec(PlushableSeaBunnyBlock::new);
 
-  public PlushableSeaBunnyBlock() {
-    this(BasePlushable.defaultSettings);
-  }
-
   public PlushableSeaBunnyBlock(Properties settings) {
     super(settings, TooltipDataBuilder.create()
         .number(35)

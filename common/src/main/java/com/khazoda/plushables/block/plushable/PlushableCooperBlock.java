@@ -10,10 +10,6 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 public class PlushableCooperBlock extends BasePlushable {
   public static final MapCodec<PlushableCooperBlock> CODEC = simpleCodec(PlushableCooperBlock::new);
 
-  public PlushableCooperBlock() {
-    this(BasePlushable.defaultSettings);
-  }
-
   public PlushableCooperBlock(Properties settings) {
     super(settings, TooltipDataBuilder.create()
         .number(42)

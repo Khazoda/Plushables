@@ -10,10 +10,6 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 public class PlushableFroglinBlock extends BasePlushable {
   public static final MapCodec<PlushableFroglinBlock> CODEC = simpleCodec(PlushableFroglinBlock::new);
 
-  public PlushableFroglinBlock() {
-    this(BasePlushable.defaultSettings);
-  }
-
   public PlushableFroglinBlock(Properties settings) {
     super(settings, TooltipDataBuilder.create()
         .number(2)

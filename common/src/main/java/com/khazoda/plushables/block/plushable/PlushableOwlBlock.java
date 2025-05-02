@@ -10,11 +10,7 @@ import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
 public class PlushableOwlBlock extends BasePlushable {
-  public static final MapCodec<com.khazoda.plushables.block.plushable.PlushablePenguinBlock> CODEC = simpleCodec(com.khazoda.plushables.block.plushable.PlushablePenguinBlock::new);
-
-  public PlushableOwlBlock() {
-    this(BasePlushable.defaultSettings);
-  }
+  public static final MapCodec<PlushablePenguinBlock> CODEC = simpleCodec(PlushablePenguinBlock::new);
 
   public PlushableOwlBlock(Properties settings) {
     super(settings,

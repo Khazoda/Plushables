@@ -2,15 +2,9 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    {
-      "item": "minecraft:red_mushroom"
-    },
-    {
-      "item": "minecraft:white_wool"
-    },
-    {
-      "item": "plushables:heart_of_gold"
-    }
+    "minecraft:red_mushroom",
+    "minecraft:white_wool",
+    "plushables:heart_of_gold"
   ],
   "result": {
     "count": 1,

@@ -2,15 +2,9 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    {
-      "item": "minecraft:honeycomb"
-    },
-    {
-      "item": "minecraft:brown_wool"
-    },
-    {
-      "item": "plushables:heart_of_gold"
-    }
+    "minecraft:honeycomb",
+    "minecraft:brown_wool",
+    "plushables:heart_of_gold"
   ],
   "result": {
     "count": 1,

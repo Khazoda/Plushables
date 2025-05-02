@@ -10,10 +10,6 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 public class PlushableBigTaterBlock extends BasePlushable {
   public static final MapCodec<PlushableBigTaterBlock> CODEC = simpleCodec(PlushableBigTaterBlock::new);
 
-  public PlushableBigTaterBlock() {
-    this(BasePlushable.defaultSettings);
-  }
-
   public PlushableBigTaterBlock(Properties settings) {
     super(settings, TooltipDataBuilder.create()
         .number(18)

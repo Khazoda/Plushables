@@ -10,10 +10,6 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 public class PlushableOtterBlock extends BasePlushable {
   public static final MapCodec<PlushableOtterBlock> CODEC = simpleCodec(PlushableOtterBlock::new);
 
-  public PlushableOtterBlock() {
-    this(BasePlushable.defaultSettings);
-  }
-
   public PlushableOtterBlock(Properties settings) {
     super(settings, TooltipDataBuilder.create()
         .number(20)

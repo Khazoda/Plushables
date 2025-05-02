@@ -13,10 +13,6 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 public class PlushableGoldfishBlock extends BasePlushable {
   public static final MapCodec<PlushableGoldfishBlock> CODEC = simpleCodec(PlushableGoldfishBlock::new);
 
-  public PlushableGoldfishBlock() {
-    this(BasePlushable.defaultSettings);
-  }
-
   public PlushableGoldfishBlock(Properties settings) {
     super(settings,
         TooltipDataBuilder.create()
