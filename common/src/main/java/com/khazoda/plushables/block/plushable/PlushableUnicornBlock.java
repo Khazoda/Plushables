@@ -10,10 +10,6 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 public class PlushableUnicornBlock extends BasePlushable {
   public static final MapCodec<PlushableUnicornBlock> CODEC = simpleCodec(PlushableUnicornBlock::new);
 
-  public PlushableUnicornBlock() {
-    this(BasePlushable.defaultSettings);
-  }
-
   public PlushableUnicornBlock(Properties settings) {
     super(settings, TooltipDataBuilder.create()
         .number(10)

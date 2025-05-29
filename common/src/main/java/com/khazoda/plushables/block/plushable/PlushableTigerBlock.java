@@ -10,10 +10,6 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 public class PlushableTigerBlock extends BasePlushable {
   public static final MapCodec<PlushableTigerBlock> CODEC = simpleCodec(PlushableTigerBlock::new);
 
-  public PlushableTigerBlock() {
-    this(BasePlushable.defaultSettings);
-  }
-
   public PlushableTigerBlock(Properties settings) {
     super(settings, TooltipDataBuilder.create()
         .number(38)

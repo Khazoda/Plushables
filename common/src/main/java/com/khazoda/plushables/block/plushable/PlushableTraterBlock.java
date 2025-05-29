@@ -10,10 +10,6 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 public class PlushableTraterBlock extends BasePlushable {
   public static final MapCodec<PlushableTraterBlock> CODEC = simpleCodec(PlushableTraterBlock::new);
 
-  public PlushableTraterBlock() {
-    this(BasePlushable.defaultSettings);
-  }
-
   public PlushableTraterBlock(Properties settings) {
     super(settings, TooltipDataBuilder.create()
         .number(27)

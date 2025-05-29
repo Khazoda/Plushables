@@ -10,10 +10,6 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 public class PlushableConductorBlock extends BasePlushable {
   public static final MapCodec<PlushableConductorBlock> CODEC = simpleCodec(PlushableConductorBlock::new);
 
-  public PlushableConductorBlock() {
-    this(BasePlushable.defaultSettings);
-  }
-
   public PlushableConductorBlock(Properties settings) {
     super(settings, TooltipDataBuilder.create()
         .number(28)

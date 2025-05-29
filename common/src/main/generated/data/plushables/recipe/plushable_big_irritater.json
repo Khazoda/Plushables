@@ -2,15 +2,9 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    {
-      "item": "minecraft:potato"
-    },
-    {
-      "item": "minecraft:red_wool"
-    },
-    {
-      "item": "plushables:heart_of_gold"
-    }
+    "minecraft:potato",
+    "minecraft:red_wool",
+    "plushables:heart_of_gold"
   ],
   "result": {
     "count": 1,

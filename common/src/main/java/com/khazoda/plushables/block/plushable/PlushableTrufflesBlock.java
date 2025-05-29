@@ -12,10 +12,6 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 public class PlushableTrufflesBlock extends BasePlushable {
   public static final MapCodec<PlushableTrufflesBlock> CODEC = simpleCodec(PlushableTrufflesBlock::new);
 
-  public PlushableTrufflesBlock() {
-    this(BasePlushable.defaultSettings);
-  }
-
   public PlushableTrufflesBlock(Properties settings) {
     super(settings,
         TooltipDataBuilder.create()

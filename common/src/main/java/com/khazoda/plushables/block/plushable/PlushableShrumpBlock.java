@@ -10,10 +10,6 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 public class PlushableShrumpBlock extends BasePlushable {
   public static final MapCodec<PlushableShrumpBlock> CODEC = simpleCodec(PlushableShrumpBlock::new);
 
-  public PlushableShrumpBlock() {
-    this(BasePlushable.defaultSettings);
-  }
-
   public PlushableShrumpBlock(Properties settings) {
     super(settings, TooltipDataBuilder.create()
         .number(21)

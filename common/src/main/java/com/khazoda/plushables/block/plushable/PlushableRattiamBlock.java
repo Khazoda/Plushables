@@ -10,10 +10,6 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 public class PlushableRattiamBlock extends BasePlushable {
   public static final MapCodec<PlushableRattiamBlock> CODEC = simpleCodec(PlushableRattiamBlock::new);
 
-  public PlushableRattiamBlock() {
-    this(BasePlushable.defaultSettings);
-  }
-
   public PlushableRattiamBlock(Properties settings) {
     super(settings, TooltipDataBuilder.create()
         .number(8)

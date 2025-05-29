@@ -2,15 +2,9 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    {
-      "item": "minecraft:seagrass"
-    },
-    {
-      "item": "minecraft:white_wool"
-    },
-    {
-      "item": "plushables:heart_of_gold"
-    }
+    "minecraft:seagrass",
+    "minecraft:white_wool",
+    "plushables:heart_of_gold"
   ],
   "result": {
     "count": 1,

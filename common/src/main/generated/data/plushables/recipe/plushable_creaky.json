@@ -2,15 +2,9 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    {
-      "item": "minecraft:cherry_sapling"
-    },
-    {
-      "item": "minecraft:black_wool"
-    },
-    {
-      "item": "plushables:heart_of_gold"
-    }
+    "minecraft:cherry_sapling",
+    "minecraft:black_wool",
+    "plushables:heart_of_gold"
   ],
   "result": {
     "count": 1,

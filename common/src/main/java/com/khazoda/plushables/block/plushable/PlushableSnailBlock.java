@@ -10,10 +10,6 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 public class PlushableSnailBlock extends BasePlushable {
   public static final MapCodec<PlushableSnailBlock> CODEC = simpleCodec(PlushableSnailBlock::new);
 
-  public PlushableSnailBlock() {
-    this(BasePlushable.defaultSettings);
-  }
-
   public PlushableSnailBlock(Properties settings) {
     super(settings, TooltipDataBuilder.create()
         .number(23)

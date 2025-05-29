@@ -10,10 +10,6 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 public class PlushableCreakyBlock extends BasePlushable {
   public static final MapCodec<PlushableCreakyBlock> CODEC = simpleCodec(PlushableCreakyBlock::new);
 
-  public PlushableCreakyBlock() {
-    this(BasePlushable.defaultSettings);
-  }
-
   public PlushableCreakyBlock(Properties settings) {
     super(settings, TooltipDataBuilder.create()
         .number(47)

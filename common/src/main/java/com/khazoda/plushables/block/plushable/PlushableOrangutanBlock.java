@@ -12,10 +12,6 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 public class PlushableOrangutanBlock extends BasePlushable {
   public static final MapCodec<PlushableOrangutanBlock> CODEC = simpleCodec(PlushableOrangutanBlock::new);
 
-  public PlushableOrangutanBlock() {
-    this(BasePlushable.defaultSettings);
-  }
-
   public PlushableOrangutanBlock(Properties settings) {
     super(settings,
         TooltipDataBuilder.create()

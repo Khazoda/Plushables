@@ -3,28 +3,16 @@ package com.khazoda.plushables.block;
 import com.khazoda.plushables.block.interaction.InteractionEffectData;
 import com.khazoda.plushables.block.tooltip.TooltipData;
 import com.khazoda.plushables.block.util.VoxelShapeHelper;
-import com.khazoda.plushables.platform.Services;
-import net.minecraft.ChatFormatting;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.*;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
@@ -40,8 +28,6 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.Nullable;
-
-import java.util.List;
 
 /**
  * Base class for all plushable blocks in the mod.
@@ -59,13 +45,6 @@ public abstract class BasePlushable extends HorizontalDirectionalBlock implement
 
   protected final InteractionEffectData effectData;
   protected final TooltipData tooltipData;
-
-  private boolean wasControlDown = false;  // Used for tooltip sound logic
-
-  /* ==========[ Constructors ]========== */
-  public BasePlushable() {
-    this(defaultSettings);
-  }
 
   public BasePlushable(Properties settings) {
     this(settings, TooltipData.DEFAULT, InteractionEffectData.DEFAULT);
@@ -91,7 +70,7 @@ public abstract class BasePlushable extends HorizontalDirectionalBlock implement
    * all work together to play interaction sounds and effects at a set cooldown.
    */
   protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hitResult) {
-    return state.getValue(ON_COOLDOWN) ? InteractionResult.CONSUME : this.playInteractionEffects(level, state, hitResult, player) ? InteractionResult.sidedSuccess(level.isClientSide) : InteractionResult.PASS;
+    return state.getValue(ON_COOLDOWN) ? InteractionResult.CONSUME : this.playInteractionEffects(level, state, hitResult, player) ? InteractionResult.SUCCESS_SERVER : InteractionResult.PASS;
   }
 
   public boolean playInteractionEffects(Level level, BlockState state, BlockHitResult hitResult, Entity entity) {
@@ -129,48 +108,8 @@ public abstract class BasePlushable extends HorizontalDirectionalBlock implement
     level.updateNeighborsAt(pos, this);
   }
 
-  /**
-   * Revealable tooltips
-   */
-  @Override
-  public void appendHoverText(ItemStack stack, Item.TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
-    super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
-    // Only call tooltip code on client
-    if (!Services.PLATFORM.isClientSide()) return;
-
-    boolean isControlDown = Screen.hasControlDown();
-    // Play sound effect when CTRL is initially pressed
-    if (isControlDown && !wasControlDown) {
-      Minecraft minecraft = Minecraft.getInstance();
-      if (minecraft.player != null) {
-        minecraft.player.playSound(SoundEvents.CAKE_ADD_CANDLE, 1.0F, 1.0F);
-      }
-    }
-    wasControlDown = isControlDown; // Update state so sound effect doesn't play again
-
-    if (isControlDown) {
-      tooltipComponents.add(Component.literal(tooltipData.number()).withStyle(ChatFormatting.YELLOW));
-      tooltipComponents.add(Component.translatable("tooltip.plushables.artist").append(" \u00B7 " + tooltipData.artist()).withStyle(ChatFormatting.GREEN));
-      tooltipComponents.add(Component.translatable("tooltip.plushables.created").append(" \u00B7 " + tooltipData.localizeDate(Minecraft.getInstance().getLanguageManager().getSelected())).withStyle(ChatFormatting.DARK_GREEN));
-      if (tooltipData.trivia() != null) {
-        tooltipComponents.add(CommonComponents.EMPTY);
-        // Wraps trivia string input so the tooltip doesn't go on one line forever
-        String[] words = tooltipData.trivia().split(" ");
-        StringBuilder currentLine = new StringBuilder();
-        for (String word : words) {
-          if (currentLine.length() + word.length() > 35) {  // 35 characters per line
-            tooltipComponents.add(Component.literal(currentLine.toString().trim()).withStyle(ChatFormatting.GRAY));
-            currentLine = new StringBuilder();
-          }
-          currentLine.append(word).append(" ");
-        }
-        if (!currentLine.isEmpty()) {
-          tooltipComponents.add(Component.literal(currentLine.toString().trim()).withStyle(ChatFormatting.GRAY));
-        }
-      }
-    } else {
-      tooltipComponents.add(Component.translatable("tooltip.plushables.holdctrl").withStyle(ChatFormatting.GRAY));
-    }
+  public TooltipData getTooltipData() {
+    return tooltipData;
   }
 
   /**
@@ -233,9 +172,10 @@ public abstract class BasePlushable extends HorizontalDirectionalBlock implement
    * Handles waterlogging state updates.
    */
   @Override
-  protected BlockState updateShape(BlockState state, Direction direction, BlockState neighborState, LevelAccessor level, BlockPos pos, BlockPos neighborPos) {
-    if (state.getValue(WATERLOGGED)) level.scheduleTick(pos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
-    return super.updateShape(state, direction, neighborState, level, pos, neighborPos);
+  protected BlockState updateShape(BlockState state, LevelReader level, ScheduledTickAccess scheduledTickAccess, BlockPos pos, Direction direction, BlockPos neighborPos, BlockState neighborState, RandomSource random) {
+    if (state.getValue(WATERLOGGED))
+      scheduledTickAccess.scheduleTick(pos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
+    return super.updateShape(state, level, scheduledTickAccess, pos, direction, neighborPos, neighborState, random);
   }
 
   /**

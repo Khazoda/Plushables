@@ -10,10 +10,6 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 public class PlushableZiggyBlock extends BasePlushable {
   public static final MapCodec<PlushableZiggyBlock> CODEC = simpleCodec(PlushableZiggyBlock::new);
 
-  public PlushableZiggyBlock() {
-    this(BasePlushable.defaultSettings);
-  }
-
   public PlushableZiggyBlock(Properties settings) {
     super(settings, TooltipDataBuilder.create()
         .number(43)

@@ -10,10 +10,6 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 public class PlushableBlahajBlock extends BasePlushable {
   public static final MapCodec<PlushableBlahajBlock> CODEC = simpleCodec(PlushableBlahajBlock::new);
 
-  public PlushableBlahajBlock() {
-    this(BasePlushable.defaultSettings);
-  }
-
   public PlushableBlahajBlock(Properties settings) {
     super(settings, TooltipDataBuilder.create()
         .number(40)

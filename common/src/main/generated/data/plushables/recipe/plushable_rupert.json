@@ -2,15 +2,9 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    {
-      "tag": "minecraft:fishes"
-    },
-    {
-      "item": "minecraft:black_wool"
-    },
-    {
-      "item": "plushables:heart_of_gold"
-    }
+    "#minecraft:fishes",
+    "minecraft:black_wool",
+    "plushables:heart_of_gold"
   ],
   "result": {
     "count": 1,

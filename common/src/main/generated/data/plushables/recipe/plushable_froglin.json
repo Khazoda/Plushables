@@ -2,15 +2,9 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    {
-      "item": "minecraft:lily_pad"
-    },
-    {
-      "item": "minecraft:green_wool"
-    },
-    {
-      "item": "plushables:heart_of_gold"
-    }
+    "minecraft:lily_pad",
+    "minecraft:green_wool",
+    "plushables:heart_of_gold"
   ],
   "result": {
     "count": 1,

@@ -10,10 +10,6 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 public class PlushableDormouseBlock extends BasePlushable {
   public static final MapCodec<PlushableDormouseBlock> CODEC = simpleCodec(PlushableDormouseBlock::new);
 
-  public PlushableDormouseBlock() {
-    this(BasePlushable.defaultSettings);
-  }
-
   public PlushableDormouseBlock(Properties settings) {
     super(settings, TooltipDataBuilder.create()
         .number(34)

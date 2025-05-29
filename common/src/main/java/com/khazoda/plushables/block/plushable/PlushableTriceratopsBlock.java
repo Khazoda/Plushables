@@ -10,10 +10,6 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 public class PlushableTriceratopsBlock extends BasePlushable {
   public static final MapCodec<PlushableTriceratopsBlock> CODEC = simpleCodec(PlushableTriceratopsBlock::new);
 
-  public PlushableTriceratopsBlock() {
-    this(BasePlushable.defaultSettings);
-  }
-
   public PlushableTriceratopsBlock(Properties settings) {
     super(settings, TooltipDataBuilder.create()
         .number(9)

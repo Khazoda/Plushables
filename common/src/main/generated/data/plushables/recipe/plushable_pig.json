@@ -2,15 +2,9 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    {
-      "item": "minecraft:mud"
-    },
-    {
-      "item": "minecraft:pink_wool"
-    },
-    {
-      "item": "plushables:heart_of_gold"
-    }
+    "minecraft:mud",
+    "minecraft:pink_wool",
+    "plushables:heart_of_gold"
   ],
   "result": {
     "count": 1,

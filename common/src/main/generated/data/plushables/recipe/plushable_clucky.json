@@ -2,15 +2,9 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    {
-      "item": "minecraft:egg"
-    },
-    {
-      "item": "minecraft:white_wool"
-    },
-    {
-      "item": "plushables:heart_of_gold"
-    }
+    "minecraft:egg",
+    "minecraft:white_wool",
+    "plushables:heart_of_gold"
   ],
   "result": {
     "count": 1,

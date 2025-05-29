@@ -10,10 +10,6 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 public class PlushableBeauxBlock extends BasePlushable {
   public static final MapCodec<PlushableBeauxBlock> CODEC = simpleCodec(PlushableBeauxBlock::new);
 
-  public PlushableBeauxBlock() {
-    this(BasePlushable.defaultSettings);
-  }
-
   public PlushableBeauxBlock(Properties settings) {
     super(settings, TooltipDataBuilder.create()
         .number(16)

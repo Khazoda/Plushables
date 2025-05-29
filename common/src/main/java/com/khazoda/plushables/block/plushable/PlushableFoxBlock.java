@@ -10,10 +10,6 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 public class PlushableFoxBlock extends BasePlushable {
   public static final MapCodec<PlushableFoxBlock> CODEC = simpleCodec(PlushableFoxBlock::new);
 
-  public PlushableFoxBlock() {
-    this(BasePlushable.defaultSettings);
-  }
-
   public PlushableFoxBlock(Properties settings) {
     super(settings, TooltipDataBuilder.create()
         .number(3)

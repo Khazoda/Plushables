@@ -2,15 +2,9 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    {
-      "item": "minecraft:slime_ball"
-    },
-    {
-      "item": "minecraft:cyan_wool"
-    },
-    {
-      "item": "plushables:heart_of_gold"
-    }
+    "minecraft:slime_ball",
+    "minecraft:cyan_wool",
+    "plushables:heart_of_gold"
   ],
   "result": {
     "count": 1,

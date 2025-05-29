@@ -10,10 +10,6 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 public class PlushablePenguinBlock extends BasePlushable {
   public static final MapCodec<PlushablePenguinBlock> CODEC = simpleCodec(PlushablePenguinBlock::new);
 
-  public PlushablePenguinBlock() {
-    this(BasePlushable.defaultSettings);
-  }
-
   public PlushablePenguinBlock(Properties settings) {
     super(settings, TooltipDataBuilder.create()
         .number(1)

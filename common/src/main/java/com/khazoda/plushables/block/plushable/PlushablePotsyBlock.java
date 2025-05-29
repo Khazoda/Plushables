@@ -10,10 +10,6 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 public class PlushablePotsyBlock extends BasePlushable {
   public static final MapCodec<PlushablePotsyBlock> CODEC = simpleCodec(PlushablePotsyBlock::new);
 
-  public PlushablePotsyBlock() {
-    this(BasePlushable.defaultSettings);
-  }
-
   public PlushablePotsyBlock(Properties settings) {
     super(settings, TooltipDataBuilder.create()
         .number(44)
