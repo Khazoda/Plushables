@@ -51,5 +51,6 @@
   "tooltip.plushables.holdctrl": "Hold CTRL For Lore",
   "tooltip.plushables.artist": "Artist",
   "tooltip.plushables.created": "Created",
-  "item.plushables.heart_of_gold": "§6Heart of Gold"
+  "item.plushables.heart_of_gold": "§6Heart of Gold",
+  "subtitles.plushables.block.plushable.interact": "Plushable interacted"
 }

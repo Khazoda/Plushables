@@ -142,11 +142,11 @@ public abstract class BasePlushable extends HorizontalDirectionalBlock implement
     // Add basic info
     tooltipComponents.add(Component.literal(tooltipData.number()).withStyle(ChatFormatting.YELLOW));
     tooltipComponents.add(Component.translatable("tooltip.plushables.artist")
-        .append(" \u00B7 " + tooltipData.artist())
-        .withStyle(ChatFormatting.GREEN));
+            .append(" \u00B7 " + tooltipData.artist())
+            .withStyle(ChatFormatting.GREEN));
     tooltipComponents.add(Component.translatable("tooltip.plushables.created")
-        .append(" \u00B7 " + tooltipData.localizeDate(Minecraft.getInstance().getLanguageManager().getSelected()))
-        .withStyle(ChatFormatting.DARK_GREEN));
+            .append(" \u00B7 " + tooltipData.localizeDate(Minecraft.getInstance().getLanguageManager().getSelected()))
+            .withStyle(ChatFormatting.DARK_GREEN));
 
     // Add trivia if available
     if (tooltipData.trivia() != null) {
@@ -162,14 +162,14 @@ public abstract class BasePlushable extends HorizontalDirectionalBlock implement
     for (String word : words) {
       if (currentLine.length() + word.length() > 35) {
         tooltipComponents.add(Component.literal(currentLine.toString().trim())
-            .withStyle(ChatFormatting.GRAY));
+                .withStyle(ChatFormatting.GRAY));
         currentLine.setLength(0);
       }
       currentLine.append(word).append(" ");
     }
     if (!currentLine.isEmpty()) {
       tooltipComponents.add(Component.literal(currentLine.toString().trim())
-          .withStyle(ChatFormatting.GRAY));
+              .withStyle(ChatFormatting.GRAY));
     }
   }
 

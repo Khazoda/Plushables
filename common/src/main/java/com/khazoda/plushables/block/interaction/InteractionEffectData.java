@@ -1,8 +1,8 @@
 package com.khazoda.plushables.block.interaction;
 
+import com.khazoda.plushables.registry.SoundRegistry;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
 import org.jetbrains.annotations.Nullable;
 
 public record InteractionEffectData(SoundEvent soundEvent, float soundVolume, float soundPitch,
@@ -10,7 +10,7 @@ public record InteractionEffectData(SoundEvent soundEvent, float soundVolume, fl
                                     float particleYOffset,
                                     int cooldownPeriod, int lightLevel) {
   public static final InteractionEffectData DEFAULT =
-      new InteractionEffectData(SoundEvents.WOOL_HIT,
+      new InteractionEffectData(SoundRegistry.PLUSHABLE_GENERIC.get(),
           2.0F,
           1.0F,
           null,
