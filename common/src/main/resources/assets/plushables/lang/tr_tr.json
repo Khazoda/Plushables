@@ -1,0 +1,19 @@
+{
+  "itemGroup.plushables.main": "Peluşlar",
+  "block.plushables.plushable_penguin": "Plushable §7Penguen",
+  "block.plushables.plushable_fox": "Plushable §6Tilki",
+  "block.plushables.plushable_froglin": "Plushable §2Gurbağa",
+  "block.plushables.plushable_clucky": "Plushable Tavuk",
+  "block.plushables.plushable_pig": "Plushable §cDomuz",
+  "block.plushables.plushable_truffles": "Plushable §cKüçük Domuzcuk",
+  "block.plushables.plushable_djungelskog": "Plushable §6Boz Ayı",
+  "block.plushables.plushable_rattiam": "Plushable §7Farecik",
+  "block.plushables.plushable_triceratops": "Plushable §2Triceratops",
+  "block.plushables.plushable_unicorn": "Plushable Tek Boynuzlu At",
+  "block.plushables.plushable_whelpling": "Plushable §4Ejderha",
+  "block.plushables.plushable_raptor": "Plushable §9Velociraptor",
+  "block.plushables.plushable_rupert": "Plushable §8Rupert",
+  "block.plushables.plushable_dragon": "Plushable §7Dragon",
+  "block.plushables.plushable_wizard": "Plushable §5Büyücü",
+  "block.plushables.plushable_goblin": "Plushable §aGoblin"
+}

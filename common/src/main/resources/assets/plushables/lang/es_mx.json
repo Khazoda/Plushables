@@ -1,6 +1,5 @@
 {
   "itemGroup.plushables.main": "§cP§6l§eu§as§bh§9a§5b§cl§6e§es§r",
-  "item.plushables.heart_of_gold": "§6Corazón de Oro",
   "block.plushables.plushable_penguin": "Peluche §7Pingüino§r",
   "block.plushables.plushable_fox": "Peluche §6Zorro§r",
   "block.plushables.plushable_froglin": "Peluche §2Froglin§r",
@@ -47,5 +46,9 @@
   "block.plushables.plushable_potsy": "Peluche §8Potsy",
   "block.plushables.plushable_snowie": "Peluche Snowie",
   "block.plushables.plushable_ribbit": "Peluche §aRibbit",
-  "command.plushables.root": "Estás usando Plushables 2.0"
+  "command.plushables.root": "Estás usando Plushables 2.0",
+  "tooltip.plushables.holdctrl": "Manten CTRL para información",
+  "tooltip.plushables.artist": "Artista",
+  "tooltip.plushables.created": "Creado",
+  "item.plushables.heart_of_gold": "§6Corazón de Oro"
 }
