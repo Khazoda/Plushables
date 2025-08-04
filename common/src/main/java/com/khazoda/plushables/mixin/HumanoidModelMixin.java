@@ -26,7 +26,9 @@ public class HumanoidModelMixin {
   @Shadow
   @Final
   public ModelPart rightArm;
-  /** Reference to the player model's left arm */
+  /**
+   * Reference to the player model's left arm
+   */
   @Shadow
   @Final
   public ModelPart leftArm;
@@ -41,8 +43,15 @@ public class HumanoidModelMixin {
    */
   @Inject(method = {"poseRightArm", "poseLeftArm"}, at = @At("HEAD"), cancellable = true)
   public void poseArms(LivingEntity entity, CallbackInfo ci) {
-    if (entity.getMainHandItem().getItem() instanceof PlushableBlockItem ||
-        entity.getOffhandItem().getItem() instanceof PlushableBlockItem) {
+    if (entity.getMainHandItem().getItem() instanceof PlushableBlockItem &&
+            entity.getOffhandItem().getItem() instanceof PlushableBlockItem) {
+      this.rightArm.xRot = -0.5F;
+      this.rightArm.yRot = 0.3F;
+      this.leftArm.xRot = -0.5F;
+      this.leftArm.yRot = -0.3F;
+      ci.cancel();
+    } else if (entity.getMainHandItem().getItem() instanceof PlushableBlockItem ||
+            entity.getOffhandItem().getItem() instanceof PlushableBlockItem) {
       this.rightArm.xRot = -0.90F;
       this.rightArm.yRot = (float) (-Math.PI / 8);
       this.leftArm.xRot = -0.90F;
