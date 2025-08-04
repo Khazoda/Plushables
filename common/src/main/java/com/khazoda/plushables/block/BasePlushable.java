@@ -59,8 +59,6 @@ public abstract class BasePlushable extends HorizontalDirectionalBlock implement
   protected final InteractionEffectData effectData;
   protected final TooltipData tooltipData;
 
-  private boolean wasControlDown = false;  // Used for tooltip sound logic
-
   /* ==========[ Constructors ]========== */
   public BasePlushable() {
     this(defaultSettings);
