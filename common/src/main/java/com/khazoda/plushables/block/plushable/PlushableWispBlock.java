@@ -1,8 +1,10 @@
 package com.khazoda.plushables.block.plushable;
 
 import com.khazoda.plushables.block.BasePlushable;
+import com.khazoda.plushables.block.interaction.InteractionEffectBuilder;
 import com.khazoda.plushables.block.tooltip.TooltipDataBuilder;
 import com.mojang.serialization.MapCodec;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.level.block.HorizontalDirectionalBlock;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
@@ -12,10 +14,14 @@ public class PlushableWispBlock extends BasePlushable {
 
   public PlushableWispBlock(Properties settings) {
     super(settings, TooltipDataBuilder.create()
-        .number(41)
-        .artist("Khazoda")
-        .creationDate("13th April 2024")
-        .build());
+                    .number(41)
+                    .artist("Khazoda")
+                    .creationDate("13th April 2024")
+                    .build(),
+            InteractionEffectBuilder.create()
+                    .lightLevel(8)
+                    .sound(SoundEvents.ENCHANTMENT_TABLE_USE)
+                    .build());
   }
 
   @Override

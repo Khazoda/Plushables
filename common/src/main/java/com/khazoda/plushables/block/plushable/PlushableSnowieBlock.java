@@ -21,7 +21,7 @@ public class PlushableSnowieBlock extends BasePlushable {
             .creationDate("25th December 2024")
             .build(),
         InteractionEffectBuilder.create()
-            .cooldown(40)
+            .cooldown(20)
             .sound(SoundEvents.SNOW_PLACE)
             .volume(0.75f)
             .pitch(1.15f)

@@ -1,8 +1,10 @@
 package com.khazoda.plushables.block.plushable;
 
 import com.khazoda.plushables.block.BasePlushable;
+import com.khazoda.plushables.block.interaction.InteractionEffectBuilder;
 import com.khazoda.plushables.block.tooltip.TooltipDataBuilder;
 import com.mojang.serialization.MapCodec;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.level.block.HorizontalDirectionalBlock;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
@@ -12,10 +14,13 @@ public class PlushableUnicornBlock extends BasePlushable {
 
   public PlushableUnicornBlock(Properties settings) {
     super(settings, TooltipDataBuilder.create()
-        .number(10)
-        .artist("Luke")
-        .creationDate("12th June 2023")
-        .build());
+                    .number(10)
+                    .artist("Luke")
+                    .creationDate("12th June 2023")
+                    .build(),
+            InteractionEffectBuilder.create()
+                    .sound(SoundEvents.HORSE_BREATHE)
+                    .build());
   }
 
   @Override

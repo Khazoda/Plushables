@@ -1,8 +1,10 @@
 package com.khazoda.plushables.block.plushable;
 
 import com.khazoda.plushables.block.BasePlushable;
+import com.khazoda.plushables.block.interaction.InteractionEffectBuilder;
 import com.khazoda.plushables.block.tooltip.TooltipDataBuilder;
 import com.mojang.serialization.MapCodec;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.level.block.HorizontalDirectionalBlock;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
@@ -12,10 +14,13 @@ public class PlushableCreakyBlock extends BasePlushable {
 
   public PlushableCreakyBlock(Properties settings) {
     super(settings, TooltipDataBuilder.create()
-        .number(47)
-        .artist("Omasumi")
-        .creationDate("14th March 2025")
-        .build());
+                    .number(47)
+                    .artist("Omasumi")
+                    .creationDate("14th March 2025")
+                    .build(),
+            InteractionEffectBuilder.create()
+                    .sound(SoundEvents.CREAKING_SWAY)
+                    .build());
   }
 
   @Override

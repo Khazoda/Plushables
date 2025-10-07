@@ -25,7 +25,7 @@ public class PlushableStatuetteBlock extends BasePlushable {
             .cooldown(65)
             .sound(SoundRegistry.PLUSHABLE_STATUETTE)
             .particle(ParticleTypes.HEART)
-            .particleCount(5)
+            .particleCount(2)
             .build());
   }
 

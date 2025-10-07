@@ -1,8 +1,10 @@
 package com.khazoda.plushables.block.plushable;
 
 import com.khazoda.plushables.block.BasePlushable;
+import com.khazoda.plushables.block.interaction.InteractionEffectBuilder;
 import com.khazoda.plushables.block.tooltip.TooltipDataBuilder;
 import com.mojang.serialization.MapCodec;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.level.block.HorizontalDirectionalBlock;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
@@ -12,10 +14,13 @@ public class PlushablePotsyBlock extends BasePlushable {
 
   public PlushablePotsyBlock(Properties settings) {
     super(settings, TooltipDataBuilder.create()
-        .number(44)
-        .artist("Khazoda")
-        .creationDate("19th April 2024")
-        .build());
+                    .number(44)
+                    .artist("Khazoda")
+                    .creationDate("19th April 2024")
+                    .build(),
+            InteractionEffectBuilder.create()
+                    .sound(SoundEvents.POINTED_DRIPSTONE_DRIP_WATER_INTO_CAULDRON)
+                    .build());
   }
 
   @Override
