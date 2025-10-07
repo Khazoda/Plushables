@@ -18,7 +18,7 @@ import static com.khazoda.plushables.registry.LootTableRegistry.DUNGEON_LOOT_TAB
 import static com.khazoda.plushables.registry.LootTableRegistry.VILLAGE_LOOT_TABLES_NORGE;
 
 public class LootTableModificationNorge {
-  @EventBusSubscriber(modid = Constants.MOD_ID, bus = EventBusSubscriber.Bus.GAME)
+  @EventBusSubscriber(modid = Constants.MOD_ID)
   public static class EventHandler {
     @SubscribeEvent
     public static void onLootTableLoadEvent(LootTableLoadEvent event) {
