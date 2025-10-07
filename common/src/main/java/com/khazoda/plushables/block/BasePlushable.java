@@ -80,7 +80,7 @@ public abstract class BasePlushable extends HorizontalDirectionalBlock implement
     level.playSound(null, blockPos, effectData.soundEvent(), SoundSource.BLOCKS, effectData.soundVolume(), effectData.soundPitch());
 
     /* Spawn Particles */
-    if (level.isClientSide && effectData.particleEffect() != null) {
+    if (level.isClientSide() && effectData.particleEffect() != null) {
       RandomSource random = level.getRandom();
       for (int i = 0; i < effectData.particleCount(); i++) {
         double spread = effectData.particleSpread();

@@ -33,7 +33,7 @@ public class PlushableBlockItem extends BlockItem {
 
     if (!Services.PLATFORM.isClientSide()) return;
     if (!(getBlock() instanceof BasePlushable basePlushable)) return;
-    if (!Screen.hasControlDown()) {
+    if (!Minecraft.getInstance().hasControlDown()) {
       tooltipAdder.accept(Component.translatable("tooltip.plushables.holdctrl").withStyle(ChatFormatting.GRAY));
       return;
     }
