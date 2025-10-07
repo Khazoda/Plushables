@@ -12,6 +12,8 @@ import static com.khazoda.plushables.Constants.ID;
 public class SoundRegistry {
   private static final Reggie<SoundEvent> SOUND_REGISTRAR = PlushablesCommon.REGISTRARS.get(Registries.SOUND_EVENT);
 
+  public static final Supplier<SoundEvent> PLUSHABLE_GENERIC = SOUND_REGISTRAR.register("plushable_generic", () -> SoundEvent.createVariableRangeEvent(ID("plushable_generic")));
+
   public static final Supplier<SoundEvent> PLUSHABLE_CLUCKY = SOUND_REGISTRAR.register("plushable_clucky", () -> SoundEvent.createVariableRangeEvent(ID("plushable_clucky")));
   public static final Supplier<SoundEvent> PLUSHABLE_DRAGON = SOUND_REGISTRAR.register("plushable_dragon", () -> SoundEvent.createVariableRangeEvent(ID("plushable_dragon")));
   public static final Supplier<SoundEvent> PLUSHABLE_GOLDFISH = SOUND_REGISTRAR.register("plushable_goldfish", () -> SoundEvent.createVariableRangeEvent(ID("plushable_goldfish")));

@@ -1,380 +1,44 @@
-[
-    {
-        "term": "itemGroup.plushables.main",
-        "definition": "Knuffeldieren",
-        "context": "",
-        "term_plural": "",
-        "reference": "",
-        "comment": "",
-        "fuzzy": 0
-    },
-    {
-        "term": "block.plushables.plushable_penguin",
-        "definition": "Pingu\u00efn",
-        "context": "",
-        "term_plural": "",
-        "reference": "",
-        "comment": "",
-        "fuzzy": 0
-    },
-    {
-        "term": "block.plushables.plushable_fox",
-        "definition": "Vos",
-        "context": "",
-        "term_plural": "",
-        "reference": "",
-        "comment": "",
-        "fuzzy": 0
-    },
-    {
-        "term": "block.plushables.plushable_froglin",
-        "definition": "Kikker",
-        "context": "",
-        "term_plural": "",
-        "reference": "",
-        "comment": "",
-        "fuzzy": 0
-    },
-    {
-        "term": "block.plushables.plushable_clucky",
-        "definition": "Kip",
-        "context": "",
-        "term_plural": "",
-        "reference": "",
-        "comment": "",
-        "fuzzy": 0
-    },
-    {
-        "term": "block.plushables.plushable_pig",
-        "definition": "Biggetje",
-        "context": "",
-        "term_plural": "",
-        "reference": "",
-        "comment": "",
-        "fuzzy": 0
-    },
-    {
-        "term": "block.plushables.plushable_truffles",
-        "definition": "Big",
-        "context": "",
-        "term_plural": "",
-        "reference": "",
-        "comment": "",
-        "fuzzy": 0
-    },
-    {
-        "term": "block.plushables.plushable_djungelskog",
-        "definition": "Beer",
-        "context": "",
-        "term_plural": "",
-        "reference": "",
-        "comment": "",
-        "fuzzy": 0
-    },
-    {
-        "term": "block.plushables.plushable_rattiam",
-        "definition": "Rat",
-        "context": "",
-        "term_plural": "",
-        "reference": "",
-        "comment": "",
-        "fuzzy": 0
-    },
-    {
-        "term": "block.plushables.plushable_triceratops",
-        "definition": "Triceratops",
-        "context": "",
-        "term_plural": "",
-        "reference": "",
-        "comment": "",
-        "fuzzy": 0
-    },
-    {
-        "term": "block.plushables.plushable_unicorn",
-        "definition": "Eenhoorn",
-        "context": "",
-        "term_plural": "",
-        "reference": "",
-        "comment": "",
-        "fuzzy": 0
-    },
-    {
-        "term": "block.plushables.plushable_whelpling",
-        "definition": "Baby Draak",
-        "context": "",
-        "term_plural": "",
-        "reference": "",
-        "comment": "",
-        "fuzzy": 0
-    },
-    {
-        "term": "block.plushables.plushable_raptor",
-        "definition": "Velociraptor",
-        "context": "",
-        "term_plural": "",
-        "reference": "",
-        "comment": "",
-        "fuzzy": 0
-    },
-    {
-        "term": "block.plushables.plushable_rupert",
-        "definition": "Siepie",
-        "context": "",
-        "term_plural": "",
-        "reference": "",
-        "comment": "",
-        "fuzzy": 0
-    },
-    {
-        "term": "block.plushables.plushable_dragon",
-        "definition": "Draak",
-        "context": "",
-        "term_plural": "",
-        "reference": "",
-        "comment": "",
-        "fuzzy": 0
-    },
-    {
-        "term": "block.plushables.plushable_wizard",
-        "definition": "Rovenaar",
-        "context": "",
-        "term_plural": "",
-        "reference": "",
-        "comment": "",
-        "fuzzy": 0
-    },
-    {
-        "term": "block.plushables.plushable_goblin",
-        "definition": "Kobold",
-        "context": "",
-        "term_plural": "",
-        "reference": "",
-        "comment": "",
-        "fuzzy": 0
-    },
-    {
-        "term": "block.plushables.plushable_beaux",
-        "definition": "Beaux",
-        "context": "",
-        "term_plural": "",
-        "reference": "",
-        "comment": "",
-        "fuzzy": 0
-    },
-    {
-        "term": "block.plushables.plushable_big_tater",
-        "definition": "Grote Tater",
-        "context": "",
-        "term_plural": "",
-        "reference": "",
-        "comment": "",
-        "fuzzy": 0
-    },
-    {
-        "term": "block.plushables.plushable_big_irritater",
-        "definition": "Grote Irritater",
-        "context": "",
-        "term_plural": "",
-        "reference": "",
-        "comment": "",
-        "fuzzy": 0
-    },
-    {
-        "term": "block.plushables.plushable_otter",
-        "definition": "Otter",
-        "context": "",
-        "term_plural": "",
-        "reference": "",
-        "comment": "",
-        "fuzzy": 0
-    },
-    {
-        "term": "block.plushables.plushable_shrump",
-        "definition": "Paddenstoel",
-        "context": "",
-        "term_plural": "",
-        "reference": "",
-        "comment": "",
-        "fuzzy": 0
-    },
-    {
-        "term": "block.plushables.plushable_octoplushable",
-        "definition": "Octo",
-        "context": "",
-        "term_plural": "",
-        "reference": "",
-        "comment": "",
-        "fuzzy": 0
-    },
-    {
-        "term": "block.plushables.plushable_snail",
-        "definition": "Slak",
-        "context": "",
-        "term_plural": "",
-        "reference": "",
-        "comment": "",
-        "fuzzy": 0
-    },
-    {
-        "term": "block.plushables.plushable_whale",
-        "definition": "Walvis",
-        "context": "",
-        "term_plural": "",
-        "reference": "",
-        "comment": "",
-        "fuzzy": 0
-    },
-    {
-        "term": "block.plushables.plushable_orangutan",
-        "definition": "Orangoetan",
-        "context": "",
-        "term_plural": "",
-        "reference": "",
-        "comment": "",
-        "fuzzy": 0
-    },
-    {
-        "term": "block.plushables.plushable_goldfish",
-        "definition": "Goudvis",
-        "context": "",
-        "term_plural": "",
-        "reference": "",
-        "comment": "",
-        "fuzzy": 0
-    },
-    {
-        "term": "block.plushables.plushable_trater",
-        "definition": "Trater",
-        "context": "",
-        "term_plural": "",
-        "reference": "",
-        "comment": "",
-        "fuzzy": 0
-    },
-    {
-        "term": "block.plushables.plushable_conductor",
-        "definition": "Conducteur",
-        "context": "",
-        "term_plural": "",
-        "reference": "",
-        "comment": "",
-        "fuzzy": 0
-    },
-    {
-        "term": "block.plushables.plushable_animatronic",
-        "definition": "Robot",
-        "context": "",
-        "term_plural": "",
-        "reference": "",
-        "comment": "",
-        "fuzzy": 0
-    },
-    {
-        "term": "block.plushables.plushable_moobloom",
-        "definition": "Bloemenkoe",
-        "context": "",
-        "term_plural": "",
-        "reference": "",
-        "comment": "",
-        "fuzzy": 0
-    },
-    {
-        "term": "block.plushables.plushable_froge",
-        "definition": "Kikke",
-        "context": "",
-        "term_plural": "",
-        "reference": "",
-        "comment": "",
-        "fuzzy": 0
-    },
-    {
-        "term": "block.plushables.plushable_owl",
-        "definition": "Uil",
-        "context": "",
-        "term_plural": "",
-        "reference": "",
-        "comment": "",
-        "fuzzy": 0
-    },
-    {
-        "term": "block.plushables.plushable_hamster",
-        "definition": "Hamster",
-        "context": "",
-        "term_plural": "",
-        "reference": "",
-        "comment": "",
-        "fuzzy": 0
-    },
-    {
-        "term": "block.plushables.plushable_dormouse",
-        "definition": "Kamermuis",
-        "context": "",
-        "term_plural": "",
-        "reference": "",
-        "comment": "",
-        "fuzzy": 0
-    },
-    {
-        "term": "block.plushables.plushable_sea_bunny",
-        "definition": "Zeekonijn",
-        "context": "",
-        "term_plural": "",
-        "reference": "",
-        "comment": "",
-        "fuzzy": 0
-    },
-    {
-        "term": "block.plushables.plushable_statuette",
-        "definition": "Standbeeld",
-        "context": "",
-        "term_plural": "",
-        "reference": "",
-        "comment": "",
-        "fuzzy": 0
-    },
-    {
-        "term": "block.plushables.plushable_mammoth",
-        "definition": "Mammoet",
-        "context": "",
-        "term_plural": "",
-        "reference": "",
-        "comment": "",
-        "fuzzy": 0
-    },
-    {
-        "term": "block.plushables.plushable_tiger",
-        "definition": "Tijger",
-        "context": "",
-        "term_plural": "",
-        "reference": "",
-        "comment": "",
-        "fuzzy": 0
-    },
-    {
-        "term": "block.plushables.plushable_walrus",
-        "definition": "Walrus",
-        "context": "",
-        "term_plural": "",
-        "reference": "",
-        "comment": "",
-        "fuzzy": 0
-    },
-    {
-        "term": "block.plushables.plushable_blahaj",
-        "definition": "Bl\u00e5haj",
-        "context": "",
-        "term_plural": "",
-        "reference": "",
-        "comment": "",
-        "fuzzy": 0
-    },
-    {
-        "term": "block.plushables.plushable_wisp",
-        "definition": "Wisp",
-        "context": "",
-        "term_plural": "",
-        "reference": "",
-        "comment": "",
-        "fuzzy": 0
-    }
-]
+{
+  "itemGroup.plushables.main": "Knuffeldieren",
+  "block.plushables.plushable_penguin": "Pinguïn",
+  "block.plushables.plushable_fox": "Vos",
+  "block.plushables.plushable_froglin": "Kikker",
+  "block.plushables.plushable_clucky": "Kip",
+  "block.plushables.plushable_pig": "Biggetje",
+  "block.plushables.plushable_truffles": "Big",
+  "block.plushables.plushable_djungelskog": "Beer",
+  "block.plushables.plushable_rattiam": "Rat",
+  "block.plushables.plushable_triceratops": "Triceratops",
+  "block.plushables.plushable_unicorn": "Eenhoorn",
+  "block.plushables.plushable_whelpling": "Baby Draak",
+  "block.plushables.plushable_raptor": "Velociraptor",
+  "block.plushables.plushable_rupert": "Siepie",
+  "block.plushables.plushable_dragon": "Draak",
+  "block.plushables.plushable_wizard": "Rovenaar",
+  "block.plushables.plushable_goblin": "Kobold",
+  "block.plushables.plushable_beaux": "Beaux",
+  "block.plushables.plushable_big_tater": "Grote Tater",
+  "block.plushables.plushable_big_irritater": "Grote Irritater",
+  "block.plushables.plushable_otter": "Otter",
+  "block.plushables.plushable_shrump": "Paddenstoel",
+  "block.plushables.plushable_octoplushable": "Octo",
+  "block.plushables.plushable_snail": "Slak",
+  "block.plushables.plushable_whale": "Walvis",
+  "block.plushables.plushable_orangutan": "Orangoetan",
+  "block.plushables.plushable_goldfish": "Goudvis",
+  "block.plushables.plushable_trater": "Trater",
+  "block.plushables.plushable_conductor": "Conducteur",
+  "block.plushables.plushable_animatronic": "Robot",
+  "block.plushables.plushable_moobloom": "Bloemenkoe",
+  "block.plushables.plushable_froge": "Kikke",
+  "block.plushables.plushable_owl": "Uil",
+  "block.plushables.plushable_hamster": "Hamster",
+  "block.plushables.plushable_dormouse": "Kamermuis",
+  "block.plushables.plushable_sea_bunny": "Zeekonijn",
+  "block.plushables.plushable_statuette": "Standbeeld",
+  "block.plushables.plushable_mammoth": "Mammoet",
+  "block.plushables.plushable_tiger": "Tijger",
+  "block.plushables.plushable_walrus": "Walrus",
+  "block.plushables.plushable_blahaj": "Blåhaj",
+  "block.plushables.plushable_wisp": "Wisp"
+}

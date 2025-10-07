@@ -1,434 +1,51 @@
-[
-    {
-        "term": "itemGroup.plushables.main",
-        "definition": "\u00a7c\u041f\u00a76\u043b\u00a7e\u044e\u00a7a\u0448\u00a7b\u0435\u00a79\u0447\u00a75\u043a\u00a7c\u0438\u00a7r",
-        "context": "",
-        "term_plural": "",
-        "reference": "",
-        "comment": "",
-        "fuzzy": 0
-    },
-    {
-        "term": "block.plushables.plushable_penguin",
-        "definition": "\u041f\u043b\u044e\u0448\u0435\u0432\u044b\u0439 \u00a77\u043f\u0438\u043d\u0433\u0432\u0438\u043d\u0447\u0438\u043a\u00a7r",
-        "context": "",
-        "term_plural": "",
-        "reference": "",
-        "comment": "",
-        "fuzzy": 0
-    },
-    {
-        "term": "block.plushables.plushable_fox",
-        "definition": "\u041f\u043b\u044e\u0448\u0435\u0432\u044b\u0439 \u00a76\u043b\u0438\u0441\u0451\u043d\u043e\u043a\u00a7r",
-        "context": "",
-        "term_plural": "",
-        "reference": "",
-        "comment": "",
-        "fuzzy": 0
-    },
-    {
-        "term": "block.plushables.plushable_froglin",
-        "definition": "\u041f\u043b\u044e\u0448\u0435\u0432\u044b\u0439 \u00a72\u0416\u0430\u0431\u0451\u0448\u0430\u00a7r",
-        "context": "",
-        "term_plural": "",
-        "reference": "",
-        "comment": "",
-        "fuzzy": 0
-    },
-    {
-        "term": "block.plushables.plushable_clucky",
-        "definition": "\u041f\u043b\u044e\u0448\u0435\u0432\u044b\u0439 \u041a\u0443\u043a\u0430\u0440\u0435\u0439",
-        "context": "",
-        "term_plural": "",
-        "reference": "",
-        "comment": "",
-        "fuzzy": 0
-    },
-    {
-        "term": "block.plushables.plushable_pig",
-        "definition": "\u041f\u043b\u044e\u0448\u0435\u0432\u044b\u0439 \u00a7c\u043f\u043e\u0440\u043e\u0441\u0451\u043d\u043e\u043a",
-        "context": "",
-        "term_plural": "",
-        "reference": "",
-        "comment": "",
-        "fuzzy": 0
-    },
-    {
-        "term": "block.plushables.plushable_truffles",
-        "definition": "\u041f\u043b\u044e\u0448\u0435\u0432\u044b\u0439 \u00a7c\u0422\u0440\u044e-\u0422\u0440\u044e",
-        "context": "",
-        "term_plural": "",
-        "reference": "",
-        "comment": "",
-        "fuzzy": 0
-    },
-    {
-        "term": "block.plushables.plushable_djungelskog",
-        "definition": "\u041f\u043b\u044e\u0448\u0435\u0432\u044b\u0439 \u00a76\u042e\u043d\u0433\u0435\u043b\u044c\u0441\u043a\u043e\u0433",
-        "context": "",
-        "term_plural": "",
-        "reference": "",
-        "comment": "",
-        "fuzzy": 0
-    },
-    {
-        "term": "block.plushables.plushable_rattiam",
-        "definition": "\u041f\u043b\u044e\u0448\u0435\u0432\u044b\u0439 \u00a77\u041a\u0440\u044b\u0441\u0430\u0432\u0447\u0438\u043a",
-        "context": "",
-        "term_plural": "",
-        "reference": "",
-        "comment": "",
-        "fuzzy": 0
-    },
-    {
-        "term": "block.plushables.plushable_triceratops",
-        "definition": "\u041f\u043b\u044e\u0448\u0435\u0432\u044b\u0439 \u00a72\u0422\u0440\u0438\u0446\u0435\u0440\u0430\u0442\u043e\u043f\u0441",
-        "context": "",
-        "term_plural": "",
-        "reference": "",
-        "comment": "",
-        "fuzzy": 0
-    },
-    {
-        "term": "block.plushables.plushable_unicorn",
-        "definition": "\u041f\u043b\u044e\u0448\u0435\u0432\u0430\u044f \u00a7c\u041b\u00a76\u043e\u00a7e\u0448\u00a7a\u0430\u00a7b\u0434\u00a79\u043a\u00a75\u0430",
-        "context": "",
-        "term_plural": "",
-        "reference": "",
-        "comment": "",
-        "fuzzy": 0
-    },
-    {
-        "term": "block.plushables.plushable_raptor",
-        "definition": "\u041f\u043b\u044e\u0448\u0435\u0432\u044b\u0439 \u00a79\u0432\u0435\u043b\u043e\u0446\u0438\u0440\u0430\u043f\u0442\u043e\u0440",
-        "context": "",
-        "term_plural": "",
-        "reference": "",
-        "comment": "",
-        "fuzzy": 0
-    },
-    {
-        "term": "block.plushables.plushable_rupert",
-        "definition": "\u041f\u043b\u044e\u0448\u0435\u0432\u044b\u0439 \u00a78\u041c\u0443\u0440\u0437\u0438\u043a",
-        "context": "",
-        "term_plural": "",
-        "reference": "",
-        "comment": "",
-        "fuzzy": 0
-    },
-    {
-        "term": "block.plushables.plushable_dragon",
-        "definition": "\u041f\u043b\u044e\u0448\u0435\u0432\u044b\u0439 \u00a77\u0434\u0440\u0430\u043a\u043e\u043d",
-        "context": "",
-        "term_plural": "",
-        "reference": "",
-        "comment": "",
-        "fuzzy": 0
-    },
-    {
-        "term": "block.plushables.plushable_wizard",
-        "definition": "\u041f\u043b\u044e\u0448\u0435\u0432\u044b\u0439 \u00a75\u043a\u043e\u043b\u0434\u0443\u043d",
-        "context": "",
-        "term_plural": "",
-        "reference": "",
-        "comment": "",
-        "fuzzy": 0
-    },
-    {
-        "term": "block.plushables.plushable_goblin",
-        "definition": "\u041f\u043b\u044e\u0448\u0435\u0432\u044b\u0439 \u00a7a\u0433\u043e\u0431\u043b\u0438\u043d",
-        "context": "",
-        "term_plural": "",
-        "reference": "",
-        "comment": "",
-        "fuzzy": 0
-    },
-    {
-        "term": "block.plushables.plushable_beaux",
-        "definition": "\u041f\u043b\u044e\u0448\u0435\u0432\u044b\u0439 \u00a78\u0411\u044e\u0443",
-        "context": "",
-        "term_plural": "",
-        "reference": "",
-        "comment": "",
-        "fuzzy": 0
-    },
-    {
-        "term": "block.plushables.plushable_big_tater",
-        "definition": "\u041f\u043b\u044e\u0448\u0435\u0432\u0430\u044f \u00a7c\u043a\u0430\u0440\u0442\u043e\u0448\u043a\u0430",
-        "context": "",
-        "term_plural": "",
-        "reference": "",
-        "comment": "",
-        "fuzzy": 0
-    },
-    {
-        "term": "block.plushables.plushable_big_irritater",
-        "definition": "\u041f\u043b\u044e\u0448\u0435\u0432\u0430\u044f \u00a74\u043d\u0435\u0440\u0432\u043e\u0448\u043a\u0430",
-        "context": "",
-        "term_plural": "",
-        "reference": "",
-        "comment": "",
-        "fuzzy": 0
-    },
-    {
-        "term": "block.plushables.plushable_otter",
-        "definition": "\u041f\u043b\u044e\u0448\u0435\u0432\u0430\u044f \u00a7b\u0432\u044b\u0434\u0440\u0430",
-        "context": "",
-        "term_plural": "",
-        "reference": "",
-        "comment": "",
-        "fuzzy": 0
-    },
-    {
-        "term": "block.plushables.plushable_shrump",
-        "definition": "\u041f\u043b\u044e\u0448\u0435\u0432\u044b\u0439 \u00a74\u0413\u0440\u0438\u0431\u043e\u043a",
-        "context": "",
-        "term_plural": "",
-        "reference": "",
-        "comment": "",
-        "fuzzy": 0
-    },
-    {
-        "term": "block.plushables.plushable_octoplushable",
-        "definition": "\u00a7b\u041e\u0441\u044c\u043c\u0438\u043f\u043b\u044e\u0448",
-        "context": "",
-        "term_plural": "",
-        "reference": "",
-        "comment": "",
-        "fuzzy": 0
-    },
-    {
-        "term": "block.plushables.plushable_snail",
-        "definition": "\u041f\u043b\u044e\u0448\u0435\u0432\u0430\u044f \u00a77\u0443\u043b\u0438\u0442\u043a\u043e\u0447\u043a\u0430",
-        "context": "",
-        "term_plural": "",
-        "reference": "",
-        "comment": "",
-        "fuzzy": 0
-    },
-    {
-        "term": "block.plushables.plushable_whale",
-        "definition": "\u041f\u043b\u044e\u0448\u0435\u0432\u044b\u0439 \u00a79\u043a\u0438\u0442",
-        "context": "",
-        "term_plural": "",
-        "reference": "",
-        "comment": "",
-        "fuzzy": 0
-    },
-    {
-        "term": "block.plushables.plushable_orangutan",
-        "definition": "\u041f\u043b\u044e\u0448\u0435\u0432\u044b\u0439 \u00a76\u043e\u0440\u0430\u043d\u0433\u0443\u0442\u0430\u043d",
-        "context": "",
-        "term_plural": "",
-        "reference": "",
-        "comment": "",
-        "fuzzy": 0
-    },
-    {
-        "term": "block.plushables.plushable_goldfish",
-        "definition": "\u041f\u043b\u044e\u0448\u0435\u0432\u0430\u044f \u00a76\u0437\u043e\u043b\u043e\u0442\u0430\u044f \u0440\u044b\u0431\u043a\u0430",
-        "context": "",
-        "term_plural": "",
-        "reference": "",
-        "comment": "",
-        "fuzzy": 0
-    },
-    {
-        "term": "block.plushables.plushable_trater",
-        "definition": "\u041f\u043b\u044e\u0448\u0435\u0432\u0430\u044f \u00a7c\u0441\u0430\u043c\u043e\u0437\u0432\u0430\u0448\u043a\u0430",
-        "context": "",
-        "term_plural": "",
-        "reference": "",
-        "comment": "",
-        "fuzzy": 0
-    },
-    {
-        "term": "block.plushables.plushable_animatronic",
-        "definition": "\u041f\u043b\u044e\u0448\u0435\u0432\u044b\u0439 \u00a79\u0430\u043d\u0438\u043c\u0430\u0442\u0440\u043e\u043d\u0438\u043a",
-        "context": "",
-        "term_plural": "",
-        "reference": "",
-        "comment": "",
-        "fuzzy": 0
-    },
-    {
-        "term": "block.plushables.plushable_moobloom",
-        "definition": "\u041f\u043b\u044e\u0448\u0435\u0432\u044b\u0439 \u00a7e\u044d\u0440\u0435\u043c\u0443\u0443\u0440\u0443\u0441",
-        "context": "",
-        "term_plural": "",
-        "reference": "",
-        "comment": "",
-        "fuzzy": 0
-    },
-    {
-        "term": "block.plushables.plushable_froge",
-        "definition": "\u041f\u043b\u044e\u0448\u0435\u0432\u044b\u0439 \u00a7e\u0424\u0440\u043e\u0433\u0435",
-        "context": "",
-        "term_plural": "",
-        "reference": "",
-        "comment": "",
-        "fuzzy": 0
-    },
-    {
-        "term": "block.plushables.plushable_owl",
-        "definition": "\u041f\u043b\u044e\u0448\u0435\u0432\u0430\u044f \u00a76\u0441\u043e\u0432\u0430",
-        "context": "",
-        "term_plural": "",
-        "reference": "",
-        "comment": "",
-        "fuzzy": 0
-    },
-    {
-        "term": "block.plushables.plushable_hamster",
-        "definition": "\u041f\u043b\u044e\u0448\u0435\u0432\u044b\u0439 \u00a7\u0445\u043e\u043c\u044f\u0447\u043e\u043a",
-        "context": "",
-        "term_plural": "",
-        "reference": "",
-        "comment": "",
-        "fuzzy": 0
-    },
-    {
-        "term": "block.plushables.plushable_dormouse",
-        "definition": "\u041f\u043b\u044e\u0448\u0435\u0432\u0430\u044f \u00a7c\u0441\u043e\u043d\u044f",
-        "context": "",
-        "term_plural": "",
-        "reference": "",
-        "comment": "",
-        "fuzzy": 0
-    },
-    {
-        "term": "block.plushables.plushable_sea_bunny",
-        "definition": "\u041f\u043b\u044e\u0448\u0435\u0432\u044b\u0439 \u00a77\u043c\u043e\u0440\u0441\u043a\u043e\u0439 \u0437\u0430\u0439\u043a\u0430",
-        "context": "",
-        "term_plural": "",
-        "reference": "",
-        "comment": "",
-        "fuzzy": 0
-    },
-    {
-        "term": "block.plushables.plushable_statuette",
-        "definition": "\u041f\u043b\u044e\u0448\u0435\u0432\u0430\u044f \u00a76\u0441\u0442\u0430\u0442\u0443\u044d\u0442\u043a\u0430",
-        "context": "",
-        "term_plural": "",
-        "reference": "",
-        "comment": "",
-        "fuzzy": 0
-    },
-    {
-        "term": "block.plushables.plushable_mammoth",
-        "definition": "\u041f\u043b\u044e\u0448\u0435\u0432\u044b\u0439 \u00a76\u043c\u0430\u043c\u043e\u043d\u0442\u0451\u043d\u043e\u043a",
-        "context": "",
-        "term_plural": "",
-        "reference": "",
-        "comment": "",
-        "fuzzy": 0
-    },
-    {
-        "term": "block.plushables.plushable_tiger",
-        "definition": "\u041f\u043b\u044e\u0448\u0435\u0432\u044b\u0439 \u00a76\u0442\u0438\u0440\u0433\u0451\u043d\u043e\u043a",
-        "context": "",
-        "term_plural": "",
-        "reference": "",
-        "comment": "",
-        "fuzzy": 0
-    },
-    {
-        "term": "block.plushables.plushable_walrus",
-        "definition": "\u041f\u043b\u044e\u0448\u0435\u0432\u044b\u0439 \u00a7b\u043c\u043e\u0440\u0436\u0438\u043a",
-        "context": "",
-        "term_plural": "",
-        "reference": "",
-        "comment": "",
-        "fuzzy": 0
-    },
-    {
-        "term": "block.plushables.plushable_blahaj",
-        "definition": "\u041f\u043b\u044e\u0448\u0435\u0432\u044b\u0439 \u00a79\u0411\u043b\u043e\u0445\u0430\u0439",
-        "context": "",
-        "term_plural": "",
-        "reference": "",
-        "comment": "",
-        "fuzzy": 0
-    },
-    {
-        "term": "block.plushables.plushable_wisp",
-        "definition": "\u041f\u043b\u044e\u0448\u0435\u0432\u044b\u0439 \u00a79\u0432\u0438\u0441\u043f",
-        "context": "",
-        "term_plural": "",
-        "reference": "",
-        "comment": "",
-        "fuzzy": 0
-    },
-    {
-        "term": "block.plushables.plushable_cooper",
-        "definition": "\u041f\u043b\u044e\u0448\u0435\u0432\u044b\u0439 \u00a78\u0411\u0430\u0440\u043e\u043d",
-        "context": "",
-        "term_plural": "",
-        "reference": "",
-        "comment": "",
-        "fuzzy": 0
-    },
-    {
-        "term": "block.plushables.plushable_ziggy",
-        "definition": "\u041f\u043b\u044e\u0448\u0435\u0432\u044b\u0439 \u00a78\u0417\u0438\u0433\u0433\u0438",
-        "context": "",
-        "term_plural": "",
-        "reference": "",
-        "comment": "",
-        "fuzzy": 0
-    },
-    {
-        "term": "block.plushables.plushable_potsy",
-        "definition": "\u041f\u043b\u044e\u0448\u0435\u0432\u044b\u0439 \u00a78\u0433\u043e\u0440\u0448\u043e\u0447\u0435\u043a",
-        "context": "",
-        "term_plural": "",
-        "reference": "",
-        "comment": "",
-        "fuzzy": 0
-    },
-    {
-        "term": "block.plushables.plushable_snowie",
-        "definition": "\u041f\u043b\u044e\u0448\u0435\u0432\u044b\u0439 \u0441\u043d\u0435\u0436\u0438\u043a",
-        "context": "",
-        "term_plural": "",
-        "reference": "",
-        "comment": "",
-        "fuzzy": 0
-    },
-    {
-        "term": "block.plushables.plushable_ribbit",
-        "definition": "\u041f\u043b\u044e\u0448\u0435\u0432\u0430\u044f \u00a7a\u041a\u0432\u0430\u0432\u0430",
-        "context": "",
-        "term_plural": "",
-        "reference": "",
-        "comment": "",
-        "fuzzy": 0
-    },
-    {
-        "term": "command.plushables.root",
-        "definition": "\u0412\u044b \u0438\u0433\u0440\u0430\u0435\u0442\u0435 \u0441 Plushables 2.0",
-        "context": "",
-        "term_plural": "",
-        "reference": "",
-        "comment": "",
-        "fuzzy": 0
-    },
-    {
-        "term": "tooltip.plushables.created",
-        "definition": "\u0421\u043e\u0437\u0434\u0430\u043d\u043e",
-        "context": "",
-        "term_plural": "",
-        "reference": "",
-        "comment": "",
-        "fuzzy": 0
-    },
-    {
-        "term": "item.plushables.heart_of_gold",
-        "definition": "\u00a76\u0417\u043e\u043b\u043e\u0442\u043e\u0435 \u0441\u0435\u0440\u0434\u0446\u0435",
-        "context": "",
-        "term_plural": "",
-        "reference": "",
-        "comment": "",
-        "fuzzy": 0
-    }
-]
+{
+  "itemGroup.plushables.main": "§cP§6l§eu§as§bz§9a§5k§ci§r",
+  "block.plushables.plushable_penguin": "Pluszowy §7Pingwin§r",
+  "block.plushables.plushable_fox": "Pluszowy §6Lis§r",
+  "block.plushables.plushable_froglin": "Pluszowy §2Froglin§r",
+  "block.plushables.plushable_clucky": "Pluszowy Clucky",
+  "block.plushables.plushable_pig": "Pluszowa §cŚwinka",
+  "block.plushables.plushable_truffles": "Pluszowe §cTrufle",
+  "block.plushables.plushable_djungelskog": "Pluszowy  §6Djungelskog",
+  "block.plushables.plushable_rattiam": "Pluszowy §7Szczur",
+  "block.plushables.plushable_triceratops": "Pluszowy §2Triceratops",
+  "block.plushables.plushable_unicorn": "Pluszowy §cU§6n§ei§ac§bo§9r§5n",
+  "block.plushables.plushable_whelpling": "Pluszowy §4Smoczek",
+  "block.plushables.plushable_raptor": "Pluszowy §9Welociraptor",
+  "block.plushables.plushable_rupert": "Pluszowy §8Rupert",
+  "block.plushables.plushable_dragon": "Pluszowy §7Smok",
+  "block.plushables.plushable_wizard": "Pluszowy §5Czarodziej",
+  "block.plushables.plushable_goblin": "Pluszowy §aGoblin",
+  "block.plushables.plushable_beaux": "Pluszowy §8Beaux",
+  "block.plushables.plushable_otter": "Pluszowa §bWydra",
+  "block.plushables.plushable_shrump": "Pluszowy §4Grzybiec",
+  "block.plushables.plushable_octoplushable": "Pluszowa §bOśmiornica",
+  "block.plushables.plushable_snail": "Pluszowy §7Ślimak",
+  "block.plushables.plushable_whale": "Pluszowy §9Wieloryb",
+  "block.plushables.plushable_orangutan": "Pluszowy §6Orangutan",
+  "block.plushables.plushable_goldfish": "Pluszowa §6Złota Rybka",
+  "block.plushables.plushable_conductor": "Pluszowy §7Dyrygent",
+  "block.plushables.plushable_animatronic": "Pluszowy §9Animatronic",
+  "block.plushables.plushable_moobloom": "Pluszowy §eMoobloom",
+  "block.plushables.plushable_froge": "Pluszowy §eŻabol",
+  "block.plushables.plushable_owl": "Pluszowa §6Sowa",
+  "block.plushables.plushable_hamster": "Pluszowy §6Chomik",
+  "block.plushables.plushable_dormouse": "Pluszowa §cPopielica",
+  "block.plushables.plushable_sea_bunny": "Pluszowy §7Morski króliczek",
+  "block.plushables.plushable_statuette": "Pluszowa §6Statuetka",
+  "block.plushables.plushable_mammoth": "Pluszowy §6Mamut",
+  "block.plushables.plushable_tiger": "Pluszowy §6Tygrys",
+  "block.plushables.plushable_walrus": "Pluszowy §bMors",
+  "block.plushables.plushable_blahaj": "Pluszowy §9Blåhaj",
+  "block.plushables.plushable_wisp": "Pluszowa §9Smuga",
+  "block.plushables.plushable_cooper": "Pluszowy §8Cooper",
+  "block.plushables.plushable_ziggy": "Pluszowy §8Ziggy",
+  "block.plushables.plushable_ribbit": "Pluszowy §aKrólik",
+  "command.plushables.root": "Używasz Plushables 2.0",
+  "tooltip.plushables.holdctrl": "Przytrzymaj CTRL aby zobaczyć Lore",
+  "tooltip.plushables.artist": "Twórca",
+  "tooltip.plushables.created": "Stworzone",
+  "item.plushables.heart_of_gold": "§6 Złote Serce",
+  "block.plushables.plushable_creaky": "Pluszowy §dSkrzypacz",
+  "subtitles.plushables.block.plushable.interact": "Pluszak interaktywny"
+}

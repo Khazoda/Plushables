@@ -1,37 +1,50 @@
 {
+  "plushable_generic": {
+    "sounds": [
+      "plushables:plushable_generic"
+    ],
+    "subtitle": "subtitles.plushables.block.plushable.interact"
+  },
   "plushable_clucky": {
     "sounds": [
       "plushables:plushable_clucky"
-    ]
+    ],
+    "subtitle": "subtitles.plushables.block.plushable.interact"
   },
   "plushable_rupert": {
     "sounds": [
       "plushables:plushable_rupert"
-    ]
+    ],
+    "subtitle": "subtitles.plushables.block.plushable.interact"
   },
   "plushable_wizard": {
     "sounds": [
       "plushables:plushable_wizard"
-    ]
+    ],
+    "subtitle": "subtitles.plushables.block.plushable.interact"
   },
   "plushable_dragon": {
     "sounds": [
       "plushables:plushable_dragon"
-    ]
+    ],
+    "subtitle": "subtitles.plushables.block.plushable.interact"
   },
   "plushable_goldfish": {
     "sounds": [
       "plushables:plushable_goldfish"
-    ]
+    ],
+    "subtitle": "subtitles.plushables.block.plushable.interact"
   },
   "plushable_statuette": {
     "sounds": [
       "plushables:plushable_statuette"
-    ]
+    ],
+    "subtitle": "subtitles.plushables.block.plushable.interact"
   },
   "plushable_owl": {
     "sounds": [
       "plushables:plushable_owl"
-    ]
+    ],
+    "subtitle": "subtitles.plushables.block.plushable.interact"
   }
 }
