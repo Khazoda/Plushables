@@ -25,3 +25,5 @@ run
 runs
 **/src/*/generated/.cache
 .vscode
+
+exports
