@@ -1,7 +1,7 @@
 package com.khazoda.plushables.registry;
 
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.level.storage.loot.BuiltInLootTables;
 import net.minecraft.world.level.storage.loot.LootTable;
 
@@ -23,19 +23,19 @@ public class LootTableRegistry {
       BuiltInLootTables.VILLAGE_TOOLSMITH,
       BuiltInLootTables.VILLAGE_WEAPONSMITH
   );
-  public static final List<ResourceLocation> VILLAGE_LOOT_TABLES_NORGE = List.of(
-      BuiltInLootTables.VILLAGE_DESERT_HOUSE.location(),
-      BuiltInLootTables.VILLAGE_PLAINS_HOUSE.location(),
-      BuiltInLootTables.VILLAGE_SAVANNA_HOUSE.location(),
-      BuiltInLootTables.VILLAGE_SNOWY_HOUSE.location(),
-      BuiltInLootTables.VILLAGE_TAIGA_HOUSE.location(),
-      BuiltInLootTables.SPAWN_BONUS_CHEST.location(),
-      BuiltInLootTables.VILLAGE_ARMORER.location(),
-      BuiltInLootTables.VILLAGE_BUTCHER.location(),
-      BuiltInLootTables.VILLAGE_TANNERY.location(),
-      BuiltInLootTables.VILLAGE_TEMPLE.location(),
-      BuiltInLootTables.VILLAGE_TOOLSMITH.location(),
-      BuiltInLootTables.VILLAGE_WEAPONSMITH.location()
+  public static final List<Identifier> VILLAGE_LOOT_TABLES_NORGE = List.of(
+      BuiltInLootTables.VILLAGE_DESERT_HOUSE.identifier(),
+      BuiltInLootTables.VILLAGE_PLAINS_HOUSE.identifier(),
+      BuiltInLootTables.VILLAGE_SAVANNA_HOUSE.identifier(),
+      BuiltInLootTables.VILLAGE_SNOWY_HOUSE.identifier(),
+      BuiltInLootTables.VILLAGE_TAIGA_HOUSE.identifier(),
+      BuiltInLootTables.SPAWN_BONUS_CHEST.identifier(),
+      BuiltInLootTables.VILLAGE_ARMORER.identifier(),
+      BuiltInLootTables.VILLAGE_BUTCHER.identifier(),
+      BuiltInLootTables.VILLAGE_TANNERY.identifier(),
+      BuiltInLootTables.VILLAGE_TEMPLE.identifier(),
+      BuiltInLootTables.VILLAGE_TOOLSMITH.identifier(),
+      BuiltInLootTables.VILLAGE_WEAPONSMITH.identifier()
   );
 
   /* ==========[  Heart of Gold Loot Tables]========== */
@@ -59,24 +59,24 @@ public class LootTableRegistry {
       BuiltInLootTables.ANCIENT_CITY,
       BuiltInLootTables.SIMPLE_DUNGEON
   );
-  public static final List<ResourceLocation> DUNGEON_LOOT_TABLES_NORGE = List.of(
-      BuiltInLootTables.ABANDONED_MINESHAFT.location(),
-      BuiltInLootTables.BASTION_HOGLIN_STABLE.location(),
-      BuiltInLootTables.BASTION_TREASURE.location(),
-      BuiltInLootTables.BURIED_TREASURE.location(),
-      BuiltInLootTables.DESERT_PYRAMID.location(),
-      BuiltInLootTables.END_CITY_TREASURE.location(),
-      BuiltInLootTables.JUNGLE_TEMPLE.location(),
-      BuiltInLootTables.NETHER_BRIDGE.location(),
-      BuiltInLootTables.PILLAGER_OUTPOST.location(),
-      BuiltInLootTables.RUINED_PORTAL.location(),
-      BuiltInLootTables.SHIPWRECK_TREASURE.location(),
-      BuiltInLootTables.STRONGHOLD_CORRIDOR.location(),
-      BuiltInLootTables.UNDERWATER_RUIN_BIG.location(),
-      BuiltInLootTables.WOODLAND_MANSION.location(),
-      BuiltInLootTables.IGLOO_CHEST.location(),
-      BuiltInLootTables.ANCIENT_CITY_ICE_BOX.location(),
-      BuiltInLootTables.ANCIENT_CITY.location(),
-      BuiltInLootTables.SIMPLE_DUNGEON.location()
+  public static final List<Identifier> DUNGEON_LOOT_TABLES_NORGE = List.of(
+      BuiltInLootTables.ABANDONED_MINESHAFT.identifier(),
+      BuiltInLootTables.BASTION_HOGLIN_STABLE.identifier(),
+      BuiltInLootTables.BASTION_TREASURE.identifier(),
+      BuiltInLootTables.BURIED_TREASURE.identifier(),
+      BuiltInLootTables.DESERT_PYRAMID.identifier(),
+      BuiltInLootTables.END_CITY_TREASURE.identifier(),
+      BuiltInLootTables.JUNGLE_TEMPLE.identifier(),
+      BuiltInLootTables.NETHER_BRIDGE.identifier(),
+      BuiltInLootTables.PILLAGER_OUTPOST.identifier(),
+      BuiltInLootTables.RUINED_PORTAL.identifier(),
+      BuiltInLootTables.SHIPWRECK_TREASURE.identifier(),
+      BuiltInLootTables.STRONGHOLD_CORRIDOR.identifier(),
+      BuiltInLootTables.UNDERWATER_RUIN_BIG.identifier(),
+      BuiltInLootTables.WOODLAND_MANSION.identifier(),
+      BuiltInLootTables.IGLOO_CHEST.identifier(),
+      BuiltInLootTables.ANCIENT_CITY_ICE_BOX.identifier(),
+      BuiltInLootTables.ANCIENT_CITY.identifier(),
+      BuiltInLootTables.SIMPLE_DUNGEON.identifier()
   );
 }

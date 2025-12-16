@@ -42,7 +42,7 @@ public class HumanoidModelMixin<T extends HumanoidRenderState> {
      * @param ci          Callback info that can be used to cancel the original method
      */
     @Inject(method = {"poseRightArm", "poseLeftArm"}, at = @At("HEAD"), cancellable = true)
-    public void poseArms(T renderState, HumanoidModel.ArmPose pose, CallbackInfo ci) {
+    public void poseArms(T renderState, CallbackInfo ci) {
         ItemStack main = ((IHumanoidRenderState) renderState).plushables$getMainHandItem();
         ItemStack off = ((IHumanoidRenderState) renderState).plushables$getOffHandItem();
 

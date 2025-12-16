@@ -4,7 +4,7 @@ import com.khazoda.plushables.registry.MainRegistry;
 import it.unimi.dsi.fastutil.objects.Object2ObjectLinkedOpenHashMap;
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Map;
@@ -30,7 +30,7 @@ public class Reggie<T> {
   /** The registry key that this Reggie instance handles */
   private final ResourceKey<? extends Registry<? extends T>> key;
   /** Map of registry entries, storing their identifiers and suppliers */
-  private final Map<ResourceLocation, Supplier<? extends T>> registryEntries = new Object2ObjectLinkedOpenHashMap<>();
+  private final Map<Identifier, Supplier<? extends T>> registryEntries = new Object2ObjectLinkedOpenHashMap<>();
 
   /**
    * Creates a new Reggie instance for the specified registry type.
@@ -54,7 +54,7 @@ public class Reggie<T> {
    * @throws IllegalArgumentException if the path is already registered
    */
   public <T2 extends T> Supplier<T2> register(String path, Supplier<T2> supplier) {
-    ResourceLocation name = ID(path);
+    Identifier name = ID(path);
     if (registryEntries.containsKey(name))
       throw new IllegalArgumentException("<! Can't register " + name + " twice !>");
 

@@ -22,7 +22,7 @@ public class LootTableModificationNorge {
   public static class EventHandler {
     @SubscribeEvent
     public static void onLootTableLoadEvent(LootTableLoadEvent event) {
-      if (BuiltInLootTables.RUINED_PORTAL.location().equals(event.getName())) {
+      if (BuiltInLootTables.RUINED_PORTAL.identifier().equals(event.getName())) {
         LootPool.Builder pool = LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).when(LootItemRandomChanceCondition.randomChance(1f)).add(LootItem.lootTableItem(MainRegistry.HEART_OF_GOLD_ITEM.get()).setWeight(1));
         event.getTable().addPool(pool.build());
       }
