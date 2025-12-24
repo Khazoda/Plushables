@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "minecraft:leaf_litter",
+    "minecraft:brown_wool",
+    "plushables:heart_of_gold"
+  ],
+  "result": {
+    "count": 1,
+    "id": "plushables:plushable_kweebec"
+  }
+}

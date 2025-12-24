@@ -80,6 +80,7 @@ public class MainRegistry {
   public static final Supplier<BasePlushable> PLUSHABLE_SNOWIE_BLOCK = registerBlock("plushable_snowie", PlushableSnowieBlock::new);
   public static final Supplier<BasePlushable> PLUSHABLE_RIBBIT_BLOCK = registerBlock("plushable_ribbit", PlushableRibbitBlock::new);
   public static final Supplier<BasePlushable> PLUSHABLE_CREAKY_BLOCK = registerBlock("plushable_creaky", PlushableCreakyBlock::new);
+  public static final Supplier<BasePlushable> PLUSHABLE_KWEEBEC_BLOCK = registerBlock("plushable_kweebec", PlushableKweebecBlock::new);
 
   /* ==========[ BlockItem Registration ]========== */
   public static final Supplier<PlushableBlockItem> PLUSHABLE_PENGUIN_ITEM = registerItem("plushable_penguin", PLUSHABLE_PENGUIN_BLOCK);
@@ -129,6 +130,7 @@ public class MainRegistry {
   public static final Supplier<PlushableBlockItem> PLUSHABLE_SNOWIE_ITEM = registerItem("plushable_snowie", PLUSHABLE_SNOWIE_BLOCK);
   public static final Supplier<PlushableBlockItem> PLUSHABLE_RIBBIT_ITEM = registerItem("plushable_ribbit", PLUSHABLE_RIBBIT_BLOCK);
   public static final Supplier<PlushableBlockItem> PLUSHABLE_CREAKY_ITEM = registerItem("plushable_creaky", PLUSHABLE_CREAKY_BLOCK);
+  public static final Supplier<PlushableBlockItem> PLUSHABLE_KWEEBEC_ITEM = registerItem("plushable_kweebec", PLUSHABLE_KWEEBEC_BLOCK);
 
   public static void init() {
   }

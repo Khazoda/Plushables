@@ -84,6 +84,8 @@ public class PlushablesRecipeProvider extends FabricRecipeProvider {
           createPlushableRecipe(output, MainRegistry.PLUSHABLE_SNOWIE_ITEM.get(), Items.SNOWBALL, Items.WHITE_WOOL);
           createPlushableRecipe(output, MainRegistry.PLUSHABLE_RIBBIT_ITEM.get(), Items.FISHING_ROD, Items.LIME_WOOL);
           createPlushableRecipe(output, MainRegistry.PLUSHABLE_CREAKY_ITEM.get(), Items.CHERRY_SAPLING, Items.BLACK_WOOL);
+          createPlushableRecipe(output, MainRegistry.PLUSHABLE_KWEEBEC_ITEM.get(), Items.LEAF_LITTER, Items.BROWN_WOOL);
+
       }
 
         private void createPlushableRecipe(RecipeOutput output, Item result, TagKey<Item> decorativeTag, Item wool) {

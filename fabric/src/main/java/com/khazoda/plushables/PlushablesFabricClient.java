@@ -31,6 +31,7 @@ public class PlushablesFabricClient implements ClientModInitializer {
     BlockRenderLayerMap.putBlock(MainRegistry.PLUSHABLE_SNOWIE_BLOCK.get(), ChunkSectionLayer.CUTOUT);
     BlockRenderLayerMap.putBlock(MainRegistry.PLUSHABLE_RIBBIT_BLOCK.get(), ChunkSectionLayer.CUTOUT);
     BlockRenderLayerMap.putBlock(MainRegistry.PLUSHABLE_CREAKY_BLOCK.get(), ChunkSectionLayer.CUTOUT);
+    BlockRenderLayerMap.putBlock(MainRegistry.PLUSHABLE_KWEEBEC_BLOCK.get(), ChunkSectionLayer.CUTOUT);
 
   }
 }

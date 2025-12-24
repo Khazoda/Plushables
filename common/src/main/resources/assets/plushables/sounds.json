@@ -46,5 +46,11 @@
       "plushables:plushable_owl"
     ],
     "subtitle": "subtitles.plushables.block.plushable.interact"
+  },
+  "plushable_kweebec": {
+    "sounds": [
+      "plushables:plushable_kweebec"
+    ],
+    "subtitle": "subtitles.plushables.block.plushable.interact"
   }
 }

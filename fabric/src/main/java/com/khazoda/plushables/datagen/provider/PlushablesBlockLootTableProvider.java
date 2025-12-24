@@ -62,6 +62,7 @@ public class PlushablesBlockLootTableProvider extends FabricBlockLootTableProvid
     dropSelf(MainRegistry.PLUSHABLE_SNOWIE_BLOCK.get());
     dropSelf(MainRegistry.PLUSHABLE_RIBBIT_BLOCK.get());
     dropSelf(MainRegistry.PLUSHABLE_CREAKY_BLOCK.get());
+    dropSelf(MainRegistry.PLUSHABLE_KWEEBEC_BLOCK.get());
 
   }
 }
