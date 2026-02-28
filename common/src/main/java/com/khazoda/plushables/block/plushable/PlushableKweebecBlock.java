@@ -21,7 +21,7 @@ public class PlushableKweebecBlock extends BasePlushable {
             .number(48)
             .artist("Khazoda")
             .creationDate("24th December 2025")
-            .trivia("Hytale early access drops January 13th 2026!")
+            .trivia("Hytale early access released January 13th 2026!")
             .build(),
         InteractionEffectBuilder.create()
             .cooldown(65)

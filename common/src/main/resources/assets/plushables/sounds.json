@@ -52,5 +52,11 @@
       "plushables:plushable_kweebec"
     ],
     "subtitle": "subtitles.plushables.block.plushable.interact"
+  },
+  "plushable_stoneling": {
+    "sounds": [
+      "plushables:plushable_stoneling"
+    ],
+    "subtitle": "subtitles.plushables.block.plushable.interact"
   }
 }

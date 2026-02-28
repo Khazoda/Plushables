@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "minecraft:stone",
+    "minecraft:gray_wool",
+    "plushables:heart_of_gold"
+  ],
+  "result": {
+    "count": 1,
+    "id": "plushables:plushable_stoneling"
+  }
+}

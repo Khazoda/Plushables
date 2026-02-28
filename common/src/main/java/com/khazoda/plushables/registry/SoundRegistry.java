@@ -22,5 +22,6 @@ public class SoundRegistry {
   public static final Supplier<SoundEvent> PLUSHABLE_STATUETTE = SOUND_REGISTRAR.register("plushable_statuette", () -> SoundEvent.createVariableRangeEvent(ID("plushable_statuette")));
   public static final Supplier<SoundEvent> PLUSHABLE_WIZARD = SOUND_REGISTRAR.register("plushable_wizard", () -> SoundEvent.createVariableRangeEvent(ID("plushable_wizard")));
   public static final Supplier<SoundEvent> PLUSHABLE_KWEEBEC = SOUND_REGISTRAR.register("plushable_kweebec", () -> SoundEvent.createVariableRangeEvent(ID("plushable_kweebec")));
+  public static final Supplier<SoundEvent> PLUSHABLE_STONELING = SOUND_REGISTRAR.register("plushable_stoneling", () -> SoundEvent.createVariableRangeEvent(ID("plushable_stoneling")));
 
 }
