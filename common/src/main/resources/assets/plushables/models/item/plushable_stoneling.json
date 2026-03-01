@@ -1,0 +1,4 @@
+{
+  "parent": "plushables:block/plushable_stoneling",
+  "gui_light": "front"
+}

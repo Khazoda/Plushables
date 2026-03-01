@@ -71,6 +71,8 @@ public class MainRegistry {
   public static final Supplier<BasePlushable> PLUSHABLE_SNOWIE_BLOCK = BLOCK_REGISTRAR.register("plushable_snowie", PlushableSnowieBlock::new);
   public static final Supplier<BasePlushable> PLUSHABLE_RIBBIT_BLOCK = BLOCK_REGISTRAR.register("plushable_ribbit", PlushableRibbitBlock::new);
   public static final Supplier<BasePlushable> PLUSHABLE_CREAKY_BLOCK = BLOCK_REGISTRAR.register("plushable_creaky", PlushableCreakyBlock::new);
+  public static final Supplier<BasePlushable> PLUSHABLE_KWEEBEC_BLOCK = BLOCK_REGISTRAR.register("plushable_kweebec", PlushableKweebecBlock::new);
+  public static final Supplier<BasePlushable> PLUSHABLE_STONELING_BLOCK = BLOCK_REGISTRAR.register("plushable_stoneling", PlushableStonelingBlock::new);
 
   /* ==========[ BlockItem Registration ]========== */
   public static final Supplier<PlushableBlockItem> PLUSHABLE_PENGUIN_ITEM = register("plushable_penguin", PLUSHABLE_PENGUIN_BLOCK);
@@ -120,12 +122,14 @@ public class MainRegistry {
   public static final Supplier<PlushableBlockItem> PLUSHABLE_SNOWIE_ITEM = register("plushable_snowie", PLUSHABLE_SNOWIE_BLOCK);
   public static final Supplier<PlushableBlockItem> PLUSHABLE_RIBBIT_ITEM = register("plushable_ribbit", PLUSHABLE_RIBBIT_BLOCK);
   public static final Supplier<PlushableBlockItem> PLUSHABLE_CREAKY_ITEM = register("plushable_creaky", PLUSHABLE_CREAKY_BLOCK);
+  public static final Supplier<PlushableBlockItem> PLUSHABLE_KWEEBEC_ITEM = register("plushable_kweebec", PLUSHABLE_KWEEBEC_BLOCK);
+  public static final Supplier<PlushableBlockItem> PLUSHABLE_STONELING_ITEM = register("plushable_stoneling", PLUSHABLE_STONELING_BLOCK);
 
   public static void init() {
   }
 
   private static Supplier<PlushableBlockItem> register(String name, Supplier<BasePlushable> block) {
-    Supplier<PlushableBlockItem> plushSupplier = ITEM_REGISTRAR.register(name, () -> new PlushableBlockItem(block.get(), new Item.Properties().stacksTo(1)));
+    Supplier<PlushableBlockItem> plushSupplier = ITEM_REGISTRAR.register(name, () -> new PlushableBlockItem(block.get(), new Item.Properties().stacksTo(16)));
     PLUSHABLE_LIST.add(plushSupplier);
     return plushSupplier;
   }
