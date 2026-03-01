@@ -58,6 +58,9 @@ public class TabRegistry {
     output.accept(MainRegistry.PLUSHABLE_SNOWIE_ITEM.get());
     output.accept(MainRegistry.PLUSHABLE_RIBBIT_ITEM.get());
     output.accept(MainRegistry.PLUSHABLE_CREAKY_ITEM.get());
+    output.accept(MainRegistry.PLUSHABLE_KWEEBEC_ITEM.get());
+    output.accept(MainRegistry.PLUSHABLE_STONELING_ITEM.get());
+
   }).build());
 
   public static void init() {
