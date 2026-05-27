@@ -1,13 +1,19 @@
 package com.khazoda.plushables;
 
+import com.khazoda.plushables.client.model.PlushableOrientationModel;
 import com.khazoda.plushables.registry.MainRegistry;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
+import net.fabricmc.fabric.api.client.model.loading.v1.ModelLoadingPlugin;
+import net.fabricmc.fabric.api.client.model.loading.v1.ModelModifier;
 import net.minecraft.client.renderer.RenderType;
 
 public class PlushablesFabricClient implements ClientModInitializer {
   @Override
   public void onInitializeClient() {
+    ModelLoadingPlugin.register(context
+        -> context.modifyModelAfterBake().register(ModelModifier.WRAP_PHASE, (model, bakeContext)
+        -> model != null && PlushableOrientationModel.isPlushableBlockModel(bakeContext.topLevelId()) ? new PlushableOrientationModel(model) : model));
     BlockRenderLayerMap.INSTANCE.putBlock(MainRegistry.PLUSHABLE_PIG_BLOCK.get(), RenderType.cutout());
     BlockRenderLayerMap.INSTANCE.putBlock(MainRegistry.PLUSHABLE_TRUFFLES_BLOCK.get(), RenderType.cutout());
     BlockRenderLayerMap.INSTANCE.putBlock(MainRegistry.PLUSHABLE_WHELPLING_BLOCK.get(), RenderType.cutout());

@@ -1,84 +1,97 @@
 package com.khazoda.plushables.block.util;
 
 import net.minecraft.core.Direction;
+import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
-/**
- * Utility class for handling VoxelShape operations, particularly rotation and
- * caching.
- * Provides methods to rotate and cache block shapes for different cardinal
- * directions.
- */
-public class VoxelShapeHelper {
+public final class VoxelShapeHelper {
+  public static final int ORIENTATIONS_PER_FACE = 4;
+  private static final Direction[] DIRECTIONS = Direction.values();
+  public static final int DIRECTION_COUNT = DIRECTIONS.length;
 
-  /**
-   * Rotates a VoxelShape from one direction to another.
-   * This method performs the mathematical transformation needed to rotate a shape
-   * around the Y axis.
-   * <p>
-   * NOTE: This operation is computationally expensive. Results should be cached
-   * at
-   * block initialization rather than being calculated every frame.
-   *
-   * @param from  The initial Direction the shape is facing
-   * @param to    The target Direction to rotate the shape to
-   * @param shape The VoxelShape to rotate
-   * @return A new VoxelShape that has been rotated to the target direction
-   *
-   * 
-   */
-  public static VoxelShape rotateShape(Direction from, Direction to, VoxelShape shape) {
-    VoxelShape[] buffer = new VoxelShape[]{shape, Shapes.empty()};
-    int times = (to.get2DDataValue() - from.get2DDataValue() + 4) % 4;
-    for (int i = 0; i < times; i++) {
-      buffer[0].forAllBoxes((minX, minY, minZ, maxX, maxY, maxZ) -> buffer[1] = Shapes.or(buffer[1],
-          Shapes.create(1 - maxZ, minY, minX, 1 - minZ, maxY, maxX)));
-      buffer[0] = buffer[1];
-      buffer[1] = Shapes.empty();
-    }
-    return buffer[0];
+  private VoxelShapeHelper() {
   }
 
-  /**
-   * Generates an array of VoxelShapes for all cardinal directions.
-   * Creates rotated versions of the input shape for North, East, South, and West
-   * directions.
-   *
-   * @param blockShape The base VoxelShape to generate rotations from
-   * @return An array of VoxelShapes containing the original and rotated shapes
-   *         Index 0: North (original)
-   *         Index 1: East
-   *         Index 2: South
-   *         Index 3: West
-   */
   public static VoxelShape[] calculateBlockShapes(VoxelShape blockShape) {
-    return new VoxelShape[] {
-        blockShape,
-        rotateShape(Direction.NORTH, Direction.EAST, blockShape),
-        rotateShape(Direction.NORTH, Direction.SOUTH, blockShape),
-        rotateShape(Direction.NORTH, Direction.WEST, blockShape)
-    };
+    VoxelShape[] blockShapes = new VoxelShape[DIRECTION_COUNT * ORIENTATIONS_PER_FACE];
+    for (Direction attachment : DIRECTIONS) {
+      for (int rotation = 0; rotation < ORIENTATIONS_PER_FACE; rotation++) {
+        blockShapes[orientationIndex(attachment, rotation)] = rotateShape(Orientation.of(attachment, rotation), blockShape);
+      }
+    }
+    return blockShapes;
   }
 
-  /**
-   * Gets the appropriate VoxelShape for a given direction from a pre-calculated
-   * array.
-   * This method is an optimized way to get directional shapes without performing
-   * rotations.
-   *
-   * @param direction   The direction to get the shape for
-   * @param blockShape  The default shape
-   * @param blockShapes Array of pre-calculated shapes for cardinal directions
-   * @return The appropriate VoxelShape for the given direction
-   */
-  public static VoxelShape getSidedOutlineShape(Direction direction, VoxelShape blockShape, VoxelShape[] blockShapes) {
-    return switch (direction) {
-      case NORTH -> blockShapes[0];
-      case EAST -> blockShapes[1];
-      case SOUTH -> blockShapes[2];
-      case WEST -> blockShapes[3];
-      default -> blockShape;
-    };
+  private static VoxelShape rotateShape(Orientation orientation, VoxelShape shape) {
+    VoxelShape[] result = new VoxelShape[]{Shapes.empty()};
+
+    shape.forAllBoxes((minX, minY, minZ, maxX, maxY, maxZ) -> {
+      double newMinX = Double.POSITIVE_INFINITY, newMinY = Double.POSITIVE_INFINITY, newMinZ = Double.POSITIVE_INFINITY;
+      double newMaxX = Double.NEGATIVE_INFINITY, newMaxY = Double.NEGATIVE_INFINITY, newMaxZ = Double.NEGATIVE_INFINITY;
+      for (int corner = 0; corner < 8; corner++) {
+        Vec3 transformed = orientation.transform(
+            (corner & 1) == 0 ? minX : maxX,
+            (corner & 2) == 0 ? minY : maxY,
+            (corner & 4) == 0 ? minZ : maxZ);
+        newMinX = Math.min(newMinX, transformed.x);
+        newMinY = Math.min(newMinY, transformed.y);
+        newMinZ = Math.min(newMinZ, transformed.z);
+        newMaxX = Math.max(newMaxX, transformed.x);
+        newMaxY = Math.max(newMaxY, transformed.y);
+        newMaxZ = Math.max(newMaxZ, transformed.z);
+      }
+      result[0] = Shapes.or(result[0], Shapes.create(newMinX, newMinY, newMinZ, newMaxX, newMaxY, newMaxZ));
+    });
+    return result[0];
+  }
+
+  public static Direction frontFromRotation(Direction attachment, int rotation) {
+    Direction front = attachment.getAxis().isVertical() ? Direction.NORTH : Direction.UP;
+    for (int i = 0; i < rotation; i++) front = rotateAroundAttachment(front, attachment);
+    return front;
+  }
+
+  public static int rotationFromFront(Direction attachment, Direction front) {
+    for (int rotation = 0; rotation < ORIENTATIONS_PER_FACE; rotation++) {
+      if (frontFromRotation(attachment, rotation) == front) return rotation;
+    }
+    return 0;
+  }
+
+  private static Direction rotateAroundAttachment(Direction direction, Direction attachment) {
+    return attachment.getAxisDirection() == Direction.AxisDirection.POSITIVE
+        ? direction.getCounterClockWise(attachment.getAxis())
+        : direction.getClockWise(attachment.getAxis());
+  }
+
+  public static VoxelShape getSidedOutlineShape(Direction attachment, int rotation, VoxelShape[] blockShapes) {
+    return blockShapes[orientationIndex(attachment, rotation)];
+  }
+
+  public static int orientationIndex(Direction attachment, int rotation) {
+    return attachment.ordinal() * ORIENTATIONS_PER_FACE + rotation;
+  }
+
+  public record Orientation(Direction attachment, Direction front, Direction right) {
+    public static Orientation of(Direction attachment, int rotation) {
+      Direction front = frontFromRotation(attachment, rotation);
+      return new Orientation(attachment, front, rotateAroundAttachment(front, attachment).getOpposite());
+    }
+
+    public Vec3 transform(double x, double y, double z) {
+      double centeredX = x - 0.5, centeredY = y - 0.5, centeredZ = z - 0.5;
+      return new Vec3(
+          0.5 + right.getStepX() * centeredX + attachment.getStepX() * centeredY - front.getStepX() * centeredZ,
+          0.5 + right.getStepY() * centeredX + attachment.getStepY() * centeredY - front.getStepY() * centeredZ,
+          0.5 + right.getStepZ() * centeredX + attachment.getStepZ() * centeredY - front.getStepZ() * centeredZ);
+    }
+
+    public Direction transform(Direction direction) {
+      return Direction.fromDelta(
+          right.getStepX() * direction.getStepX() + attachment.getStepX() * direction.getStepY() - front.getStepX() * direction.getStepZ(),
+          right.getStepY() * direction.getStepX() + attachment.getStepY() * direction.getStepY() - front.getStepY() * direction.getStepZ(),
+          right.getStepZ() * direction.getStepX() + attachment.getStepZ() * direction.getStepY() - front.getStepZ() * direction.getStepZ());
+    }
   }
 }
