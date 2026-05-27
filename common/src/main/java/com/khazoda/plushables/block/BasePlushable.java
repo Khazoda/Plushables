@@ -236,6 +236,7 @@ public abstract class BasePlushable extends HorizontalDirectionalBlock implement
   public BlockState getStateForPlacement(BlockPlaceContext context) {
     Direction attachment = context.getClickedFace();
     Direction front = getPlacementFront(context, attachment);
+    if (context.isSecondaryUseActive()) front = front.getOpposite();
     int rotation = VoxelShapeHelper.rotationFromFront(attachment, front);
     boolean waterlogged = context.getLevel().getFluidState(context.getClickedPos()).is(Fluids.WATER);
 
