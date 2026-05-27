@@ -5,7 +5,6 @@ import com.khazoda.plushables.block.interaction.InteractionEffectBuilder;
 import com.khazoda.plushables.block.tooltip.TooltipDataBuilder;
 import com.khazoda.plushables.registry.SoundRegistry;
 import com.mojang.serialization.MapCodec;
-import net.minecraft.world.level.block.HorizontalDirectionalBlock;
 import net.minecraft.world.phys.shapes.BooleanOp;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
@@ -43,7 +42,7 @@ public class PlushableKweebecBlock extends BasePlushable {
   }
 
   @Override
-  protected MapCodec<? extends HorizontalDirectionalBlock> codec() {
+  protected MapCodec<PlushableKweebecBlock> codec() {
     return CODEC;
   }
 }

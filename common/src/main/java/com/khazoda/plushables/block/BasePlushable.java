@@ -51,7 +51,7 @@ import java.util.List;
  * Implements core functionality for directional placement, waterlogging, and
  * block shapes.
  */
-public abstract class BasePlushable extends HorizontalDirectionalBlock implements SimpleWaterloggedBlock {
+public abstract class BasePlushable extends Block implements SimpleWaterloggedBlock {
   public static final Properties defaultSettings = Properties.of().sound(SoundType.WOOL).strength(0.1f).noOcclusion().pushReaction(PushReaction.DESTROY);
   public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
   public static final DirectionProperty ATTACHMENT = DirectionProperty.create("attachment");

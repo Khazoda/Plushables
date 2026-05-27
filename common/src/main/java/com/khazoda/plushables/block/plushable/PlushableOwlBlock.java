@@ -5,12 +5,11 @@ import com.khazoda.plushables.block.interaction.InteractionEffectBuilder;
 import com.khazoda.plushables.block.tooltip.TooltipDataBuilder;
 import com.khazoda.plushables.registry.SoundRegistry;
 import com.mojang.serialization.MapCodec;
-import net.minecraft.world.level.block.HorizontalDirectionalBlock;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
 public class PlushableOwlBlock extends BasePlushable {
-  public static final MapCodec<com.khazoda.plushables.block.plushable.PlushablePenguinBlock> CODEC = simpleCodec(com.khazoda.plushables.block.plushable.PlushablePenguinBlock::new);
+  public static final MapCodec<PlushableOwlBlock> CODEC = simpleCodec(PlushableOwlBlock::new);
 
   public PlushableOwlBlock() {
     this(BasePlushable.defaultSettings);
@@ -40,7 +39,7 @@ public class PlushableOwlBlock extends BasePlushable {
   }
 
   @Override
-  protected MapCodec<? extends HorizontalDirectionalBlock> codec() {
+  protected MapCodec<PlushableOwlBlock> codec() {
     return CODEC;
   }
 }
