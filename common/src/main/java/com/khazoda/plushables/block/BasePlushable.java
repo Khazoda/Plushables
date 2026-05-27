@@ -16,6 +16,7 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -35,6 +36,7 @@ import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.level.material.PushReaction;
 import net.minecraft.world.level.pathfinder.PathComputationType;
 import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
@@ -198,6 +200,27 @@ public abstract class BasePlushable extends HorizontalDirectionalBlock implement
   @Override
   protected RenderShape getRenderShape(BlockState state) {
     return RenderShape.MODEL;
+  }
+
+  /* ==========[ Bounciness ]========== */
+  public void fallOn(Level level, BlockState state, BlockPos pos, Entity entity, float fallDistance) {
+    super.fallOn(level, state, pos, entity, fallDistance * 0.5F);
+  }
+
+  public void updateEntityAfterFallOn(BlockGetter level, Entity entity) {
+    if (entity.isSuppressingBounce()) {
+      super.updateEntityAfterFallOn(level, entity);
+    } else {
+      this.bounceUp(entity);
+    }
+  }
+
+  private void bounceUp(Entity entity) {
+    Vec3 vec3 = entity.getDeltaMovement();
+    if (vec3.y < (double)0.0F) {
+      double d = entity instanceof LivingEntity ? (double)1.0F : 0.8;
+      entity.setDeltaMovement(vec3.x, -vec3.y * (double)0.66F * d, vec3.z);
+    }
   }
 
   /* ==========[ BlockState ]========== */
