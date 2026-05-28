@@ -81,10 +81,15 @@ public final class VoxelShapeHelper {
 
     public Vec3 transform(double x, double y, double z) {
       double centeredX = x - 0.5, centeredY = y - 0.5, centeredZ = z - 0.5;
+      Vec3 transformed = transformVector(centeredX, centeredY, centeredZ);
+      return new Vec3(0.5 + transformed.x, 0.5 + transformed.y, 0.5 + transformed.z);
+    }
+
+    public Vec3 transformVector(double x, double y, double z) {
       return new Vec3(
-          0.5 + right.getStepX() * centeredX + attachment.getStepX() * centeredY - front.getStepX() * centeredZ,
-          0.5 + right.getStepY() * centeredX + attachment.getStepY() * centeredY - front.getStepY() * centeredZ,
-          0.5 + right.getStepZ() * centeredX + attachment.getStepZ() * centeredY - front.getStepZ() * centeredZ);
+          right.getStepX() * x + attachment.getStepX() * y - front.getStepX() * z,
+          right.getStepY() * x + attachment.getStepY() * y - front.getStepY() * z,
+          right.getStepZ() * x + attachment.getStepZ() * y - front.getStepZ() * z);
     }
 
     public Direction transform(Direction direction) {

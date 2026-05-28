@@ -8,6 +8,7 @@ import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.client.model.BakedModelWrapper;
 import net.neoforged.neoforge.client.model.data.ModelData;
+import net.neoforged.neoforge.common.util.TriState;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
@@ -28,5 +29,15 @@ public class PlushableNorgeOrientationModel extends BakedModelWrapper<BakedModel
   @Override
   public List<BakedQuad> getQuads(@Nullable BlockState state, @Nullable Direction side, RandomSource random, ModelData modelData, @Nullable RenderType renderType) {
     return renderType == null || getRenderTypes(state, random, modelData).contains(renderType) ? getQuads(state, side, random) : List.of();
+  }
+
+  @Override
+  public boolean useAmbientOcclusion() {
+    return orientedModel.useAmbientOcclusion();
+  }
+
+  @Override
+  public TriState useAmbientOcclusion(BlockState state, ModelData modelData, RenderType renderType) {
+    return orientedModel.useAmbientOcclusion() ? TriState.DEFAULT : TriState.FALSE;
   }
 }
