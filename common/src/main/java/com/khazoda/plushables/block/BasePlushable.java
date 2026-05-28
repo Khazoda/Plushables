@@ -213,7 +213,7 @@ public abstract class BasePlushable extends Block implements SimpleWaterloggedBl
     Vec3 vec3 = entity.getDeltaMovement();
     if (vec3.y < (double) 0.0F) {
       double d = entity instanceof LivingEntity ? (double) 1.0F : 0.8;
-      entity.setDeltaMovement(vec3.x, -vec3.y * (double) 0.66F * d, vec3.z);
+      entity.setDeltaMovement(vec3.x, -vec3.y * (double) 0.33F * d, vec3.z);
     }
   }
 
