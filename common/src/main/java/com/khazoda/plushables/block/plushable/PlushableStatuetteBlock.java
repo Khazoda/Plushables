@@ -3,9 +3,9 @@ package com.khazoda.plushables.block.plushable;
 import com.khazoda.plushables.block.BasePlushable;
 import com.khazoda.plushables.block.interaction.InteractionEffectBuilder;
 import com.khazoda.plushables.block.tooltip.TooltipDataBuilder;
-import com.khazoda.plushables.registry.SoundRegistry;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
@@ -25,10 +25,12 @@ public class PlushableStatuetteBlock extends BasePlushable {
             .trivia("The Terracotta Knights mod lets you command armies of these warriors")
             .build(),
         InteractionEffectBuilder.create()
-            .cooldown(65)
-            .sound(SoundRegistry.PLUSHABLE_STATUETTE)
+            .cooldown(35)
+            .sound(SoundEvents.METAL_STEP)
             .particle(ParticleTypes.HEART)
-            .particleCount(5)
+            .particleYOffset(0.2f)
+            .particleSpread(0.1)
+            .particleCount(1)
             .build());
   }
 

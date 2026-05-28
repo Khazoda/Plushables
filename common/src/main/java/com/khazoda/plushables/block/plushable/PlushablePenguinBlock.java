@@ -1,8 +1,10 @@
 package com.khazoda.plushables.block.plushable;
 
 import com.khazoda.plushables.block.BasePlushable;
+import com.khazoda.plushables.block.interaction.InteractionEffectBuilder;
 import com.khazoda.plushables.block.tooltip.TooltipDataBuilder;
 import com.mojang.serialization.MapCodec;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
@@ -18,7 +20,10 @@ public class PlushablePenguinBlock extends BasePlushable {
         .number(1)
         .artist("Khazoda")
         .creationDate("21st March 2019")
-        .build());
+        .build(),
+        InteractionEffectBuilder.create()
+            .sound(SoundEvents.PUFFER_FISH_FLOP)
+            .build());
   }
 
   @Override

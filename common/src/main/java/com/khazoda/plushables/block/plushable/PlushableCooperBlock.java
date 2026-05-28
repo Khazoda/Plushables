@@ -1,8 +1,10 @@
 package com.khazoda.plushables.block.plushable;
 
 import com.khazoda.plushables.block.BasePlushable;
+import com.khazoda.plushables.block.interaction.InteractionEffectBuilder;
 import com.khazoda.plushables.block.tooltip.TooltipDataBuilder;
 import com.mojang.serialization.MapCodec;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
@@ -18,7 +20,10 @@ public class PlushableCooperBlock extends BasePlushable {
         .number(42)
         .artist("Khazoda")
         .creationDate("17th April 2024")
-        .build());
+        .build(),
+        InteractionEffectBuilder.create()
+            .sound(SoundEvents.WOLF_AMBIENT)
+            .build());
   }
 
   @Override

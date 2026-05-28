@@ -1,8 +1,11 @@
 package com.khazoda.plushables.block.plushable;
 
 import com.khazoda.plushables.block.BasePlushable;
+import com.khazoda.plushables.block.interaction.InteractionEffectBuilder;
 import com.khazoda.plushables.block.tooltip.TooltipDataBuilder;
 import com.mojang.serialization.MapCodec;
+import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
@@ -18,7 +21,14 @@ public class PlushableWhelplingBlock extends BasePlushable {
         .number(11)
         .artist("Luke")
         .creationDate("13th June 2023")
-        .build());
+        .build(),
+        InteractionEffectBuilder.create()
+            .sound(SoundEvents.FIRECHARGE_USE)
+            .pitch(1.3f)
+            .particle(ParticleTypes.SMALL_FLAME)
+            .particleCount(3)
+            .particleSpread(1.2)
+            .build());
   }
 
   @Override

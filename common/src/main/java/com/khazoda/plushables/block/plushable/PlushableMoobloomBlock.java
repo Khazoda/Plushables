@@ -27,8 +27,7 @@ public class PlushableMoobloomBlock extends BasePlushable {
             .sound(SoundEvents.COW_AMBIENT)
             .volume(0.35f)
             .pitch(2.5f)
-            .build()
-    );
+            .build());
   }
 
   @Override

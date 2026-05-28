@@ -1,8 +1,11 @@
 package com.khazoda.plushables.block.plushable;
 
 import com.khazoda.plushables.block.BasePlushable;
+import com.khazoda.plushables.block.interaction.InteractionEffectBuilder;
 import com.khazoda.plushables.block.tooltip.TooltipDataBuilder;
 import com.mojang.serialization.MapCodec;
+import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
@@ -18,7 +21,13 @@ public class PlushableOtterBlock extends BasePlushable {
         .number(20)
         .artist("@BumbleSculpts")
         .creationDate("29th July 2023")
-        .build());
+        .build(),
+        InteractionEffectBuilder.create()
+            .sound(SoundEvents.DOLPHIN_SWIM)
+            .particle(ParticleTypes.BUBBLE_POP)
+            .particleCount(5)
+            .particleSpread(1.2)
+            .build());
   }
 
   @Override

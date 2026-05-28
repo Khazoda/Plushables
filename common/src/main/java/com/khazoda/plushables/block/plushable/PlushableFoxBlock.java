@@ -1,8 +1,10 @@
 package com.khazoda.plushables.block.plushable;
 
 import com.khazoda.plushables.block.BasePlushable;
+import com.khazoda.plushables.block.interaction.InteractionEffectBuilder;
 import com.khazoda.plushables.block.tooltip.TooltipDataBuilder;
 import com.mojang.serialization.MapCodec;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
@@ -18,7 +20,10 @@ public class PlushableFoxBlock extends BasePlushable {
         .number(3)
         .artist("Khazoda")
         .creationDate("14th June 2022")
-        .build());
+        .build(),
+        InteractionEffectBuilder.create()
+            .sound(SoundEvents.FOX_SNIFF)
+            .build());
   }
 
   @Override

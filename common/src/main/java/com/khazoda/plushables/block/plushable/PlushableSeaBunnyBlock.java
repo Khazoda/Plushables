@@ -1,8 +1,10 @@
 package com.khazoda.plushables.block.plushable;
 
 import com.khazoda.plushables.block.BasePlushable;
+import com.khazoda.plushables.block.interaction.InteractionEffectBuilder;
 import com.khazoda.plushables.block.tooltip.TooltipDataBuilder;
 import com.mojang.serialization.MapCodec;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
@@ -18,7 +20,10 @@ public class PlushableSeaBunnyBlock extends BasePlushable {
         .number(35)
         .artist("Khazoda")
         .creationDate("9th September 2023")
-        .build());
+        .build(),
+        InteractionEffectBuilder.create()
+            .sound(SoundEvents.BUBBLE_COLUMN_UPWARDS_AMBIENT)
+            .build());
   }
 
   @Override

@@ -5,6 +5,7 @@ import com.khazoda.plushables.block.interaction.InteractionEffectBuilder;
 import com.khazoda.plushables.block.tooltip.TooltipDataBuilder;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
@@ -25,6 +26,8 @@ public class PlushableOrangutanBlock extends BasePlushable {
         InteractionEffectBuilder.create()
             .particle(ParticleTypes.HEART)
             .particleCount(1)
+            .sound(SoundEvents.SNIFFER_HAPPY)
+            .pitch(0.8f)
             .build());
   }
 

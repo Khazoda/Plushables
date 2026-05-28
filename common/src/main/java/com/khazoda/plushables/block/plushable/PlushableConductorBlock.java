@@ -1,8 +1,10 @@
 package com.khazoda.plushables.block.plushable;
 
 import com.khazoda.plushables.block.BasePlushable;
+import com.khazoda.plushables.block.interaction.InteractionEffectBuilder;
 import com.khazoda.plushables.block.tooltip.TooltipDataBuilder;
 import com.mojang.serialization.MapCodec;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
@@ -19,7 +21,12 @@ public class PlushableConductorBlock extends BasePlushable {
         .artist("Steam n' Rails Team")
         .creationDate("18th August 2023")
         .trivia("You can drive trains alongside this little guy in the Create: Steam n' Rails mod")
-        .build());
+        .build(),
+        InteractionEffectBuilder.create()
+            .sound(SoundEvents.GOAT_HORN_BREAK)
+            .volume(0.7f)
+            .pitch(0.7f)
+            .build());
   }
 
   @Override

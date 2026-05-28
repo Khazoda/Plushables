@@ -27,8 +27,7 @@ public class PlushableStonelingBlock extends BasePlushable {
         InteractionEffectBuilder.create()
             .cooldown(35)
             .sound(SoundRegistry.PLUSHABLE_STONELING)
-            .build()
-    );
+            .build());
   }
 
   @Override

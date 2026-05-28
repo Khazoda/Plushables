@@ -5,6 +5,8 @@ import com.khazoda.plushables.block.interaction.InteractionEffectBuilder;
 import com.khazoda.plushables.block.tooltip.TooltipDataBuilder;
 import com.khazoda.plushables.registry.SoundRegistry;
 import com.mojang.serialization.MapCodec;
+import net.minecraft.core.particles.ColorParticleOption;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.world.phys.shapes.BooleanOp;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
@@ -27,8 +29,10 @@ public class PlushableKweebecBlock extends BasePlushable {
         InteractionEffectBuilder.create()
             .cooldown(65)
             .sound(SoundRegistry.PLUSHABLE_KWEEBEC)
-            .build()
-    );
+            .particle(ColorParticleOption.create(ParticleTypes.ENTITY_EFFECT, 0.46f, 0.67f, 0.18f))
+            .particleCount(8)
+            .particleSpread(1)
+            .build());
   }
 
   @Override

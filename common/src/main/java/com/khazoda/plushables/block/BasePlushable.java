@@ -106,7 +106,7 @@ public abstract class BasePlushable extends Block implements SimpleWaterloggedBl
       for (int i = 0; i < effectData.particleCount(); i++) {
         double spread = effectData.particleSpread();
         double x = blockPos.getX() + 0.5 + (random.nextDouble() - 0.5) * spread;
-        double y = blockPos.getY() + 0.75 + (random.nextDouble() - 0.5) * spread;
+        double y = blockPos.getY() + 0.75 + effectData.particleYOffset() + (random.nextDouble() - 0.5) * spread;
         double z = blockPos.getZ() + 0.5 + (random.nextDouble() - 0.5) * spread;
         level.addParticle(effectData.particleEffect(), x, y, z, 0, 0, 0);
       }

@@ -29,8 +29,7 @@ public class PlushableGoldfishBlock extends BasePlushable {
             .particle(ParticleTypes.FISHING)
             .particleCount(5)
             .particleSpread(1.25)
-            .build()
-    );
+            .build());
   }
 
   @Override

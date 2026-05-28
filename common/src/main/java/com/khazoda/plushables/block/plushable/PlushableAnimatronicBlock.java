@@ -1,8 +1,10 @@
 package com.khazoda.plushables.block.plushable;
 
 import com.khazoda.plushables.block.BasePlushable;
+import com.khazoda.plushables.block.interaction.InteractionEffectBuilder;
 import com.khazoda.plushables.block.tooltip.TooltipDataBuilder;
 import com.mojang.serialization.MapCodec;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
@@ -19,7 +21,11 @@ public class PlushableAnimatronicBlock extends BasePlushable {
         .artist("Sammy")
         .creationDate("18th August 2023")
         .trivia("Check out the CC:C Bridge mod and program animatronics to do all sorts of things!")
-        .build());
+        .build(),
+        InteractionEffectBuilder.create()
+            .sound(SoundEvents.ARMADILLO_HURT_REDUCED)
+            .pitch(1.2f)
+            .build());
   }
 
   @Override

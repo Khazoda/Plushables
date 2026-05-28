@@ -4,6 +4,7 @@ import com.khazoda.plushables.block.BasePlushable;
 import com.khazoda.plushables.block.interaction.InteractionEffectBuilder;
 import com.khazoda.plushables.block.tooltip.TooltipDataBuilder;
 import com.mojang.serialization.MapCodec;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.phys.shapes.BooleanOp;
 import net.minecraft.world.phys.shapes.Shapes;
@@ -24,10 +25,13 @@ public class PlushableSnowieBlock extends BasePlushable {
             .creationDate("25th December 2024")
             .build(),
         InteractionEffectBuilder.create()
-            .cooldown(40)
+            .cooldown(20)
             .sound(SoundEvents.SNOW_PLACE)
             .volume(0.75f)
             .pitch(1.15f)
+            .particle(ParticleTypes.SNOWFLAKE)
+            .particleCount(4)
+            .particleSpread(1.1)
             .build());
   }
 
