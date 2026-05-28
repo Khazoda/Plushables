@@ -236,7 +236,6 @@ public abstract class BasePlushable extends Block implements SimpleWaterloggedBl
   public BlockState getStateForPlacement(BlockPlaceContext context) {
     Direction attachment = context.getClickedFace();
     Direction front = getPlacementFront(context, attachment);
-    if (context.isSecondaryUseActive()) front = front.getOpposite();
     int rotation = VoxelShapeHelper.rotationFromFront(attachment, front);
     boolean waterlogged = context.getLevel().getFluidState(context.getClickedPos()).is(Fluids.WATER);
 
@@ -245,8 +244,7 @@ public abstract class BasePlushable extends Block implements SimpleWaterloggedBl
 
   private Direction getPlacementFront(BlockPlaceContext context, Direction attachment) {
     Vec3 center = Vec3.atCenterOf(context.getClickedPos());
-    Vec3 playerPos = context.getPlayer() == null ? context.getClickLocation() : context.getPlayer().getEyePosition();
-    Vec3 offset = playerPos.subtract(center);
+    Vec3 offset = context.getClickLocation().subtract(center);
     Direction.Axis attachmentAxis = attachment.getAxis();
     double x = attachmentAxis == Direction.Axis.X ? 0 : offset.x;
     double y = attachmentAxis == Direction.Axis.Y ? 0 : offset.y;
