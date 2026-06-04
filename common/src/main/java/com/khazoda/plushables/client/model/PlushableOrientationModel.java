@@ -25,7 +25,6 @@ public final class PlushableOrientationModel implements BakedModel {
 
   private final BakedModel model;
   private final List<BakedQuad>[] quads;
-  private boolean useAmbientOcclusion;
 
   public static boolean isPlushableBlockModel(ModelResourceLocation location) {
     // exclude GUI, non-plushables-namespaced & non-instances of BasePlushable
@@ -37,7 +36,6 @@ public final class PlushableOrientationModel implements BakedModel {
   @SuppressWarnings("unchecked")
   public PlushableOrientationModel(BakedModel model) {
     this.model = model;
-    this.useAmbientOcclusion = model.useAmbientOcclusion();
     this.quads = new List[VoxelShapeHelper.DIRECTION_COUNT * VoxelShapeHelper.ORIENTATIONS_PER_FACE * SIDE_COUNT];
 
     for (Direction attachment : DIRECTIONS) {
@@ -77,7 +75,6 @@ public final class PlushableOrientationModel implements BakedModel {
       vertices[offset] = Float.floatToRawIntBits((float) transformed.x);
       vertices[offset + 1] = Float.floatToRawIntBits((float) transformed.y);
       vertices[offset + 2] = Float.floatToRawIntBits((float) transformed.z);
-      if (transformed.x < 0 || transformed.x > 1 || transformed.y < 0 || transformed.y > 1 || transformed.z < 0 || transformed.z > 1) useAmbientOcclusion = false;
       if (stride > 7) vertices[offset + 7] = transformNormal(vertices[offset + 7], orientation);
     }
 
@@ -114,7 +111,7 @@ public final class PlushableOrientationModel implements BakedModel {
 
   @Override
   public boolean useAmbientOcclusion() {
-    return useAmbientOcclusion;
+    return false;
   }
 
   @Override
