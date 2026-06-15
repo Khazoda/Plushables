@@ -25,7 +25,7 @@ public class PlushablesNorgeClient {
     Map<BakedModel, PlushableNorgeOrientationModel> wrappedModels = new IdentityHashMap<>();
 
     for (var plushable : MainRegistry.PLUSHABLE_LIST) {
-      Block block = plushable.get().getBlock();
+      Block block = plushable.getBlock();
       for (var state : block.getStateDefinition().getPossibleStates()) {
         ModelResourceLocation location = BlockModelShaper.stateToModelLocation(state);
         BakedModel model = models.get(location);

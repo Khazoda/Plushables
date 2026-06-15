@@ -24,8 +24,8 @@ public class PlushablesBlockStateProvider implements DataProvider {
   @Override
   public CompletableFuture<?> run(CachedOutput output) {
     return CompletableFuture.allOf(MainRegistry.PLUSHABLE_LIST.stream().map(plushable -> {
-      ResourceLocation blockId = BuiltInRegistries.BLOCK.getKey(plushable.get().getBlock());
-      return DataProvider.saveStable(output, MultiVariantGenerator.multiVariant(plushable.get().getBlock(), Variant.variant().with(VariantProperties.MODEL, blockId.withPrefix("block/"))).get(), this.pathProvider.json(blockId));
+      ResourceLocation blockId = BuiltInRegistries.BLOCK.getKey(plushable.getBlock());
+      return DataProvider.saveStable(output, MultiVariantGenerator.multiVariant(plushable.getBlock(), Variant.variant().with(VariantProperties.MODEL, blockId.withPrefix("block/"))).get(), this.pathProvider.json(blockId));
     }).toArray(CompletableFuture[]::new));
   }
 

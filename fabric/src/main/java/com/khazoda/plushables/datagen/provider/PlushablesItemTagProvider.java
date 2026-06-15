@@ -30,7 +30,7 @@ public class PlushablesItemTagProvider implements DataProvider {
     JsonArray values = new JsonArray();
 
     for (var plushable : MainRegistry.PLUSHABLE_LIST) {
-      values.add(BuiltInRegistries.ITEM.getKey(plushable.get()).toString());
+      values.add(BuiltInRegistries.ITEM.getKey(plushable.getItem()).toString());
     }
 
     tag.add("values", values);

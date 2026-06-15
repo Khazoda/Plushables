@@ -26,6 +26,7 @@ import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
@@ -51,7 +52,7 @@ import java.util.List;
  * Implements core functionality for directional placement, waterlogging, and
  * block shapes.
  */
-public abstract class BasePlushable extends Block implements SimpleWaterloggedBlock {
+public abstract class BasePlushable extends Block implements SimpleWaterloggedBlock, EntityBlock {
   public static final Properties defaultSettings = Properties.of().sound(SoundType.WOOL).strength(0.1f).noOcclusion().pushReaction(PushReaction.DESTROY);
   public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
   public static final DirectionProperty ATTACHMENT = DirectionProperty.create("attachment");
@@ -194,6 +195,13 @@ public abstract class BasePlushable extends Block implements SimpleWaterloggedBl
   @Override
   protected RenderShape getRenderShape(BlockState state) {
     return RenderShape.MODEL;
+  }
+
+  /* =========[ Block Entity ]========= */
+
+  @Override
+  public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
+    return new BasePlushableBlockEntity(pos, state);
   }
 
   /* ==========[ Bounciness ]========== */

@@ -14,30 +14,30 @@ public class PlushablesFabricClient implements ClientModInitializer {
     ModelLoadingPlugin.register(context
         -> context.modifyModelAfterBake().register(ModelModifier.WRAP_PHASE, (model, bakeContext)
         -> model != null && PlushableOrientationModel.isPlushableBlockModel(bakeContext.topLevelId()) ? new PlushableOrientationModel(model) : model));
-    BlockRenderLayerMap.INSTANCE.putBlock(MainRegistry.PLUSHABLE_PIG_BLOCK.get(), RenderType.cutout());
-    BlockRenderLayerMap.INSTANCE.putBlock(MainRegistry.PLUSHABLE_TRUFFLES_BLOCK.get(), RenderType.cutout());
-    BlockRenderLayerMap.INSTANCE.putBlock(MainRegistry.PLUSHABLE_WHELPLING_BLOCK.get(), RenderType.cutout());
-    BlockRenderLayerMap.INSTANCE.putBlock(MainRegistry.PLUSHABLE_RAPTOR_BLOCK.get(), RenderType.cutout());
-    BlockRenderLayerMap.INSTANCE.putBlock(MainRegistry.PLUSHABLE_BIG_TATER_BLOCK.get(), RenderType.cutout());
-    BlockRenderLayerMap.INSTANCE.putBlock(MainRegistry.PLUSHABLE_BIG_IRRITATER_BLOCK.get(), RenderType.cutout());
-    BlockRenderLayerMap.INSTANCE.putBlock(MainRegistry.PLUSHABLE_OTTER_BLOCK.get(), RenderType.cutout());
-    BlockRenderLayerMap.INSTANCE.putBlock(MainRegistry.PLUSHABLE_SHRUMP_BLOCK.get(), RenderType.cutout());
-    BlockRenderLayerMap.INSTANCE.putBlock(MainRegistry.PLUSHABLE_WHALE_BLOCK.get(), RenderType.cutout());
-    BlockRenderLayerMap.INSTANCE.putBlock(MainRegistry.PLUSHABLE_GOLDFISH_BLOCK.get(), RenderType.cutout());
-    BlockRenderLayerMap.INSTANCE.putBlock(MainRegistry.PLUSHABLE_TRATER_BLOCK.get(), RenderType.cutout());
-    BlockRenderLayerMap.INSTANCE.putBlock(MainRegistry.PLUSHABLE_FROGE_BLOCK.get(), RenderType.cutout());
-    BlockRenderLayerMap.INSTANCE.putBlock(MainRegistry.PLUSHABLE_MAMMOTH_BLOCK.get(), RenderType.cutout());
-    BlockRenderLayerMap.INSTANCE.putBlock(MainRegistry.PLUSHABLE_TIGER_BLOCK.get(), RenderType.cutout());
-    BlockRenderLayerMap.INSTANCE.putBlock(MainRegistry.PLUSHABLE_BLAHAJ_BLOCK.get(), RenderType.cutout());
-    BlockRenderLayerMap.INSTANCE.putBlock(MainRegistry.PLUSHABLE_RUPERT_BLOCK.get(), RenderType.cutout());
-    BlockRenderLayerMap.INSTANCE.putBlock(MainRegistry.PLUSHABLE_OWL_BLOCK.get(), RenderType.cutout());
-    BlockRenderLayerMap.INSTANCE.putBlock(MainRegistry.PLUSHABLE_STATUETTE_BLOCK.get(), RenderType.cutout());
-    BlockRenderLayerMap.INSTANCE.putBlock(MainRegistry.PLUSHABLE_CLUCKY_BLOCK.get(), RenderType.cutout());
-    BlockRenderLayerMap.INSTANCE.putBlock(MainRegistry.PLUSHABLE_DRAGON_BLOCK.get(), RenderType.cutout());
-    BlockRenderLayerMap.INSTANCE.putBlock(MainRegistry.PLUSHABLE_SNOWIE_BLOCK.get(), RenderType.cutout());
-    BlockRenderLayerMap.INSTANCE.putBlock(MainRegistry.PLUSHABLE_RIBBIT_BLOCK.get(), RenderType.cutout());
-    BlockRenderLayerMap.INSTANCE.putBlock(MainRegistry.PLUSHABLE_CREAKY_BLOCK.get(), RenderType.cutout());
-    BlockRenderLayerMap.INSTANCE.putBlock(MainRegistry.PLUSHABLE_KWEEBEC_BLOCK.get(), RenderType.cutout());
+    BlockRenderLayerMap.INSTANCE.putBlock(MainRegistry.PLUSHABLE_PIG_BLOCK.getBlock(), RenderType.cutout());
+    BlockRenderLayerMap.INSTANCE.putBlock(MainRegistry.PLUSHABLE_TRUFFLES_BLOCK.getBlock(), RenderType.cutout());
+    BlockRenderLayerMap.INSTANCE.putBlock(MainRegistry.PLUSHABLE_WHELPLING_BLOCK.getBlock(), RenderType.cutout());
+    BlockRenderLayerMap.INSTANCE.putBlock(MainRegistry.PLUSHABLE_RAPTOR_BLOCK.getBlock(), RenderType.cutout());
+    BlockRenderLayerMap.INSTANCE.putBlock(MainRegistry.PLUSHABLE_BIG_TATER_BLOCK.getBlock(), RenderType.cutout());
+    BlockRenderLayerMap.INSTANCE.putBlock(MainRegistry.PLUSHABLE_BIG_IRRITATER_BLOCK.getBlock(), RenderType.cutout());
+    BlockRenderLayerMap.INSTANCE.putBlock(MainRegistry.PLUSHABLE_OTTER_BLOCK.getBlock(), RenderType.cutout());
+    BlockRenderLayerMap.INSTANCE.putBlock(MainRegistry.PLUSHABLE_SHRUMP_BLOCK.getBlock(), RenderType.cutout());
+    BlockRenderLayerMap.INSTANCE.putBlock(MainRegistry.PLUSHABLE_WHALE_BLOCK.getBlock(), RenderType.cutout());
+    BlockRenderLayerMap.INSTANCE.putBlock(MainRegistry.PLUSHABLE_GOLDFISH_BLOCK.getBlock(), RenderType.cutout());
+    BlockRenderLayerMap.INSTANCE.putBlock(MainRegistry.PLUSHABLE_TRATER_BLOCK.getBlock(), RenderType.cutout());
+    BlockRenderLayerMap.INSTANCE.putBlock(MainRegistry.PLUSHABLE_FROGE_BLOCK.getBlock(), RenderType.cutout());
+    BlockRenderLayerMap.INSTANCE.putBlock(MainRegistry.PLUSHABLE_MAMMOTH_BLOCK.getBlock(), RenderType.cutout());
+    BlockRenderLayerMap.INSTANCE.putBlock(MainRegistry.PLUSHABLE_TIGER_BLOCK.getBlock(), RenderType.cutout());
+    BlockRenderLayerMap.INSTANCE.putBlock(MainRegistry.PLUSHABLE_BLAHAJ_BLOCK.getBlock(), RenderType.cutout());
+    BlockRenderLayerMap.INSTANCE.putBlock(MainRegistry.PLUSHABLE_RUPERT_BLOCK.getBlock(), RenderType.cutout());
+    BlockRenderLayerMap.INSTANCE.putBlock(MainRegistry.PLUSHABLE_OWL_BLOCK.getBlock(), RenderType.cutout());
+    BlockRenderLayerMap.INSTANCE.putBlock(MainRegistry.PLUSHABLE_STATUETTE_BLOCK.getBlock(), RenderType.cutout());
+    BlockRenderLayerMap.INSTANCE.putBlock(MainRegistry.PLUSHABLE_CLUCKY_BLOCK.getBlock(), RenderType.cutout());
+    BlockRenderLayerMap.INSTANCE.putBlock(MainRegistry.PLUSHABLE_DRAGON_BLOCK.getBlock(), RenderType.cutout());
+    BlockRenderLayerMap.INSTANCE.putBlock(MainRegistry.PLUSHABLE_SNOWIE_BLOCK.getBlock(), RenderType.cutout());
+    BlockRenderLayerMap.INSTANCE.putBlock(MainRegistry.PLUSHABLE_RIBBIT_BLOCK.getBlock(), RenderType.cutout());
+    BlockRenderLayerMap.INSTANCE.putBlock(MainRegistry.PLUSHABLE_CREAKY_BLOCK.getBlock(), RenderType.cutout());
+    BlockRenderLayerMap.INSTANCE.putBlock(MainRegistry.PLUSHABLE_KWEEBEC_BLOCK.getBlock(), RenderType.cutout());
 
   }
 }

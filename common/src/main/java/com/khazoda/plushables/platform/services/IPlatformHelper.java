@@ -1,5 +1,9 @@
 package com.khazoda.plushables.platform.services;
 
+import com.khazoda.plushables.block.BasePlushableBlockEntity;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.entity.BlockEntityType;
+
 public interface IPlatformHelper {
 
     /**
@@ -38,4 +42,7 @@ public interface IPlatformHelper {
      * @return true if the code is running on the client, false otherwise
      */
     boolean isClientSide();
+
+    //vanilla builder methods are private in common, have to call it on loaders instead
+    BlockEntityType<BasePlushableBlockEntity> createPlushableBlockEntityType(Block... validBlocks);
 }
