@@ -1,4 +1,16 @@
 {
+  "insert_item": {
+    "sounds": [
+      "plushables:insert_item"
+    ],
+    "subtitle": "subtitles.plushables.block.plushable.interact"
+  },
+  "extract_item": {
+    "sounds": [
+      "plushables:extract_item"
+    ],
+    "subtitle": "subtitles.plushables.block.plushable.interact"
+  },
   "plushable_generic": {
     "sounds": [
       "plushables:plushable_generic"

@@ -4,17 +4,23 @@ import com.khazoda.plushables.block.interaction.InteractionEffectData;
 import com.khazoda.plushables.block.tooltip.TooltipData;
 import com.khazoda.plushables.block.util.VoxelShapeHelper;
 import com.khazoda.plushables.platform.Services;
+import com.khazoda.plushables.registry.SoundRegistry;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.CommonComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
+import net.minecraft.world.Containers;
+import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -89,45 +95,117 @@ public abstract class BasePlushable extends Block implements SimpleWaterloggedBl
 
   /**
    * {@link #useWithoutItem}, {@link #playInteractionEffects} and {@link #startCooldown}
-   * all work together to play interaction sounds and effects at a set cooldown.
+   * all work together to play interaction sounds and effects at a set cooldown, and allow an item
+   * to be deposited and extracted.
    */
   protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hitResult) {
-    return state.getValue(ON_COOLDOWN) ? InteractionResult.CONSUME : this.playInteractionEffects(level, state, hitResult, player) ? InteractionResult.sidedSuccess(level.isClientSide) : InteractionResult.PASS;
-  }
-
-  public boolean playInteractionEffects(Level level, BlockState state, BlockHitResult hitResult, Entity entity) {
-    BlockPos blockPos = hitResult.getBlockPos();
-
-    /* Play Sound */
-    level.playSound(null, blockPos, effectData.soundEvent(), SoundSource.BLOCKS, effectData.soundVolume(), effectData.soundPitch());
-
-    /* Spawn Particles */
-    if (level.isClientSide && effectData.particleEffect() != null) {
-      RandomSource random = level.getRandom();
-      for (int i = 0; i < effectData.particleCount(); i++) {
-        double spread = effectData.particleSpread();
-        double x = blockPos.getX() + 0.5 + (random.nextDouble() - 0.5) * spread;
-        double y = blockPos.getY() + 0.75 + effectData.particleYOffset() + (random.nextDouble() - 0.5) * spread;
-        double z = blockPos.getZ() + 0.5 + (random.nextDouble() - 0.5) * spread;
-        level.addParticle(effectData.particleEffect(), x, y, z, 0, 0, 0);
-      }
+    // Shift + RClick = extract item
+    if (player.isSecondaryUseActive()) {
+      if (!(level instanceof ServerLevel serverLevel)) return InteractionResult.SUCCESS;
+      return extractItemFromPlushable(serverLevel, state, pos, player) ? InteractionResult.SUCCESS : InteractionResult.PASS;
     }
 
-    this.startCooldown(state, level, blockPos);
-    level.gameEvent(entity, GameEvent.BLOCK_ACTIVATE, blockPos);
+    // RClick = play sound & particle effects
+    if (state.getValue(ON_COOLDOWN)) return InteractionResult.CONSUME;
+    if (!(level instanceof ServerLevel serverLevel)) return InteractionResult.SUCCESS;
+    if (this.playInteractionEffects(serverLevel, state, pos, player))
+      return InteractionResult.CONSUME;
+    return InteractionResult.PASS;
+  }
+
+  @Override
+  protected ItemInteractionResult useItemOn(ItemStack heldStack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) {
+    if (player.isSecondaryUseActive()) return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
+    if (!(level instanceof ServerLevel serverLevel)) return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
+    return storeItemInPlushable(serverLevel, state, pos, player, heldStack) ? ItemInteractionResult.SUCCESS : ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
+  }
+
+  private static boolean storeItemInPlushable(ServerLevel serverLevel, BlockState state, BlockPos pos, Player player, ItemStack heldStack) {
+    if (!(serverLevel.getBlockEntity(pos) instanceof BasePlushableBlockEntity blockEntity)) return false;
+    if (!blockEntity.getTheItem().isEmpty() || heldStack.isEmpty()) return false;
+
+    ItemStack item = player.isCreative() ? heldStack.copyWithCount(1) : heldStack.split(1);
+    blockEntity.setTheItem(item);
+    playStorageEffects(serverLevel, state, pos, SoundRegistry.INSERT_ITEM.get(), 1.0F, 1.0F);
+    serverLevel.gameEvent(player, GameEvent.BLOCK_CHANGE, pos);
     return true;
   }
 
-  public void startCooldown(BlockState state, Level level, BlockPos pos) {
-    level.setBlock(pos, state.setValue(ON_COOLDOWN, true), 3);
-    level.updateNeighborsAt(pos, this);
-    level.scheduleTick(pos, this, effectData.cooldownPeriod());
+  private static boolean extractItemFromPlushable(ServerLevel serverLevel, BlockState state, BlockPos pos, Player player) {
+    if (!(serverLevel.getBlockEntity(pos) instanceof BasePlushableBlockEntity blockEntity)) return false;
+
+    ItemStack item = blockEntity.removeTheItem();
+    if (item.isEmpty()) return false;
+
+    if (!player.addItem(item)) player.drop(item, false);
+    playStorageEffects(serverLevel, state, pos, SoundRegistry.EXTRACT_ITEM.get(), 0.8F, 1.0F);
+    serverLevel.gameEvent(player, GameEvent.BLOCK_CHANGE, pos);
+    return true;
+  }
+
+  private static void playStorageEffects(ServerLevel serverLevel, BlockState state, BlockPos pos, SoundEvent sound, float volume, float pitch) {
+    serverLevel.playSound(null, pos, sound, SoundSource.BLOCKS, volume, pitch);
+    sendFluffFromServer(serverLevel, pos, state.getValue(ATTACHMENT));
+  }
+
+  public boolean playInteractionEffects(ServerLevel serverLevel, BlockState state, BlockPos blockPos, Entity entity) {
+    boolean hasStoredItem = hasStoredItem(serverLevel, blockPos);
+
+    serverLevel.playSound(null, blockPos, effectData.soundEvent(), SoundSource.BLOCKS, effectData.soundVolume(), hasStoredItem ? effectData.soundPitch() * 0.75F : effectData.soundPitch());
+    if (hasStoredItem) sendFluffFromServer(serverLevel, blockPos, state.getValue(ATTACHMENT));
+    if (effectData.particleEffect() != null) {
+      serverLevel.sendParticles(effectData.particleEffect(), blockPos.getX() + 0.5, blockPos.getY() + 0.75 + effectData.particleYOffset(), blockPos.getZ() + 0.5, effectData.particleCount(), effectData.particleSpread() * 0.5, effectData.particleSpread() * 0.5, effectData.particleSpread() * 0.5, 0);
+    }
+
+    this.startCooldown(state, serverLevel, blockPos);
+    serverLevel.gameEvent(entity, GameEvent.BLOCK_ACTIVATE, blockPos);
+    return true;
+  }
+
+  private static boolean hasStoredItem(Level level, BlockPos pos) {
+    return level.getBlockEntity(pos) instanceof BasePlushableBlockEntity blockEntity && !blockEntity.getTheItem().isEmpty();
+  }
+
+  /* Spawn snowflake particles on the attachment face (for storage related interaction) */
+  private static void sendFluffFromServer(ServerLevel level, BlockPos pos, Direction attachment) {
+    Direction.Axis axis = attachment.getAxis();
+    double plane = attachment.getAxisDirection() == Direction.AxisDirection.POSITIVE ? 0.12 : 0.88;
+    double x = pos.getX() + (axis == Direction.Axis.X ? plane : 0.5);
+    double y = pos.getY() + (axis == Direction.Axis.Y ? plane : 0.5);
+    double z = pos.getZ() + (axis == Direction.Axis.Z ? plane : 0.5);
+    double xSpread = axis == Direction.Axis.X ? 0.03 : 0.25;
+    double ySpread = axis == Direction.Axis.Y ? 0.03 : 0.25;
+    double zSpread = axis == Direction.Axis.Z ? 0.03 : 0.25;
+
+    level.sendParticles(ParticleTypes.SNOWFLAKE, x, y, z, 5, xSpread, ySpread, zSpread, 0.01);
+  }
+
+  public void startCooldown(BlockState state, ServerLevel serverLevel, BlockPos pos) {
+    serverLevel.setBlock(pos, state.setValue(ON_COOLDOWN, true), 3);
+    serverLevel.updateNeighborsAt(pos, this);
+    serverLevel.scheduleTick(pos, this, effectData.cooldownPeriod());
   }
 
   @Override
   protected void tick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
     level.setBlock(pos, state.setValue(ON_COOLDOWN, false), 3);
     level.updateNeighborsAt(pos, this);
+  }
+
+  @Override
+  protected void onRemove(BlockState state, Level level, BlockPos pos, BlockState newState, boolean movedByPiston) {
+    Containers.dropContentsOnDestroy(state, newState, level, pos);
+    super.onRemove(state, level, pos, newState, movedByPiston);
+  }
+
+  @Override
+  protected boolean hasAnalogOutputSignal(BlockState state) {
+    return true;
+  }
+
+  @Override
+  protected int getAnalogOutputSignal(BlockState state, Level level, BlockPos pos) {
+    return hasStoredItem(level, pos) ? 15 : 0;
   }
 
   /**

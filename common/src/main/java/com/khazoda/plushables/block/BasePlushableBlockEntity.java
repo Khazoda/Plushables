@@ -28,6 +28,10 @@ public class BasePlushableBlockEntity extends BlockEntity implements ContainerSi
   public void setTheItem(ItemStack itemStack) {
     this.item = itemStack;
     this.setChanged();
+
+    if (this.level != null) {
+      this.level.updateNeighbourForOutputSignal(this.worldPosition, this.getBlockState().getBlock());
+    }
   }
 
   @Override
