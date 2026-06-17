@@ -1,6 +1,5 @@
 package com.khazoda.plushables.client.model;
 
-import com.khazoda.plushables.Constants;
 import com.khazoda.plushables.block.BasePlushable;
 import com.khazoda.plushables.block.util.VoxelShapeHelper;
 import net.minecraft.client.renderer.block.model.BakedQuad;
@@ -8,9 +7,7 @@ import net.minecraft.client.renderer.block.model.ItemOverrides;
 import net.minecraft.client.renderer.block.model.ItemTransforms;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.client.resources.model.BakedModel;
-import net.minecraft.client.resources.model.ModelResourceLocation;
 import net.minecraft.core.Direction;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
@@ -25,13 +22,6 @@ public final class PlushableOrientationModel implements BakedModel {
 
   private final BakedModel model;
   private final List<BakedQuad>[] quads;
-
-  public static boolean isPlushableBlockModel(ModelResourceLocation location) {
-    // exclude GUI, non-plushables-namespaced & non-instances of BasePlushable
-    return !ModelResourceLocation.INVENTORY_VARIANT.equals(location.variant())
-        && Constants.MOD_ID.equals(location.id().getNamespace())
-        && BuiltInRegistries.BLOCK.get(location.id()) instanceof BasePlushable;
-  }
 
   @SuppressWarnings("unchecked")
   public PlushableOrientationModel(BakedModel model) {

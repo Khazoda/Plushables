@@ -55,6 +55,8 @@
   "tooltip.plushables.holdctrl": "Hold CTRL For Lore",
   "tooltip.plushables.artist": "Artist",
   "tooltip.plushables.created": "Created",
+  "tooltip.plushables.contains_item": "There is something inside..",
+  "tooltip.plushables.totally_stuffed": "It's totally stuffed!",
   "item.plushables.heart_of_gold": "§6Heart of Gold",
   "subtitles.plushables.block.plushable.interact": "Plushable interacted"
 }

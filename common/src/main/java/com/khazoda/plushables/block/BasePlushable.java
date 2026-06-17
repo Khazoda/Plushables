@@ -3,6 +3,7 @@ package com.khazoda.plushables.block;
 import com.khazoda.plushables.block.interaction.InteractionEffectData;
 import com.khazoda.plushables.block.tooltip.TooltipData;
 import com.khazoda.plushables.block.util.VoxelShapeHelper;
+import com.khazoda.plushables.item.PlushableBlockItem;
 import com.khazoda.plushables.platform.Services;
 import com.khazoda.plushables.registry.SoundRegistry;
 import net.minecraft.ChatFormatting;
@@ -10,6 +11,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.CommonComponents;
 import net.minecraft.network.chat.Component;
@@ -17,7 +19,6 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
-import net.minecraft.world.Containers;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.ItemInteractionResult;
@@ -27,6 +28,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.component.ItemContainerContents;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
@@ -123,6 +125,7 @@ public abstract class BasePlushable extends Block implements SimpleWaterloggedBl
   private static boolean storeItemInPlushable(ServerLevel serverLevel, BlockState state, BlockPos pos, Player player, ItemStack heldStack) {
     if (!(serverLevel.getBlockEntity(pos) instanceof BasePlushableBlockEntity blockEntity)) return false;
     if (!blockEntity.getTheItem().isEmpty() || heldStack.isEmpty()) return false;
+    if (!canStoreInPlushable(heldStack)) return false;
 
     ItemStack item = player.isCreative() ? heldStack.copyWithCount(1) : heldStack.split(1);
     blockEntity.setTheItem(item);
@@ -138,7 +141,7 @@ public abstract class BasePlushable extends Block implements SimpleWaterloggedBl
     if (item.isEmpty()) return false;
 
     if (!player.addItem(item)) player.drop(item, false);
-    playStorageEffects(serverLevel, state, pos, SoundRegistry.EXTRACT_ITEM.get(), 0.8F, 1.0F);
+    playStorageEffects(serverLevel, state, pos, SoundRegistry.EXTRACT_ITEM.get(), 0.6F, 1.0F);
     serverLevel.gameEvent(player, GameEvent.BLOCK_CHANGE, pos);
     return true;
   }
@@ -193,12 +196,6 @@ public abstract class BasePlushable extends Block implements SimpleWaterloggedBl
   }
 
   @Override
-  protected void onRemove(BlockState state, Level level, BlockPos pos, BlockState newState, boolean movedByPiston) {
-    Containers.dropContentsOnDestroy(state, newState, level, pos);
-    super.onRemove(state, level, pos, newState, movedByPiston);
-  }
-
-  @Override
   protected boolean hasAnalogOutputSignal(BlockState state) {
     return true;
   }
@@ -216,21 +213,46 @@ public abstract class BasePlushable extends Block implements SimpleWaterloggedBl
     super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
 
     if (!Services.PLATFORM.isClientSide()) return;
-    if (!Screen.hasControlDown()) {
+    boolean extendTooltip = Screen.hasControlDown();
+
+    if (!extendTooltip) {
       tooltipComponents.add(Component.translatable("tooltip.plushables.holdctrl").withStyle(ChatFormatting.GRAY));
-      return;
     }
 
-    // Add basic info
-    tooltipComponents.add(Component.literal(tooltipData.number()).withStyle(ChatFormatting.YELLOW));
-    tooltipComponents.add(Component.translatable("tooltip.plushables.artist").append(" \u00B7 " + tooltipData.artist()).withStyle(ChatFormatting.GREEN));
-    tooltipComponents.add(Component.translatable("tooltip.plushables.created").append(" \u00B7 " + tooltipData.localizeDate(Minecraft.getInstance().getLanguageManager().getSelected())).withStyle(ChatFormatting.DARK_GREEN));
+    if (extendTooltip) {
+      // Add basic info
+      tooltipComponents.add(Component.literal(tooltipData.number()).withStyle(ChatFormatting.YELLOW));
+      tooltipComponents.add(Component.translatable("tooltip.plushables.artist").append(" \u00B7 " + tooltipData.artist()).withStyle(ChatFormatting.GREEN));
+      tooltipComponents.add(Component.translatable("tooltip.plushables.created").append(" \u00B7 " + tooltipData.localizeDate(Minecraft.getInstance().getLanguageManager().getSelected())).withStyle(ChatFormatting.DARK_GREEN));
 
-    // Add trivia if available
-    if (tooltipData.trivia() != null) {
-      tooltipComponents.add(CommonComponents.EMPTY);
-      addTrivia(tooltipComponents, tooltipData.trivia());
+      // Add trivia if available
+      if (tooltipData.trivia() != null) {
+        tooltipComponents.add(CommonComponents.EMPTY);
+        addTrivia(tooltipComponents, tooltipData.trivia());
+      }
     }
+
+    if (isTotallyStuffed(stack)) {
+      tooltipComponents.add(Component.translatable("tooltip.plushables.totally_stuffed").withStyle(ChatFormatting.DARK_GRAY));
+    } else if (!storedPlushableItem(stack).isEmpty()) {
+      tooltipComponents.add(Component.translatable("tooltip.plushables.contains_item").withStyle(ChatFormatting.DARK_GRAY));
+    }
+  }
+
+  private static boolean canStoreInPlushable(ItemStack stack) {
+    return !isTotallyStuffed(stack);
+  }
+
+  private static boolean isTotallyStuffed(ItemStack stack) {
+    for (int depth = 0; depth < 8; depth++) {
+      if (!(stack.getItem() instanceof PlushableBlockItem)) return false;
+      stack = storedPlushableItem(stack);
+    }
+    return true;
+  }
+
+  private static ItemStack storedPlushableItem(ItemStack stack) {
+    return stack.getOrDefault(DataComponents.CONTAINER, ItemContainerContents.EMPTY).copyOne();
   }
 
   private void addTrivia(List<Component> tooltipComponents, String trivia) {
