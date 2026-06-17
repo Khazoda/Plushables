@@ -20,8 +20,8 @@
   ],
   "contact": {
     "homepage": "https://khazoda.com#plushables",
-    "sources": "https://github.com/Khazoda/Plushables",
-    "issues": "https://github.com/Khazoda/Plushables/issues"
+    "sources": "${mod_sources}",
+    "issues": "${mod_issues}"
   },
   "license": "${license}",
   "icon": "plushables_icon.png",

@@ -105,6 +105,7 @@ processResources {
             'mod_author'                   : mod_author,
             'mod_id'                       : mod_id,
             'mod_homepage'                 : mod_homepage,
+            'mod_sources'                  : mod_sources,
             'mod_issues'                   : mod_issues,
             'license'                      : license,
             'description'                  : project.description,
