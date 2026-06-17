@@ -129,6 +129,8 @@ public abstract class BasePlushable extends Block implements SimpleWaterloggedBl
 
     ItemStack item = player.isCreative() ? heldStack.copyWithCount(1) : heldStack.split(1);
     blockEntity.setTheItem(item);
+    if (tryExplodeStoredTnt(serverLevel, pos)) return true;
+
     playStorageEffects(serverLevel, state, pos, SoundRegistry.INSERT_ITEM.get(), 1.0F, 1.0F);
     serverLevel.gameEvent(player, GameEvent.BLOCK_CHANGE, pos);
     return true;
@@ -207,15 +209,21 @@ public abstract class BasePlushable extends Block implements SimpleWaterloggedBl
 
   @Override
   protected void neighborChanged(BlockState state, Level level, BlockPos pos, Block neighborBlock, BlockPos neighborPos, boolean movedByPiston) {
-    if (level instanceof ServerLevel serverLevel && serverLevel.hasNeighborSignal(pos)
-        && serverLevel.getBlockEntity(pos) instanceof BasePlushableBlockEntity blockEntity
-        && blockEntity.getTheItem().is(Blocks.TNT.asItem())) {
-      serverLevel.removeBlock(pos, false);
-      serverLevel.sendParticles(ParticleTypes.SNOWFLAKE, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, 90, 1.0, 1.0, 1.0, 0.08);
-      serverLevel.explode(null, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, 3.0F, Level.ExplosionInteraction.TNT);
+    if (level instanceof ServerLevel serverLevel && tryExplodeStoredTnt(serverLevel, pos)) {
       return;
     }
     super.neighborChanged(state, level, pos, neighborBlock, neighborPos, movedByPiston);
+  }
+
+  private static boolean tryExplodeStoredTnt(ServerLevel serverLevel, BlockPos pos) {
+    if (!serverLevel.hasNeighborSignal(pos)) return false;
+    if (!(serverLevel.getBlockEntity(pos) instanceof BasePlushableBlockEntity blockEntity)) return false;
+    if (!blockEntity.getTheItem().is(Blocks.TNT.asItem())) return false;
+
+    serverLevel.removeBlock(pos, false);
+    serverLevel.sendParticles(ParticleTypes.SNOWFLAKE, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, 90, 1.0, 1.0, 1.0, 0.08);
+    serverLevel.explode(null, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, 3.0F, Level.ExplosionInteraction.TNT);
+    return true;
   }
 
   /**
