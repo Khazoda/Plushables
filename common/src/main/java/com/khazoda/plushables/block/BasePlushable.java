@@ -205,6 +205,19 @@ public abstract class BasePlushable extends Block implements SimpleWaterloggedBl
     return hasStoredItem(level, pos) ? 15 : 0;
   }
 
+  @Override
+  protected void neighborChanged(BlockState state, Level level, BlockPos pos, Block neighborBlock, BlockPos neighborPos, boolean movedByPiston) {
+    if (level instanceof ServerLevel serverLevel && serverLevel.hasNeighborSignal(pos)
+        && serverLevel.getBlockEntity(pos) instanceof BasePlushableBlockEntity blockEntity
+        && blockEntity.getTheItem().is(Blocks.TNT.asItem())) {
+      serverLevel.removeBlock(pos, false);
+      serverLevel.sendParticles(ParticleTypes.SNOWFLAKE, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, 90, 1.0, 1.0, 1.0, 0.08);
+      serverLevel.explode(null, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, 3.0F, Level.ExplosionInteraction.TNT);
+      return;
+    }
+    super.neighborChanged(state, level, pos, neighborBlock, neighborPos, movedByPiston);
+  }
+
   /**
    * Revealable tooltips
    */
@@ -240,7 +253,8 @@ public abstract class BasePlushable extends Block implements SimpleWaterloggedBl
   }
 
   private static boolean canStoreInPlushable(ItemStack stack) {
-    return !isTotallyStuffed(stack);
+    if (stack.getItem() instanceof PlushableBlockItem) return !isTotallyStuffed(stack);
+    return stack.getComponentsPatch().isEmpty();
   }
 
   private static boolean isTotallyStuffed(ItemStack stack) {

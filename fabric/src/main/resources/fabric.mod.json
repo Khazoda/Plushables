@@ -3,14 +3,20 @@
   "id": "plushables",
   "version": "${version}",
   "name": "${mod_name}",
-  "description": "${description}",
+  "description": "<rainbow>${description}",
   "authors": [
     "${mod_author}"
   ],
   "contributors": [
-    "Art - BumbleSculpts",
-    "Art - Luke",
-    "Art - MerchantPug"
+    "BumbleSculpts",
+    "Luke",
+    "Calico",
+    "Steam 'n' Rails Team",
+    "Sammy",
+    "hibi",
+    "Joosh",
+    "Omasumi",
+    "wiiv"
   ],
   "contact": {
     "homepage": "https://khazoda.com#plushables",
@@ -18,7 +24,7 @@
     "issues": "https://github.com/Khazoda/Plushables/issues"
   },
   "license": "${license}",
-  "icon": "plushables.png",
+  "icon": "plushables_icon.png",
   "environment": "*",
   "entrypoints": {
     "main": [
