@@ -253,8 +253,10 @@ public abstract class BasePlushable extends Block implements SimpleWaterloggedBl
   }
 
   private static boolean canStoreInPlushable(ItemStack stack) {
-    if (stack.getItem() instanceof PlushableBlockItem) return !isTotallyStuffed(stack);
-    return stack.getComponentsPatch().isEmpty();
+    if (stack.getItem() instanceof PlushableBlockItem) {
+      return !isTotallyStuffed(stack) && StoredItemComponentAllowlist.allows(stack, DataComponents.CONTAINER);
+    }
+    return StoredItemComponentAllowlist.allows(stack);
   }
 
   private static boolean isTotallyStuffed(ItemStack stack) {
