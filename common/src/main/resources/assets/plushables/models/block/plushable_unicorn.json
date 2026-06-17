@@ -1,4 +1,5 @@
 {
+	"format_version": "1.9.0",
 	"credit": "Made with Blockbench",
 	"texture_size": [32, 32],
 	"textures": {
@@ -340,22 +341,24 @@
 	],
 	"display": {
 		"thirdperson_righthand": {
-			"rotation": [177.89, 15.27, 177.29],
-			"translation": [-3.5, 7.5, 1.25]
+			"rotation": [65, 0, 0],
+			"translation": [-2.25, 2.75, 7.25],
+			"scale": [0.85, 0.85, 0.85]
 		},
 		"thirdperson_lefthand": {
-			"rotation": [177.89, 15.27, 177.29],
-			"translation": [-3.5, 7.5, 1.25]
+			"rotation": [65, 0, 0],
+			"translation": [-2.25, 2.75, 7.25],
+			"scale": [0.85, 0.85, 0.85]
 		},
 		"firstperson_righthand": {
-			"rotation": [-23, 137, 5],
-			"translation": [-4, 5.75, 1],
-			"scale": [0.65, 0.65, 0.65]
+			"rotation": [-23, -158, 0],
+			"translation": [-9.75, 2.25, -2],
+			"scale": [0.8, 0.8, 0.8]
 		},
 		"firstperson_lefthand": {
-			"rotation": [-23, 137, 5],
-			"translation": [-4, 5.75, 1],
-			"scale": [0.65, 0.65, 0.65]
+			"rotation": [-23, 124, 0],
+			"translation": [5, 2.5, -2],
+			"scale": [0.8, 0.8, 0.8]
 		},
 		"ground": {
 			"translation": [0, 3, 0],
@@ -377,6 +380,7 @@
 		{
 			"name": "Legs",
 			"origin": [11.75, 0.25, 4],
+			"scope": 0,
 			"color": 0,
 			"children": [
 				0,
@@ -390,17 +394,20 @@
 				{
 					"name": "Main",
 					"origin": [8.875, 4, 5],
+					"scope": 0,
 					"color": 0,
 					"children": [
 						{
 							"name": "Head",
 							"origin": [8, 8, 8],
+							"scope": 0,
 							"color": 0,
 							"children": [8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
 						},
 						{
 							"name": "BodyMain",
 							"origin": [8.875, 4, 5],
+							"scope": 0,
 							"color": 0,
 							"children": [20, 21]
 						}
@@ -411,6 +418,7 @@
 		{
 			"name": "Tail",
 			"origin": [10.775, 2.35265, 11.78615],
+			"scope": 0,
 			"color": 0,
 			"children": [22, 23, 24]
 		}
