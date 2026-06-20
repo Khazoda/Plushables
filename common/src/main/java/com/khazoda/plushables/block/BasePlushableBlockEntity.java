@@ -40,6 +40,15 @@ public class BasePlushableBlockEntity extends BlockEntity implements ContainerSi
   }
 
   @Override
+  public ItemStack splitTheItem(int amount) {
+    if (this.item.isEmpty()) return ItemStack.EMPTY;
+
+    ItemStack removedItem = this.item.split(amount);
+    this.setTheItem(this.item.isEmpty() ? ItemStack.EMPTY : this.item);
+    return removedItem;
+  }
+
+  @Override
   public boolean stillValid(Player player) {
     return Container.stillValidBlockEntity(this, player);
   }
@@ -63,7 +72,7 @@ public class BasePlushableBlockEntity extends BlockEntity implements ContainerSi
   protected void collectImplicitComponents(DataComponentMap.Builder componentMapBuilder) {
     super.collectImplicitComponents(componentMapBuilder);
     if (!this.item.isEmpty()) {
-      componentMapBuilder.set(DataComponents.CONTAINER, ItemContainerContents.fromItems(List.of(this.item)));
+      componentMapBuilder.set(DataComponents.CONTAINER, ItemContainerContents.fromItems(List.of(this.item.copy())));
     }
   }
 
