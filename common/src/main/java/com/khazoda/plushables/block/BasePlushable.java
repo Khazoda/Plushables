@@ -103,7 +103,7 @@ public abstract class BasePlushable extends Block implements SimpleWaterloggedBl
   protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hitResult) {
     // Shift + RClick = extract item
     if (player.isSecondaryUseActive()) {
-      if (!(level instanceof ServerLevel serverLevel)) return InteractionResult.SUCCESS;
+      if (!(level instanceof ServerLevel serverLevel)) return InteractionResult.CONSUME;
       return extractItemFromPlushable(serverLevel, state, pos, player) ? InteractionResult.SUCCESS : InteractionResult.PASS;
     }
 
@@ -117,7 +117,6 @@ public abstract class BasePlushable extends Block implements SimpleWaterloggedBl
 
   @Override
   protected ItemInteractionResult useItemOn(ItemStack heldStack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) {
-    if (player.isSecondaryUseActive()) return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
     if (!(level instanceof ServerLevel serverLevel)) return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
     return storeItemInPlushable(serverLevel, state, pos, player, heldStack) ? ItemInteractionResult.SUCCESS : ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
   }
