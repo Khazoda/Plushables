@@ -128,7 +128,7 @@ public abstract class BasePlushable extends Block implements SimpleWaterloggedBl
 
     ItemStack item = player.isCreative() ? heldStack.copyWithCount(1) : heldStack.split(1);
     blockEntity.setTheItem(item);
-    if (tryExplodeStoredTnt(serverLevel, pos)) return true;
+    if (serverLevel.getBlockEntity(pos) != blockEntity) return true;
 
     playStorageEffects(serverLevel, state, pos, SoundRegistry.INSERT_ITEM.get(), 1.0F, 1.0F);
     serverLevel.gameEvent(player, GameEvent.BLOCK_CHANGE, pos);
@@ -207,6 +207,14 @@ public abstract class BasePlushable extends Block implements SimpleWaterloggedBl
   }
 
   @Override
+  protected void onRemove(BlockState state, Level level, BlockPos pos, BlockState newState, boolean movedByPiston) {
+    if (!state.is(newState.getBlock())) {
+      level.updateNeighbourForOutputSignal(pos, state.getBlock());
+    }
+    super.onRemove(state, level, pos, newState, movedByPiston);
+  }
+
+  @Override
   protected void neighborChanged(BlockState state, Level level, BlockPos pos, Block neighborBlock, BlockPos neighborPos, boolean movedByPiston) {
     if (level instanceof ServerLevel serverLevel && tryExplodeStoredTnt(serverLevel, pos)) {
       return;
@@ -214,7 +222,7 @@ public abstract class BasePlushable extends Block implements SimpleWaterloggedBl
     super.neighborChanged(state, level, pos, neighborBlock, neighborPos, movedByPiston);
   }
 
-  private static boolean tryExplodeStoredTnt(ServerLevel serverLevel, BlockPos pos) {
+  static boolean tryExplodeStoredTnt(ServerLevel serverLevel, BlockPos pos) {
     if (!serverLevel.hasNeighborSignal(pos)) return false;
     if (!(serverLevel.getBlockEntity(pos) instanceof BasePlushableBlockEntity blockEntity)) return false;
     if (!blockEntity.getTheItem().is(Blocks.TNT.asItem())) return false;
@@ -259,7 +267,7 @@ public abstract class BasePlushable extends Block implements SimpleWaterloggedBl
     }
   }
 
-  private static boolean canStoreInPlushable(ItemStack stack) {
+  static boolean canStoreInPlushable(ItemStack stack) {
     if (stack.getItem() instanceof PlushableBlockItem) {
       return !isTotallyStuffed(stack) && StoredItemComponentAllowlist.allows(stack, DataComponents.CONTAINER);
     }

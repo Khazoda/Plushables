@@ -19,7 +19,7 @@
     "wiiv"
   ],
   "contact": {
-    "homepage": "https://khazoda.com#plushables",
+    "homepage": "${mod_homepage}",
     "sources": "${mod_sources}",
     "issues": "${mod_issues}"
   },
