@@ -15,6 +15,7 @@ public class PlushablesNorge {
     PlushablesCommon.init();
     eventBus.addListener(this::onInit);
     eventBus.addListener(this::onRegister);
+    eventBus.addListener(PlushablesNorgeStorage::registerCapabilities);
     if (FMLEnvironment.dist == Dist.CLIENT) PlushablesNorgeClient.register(eventBus);
   }
 
